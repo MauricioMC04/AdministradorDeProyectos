@@ -59,7 +59,11 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
-       Controlador.MetodoLogin = new Controlador.MetodoLogin();
+       Controlador.MetodoLogin asd = new Controlador.MetodoLogin();
+       String nombre = TxtUsuario.getText();
+       String contra = JPContra.getText();
+       asd.validar_ingreso(nombre,contra);
+       
     }//GEN-LAST:event_BtnRegistrarActionPerformed
 
     public static void main(String args[]) {
