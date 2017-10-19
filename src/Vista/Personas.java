@@ -19,7 +19,7 @@ public class Personas extends javax.swing.JFrame {
     
     public Personas() {
         initComponents();
-        setTitle("Personas");
+        setTitle("Personas" );
     }
 
     /*
