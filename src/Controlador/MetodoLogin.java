@@ -24,9 +24,11 @@ public class MetodoLogin {
                 cap = rs.getString("Rol");
             }
             if (cap.equals("1")) {
-                Vista.Ventanapruebaadmi asd = new Vista.Ventanapruebaadmi();
-                asd.setVisible(true);
-            }else if(cap.equals("2")){
+               Vista.Login asd = new Vista.Login();
+               asd.setVisible(false);
+                Controlador asdf = new Controlador();
+                asdf.Personas();
+                }else if(cap.equals("2")){
             
             Vista.VentanapruebaSupervisor asdd = new Vista.VentanapruebaSupervisor();
                 asdd.setVisible(true);

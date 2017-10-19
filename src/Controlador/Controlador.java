@@ -16,7 +16,7 @@ public class Controlador {
     private Connection conexion = conect.conexion();
     private Consultar consultar = new Consultar();
     private CargarConsultas cargarConsultas = new CargarConsultas();
-    //private Personas personas = new Personas();
+    private Personas personas = new Personas();
     private DatosPersonas datosPersonas = new DatosPersonas();
 
     public Usuario getUsuario() {
@@ -49,7 +49,7 @@ public class Controlador {
     Retorno: Ninguno
     Descripcion: llamado a la vista Personas y cargo de los modelos correspondientes
     */
-    public void Personas(Personas personas){
+    public void Personas(){
         personas.setVisible(true);
         personas.setControlador(this);
         personas.MostrarDatosAgregar(datosPersonas.CargarPersonas(conexion));
