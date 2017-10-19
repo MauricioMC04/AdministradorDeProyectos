@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.Conexion;
+import Modelo.Usuario;
 import Vista.Login;
 import java.sql.*;
 import java.util.logging.Level;
@@ -24,8 +25,9 @@ public class MetodoLogin {
                 cap = rs.getString("Rol");
             }
             if (cap.equals("1")) {
-                Vista.Ventanapruebaadmi asd = new Vista.Ventanapruebaadmi();
-                asd.setVisible(true);
+                Controlador.ControladorPersonasConsultas c = new ControladorPersonasConsultas();
+                c.setUsuario(new Usuario(3, "s", "s", 1, "s", "s", "s"));
+                c.Personas();
             }else if(cap.equals("2")){
             
             Vista.VentanapruebaSupervisor asdd = new Vista.VentanapruebaSupervisor();

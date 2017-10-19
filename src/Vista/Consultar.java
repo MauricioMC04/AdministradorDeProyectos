@@ -1,23 +1,24 @@
 
 package Vista;
 
-import Controlador.Controlador;
+import Controlador.ControladorPersonasConsultas;
 import javax.swing.table.DefaultTableModel;
 
 public class Consultar extends javax.swing.JFrame {
 
-    private Controlador controlador;
+    private ControladorPersonasConsultas controlador;
 
-    public Controlador getControlador() {
+    public ControladorPersonasConsultas getControlador() {
         return controlador;
     }
 
-    public void setControlador(Controlador controlador) {
+    public void setControlador(ControladorPersonasConsultas controlador) {
         this.controlador = controlador;
     }
     
     public Consultar() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /*

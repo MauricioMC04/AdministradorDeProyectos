@@ -1,25 +1,26 @@
 
 package Vista;
 
-import Controlador.Controlador;
+import Controlador.ControladorPersonasConsultas;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Personas extends javax.swing.JFrame {
 
-    private Controlador controlador;
+    private ControladorPersonasConsultas controlador;
     private String cedula;
 
-    public Controlador getControlador() {
+    public ControladorPersonasConsultas getControlador() {
         return controlador;
     }
 
-    public void setControlador(Controlador controlador) {
+    public void setControlador(ControladorPersonasConsultas controlador) {
         this.controlador = controlador;
     }
     
     public Personas() {
         initComponents();
-        setTitle("Personas" );
+        setLocationRelativeTo(null);
     }
 
     /*
@@ -71,6 +72,10 @@ public class Personas extends javax.swing.JFrame {
         rbtnSupervisor = new javax.swing.JRadioButton();
         rbtnEmpleado = new javax.swing.JRadioButton();
         jProgressBar1 = new javax.swing.JProgressBar();
+        lblNombre = new javax.swing.JLabel();
+        lblApellido = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
         pnlEliminar = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDatosEliminar = new javax.swing.JTable();
@@ -82,10 +87,10 @@ public class Personas extends javax.swing.JFrame {
         btnMenuEditar = new javax.swing.JButton();
         btnSeleccionar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        lblNombre = new javax.swing.JLabel();
-        lblApellido = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
+        lblNombreEditar = new javax.swing.JLabel();
+        lblApellidoEditar = new javax.swing.JLabel();
+        txtNombreEditar = new javax.swing.JTextField();
+        txtApellidoEditar = new javax.swing.JTextField();
         rbtnAdministradorEditar = new javax.swing.JRadioButton();
         rbtnSupervisorEditar = new javax.swing.JRadioButton();
         rbtnEmpleadoEditar = new javax.swing.JRadioButton();
@@ -128,6 +133,10 @@ public class Personas extends javax.swing.JFrame {
         rbtngRoles.add(rbtnEmpleado);
         rbtnEmpleado.setText("Empleado");
 
+        lblNombre.setText("Nombre:");
+
+        lblApellido.setText("Apellido:");
+
         javax.swing.GroupLayout pnlAgregarLayout = new javax.swing.GroupLayout(pnlAgregar);
         pnlAgregar.setLayout(pnlAgregarLayout);
         pnlAgregarLayout.setHorizontalGroup(
@@ -136,14 +145,23 @@ public class Personas extends javax.swing.JFrame {
                 .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlAgregarLayout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAgregar)
+                        .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAgregarLayout.createSequentialGroup()
+                                    .addComponent(lblCedula)
+                                    .addGap(18, 18, 18))
+                                .addGroup(pnlAgregarLayout.createSequentialGroup()
+                                    .addComponent(lblNombre)
+                                    .addGap(14, 14, 14)))
                             .addGroup(pnlAgregarLayout.createSequentialGroup()
-                                .addComponent(lblCedula)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(pnlAgregarLayout.createSequentialGroup()
-                        .addGap(528, 528, 528)
+                                .addComponent(lblApellido)
+                                .addGap(14, 14, 14)))
+                        .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                            .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtNombre)
+                                .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)))
+                        .addGap(306, 306, 306)
                         .addComponent(lblRoles)
                         .addGap(89, 89, 89)
                         .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,7 +175,9 @@ public class Personas extends javax.swing.JFrame {
                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAgregarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(81, 81, 81)
+                .addComponent(btnAgregar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnMenu)
                 .addGap(67, 67, 67))
         );
@@ -166,13 +186,20 @@ public class Personas extends javax.swing.JFrame {
             .addGroup(pnlAgregarLayout.createSequentialGroup()
                 .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlAgregarLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addGap(27, 27, 27)
                         .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCedula)
-                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblRoles))
-                        .addGap(80, 80, 80)
-                        .addComponent(btnAgregar))
+                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRoles)
+                            .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblNombre)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlAgregarLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(rbtnAdministrador)
@@ -180,15 +207,21 @@ public class Personas extends javax.swing.JFrame {
                         .addComponent(rbtnSupervisor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rbtnEmpleado)))
-                .addGap(5, 5, 5)
-                .addComponent(btnMenu)
+                .addGap(10, 10, 10)
+                .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlAgregarLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(btnMenu))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAgregarLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAgregar)
+                        .addGap(8, 8, 8)))
                 .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlAgregarLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(21, Short.MAX_VALUE))
+                        .addContainerGap(22, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAgregarLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(135, 135, 135))))
         );
@@ -276,9 +309,9 @@ public class Personas extends javax.swing.JFrame {
             }
         });
 
-        lblNombre.setText("Nombre:");
+        lblNombreEditar.setText("Nombre:");
 
-        lblApellido.setText("Apellido:");
+        lblApellidoEditar.setText("Apellido:");
 
         rbtngRolesEditar.add(rbtnAdministradorEditar);
         rbtnAdministradorEditar.setText("Administrador");
@@ -296,50 +329,56 @@ public class Personas extends javax.swing.JFrame {
         pnlEditarLayout.setHorizontalGroup(
             pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSeleccionar)
-                .addGap(121, 121, 121)
-                .addComponent(btnEditar)
-                .addGap(215, 215, 215)
-                .addComponent(btnMenuEditar)
-                .addGap(358, 358, 358))
-            .addGroup(pnlEditarLayout.createSequentialGroup()
                 .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEditarLayout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNombre)
-                            .addComponent(lblApellido))
-                        .addGap(41, 41, 41)
-                        .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                            .addComponent(txtNombre))
-                        .addGap(135, 135, 135)
-                        .addComponent(lblRolesEditar)
-                        .addGap(87, 87, 87)
-                        .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbtnEmpleadoEditar)
-                            .addComponent(rbtnSupervisorEditar)
-                            .addComponent(rbtnAdministradorEditar)))
-                    .addGroup(pnlEditarLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 817, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 817, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEditarLayout.createSequentialGroup()
+                        .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlEditarLayout.createSequentialGroup()
+                                .addGap(115, 115, 115)
+                                .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNombreEditar)
+                                    .addComponent(lblApellidoEditar))
+                                .addGap(41, 41, 41))
+                            .addGroup(pnlEditarLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSeleccionar)
+                                .addGap(63, 63, 63)))
+                        .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlEditarLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(btnEditar)
+                                .addGap(164, 164, 164)
+                                .addComponent(btnMenuEditar))
+                            .addGroup(pnlEditarLayout.createSequentialGroup()
+                                .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtApellidoEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                    .addComponent(txtNombreEditar))
+                                .addGap(135, 135, 135)
+                                .addComponent(lblRolesEditar)
+                                .addGap(87, 87, 87)
+                                .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbtnEmpleadoEditar)
+                                    .addComponent(rbtnSupervisorEditar)
+                                    .addComponent(rbtnAdministradorEditar))))
+                        .addGap(180, 180, 180)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         pnlEditarLayout.setVerticalGroup(
             pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditarLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombre)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNombreEditar)
+                    .addComponent(txtNombreEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbtnAdministradorEditar)
                     .addComponent(lblRolesEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblApellido)
-                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblApellidoEditar)
+                        .addComponent(txtApellidoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(rbtnSupervisorEditar))
                 .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEditarLayout.createSequentialGroup()
@@ -350,8 +389,8 @@ public class Personas extends javax.swing.JFrame {
                         .addComponent(rbtnEmpleadoEditar)
                         .addGap(43, 43, 43)
                         .addGroup(pnlEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSeleccionar)
-                            .addComponent(btnEditar))))
+                            .addComponent(btnEditar)
+                            .addComponent(btnSeleccionar))))
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -382,28 +421,59 @@ public class Personas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        controlador.InsertarPersona(txtCedula.getText(), rbtngRoles.getSelection().getSelectedObjects().toString());
+        if(rbtnAdministrador.isSelected()){
+            controlador.InsertarPersona(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnAdministrador.getText());
+        }else if(rbtnSupervisor.isSelected()){
+            controlador.InsertarPersona(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnSupervisor.getText());
+        }else{
+            controlador.InsertarPersona(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnEmpleado.getText());
+        }
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        rbtngRoles.setSelected(rbtnAdministrador.getModel(),false);
+        rbtngRoles.setSelected(rbtnSupervisor.getModel(),false);
+        rbtngRoles.setSelected(rbtnEmpleado.getModel(),false);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        String cedula = tblDatosEliminar.getValueAt(tblDatosEliminar.getSelectedRow(), 2).toString();
+        String cedula = tblDatosEliminar.getValueAt(tblDatosEliminar.getSelectedRow(), 0).toString();
         if(cedula != null){
             controlador.EliminarPersona(cedula);
+            controlador.Personas();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        controlador.EditarPersona(cedula, txtNombre.getText(), txtApellido.getText(), rbtngRolesEditar.getSelection().getSelectedObjects().toString());
+        if(rbtnAdministradorEditar.isSelected()){
+            controlador.EditarPersona(cedula, txtNombreEditar.getText(), txtApellidoEditar.getText(), rbtnAdministradorEditar.getText());
+            controlador.Personas();
+        }else if(rbtnSupervisorEditar.isSelected()){
+            controlador.EditarPersona(cedula, txtNombreEditar.getText(), txtApellidoEditar.getText(), rbtnSupervisorEditar.getText());
+            controlador.Personas();
+        }else{
+            controlador.EditarPersona(cedula, txtNombreEditar.getText(), txtApellidoEditar.getText(), rbtnEmpleadoEditar.getText());
+            controlador.Personas();
+        }
+        txtNombreEditar.setText("");
+        txtApellidoEditar.setText("");
+        rbtnAdministradorEditar.setSelected(false);
+        rbtnSupervisorEditar.setSelected(false);
+        rbtnEmpleadoEditar.setSelected(false);
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
         int fila = tblDatosEditar.getSelectedRow();
         if(fila != -1){
-            cedula = tblDatosEditar.getValueAt(fila, 1).toString();
-            txtNombre.setText(tblDatosEditar.getValueAt(fila, 2).toString());
-            txtApellido.setText(tblDatosEditar.getValueAt(fila, 3).toString());
-            if(tblDatosEditar.getValueAt(fila, 4).toString().equals("Administrador")){
-                
+            cedula = tblDatosEditar.getValueAt(fila, 0).toString();
+            txtNombreEditar.setText(tblDatosEditar.getValueAt(fila, 1).toString());
+            txtApellidoEditar.setText(tblDatosEditar.getValueAt(fila, 2).toString());
+            if(tblDatosEditar.getValueAt(fila, 3).toString().equals("Administrador")){
+                rbtnAdministradorEditar.setSelected(true);
+            }else if(tblDatosEditar.getValueAt(fila, 3).toString().equals("Supervisor")){
+                rbtnSupervisorEditar.setSelected(true);
+            }else{
+                rbtnEmpleadoEditar.setSelected(true);
             }
         }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
@@ -464,8 +534,10 @@ public class Personas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblApellidoEditar;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombreEditar;
     private javax.swing.JLabel lblRoles;
     private javax.swing.JLabel lblRolesEditar;
     private javax.swing.JPanel pnlAgregar;
@@ -483,7 +555,9 @@ public class Personas extends javax.swing.JFrame {
     private javax.swing.JTable tblDatosEditar;
     private javax.swing.JTable tblDatosEliminar;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtApellidoEditar;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreEditar;
     // End of variables declaration//GEN-END:variables
 }

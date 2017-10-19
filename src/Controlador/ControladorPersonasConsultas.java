@@ -9,14 +9,14 @@ import Vista.Consultar;
 import Vista.Personas;
 import java.sql.Connection;
 
-public class Controlador {
+public class ControladorPersonasConsultas {
 
     private Usuario usuario;
     private Conexion conect = new Conexion();
     private Connection conexion = conect.conexion();
     private Consultar consultar = new Consultar();
     private CargarConsultas cargarConsultas = new CargarConsultas();
-    //private Personas personas = new Personas();
+    private Personas personas = new Personas();
     private DatosPersonas datosPersonas = new DatosPersonas();
 
     public Usuario getUsuario() {
@@ -25,10 +25,6 @@ public class Controlador {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-    
-    public static void main(String[] args) {
-        
     }
     
     /*
@@ -49,7 +45,7 @@ public class Controlador {
     Retorno: Ninguno
     Descripcion: llamado a la vista Personas y cargo de los modelos correspondientes
     */
-    public void Personas(Personas personas){
+    public void Personas(){
         personas.setVisible(true);
         personas.setControlador(this);
         personas.MostrarDatosAgregar(datosPersonas.CargarPersonas(conexion));
@@ -63,8 +59,9 @@ public class Controlador {
     Retorno: Ninguno
     Descripcion: llamado al metodo InsertarPersonaNueva en el modelo DatosPersonas 
     */
-    public void InsertarPersona(String cedula, String rol){
-        datosPersonas.InsertarPersonaNueva(cedula, rol, conexion);
+    public void InsertarPersona(String cedula, String nombre, String apellido, String rol){
+        datosPersonas.InsertarPersonaNueva(cedula, nombre, apellido, rol, conexion);
+        Personas();
     }
     
     /*

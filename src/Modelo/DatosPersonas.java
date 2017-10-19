@@ -102,7 +102,7 @@ public class DatosPersonas {
     Retorno: Usuario
     Descripcion: Genera un nuevo usuario insertado por el administrador
     */
-    private Usuario GenerarPersonaNueva(String cedula, String rol){
+    private Usuario GenerarPersonaNueva(String cedula, String nombre, String apellido, String rol){
         int numCedula = Integer.parseInt(cedula);
         int numRol;
         if(rol.equals("Administrador")){
@@ -112,7 +112,8 @@ public class DatosPersonas {
         }else{
             numRol = 3;
         }
-        Usuario usuario = new Usuario(numCedula, "Por Definir", "Por Definir", numRol, "Por Definir", "Por Definir");
+        Usuario usuario = new Usuario(numCedula, nombre, apellido, numRol, "Por Definir", "Por Definir",
+                "Por Definir");
         return usuario;        
     }
     
@@ -122,18 +123,19 @@ public class DatosPersonas {
     Retorno: Ninguno
     Descripcion: Inserta la nueva persona creada por el administrador
     */
-    public void InsertarPersonaNueva(String cedula, String rol, Connection conexion){
-        Usuario usuario = GenerarPersonaNueva(cedula, rol);
+    public void InsertarPersonaNueva(String cedula, String nombre, String apellido, String rol, Connection conexion){
+        Usuario usuario = GenerarPersonaNueva(cedula, nombre, apellido,rol);
         try {
-            PreparedStatement pst = conexion.prepareStatement("INSERT INTO Usuario (idUsuario, Nombre, "
-                    + "Apellido, Rol, Contrasena, Pregunta) VALUES(?,?,?,?,?,?)");
+            PreparedStatement pst = conexion.prepareStatement("INSERT INTO Usuario(idUsuario,Nombre,"
+                    + "Apellido,Rol,Contrasena,Pregunta,NombreUsuario) VALUES(?,?,?,?,?,?,?)");
             pst.setString(1, Integer.toString(usuario.getIdUsuario()));
             pst.setString(2, usuario.getNombre());
             pst.setString(3, usuario.getApellido());
             pst.setString(4, Integer.toString(usuario.getRol()));
             pst.setString(5, usuario.getContrasena());
             pst.setString(6, usuario.getPregunta());
-            pst.executeUpdate();
+            pst.setString(7, usuario.getNombreUsuario());
+            int a = pst.executeUpdate();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar la persona");
         }

@@ -9,17 +9,27 @@ public class Usuario {
     private int rol;
     private String contrasena;
     private String pregunta;
+    private String nombreUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombre, String apellido, int rol, String contrasena, String pregunta) {
+    public Usuario(int idUsuario, String nombre, String apellido, int rol, String contrasena, String pregunta, String nombreUsuario) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.rol = rol;
         this.contrasena = contrasena;
         this.pregunta = pregunta;
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public int getIdUsuario() {

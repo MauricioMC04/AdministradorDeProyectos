@@ -21,11 +21,7 @@ public class Conexion {
             conexion = null;
             Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://sql10.freemysqlhosting.net/sql10199786", "sql10199786", "ePKENjFQXk");
-<<<<<<< HEAD
-//            System.out.println("conexion establecida");
-=======
-            System.out.println("conexion establecida");
->>>>>>> origin/master
+            //System.out.println("conexion establecida");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("error de conexion");
             JOptionPane.showMessageDialog(null, "error de conexion " + e);
