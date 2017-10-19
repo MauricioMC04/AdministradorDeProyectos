@@ -26,6 +26,11 @@ public class MetodoLogin {
             if (cap.equals("1")) {
                 Vista.Ventanapruebaadmi asd = new Vista.Ventanapruebaadmi();
                 asd.setVisible(true);
+            }else if(cap.equals("2")){
+            
+            Vista.VentanapruebaSupervisor asdd = new Vista.VentanapruebaSupervisor();
+                asdd.setVisible(true);
+            
             }
         } catch (SQLException ex) {
             Logger.getLogger(MetodoLogin.class.getName()).log(Level.SEVERE, null, ex);
