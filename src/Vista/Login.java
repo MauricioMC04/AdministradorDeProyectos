@@ -1,5 +1,6 @@
 
 package Vista;
+import Controlador.MetodoLogin;
 
 
 public class Login extends javax.swing.JFrame {
@@ -21,6 +22,11 @@ public class Login extends javax.swing.JFrame {
         JPContra.setText("jPasswordField1");
 
         BtnRegistrar.setText("Registrar");
+        BtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,6 +57,10 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
+       Controlador.MetodoLogin = new Controlador.MetodoLogin();
+    }//GEN-LAST:event_BtnRegistrarActionPerformed
 
     public static void main(String args[]) {
 
