@@ -1,7 +1,6 @@
 
 package Vista;
-import Controlador.MetodoLogin;
-
+import Controlador.AdministradorDeProyectos;
 public class Login extends javax.swing.JFrame {
 
 
@@ -64,6 +63,10 @@ public class Login extends javax.swing.JFrame {
 
     private void BtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIngresarActionPerformed
       Controlador.MetodoLogin = new Controlador.MetodoLogin();
+      
+      
+      
+      
     }//GEN-LAST:event_BtnIngresarActionPerformed
 
     public static void main(String args[]) {

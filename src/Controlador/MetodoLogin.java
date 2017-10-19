@@ -25,9 +25,9 @@ public class MetodoLogin {
                 cap = rs.getString("Rol");
 
             }
-            if (cap.equals(1)){
-            Vista.Ventanapruebaadmi asd = new Vista.Ventanapruebaadmi();
-            asd.setVisible(true);
+            if (cap.equals(1)) {
+                Vista.Ventanapruebaadmi asd = new Vista.Ventanapruebaadmi();
+                asd.setVisible(true);
             }
         } catch (SQLException ex) {
             Logger.getLogger(MetodoLogin.class.getName()).log(Level.SEVERE, null, ex);
