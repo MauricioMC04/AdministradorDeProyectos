@@ -1,5 +1,6 @@
 
 package Vista;
+import Controlador.MetodoLogin;
 
 public class Login extends javax.swing.JFrame {
 
@@ -13,6 +14,9 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         TxtUsuario = new javax.swing.JTextField();
         JPContra = new javax.swing.JPasswordField();
         BtnIngresar = new javax.swing.JButton();
@@ -97,5 +101,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton BtnIngresar;
     public static javax.swing.JPasswordField JPContra;
     public static javax.swing.JTextField TxtUsuario;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     // End of variables declaration//GEN-END:variables
 }
