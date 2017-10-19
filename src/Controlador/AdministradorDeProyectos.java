@@ -1,13 +1,14 @@
 
 package Controlador;
 
+import Vista.Login;
+
 public class AdministradorDeProyectos {
 
     public static void main(String[] args) {
         
-    MetodoLogin mtl = new MetodoLogin();
-    mtl.conec.conexion();
- 
+   Vista.Login login = new Login();
+   login.setVisible(true);
     }
     
 }
