@@ -62,7 +62,6 @@ public class Login extends javax.swing.JFrame {
        String nombre = TxtUsuario.getText();
        String contra = JPContra.getText();
        asd.validar_ingreso(nombre,contra);
-       
     }//GEN-LAST:event_BtnRegistrarActionPerformed
 
     public static void main(String args[]) {

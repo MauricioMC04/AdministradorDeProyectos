@@ -30,16 +30,14 @@ public class Principal extends javax.swing.JFrame {
 
     Conexion conec = new Conexion();
     Connection c = conec.conexion();
-    
 
     Controlador.PrincipalControlador CP = new PrincipalControlador();
-    
-    
-    public void cargarcbxDepartamento(){
+
+    public void cargarcbxDepartamento() {
         String sql = "SELECT * FROM Departamentos";
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         String datos = "";
-  try {
+        try {
             Statement ejecutor = c.createStatement();
             ResultSet rs = ejecutor.executeQuery(sql);
             while (rs.next()) {
@@ -120,6 +118,12 @@ public class Principal extends javax.swing.JFrame {
         lbl_FechaEntrega.setText("Fecha entrega:");
 
         lbl_NombreProyecto.setText("Nombre Proyecto:");
+
+        txt_NombreProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NombreProyectoActionPerformed(evt);
+            }
+        });
 
         lbl_UsuarioProyecto.setText("Creado por:");
 
@@ -297,15 +301,23 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_AgregarTareasActionPerformed
 
     private void btn_CrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CrearProyectoActionPerformed
-//       CP.InsertarProyecto(txt_NombreProyecto.getText(), jdc_FechaEntrega.getDateFormatString(),
-//               cmb_DepartamentoProyecto.getSelectedItem(), Estado, sp_Iteraciones.getValue(), 
-//               jdc_FechaFinal.getDateFormatString(), cmb_UsuarioProyecto.getSelectedItem());
-
+        String nombre = txt_NombreProyecto.getText();
+        int Adm = 207710091;
+        String Fechainicio = String.valueOf(jdc_FechaEntrega.getDate());
+        String FechaFinal =String.valueOf(jdc_FechaFinal.getDate());
+        int iteracion = 2;
+        String Estado = "En Proceso";
+        String Departamento = String.valueOf(cmb_DepartamentoProyecto.getSelectedItem());
+        CP.InsertarProyecto(nombre, Fechainicio, Departamento, Estado,iteracion , FechaFinal, Adm);
     }//GEN-LAST:event_btn_CrearProyectoActionPerformed
 
     private void cmb_UsuarioProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_UsuarioProyectoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_UsuarioProyectoActionPerformed
+
+    private void txt_NombreProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreProyectoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_NombreProyectoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -366,5 +378,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JSpinner sp_Iteraciones;
     private javax.swing.JTextField txt_NombreProyecto;
     // End of variables declaration//GEN-END:variables
- private String Estado;   
+ private String Estado;
 }

@@ -29,11 +29,7 @@ public class MetodoLogin {
                 c.setUsuario(new Usuario(3, "s", "s", 1, "s", "s", "s"));
                 c.Personas();
                 Controlador.PrincipalControlador b = new PrincipalControlador();
-                b.InsertarProyecto();
-            
-            Vista.VentanapruebaSupervisor asdd = new Vista.VentanapruebaSupervisor();
-                asdd.setVisible(true);
-            
+                b.MostarPrincipal();
             }
         } catch (SQLException ex) {
             Logger.getLogger(MetodoLogin.class.getName()).log(Level.SEVERE, null, ex);
