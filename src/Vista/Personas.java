@@ -421,15 +421,15 @@ public class Personas extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if(rbtnAdministrador.isSelected()){
-            controlador.InsertarPersona(txtCedula.getText(), txtNombreEditar.getText(), txtApellidoEditar.getText(), rbtnAdministrador.getText());
+            controlador.InsertarPersona(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnAdministrador.getText());
         }else if(rbtnSupervisor.isSelected()){
-            controlador.InsertarPersona(txtCedula.getText(), txtNombreEditar.getText(), txtApellidoEditar.getText(), rbtnSupervisor.getText());
+            controlador.InsertarPersona(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnAdministrador.getText());
         }else{
-            controlador.InsertarPersona(txtCedula.getText(), txtNombreEditar.getText(), txtApellidoEditar.getText(), rbtnEmpleado.getText());
+            controlador.InsertarPersona(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnAdministrador.getText());
         }
         txtCedula.setText("");
-        txtNombreEditar.setText("");
-        txtApellidoEditar.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
         rbtngRoles.setSelected(rbtnAdministrador.getModel(),false);
         rbtngRoles.setSelected(rbtnSupervisor.getModel(),false);
         rbtngRoles.setSelected(rbtnEmpleado.getModel(),false);
