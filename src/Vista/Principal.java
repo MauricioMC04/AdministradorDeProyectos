@@ -13,6 +13,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -41,24 +43,31 @@ Conexion conec = new Conexion();
     Controlador.PrincipalControlador CP = new PrincipalControlador();
     
     public void cargarcbxUsuario() {
-//
-        String sql = " SELECT * FROM Usuario()";
+        
+        String sql = "SELECT * FROM Usuario";
+        String sql1 = "SELECT * FROM Tareas";
+        String sql2 = "SELECT * FROM Proyecto";
         
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        String [] datos = new String[3];
+        
+         Statement st;
+            
+        String datos = "";
+        String datos2= "";
+        String datos3= "";
         try {
             Statement ejecutor = c.createStatement();
             ResultSet rs = ejecutor.executeQuery(sql);
+//            ResultSet rs1 = ejecutor.executeQuery(sql1);
+//            ResultSet rs2 = ejecutor.executeQuery(sql1);
+            
             while (rs.next()) {
-                
-               datos[0]= rs.getString(1);              
-               datos[1]= rs.getString(2);
-               datos[2]= rs.getString(3);
-
-                model.addElement(datos[1]);
-
+            
+               datos= rs.getString("Nombre");    
+ 
+                cmb_UsuarioProyecto.addItem(datos);
             }
-                cmb_UsuarioProyecto.setModel(model);
+               
         } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Error");
         }
@@ -99,7 +108,7 @@ Conexion conec = new Conexion();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnl_Proyecto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Proyecto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13))); // NOI18N
+        pnl_Proyecto.setBorder(javax.swing.BorderFactory.createTitledBorder("Proyecto"));
         pnl_Proyecto.setName(""); // NOI18N
 
         lbl_DepartamentoProyecto.setText("Departamento:");
@@ -109,6 +118,12 @@ Conexion conec = new Conexion();
         lbl_NombreProyecto.setText("Nombre Proyecto:");
 
         lbl_UsuarioProyecto.setText("Usuario:");
+
+        cmb_UsuarioProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_UsuarioProyectoActionPerformed(evt);
+            }
+        });
 
         lbl_PTareas.setText("Tareas:");
 
@@ -336,6 +351,10 @@ Conexion conec = new Conexion();
 //               jdc_FechaFinal.getDate(), cmb_UsuarioProyecto);
         
     }//GEN-LAST:event_btn_CrearProyectoActionPerformed
+
+    private void cmb_UsuarioProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_UsuarioProyectoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_UsuarioProyectoActionPerformed
 
     /**
      * @param args the command line arguments

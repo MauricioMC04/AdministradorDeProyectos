@@ -2,6 +2,7 @@
 package Controlador;
 
 import Modelo.Conexion;
+import Vista.Principal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -22,8 +23,18 @@ public class PrincipalControlador {
     }
     
     
-    public void InsertarProyecto(String Nombre, Date FI, String Departamento, 
-            String Estado, int Iteracion, Date FF, String Supervisor){
+    public void InsertarProyecto(){
+        
+        String Nombre="";
+        Date FI =null ;
+        String Departamento="";
+        String Estado="";
+        int Iteracion=0;
+        Date FF = null;
+        String Supervisor="";
+        
+        Vista.Principal ca = new Principal();
+        ca.setVisible(true);
           try {
             PreparedStatement pps = c.prepareStatement("INSERT INTO Proyecto(Nombre, "
                     + "FI, Departamento, Estado, Iteracion, FF, Supervisor) VALUES(?,?,?,?,?,?,?)");

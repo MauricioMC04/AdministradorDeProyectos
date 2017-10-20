@@ -18,8 +18,8 @@ public class AdministradorDeProyectos {
         Connection c = conec.conexion();
         
         
-        Vista.Menu M = new Vista.Menu();
-        M.setVisible(true);
+        Vista.Login lo = new Vista.Login();
+        lo.setVisible(true);
     }
 
 }
