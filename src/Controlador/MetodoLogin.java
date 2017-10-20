@@ -9,13 +9,13 @@ import java.util.logging.Logger;
 
 public class MetodoLogin {
 
-    public int validar_ingreso(String Nombreusuario, String ContraseÃ±a) {
+    public int validar_ingreso(String Nombreusuario, String Contraseña) {
 
         Nombreusuario = Login.TxtUsuario.getText();
-        ContraseÃ±a = String.valueOf(Login.JPContra.getPassword());
+        Contraseña = String.valueOf(Login.JPContra.getPassword());
         int resultado = 0;
 
-        String SSQL = "SELECT * FROM Usuario WHERE NombreUsuario ='" + Nombreusuario + "' AND Contrasena=('" + ContraseÃ±a + "')";
+        String SSQL = "SELECT * FROM Usuario WHERE NombreUsuario ='" + Nombreusuario + "' AND Contrasena=('" + Contraseña + "')";
         String cap = "";
         try {
             Statement st = c.createStatement();
