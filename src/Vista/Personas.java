@@ -108,8 +108,22 @@ public class Personas extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblDatosAgregar);
+        if (tblDatosAgregar.getColumnModel().getColumnCount() > 0) {
+            tblDatosAgregar.getColumnModel().getColumn(0).setResizable(false);
+            tblDatosAgregar.getColumnModel().getColumn(1).setResizable(false);
+            tblDatosAgregar.getColumnModel().getColumn(2).setResizable(false);
+            tblDatosAgregar.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         lblCedula.setText("Cedula:");
 
@@ -220,7 +234,7 @@ public class Personas extends javax.swing.JFrame {
                     .addGroup(pnlAgregarLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(22, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAgregarLayout.createSequentialGroup()
                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(135, 135, 135))))
