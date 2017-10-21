@@ -64,7 +64,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(163, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        jTabbedPane1.addTab("Login", jPanel1);
 
         jTextField2.setText("jTextField2");
 
@@ -91,7 +91,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(226, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        jTabbedPane1.addTab("Registrar", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,6 +112,7 @@ public class Login extends javax.swing.JFrame {
        String nombre = TxtUsuario.getText();
        String contra = JPContra.getText();
        asd.validar_ingreso(nombre,contra);
+       this.setVisible(false);
     }//GEN-LAST:event_BtnRegistrarActionPerformed
 
     public static void main(String args[]) {
