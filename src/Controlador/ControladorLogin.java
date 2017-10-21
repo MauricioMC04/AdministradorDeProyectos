@@ -12,15 +12,10 @@ public class ControladorLogin {
     
 
     public boolean validar_ingreso() {
-
         Modelo.ModeloLogin ML = new ModeloLogin();
         String Nombreusuario = Login.TxtUsuario.getText();
         String Contrasena = String.valueOf(Login.JPContra.getPassword());
        return ML.Login(Nombreusuario,Contrasena);
        
     }
-
-    Conexion conec = new Conexion();
-    Connection c = conec.conexion();
-
 }

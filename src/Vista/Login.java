@@ -128,15 +128,13 @@ public class Login extends javax.swing.JFrame {
 
     private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
         Controlador.ControladorLogin cl = new Controlador.ControladorLogin();
-        String nombre = TxtUsuario.getText();
-        String contra = JPContra.getText();
-        if (cl.validar_ingreso() == false) {
+       
+        if (cl.validar_ingreso() == true) {
+            dispose();
+        }else{
             Login.TxtUsuario.setText("");
             Login.JPContra.setText("");
             Login.lbldatos.setVisible(true);
-        }
-        if (cl.validar_ingreso() == true) {
-            dispose();
         }
     }//GEN-LAST:event_BtnRegistrarActionPerformed
 
