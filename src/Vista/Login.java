@@ -1,15 +1,14 @@
-
 package Vista;
-import Controlador.ControladorLogin;
 
+import Controlador.ControladorLogin;
 
 public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-                this.setLocationRelativeTo(null);
-                setDefaultCloseOperation(0);
-                lbldatos.setVisible(false);
+        this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(0);
+        lbldatos.setVisible(false);
 
     }
 
@@ -121,13 +120,24 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+// Metodo login
+    /*
+    Al pulsa el botón este va al controladorlogin 
+    Segun el return redirige a otra ventana o muestra un mensaje de error
+     */
+
     private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
-       Controlador.ControladorLogin asd = new Controlador.ControladorLogin();
-       String nombre = TxtUsuario.getText();
-       String contra = JPContra.getText();
-       if(asd.validar_ingreso(nombre,contra)==true){
-       dispose();
-       }
+        Controlador.ControladorLogin cl = new Controlador.ControladorLogin();
+        String nombre = TxtUsuario.getText();
+        String contra = JPContra.getText();
+        if (cl.validar_ingreso() == false) {
+            Login.TxtUsuario.setText("");
+            Login.JPContra.setText("");
+            Login.lbldatos.setVisible(true);
+        }
+        if (cl.validar_ingreso() == true) {
+            dispose();
+        }
     }//GEN-LAST:event_BtnRegistrarActionPerformed
 
     public static void main(String args[]) {
@@ -148,8 +158,6 @@ public class Login extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
-
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
