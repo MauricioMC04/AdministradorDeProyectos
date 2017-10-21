@@ -93,9 +93,7 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Cargar">
-                      <Font PropertyName="font" name="Tahoma" size="13" style="0"/>
-                    </TitledBorder>
+                    <TitledBorder title="Cargar"/>
                   </Border>
                 </Property>
               </Properties>
@@ -145,9 +143,7 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Editar">
-                      <Font PropertyName="font" name="Tahoma" size="13" style="0"/>
-                    </TitledBorder>
+                    <TitledBorder title="Editar"/>
                   </Border>
                 </Property>
               </Properties>
@@ -190,7 +186,7 @@
                                       <Component id="lbl_MNombreTarea" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txt_MNombreTarea" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="7" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="lbl_MErrorLetras" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="pln_MEstado" min="-2" max="-2" attributes="0"/>
@@ -470,9 +466,7 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Nombre departamento">
-                      <Font PropertyName="font" name="Tahoma" size="13" style="0"/>
-                    </TitledBorder>
+                    <TitledBorder title="Nombre departamento"/>
                   </Border>
                 </Property>
               </Properties>

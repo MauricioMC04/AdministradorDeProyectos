@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
-public class InsertarControlador {
+public class ControladorInsertar {
     
     Conexion conec = new Conexion();
     Connection c = conec.conexion();

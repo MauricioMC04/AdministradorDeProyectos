@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import Controlador.InsertarControlador;
+import Controlador.ControladorInsertar;
 import Modelo.Conexion;
 import com.mysql.jdbc.PreparedStatement;
 import java.sql.Connection;
@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class Insertar extends javax.swing.JFrame {
 
     
-    Controlador.InsertarControlador CI = new InsertarControlador();
+    Controlador.ControladorInsertar CI = new ControladorInsertar();
     
     
    

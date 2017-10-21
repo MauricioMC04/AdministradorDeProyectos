@@ -1,7 +1,7 @@
 package Controlador;
 
 import Modelo.Conexion;
-import Vista.Principal;
+import Vista.Proyectos;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class PrincipalControlador {
+public class ControladorProyecto {
 
     Conexion conec = new Conexion();
     Connection c = conec.conexion();
@@ -49,12 +49,11 @@ public class PrincipalControlador {
         }
         return modelo;
     }
-    
-    public void MostarPrincipal (){
-    Vista.Principal principal = new Vista.Principal();
-    principal.setVisible(true);
-    
-    
+
+    public void MostarPrincipal() {
+        Vista.Proyectos principal = new Vista.Proyectos();
+        principal.setVisible(true);
+
     }
 
     public void InsertarProyecto(String Nombre, String FI, String Departamento, String Estado, int Iteracion, String FF, int Supervisor) {
@@ -69,11 +68,9 @@ public class PrincipalControlador {
             pps.setInt(7, Supervisor);
             pps.executeUpdate();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo"+ex);
+            JOptionPane.showMessageDialog(null, "No se pudo" + ex);
 
         }
     }
-    
-    
 
 }

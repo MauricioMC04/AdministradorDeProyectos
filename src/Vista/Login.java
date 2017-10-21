@@ -1,6 +1,6 @@
 
 package Vista;
-import Controlador.MetodoLogin;
+import Controlador.ControladorLogin;
 
 
 public class Login extends javax.swing.JFrame {
@@ -39,6 +39,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        lbldatos.setForeground(new java.awt.Color(255, 0, 0));
         lbldatos.setText("Datos Incorrectos");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -121,11 +122,12 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
-       Controlador.MetodoLogin asd = new Controlador.MetodoLogin();
+       Controlador.ControladorLogin asd = new Controlador.ControladorLogin();
        String nombre = TxtUsuario.getText();
        String contra = JPContra.getText();
-       asd.validar_ingreso(nombre,contra);
-       this.setVisible(false);
+       if(asd.validar_ingreso(nombre,contra)==true){
+       dispose();
+       }
     }//GEN-LAST:event_BtnRegistrarActionPerformed
 
     public static void main(String args[]) {
@@ -166,6 +168,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JLabel lbldatos;
+    public static javax.swing.JLabel lbldatos;
     // End of variables declaration//GEN-END:variables
 }

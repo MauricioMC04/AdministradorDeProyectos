@@ -122,14 +122,14 @@ public class Menu extends javax.swing.JFrame {
 
     private void lbl_MPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_MPrincipalMouseClicked
 
-        Principal P = new Principal();
+        Proyectos P = new Proyectos();
         P.setVisible(true);
         dispose();     
     }//GEN-LAST:event_lbl_MPrincipalMouseClicked
 
     private void lbl_MantenimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_MantenimientoMouseClicked
         
-        Mantenimiento M = new Mantenimiento();
+        Editar M = new Editar();
         M.setVisible(true);
         dispose();
     }//GEN-LAST:event_lbl_MantenimientoMouseClicked
