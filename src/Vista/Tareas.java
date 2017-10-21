@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,7 +27,9 @@ public class Tareas extends javax.swing.JFrame {
      */
     public Tareas() {
         initComponents();
-    mostrartabla();
+        mostrartabla();
+        cargarcbxTareas();
+
     }  
     Conexion conec = new Conexion();
     Connection c = conec.conexion();
@@ -37,7 +41,7 @@ public class Tareas extends javax.swing.JFrame {
     modelo.addColumn("Nombres");
     tbl_TIntegrantes.setModel(modelo);
     
-    String sql = "SELECT * FROM Usuario()";
+    String sql = "SELECT * FROM Usuario";
     
     String datos[] = new String [2];
     Statement st;
@@ -57,6 +61,27 @@ public class Tareas extends javax.swing.JFrame {
    
     
     }
+    
+   
+    
+    public void cargarcbxTareas() {
+        String sql = "SELECT * FROM Tareas";
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        String datos = "";
+        try {
+            Statement ejecutor = c.createStatement();
+            ResultSet rs = ejecutor.executeQuery(sql);
+            while (rs.next()) {
+                datos = rs.getString("Nombre");
+                cmb_PTareas.addItem(datos);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }
+    
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

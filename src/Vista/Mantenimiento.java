@@ -66,6 +66,10 @@ public class Mantenimiento extends javax.swing.JFrame {
         lbl_MErrorNombreIntegrantes = new javax.swing.JLabel();
         lbl_MErrorNombreIntegrantesLetras = new javax.swing.JLabel();
         btn_EliminarDepartamentos = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        pln_MEstado1 = new javax.swing.JPanel();
+        rdbtn_PEnProceso = new javax.swing.JRadioButton();
+        rdbtn_PFinalizado = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -384,6 +388,66 @@ public class Mantenimiento extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Departamentos", jPanel3);
 
+        pln_MEstado1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estado", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+
+        rdbtn_PEnProceso.setText("En proceso");
+        rdbtn_PEnProceso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbtn_PEnProcesoActionPerformed(evt);
+            }
+        });
+
+        rdbtn_PFinalizado.setText("Finalizado");
+        rdbtn_PFinalizado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbtn_PFinalizadoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pln_MEstado1Layout = new javax.swing.GroupLayout(pln_MEstado1);
+        pln_MEstado1.setLayout(pln_MEstado1Layout);
+        pln_MEstado1Layout.setHorizontalGroup(
+            pln_MEstado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pln_MEstado1Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(pln_MEstado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rdbtn_PFinalizado)
+                    .addComponent(rdbtn_PEnProceso))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        pln_MEstado1Layout.setVerticalGroup(
+            pln_MEstado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pln_MEstado1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(rdbtn_PEnProceso)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rdbtn_PFinalizado)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 596, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(213, 213, 213)
+                    .addComponent(pln_MEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(214, Short.MAX_VALUE)))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 558, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(232, 232, 232)
+                    .addComponent(pln_MEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(232, Short.MAX_VALUE)))
+        );
+
+        jTabbedPane1.addTab("Proyectos", jPanel4);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -418,6 +482,16 @@ public class Mantenimiento extends javax.swing.JFrame {
         M.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_MenuDepartamentosActionPerformed
+
+    private void rdbtn_PEnProcesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbtn_PEnProcesoActionPerformed
+
+        Estado = "En proceso";
+    }//GEN-LAST:event_rdbtn_PEnProcesoActionPerformed
+
+    private void rdbtn_PFinalizadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbtn_PFinalizadoActionPerformed
+
+        Estado = "Finalizado";
+    }//GEN-LAST:event_rdbtn_PFinalizadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -465,6 +539,7 @@ public class Mantenimiento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -478,15 +553,19 @@ public class Mantenimiento extends javax.swing.JFrame {
     private javax.swing.JPanel pln_MCargar;
     private javax.swing.JPanel pln_MEditar;
     private javax.swing.JPanel pln_MEstado;
+    private javax.swing.JPanel pln_MEstado1;
     private javax.swing.JPanel pln_MNombreDepartamento;
     private javax.swing.JPanel pln_MObservacion;
     private javax.swing.JRadioButton rdbtn_MEnProceso;
     private javax.swing.JRadioButton rdbtn_MImplementada;
     private javax.swing.JRadioButton rdbtn_MNoImplementada;
+    private javax.swing.JRadioButton rdbtn_PEnProceso;
+    private javax.swing.JRadioButton rdbtn_PFinalizado;
     private javax.swing.JTable tbl_MDepartamentos;
     private javax.swing.JTable tbl_MTareas;
     private javax.swing.JTextField txt_MNombreDepartamento;
     private javax.swing.JTextField txt_MNombreTarea;
     private javax.swing.JTextArea txt_MObservaciones;
     // End of variables declaration//GEN-END:variables
+private String Estado;
 }
