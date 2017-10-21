@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class MetodoLogin {
 
-    public int validar_ingreso(String Nombreusuario, String Contrasena) {
+    public void validar_ingreso(String Nombreusuario, String Contrasena) {
 
         Nombreusuario = Login.TxtUsuario.getText();
         Contrasena = String.valueOf(Login.JPContra.getPassword());
@@ -28,15 +28,16 @@ public class MetodoLogin {
                 Vista.Menu menu = new Vista.Menu();
                 menu.setVisible(true);
             }else {
+            Login.TxtUsuario.setText("");
+            Login.JPContra.setText("");
             
-                System.out.println("no encontro");
+             
             
             }
         } catch (SQLException ex) {
             Logger.getLogger(MetodoLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return resultado;
     }
 
     Conexion conec = new Conexion();

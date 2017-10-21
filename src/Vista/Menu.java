@@ -142,7 +142,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        
+        Vista.Login login = new Vista.Login();
+        login.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
