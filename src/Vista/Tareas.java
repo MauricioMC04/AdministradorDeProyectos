@@ -16,10 +16,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Aaron
- */
+
 public class Tareas extends javax.swing.JFrame {
 
     /**
@@ -29,6 +26,8 @@ public class Tareas extends javax.swing.JFrame {
         initComponents();
         mostrartabla();
         cargarcbxTareas();
+                this.setLocationRelativeTo(null);
+               
 
     }  
     Conexion conec = new Conexion();

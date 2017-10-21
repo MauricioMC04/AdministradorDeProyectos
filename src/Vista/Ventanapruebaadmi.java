@@ -5,6 +5,8 @@ public class Ventanapruebaadmi extends javax.swing.JFrame {
 
     public Ventanapruebaadmi() {
         initComponents();
+                this.setLocationRelativeTo(null);
+
     }
 
     @SuppressWarnings("unchecked")

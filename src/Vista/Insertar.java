@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Aaron
+
  */
 public class Insertar extends javax.swing.JFrame {
 
@@ -26,7 +26,8 @@ public class Insertar extends javax.swing.JFrame {
    
     public Insertar() {
         initComponents();
-       
+               this.setLocationRelativeTo(null);
+
         lbl_ErrorNombreTarea.setVisible(false);
         lbl_ErrorNombreDepartamentos.setVisible(false);
         lbl_ErrorLetras.setVisible(false);

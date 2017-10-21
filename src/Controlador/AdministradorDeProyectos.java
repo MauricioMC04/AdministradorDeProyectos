@@ -4,10 +4,7 @@ package Controlador;
 import Modelo.Conexion;
 import java.sql.Connection;
 
-/**
- *
- * @author Josue
- */
+
 public class AdministradorDeProyectos {
 
     /**

@@ -16,6 +16,8 @@ public class VentanapruebaSupervisor extends javax.swing.JFrame {
      */
     public VentanapruebaSupervisor() {
         initComponents();
+                this.setLocationRelativeTo(null);
+
     }
 
     /**

@@ -21,7 +21,7 @@ public class Mantenimiento extends javax.swing.JFrame {
         lbl_MErrorNombre.setVisible(false);
         lbl_MErrorNombreIntegrantes.setVisible(false);
         lbl_MErrorNombreIntegrantesLetras.setVisible(false);
-        
+        this.setLocationRelativeTo(null);
     }
 
     /**

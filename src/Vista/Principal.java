@@ -26,6 +26,8 @@ public class Principal extends javax.swing.JFrame {
         cargarcbxUsuario();
         cargarcbxTarea();
         cargarcbxDepartamento();
+                this.setLocationRelativeTo(null);
+
     }
 
     Conexion conec = new Conexion();
