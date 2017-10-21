@@ -27,6 +27,7 @@ public class Principal extends javax.swing.JFrame {
         cargarcbxTarea();
         cargarcbxDepartamento();
                 this.setLocationRelativeTo(null);
+                setDefaultCloseOperation(0);
 
     }
 

@@ -19,7 +19,8 @@ public class Consultar extends javax.swing.JFrame {
     public Consultar() {
         initComponents();
         setLocationRelativeTo(null);
-        
+                        setDefaultCloseOperation(0);
+
     }
 
     /*

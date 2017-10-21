@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,8 +28,7 @@ public class Tareas extends javax.swing.JFrame {
         mostrartabla();
         cargarcbxTareas();
                 this.setLocationRelativeTo(null);
-               
-
+                setDefaultCloseOperation(0);
     }  
     Conexion conec = new Conexion();
     Connection c = conec.conexion();

@@ -21,6 +21,7 @@ public class Personas extends javax.swing.JFrame {
         initComponents();
         setTitle("Personas" );
                 this.setLocationRelativeTo(null);
+                setDefaultCloseOperation(0);
 
     }
 

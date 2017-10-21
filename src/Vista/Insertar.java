@@ -27,6 +27,7 @@ public class Insertar extends javax.swing.JFrame {
     public Insertar() {
         initComponents();
                this.setLocationRelativeTo(null);
+                setDefaultCloseOperation(0);
 
         lbl_ErrorNombreTarea.setVisible(false);
         lbl_ErrorNombreDepartamentos.setVisible(false);
