@@ -1,7 +1,6 @@
 package Modelo;
 
 import Controlador.ControladorLogin;
-import Vista.Login;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,8 +30,7 @@ public class ModeloLogin {
     }
 
     public boolean ValidarCedula(int Cedula) {
-
-        String SSQL = "SELECT * FROM Usuario WHERE idUsuario ='" + Cedula +"'";
+        String SSQL = "SELECT * FROM Usuario WHERE idUsuario ='" + Cedula + "'";
         try {
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery(SSQL);
@@ -46,17 +44,14 @@ public class ModeloLogin {
         return false;
     }
 
-    public boolean Registrar(int Cedula) {
-        String Nombre = Vista.Login.TxtNombreUsuario.getText();
-        String Contrasena = Vista.Login.JPContraseña2.getText();
-        String Pregunta = Vista.Login.TxtRespuesta.getText();
-        try {
+    public boolean Registrar(int Cedula, String Nombre, String Contrasena, String Pregunta) {
+    try {
             PreparedStatement pst = c.prepareStatement("Update Usuario Set NombreUsuario = '" + Nombre + "', Contrasena "
                     + "= '" + Contrasena + "', Pregunta= '" + Pregunta + "' Where idUsuario = '" + Cedula + "'");
             pst.executeUpdate();
             return true;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al Registrar"+e);
+            JOptionPane.showMessageDialog(null, "Error al Registrar" + e);
         }
         return false;
     }

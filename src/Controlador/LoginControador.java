@@ -11,10 +11,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -24,8 +27,9 @@ import javafx.scene.layout.Pane;
  * @author Luis
  */
 public class LoginControador implements Initializable {
-Modelo.ModeloLogin ML = new Modelo.ModeloLogin();
-   private AdministradorDeProyectosFX ProgramaPrincipal;
+
+    Modelo.ModeloLogin ML = new Modelo.ModeloLogin();
+    private AdministradorDeProyectosFX ProgramaPrincipal;
     @FXML
     private Pane Login;
     @FXML
@@ -66,7 +70,6 @@ Modelo.ModeloLogin ML = new Modelo.ModeloLogin();
     private PasswordField PassFieldContraseñaRegistrarse;
     @FXML
     private Label lblRContras;
-    @FXML
     private ComboBox<?> CbxPreguntaSeguridadRegistrarse;
     @FXML
     private Label lblSPregunta;
@@ -88,45 +91,65 @@ Modelo.ModeloLogin ML = new Modelo.ModeloLogin();
     private Button btnRegistrarse;
     @FXML
     private Label lblMSReg1;
+    @FXML
+    private Label lblMSReg2;
+    @FXML
+    private TabPane PanelLogin;
+    @FXML
+    private ChoiceBox<?> CbPreguntaRegistrar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-   lblASLogin1.setVisible(false);
-   lblASLogin2.setVisible(false);
-   lblMSLogin1.setVisible(false);
-   lblMSReg1.setVisible(false);
-   lblASReg1.setVisible(false);
-   lblASReg2.setVisible(false);
-   lblASReg3.setVisible(false);
-   lblASReg4.setVisible(false);
-   lblASReg5.setVisible(false);
-   lblASReg6.setVisible(false);
-   
-    }    
 
-    
-    public void setProgramaPrincipal(AdministradorDeProyectosFX ProgramaPrincipal) {
-    this.ProgramaPrincipal = ProgramaPrincipal;
+        lblASLogin1.setVisible(false);
+        lblASLogin2.setVisible(false);
+        lblMSLogin1.setVisible(false);
+        lblMSReg2.setVisible(false);
+        lblMSReg1.setVisible(false);
+        lblASReg1.setVisible(false);
+        lblASReg2.setVisible(false);
+        lblASReg3.setVisible(false);
+        lblASReg4.setVisible(false);
+        lblASReg5.setVisible(false);
+        lblASReg6.setVisible(false);
+        PanelRegistrarse.setVisible(false);
+
+
     }
+
+    public void setProgramaPrincipal(AdministradorDeProyectosFX ProgramaPrincipal) {
+        this.ProgramaPrincipal = ProgramaPrincipal;
+    }
+
     @FXML
     private void Ingresar(ActionEvent event) {
-       String Nombreusuario = TxtNombreUsuario.getText();
-       String Contrasena = TxtContraseña.getText();
+        String Nombreusuario = TxtNombreUsuario.getText();
+        String Contrasena = TxtContraseña.getText();
         ML.Login(Nombreusuario, Contrasena);
     }
 
     @FXML
     private void ValidarCedula(ActionEvent event) {
-        
+        int cedula = Integer.parseInt(TxtValidarCedula.getText());
+        if (ML.ValidarCedula(cedula) == true) {
+            PanelRegistrarse.setVisible(true);
+        } else {
+            lblMSReg2.setVisible(true);
+        }
     }
 
     @FXML
     private void Registrarse(ActionEvent event) {
-        
+    int cedula = Integer.parseInt(TxtValidarCedula.getText());
+    String NombreUsuario = String.valueOf(txtNombreUsuarioRegistrar.getText());
+    String Contrasena = PassFieldContraseñaRegistrarse.getText();
+    String Pregunta = txtRespuestaRegistrarse.getText();
+    
+    ML.Registrar(cedula, NombreUsuario, Contrasena, Pregunta);
     }
-
+    
     @FXML
     private void Olvido(MouseEvent event) {
     }
-    
+
 }

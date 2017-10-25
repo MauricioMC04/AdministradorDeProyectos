@@ -2,6 +2,7 @@ package Controlador;
 
 import Controlador.PersonasController;
 import Controlador.PersonasController;
+import com.sun.javaws.Main;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -10,6 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -21,12 +24,17 @@ public class AdministradorDeProyectosFX extends Application {
     private AnchorPane rootPane;
 
     @Override
+    
+    
+    
     public void start(Stage stagePrincipal) throws Exception {
-        this.stagePrincipal = stagePrincipal;
+        this.stagePrincipal = stagePrincipal;   
+        
         mostrarVentanaPrincipal();
     }
 
     public void mostrarVentanaPrincipal() {
+        
         try {
            
             FXMLLoader loader = new FXMLLoader(AdministradorDeProyectosFX.class.getResource("/Vista/Login.fxml"));
@@ -36,7 +44,6 @@ public class AdministradorDeProyectosFX extends Application {
             stagePrincipal.setScene(scene);
             LoginControador controller = loader.getController();
             controller.setProgramaPrincipal(this);
-            stagePrincipal.maximizedProperty();
             stagePrincipal.show();
         } catch (IOException e) {
         }
