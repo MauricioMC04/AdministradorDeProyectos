@@ -36,6 +36,7 @@ public class AdministradorDeProyectosFX extends Application {
             stagePrincipal.setScene(scene);
             LoginControador controller = loader.getController();
             controller.setProgramaPrincipal(this);
+            stagePrincipal.maximizedProperty();
             stagePrincipal.show();
         } catch (IOException e) {
         }

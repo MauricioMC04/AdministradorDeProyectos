@@ -15,6 +15,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 /**
@@ -90,6 +91,16 @@ Modelo.ModeloLogin ML = new Modelo.ModeloLogin();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+   lblASLogin1.setVisible(false);
+   lblASLogin2.setVisible(false);
+   lblMSLogin1.setVisible(false);
+   lblMSReg1.setVisible(false);
+   lblASReg1.setVisible(false);
+   lblASReg2.setVisible(false);
+   lblASReg3.setVisible(false);
+   lblASReg4.setVisible(false);
+   lblASReg5.setVisible(false);
+   lblASReg6.setVisible(false);
    
     }    
 
@@ -112,6 +123,10 @@ Modelo.ModeloLogin ML = new Modelo.ModeloLogin();
     @FXML
     private void Registrarse(ActionEvent event) {
         
+    }
+
+    @FXML
+    private void Olvido(MouseEvent event) {
     }
     
 }
