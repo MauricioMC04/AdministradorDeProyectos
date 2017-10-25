@@ -1,5 +1,8 @@
 .fondo{
-    
-    -fx-background-color: #00ccff;
- 
+
+    -fx-background-image: url("fondo_login.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+
 }
