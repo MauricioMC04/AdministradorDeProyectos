@@ -45,13 +45,13 @@ public class ControladorPersonasConsultas {
     Retorno: Ninguno
     Descripcion: llamado a la vista Personas y cargo de los modelos correspondientes
     */
-    public void Personas(){
-        personas.setVisible(true);
-        personas.setControlador(this);
-        personas.MostrarDatosAgregar(datosPersonas.CargarPersonas(conexion));
-        personas.MostrarDatosEliminar(datosPersonas.CargarPersonas(conexion));
-        personas.MostrarDatosEditar(datosPersonas.CargarPersonasEditables(conexion));
-    }
+//    public void Personas(){
+//        personas.setVisible(true);
+//        personas.setControlador(this);
+//        personas.MostrarDatosAgregar(datosPersonas.CargarPersonas(conexion));
+//        personas.MostrarDatosEliminar(datosPersonas.CargarPersonas(conexion));
+//        personas.MostrarDatosEditar(datosPersonas.CargarPersonasEditables(conexion));
+//    }
     
     /*
     Nombre de metodo: InsertarPersona
@@ -61,7 +61,7 @@ public class ControladorPersonasConsultas {
     */
     public void InsertarPersona(String cedula, String nombre, String apellido, String rol){
         datosPersonas.InsertarPersonaNueva(cedula, nombre, apellido, rol, conexion);
-        Personas();
+        //Personas();
     }
     
     /*

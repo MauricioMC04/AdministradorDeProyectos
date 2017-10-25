@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PersonasController">
+   <children>
+      <TabPane layoutX="11.0" layoutY="8.0" prefHeight="482.0" prefWidth="699.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tabAgregar" text="Agregar Personas">
+               <content>
+                  <Pane fx:id="pnlAgregar" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tblAgregar" layoutX="7.0" layoutY="148.0" prefHeight="298.0" prefWidth="685.0" />
+                        <Label fx:id="lblCedula" layoutX="34.0" layoutY="21.0" text="Cedula:" />
+                        <Label fx:id="lblNombre" layoutX="34.0" layoutY="54.0" text="Nombre:" />
+                        <Label fx:id="lblApellido" layoutX="34.0" layoutY="92.0" text="Apellido:" />
+                        <TextField fx:id="txtCedula" layoutX="95.0" layoutY="17.0" />
+                        <TextField fx:id="txtNombre" layoutX="95.0" layoutY="50.0" />
+                        <TextField fx:id="txtApellido" layoutX="95.0" layoutY="88.0" />
+                        <Label fx:id="lblRol" layoutX="285.0" layoutY="13.0" text="Rol:" />
+                        <RadioButton fx:id="rbtnAdministrador" layoutX="278.0" layoutY="46.0" mnemonicParsing="false" text="Administrador">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="Roles" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rbtnSupervisor" layoutX="278.0" layoutY="75.0" mnemonicParsing="false" text="Supervisor" toggleGroup="$Roles" />
+                        <RadioButton fx:id="rbtnEmpleado" layoutX="278.0" layoutY="101.0" mnemonicParsing="false" text="Empleado" toggleGroup="$Roles" />
+                        <Button fx:id="btnAgregar" layoutX="473.0" layoutY="26.0" mnemonicParsing="false" onAction="#Agregar" text="Agregar" />
+                        <Button fx:id="btnMenuAgregar" layoutX="473.0" layoutY="89.0" mnemonicParsing="false" text="Menu" />
+                        <Label fx:id="lblNoCedula" layoutX="28.0" layoutY="22.0" text="*" />
+                        <Label fx:id="lblNoNombre" layoutX="28.0" layoutY="55.0" text="*" />
+                        <Label fx:id="lblNoApellido" layoutX="28.0" layoutY="93.0" text="*" />
+                        <Label fx:id="lblNoRol" layoutX="275.0" layoutY="13.0" text="*" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+          <Tab fx:id="tabEliminar" text="Eliminar Personas">
+               <content>
+                  <Pane fx:id="pnlEliminar" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tblEliminar" layoutX="7.0" layoutY="148.0" prefHeight="298.0" prefWidth="685.0" />
+                        <Button fx:id="btnEliminar" layoutX="49.0" layoutY="101.0" mnemonicParsing="false" text="Eliminar" />
+                        <Button fx:id="btnMenuEliminar" layoutX="571.0" layoutY="101.0" mnemonicParsing="false" text="Menu" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab fx:id="tabEditar" text="Editar Personas">
+               <content>
+                  <Pane fx:id="pnlEditar" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tblEditar" layoutX="7.0" layoutY="148.0" prefHeight="299.0" prefWidth="685.0" />
+                        <Label fx:id="lblNombreEditar" layoutX="41.0" layoutY="21.0" text="Nombre:" />
+                        <Label fx:id="lblApellidoEditar" layoutX="41.0" layoutY="57.0" text="Apellido:" />
+                        <TextField fx:id="txtNombreEditar" layoutX="96.0" layoutY="17.0" />
+                        <TextField fx:id="txtApellidoEditar" layoutX="96.0" layoutY="53.0" />
+                        <Button fx:id="btnEditar" layoutX="179.0" layoutY="110.0" mnemonicParsing="false" text="Editar" />
+                        <Button fx:id="btnMenuEditar" layoutX="625.0" layoutY="99.0" mnemonicParsing="false" text="Menu" />
+                        <Label fx:id="lblRolEditar" layoutX="300.0" layoutY="13.0" text="Rol:" />
+                        <RadioButton fx:id="rbtnAdministradorEditar" layoutX="300.0" layoutY="45.0" mnemonicParsing="false" text="Administrador">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="RolesEditar" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rbtnSupervisorEditar" layoutX="300.0" layoutY="70.0" mnemonicParsing="false" text="Supervisor" toggleGroup="$RolesEditar" />
+                        <RadioButton fx:id="rbtnEmpleadoEditar" layoutX="300.0" layoutY="94.0" mnemonicParsing="false" text="Empleado" toggleGroup="$RolesEditar" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

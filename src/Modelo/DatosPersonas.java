@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,11 +16,11 @@ public class DatosPersonas {
     /*
     Nombre de metodo: CargarPersonas
     Parametros: Connection
-    Retorno: DefaultTableModel
+    Retorno: ObservableList<PersonaObservable>
     Descripcion: Carga sobre un modelo las personas que puede ver un administrador
     */
-    public DefaultTableModel CargarPersonas(Connection conexion){
-        DefaultTableModel modelo = CrearModeloPersonas();
+    public ObservableList<PersonaObservable> CargarPersonas(Connection conexion){
+        ObservableList <PersonaObservable> modelo = FXCollections.observableArrayList();
         String sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario";
         String[] datos = new String[4];
         try {
@@ -30,26 +32,11 @@ public class DatosPersonas {
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
                 datos[3] = DefinirRol(datos[3]);
-                modelo.addRow(datos);
+                modelo.add(new PersonaObservable(datos[0],datos[1],datos[2],datos[3]));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error CargarPersonas");
         }
-        return modelo;
-    }
-    
-    /*
-    Nombre de metodo: CrearModeloPersonas
-    Parametros: Ninguno
-    Retorno: DefaultTableModel
-    Descripcion: Crea el modelo necesario para mostrar las personas a un administrador
-    */
-    private DefaultTableModel CrearModeloPersonas(){
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Cedula");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Apellido");
-        modelo.addColumn("Rol");
         return modelo;
     }
     
@@ -72,11 +59,11 @@ public class DatosPersonas {
     /*
     Nombre de metodo: CargarPersonasEditables
     Parametros: Connection
-    Retorno: DefaultTableModel
+    Retorno: ObservableList<PersonaObservable>
     Descripcion: Carga sobre un modelo las personas que puede editar un administrador
     */
-    public DefaultTableModel CargarPersonasEditables(Connection conexion){
-        DefaultTableModel modelo = CrearModeloPersonas();
+   public ObservableList<PersonaObservable> CargarPersonasEditables(Connection conexion){
+        ObservableList<PersonaObservable> modelo = FXCollections.observableArrayList();
         String sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE Contrasena != 'Por Definir'";
         String[] datos = new String[4];
         try {
@@ -88,13 +75,13 @@ public class DatosPersonas {
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
                 datos[3] = DefinirRol(datos[3]);
-                modelo.addRow(datos);
+                modelo.add(new PersonaObservable(datos[0],datos[1],datos[2],datos[3]));
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error CargarPersonas");
+            JOptionPane.showMessageDialog(null, "Error CargarPersonas Editables");
         }
         return modelo;
-    }
+    }  
     
     /*
     Nombre de metodo: GenerarPersonaNueva
