@@ -107,11 +107,16 @@ public class PersonasController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        porDefecto();
+    }    
+    
+    public void porDefecto(){
         cargarPersonas(tblAgregar);
         cargarPersonas(tblEliminar);
         cargarPersonasEditables(tblEditar);
         ocultarLabelsAgregar();
-    }    
+        vaciar();
+    }
     
     public void cargarPersonas(TableView<PersonaObservable> table){
         table.setItems(datosPersonas.CargarPersonas(conexion));
@@ -148,8 +153,8 @@ public class PersonasController implements Initializable {
     
     public void verificarNoSeleccionados(){
         if(txtCedula.getText().equals(""))lblNoCedula.setVisible(true);
-        if(txtNombre.getText().equals(""))lblNoCedula.setVisible(true);
-        if(txtApellido.getText().equals(""))lblNoCedula.setVisible(true);
+        if(txtNombre.getText().equals(""))lblNoNombre.setVisible(true);
+        if(txtApellido.getText().equals(""))lblNoApellido.setVisible(true);
         if(!rbtnAdministrador.isSelected()){
             if(!rbtnSupervisor.isSelected()){
                 if(!rbtnEmpleado.isSelected()){
@@ -166,13 +171,25 @@ public class PersonasController implements Initializable {
         }else{
             if(rbtnAdministrador.isSelected()){
                 datosPersonas.InsertarPersonaNueva(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnAdministrador.getText(), conexion);
+                porDefecto();
             }else if(rbtnSupervisor.isSelected()){
                 datosPersonas.InsertarPersonaNueva(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnSupervisor.getText(), conexion);
+                porDefecto();
             }else if(rbtnEmpleado.isSelected()){
                 datosPersonas.InsertarPersonaNueva(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnEmpleado.getText(), conexion);
+                porDefecto();
             }else{
                 verificarNoSeleccionados();
             }
         }
+    }
+    
+    public void vaciar(){
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        rbtnAdministrador.setSelected(false);
+        rbtnSupervisor.setSelected(false);
+        rbtnEmpleado.setSelected(false);
     }
 }
