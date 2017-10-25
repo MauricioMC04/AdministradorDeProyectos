@@ -1,13 +1,5 @@
 package Controlador;
 
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import Controlador.PersonasController;
 import Controlador.PersonasController;
 import java.io.IOException;
@@ -23,10 +15,6 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Josue
- */
 public class AdministradorDeProyectosFX extends Application {
     
     private Stage stagePrincipal;
@@ -41,12 +29,12 @@ public class AdministradorDeProyectosFX extends Application {
     public void mostrarVentanaPrincipal() {
         try {
            
-            FXMLLoader loader = new FXMLLoader(AdministradorDeProyectosFX.class.getResource("/Vista/Personas.fxml"));
+            FXMLLoader loader = new FXMLLoader(AdministradorDeProyectosFX.class.getResource("/Vista/Login.fxml"));
             rootPane = loader.load();
             Scene scene = new Scene(rootPane);
-            stagePrincipal.setTitle("Personas");
+            stagePrincipal.setTitle("Login");
             stagePrincipal.setScene(scene);
-            PersonasController controller = loader.getController();
+            LoginControador controller = loader.getController();
             controller.setProgramaPrincipal(this);
             stagePrincipal.show();
         } catch (IOException e) {
