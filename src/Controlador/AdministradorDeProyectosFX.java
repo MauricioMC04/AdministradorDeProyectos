@@ -26,7 +26,7 @@ public class AdministradorDeProyectosFX extends Application {
     @Override
     public void start(Stage stagePrincipal) throws Exception {
         this.stagePrincipal = stagePrincipal;   
-        mostrarVentanaPrincipal();
+        mostrarPersonas();
     }
 
     public void mostrarVentanaPrincipal() {
@@ -45,7 +45,7 @@ public class AdministradorDeProyectosFX extends Application {
     
     public void mostrarPersonas() {
         try {
-            FXMLLoader loader = new FXMLLoader(AdministradorDeProyectosFX.class.getResource("/Vista/Personas.fxml"));
+            FXMLLoader loader = new FXMLLoader(AdministradorDeProyectosFX.class.getResource("/Vista/Personas_1.fxml"));
             rootPane = loader.load();
             Scene scene = new Scene(rootPane);
             stagePrincipal.setTitle("Personas");
