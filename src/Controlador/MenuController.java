@@ -49,7 +49,7 @@ public class MenuController implements Initializable {
     @FXML
     private void Personas(ActionEvent event) {
          try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Personas.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Personas_1.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Usuarios");
