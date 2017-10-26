@@ -26,7 +26,7 @@ public class ModeloLogin {
     }
 
     public boolean ValidarCedula(int Cedula) {
-        String SSQL = "SELECT * FROM Usuario WHERE idUsuario ='" + Cedula + "'";
+        String SSQL = "SELECT * FROM Usuario WHERE idUsuario  ='" + Cedula + "'";
         try {
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery(SSQL);
