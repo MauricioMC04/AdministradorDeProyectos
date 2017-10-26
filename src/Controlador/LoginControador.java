@@ -9,7 +9,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
@@ -17,9 +20,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -29,6 +32,7 @@ import javafx.scene.layout.Pane;
 public class LoginControador implements Initializable {
 
     Modelo.ModeloLogin ML = new Modelo.ModeloLogin();
+    AdministradorDeProyectosFX AFX = new AdministradorDeProyectosFX();
     private AdministradorDeProyectosFX ProgramaPrincipal;
     @FXML
     private Pane Login;
@@ -114,7 +118,6 @@ public class LoginControador implements Initializable {
         lblASReg6.setVisible(false);
         PanelRegistrarse.setVisible(false);
 
-
     }
 
     public void setProgramaPrincipal(AdministradorDeProyectosFX ProgramaPrincipal) {
@@ -125,7 +128,23 @@ public class LoginControador implements Initializable {
     private void Ingresar(ActionEvent event) {
         String Nombreusuario = TxtNombreUsuario.getText();
         String Contrasena = TxtContraseña.getText();
-        ML.Login(Nombreusuario, Contrasena);
+       if( ML.Login(Nombreusuario, Contrasena)){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Menu.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Menu");
+            stage.setScene(new Scene(root1));
+            stage.show();
+  
+            
+        } catch (Exception e) {
+            System.out.println("no");
+
+        }
+        Stage stage = (Stage) BtnIngresar.getScene().getWindow();
+        stage.close();
+       }
     }
 
     @FXML
@@ -140,14 +159,14 @@ public class LoginControador implements Initializable {
 
     @FXML
     private void Registrarse(ActionEvent event) {
-    int cedula = Integer.parseInt(TxtValidarCedula.getText());
-    String NombreUsuario = String.valueOf(txtNombreUsuarioRegistrar.getText());
-    String Contrasena = PassFieldContraseñaRegistrarse.getText();
-    String Pregunta = txtRespuestaRegistrarse.getText();
-    
-    ML.Registrar(cedula, NombreUsuario, Contrasena, Pregunta);
+        int cedula = Integer.parseInt(TxtValidarCedula.getText());
+        String NombreUsuario = String.valueOf(txtNombreUsuarioRegistrar.getText());
+        String Contrasena = PassFieldContraseñaRegistrarse.getText();
+        String Pregunta = txtRespuestaRegistrarse.getText();
+
+        ML.Registrar(cedula, NombreUsuario, Contrasena, Pregunta);
     }
-    
+
     @FXML
     private void Olvido(MouseEvent event) {
     }

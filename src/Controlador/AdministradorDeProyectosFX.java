@@ -24,9 +24,7 @@ public class AdministradorDeProyectosFX extends Application {
     private AnchorPane rootPane;
 
     @Override
-    
-    
-    
+
     public void start(Stage stagePrincipal) throws Exception {
         this.stagePrincipal = stagePrincipal;   
         
@@ -34,9 +32,7 @@ public class AdministradorDeProyectosFX extends Application {
     }
 
     public void mostrarVentanaPrincipal() {
-        
         try {
-           
             FXMLLoader loader = new FXMLLoader(AdministradorDeProyectosFX.class.getResource("/Vista/Login.fxml"));
             rootPane = loader.load();
             Scene scene = new Scene(rootPane);
@@ -51,9 +47,6 @@ public class AdministradorDeProyectosFX extends Application {
 
     public static void main(String[] args) {
         launch(args);
-       // Vista.Login lo = new Vista.Login();
-        //lo.setVisible(true);
-        //System.out.println(AdministradorDeProyectosFX.class.getResource("Vista/Personas.fxml"));
     }
     
 }
