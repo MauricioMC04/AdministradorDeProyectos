@@ -44,9 +44,8 @@
         
               <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
         <MenuItem mnemonicParsing="false" onAction="#Proyectos" text="Proyectos" />
-        <MenuItem mnemonicParsing="false" onAction="#Tareas" text="Tareas" />
+        <MenuItem mnemonicParsing="false" onAction="#Tareas" text="Tareas y Departamentos" />
         <MenuItem mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
-        <MenuItem mnemonicParsing="false" onAction="#Departamentos" text="Departamentos" />
       </items>
     </Menu>
     <Menu mnemonicParsing="false" text="Sistema">
