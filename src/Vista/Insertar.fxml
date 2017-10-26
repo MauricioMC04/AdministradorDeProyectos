@@ -31,18 +31,18 @@
             </content>
           </Tab>
           <Tab id="tabDepartamentos" fx:id="tabDepartamentos" text="Departamentos">
-            <content>
+               <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button id="btnDMenu" fx:id="btnDMenu" layoutX="63.0" layoutY="414.0" mnemonicParsing="false" text="Menú" />
                         <Button id="btnDAceptar" fx:id="btnDAceptar" layoutX="409.0" layoutY="414.0" mnemonicParsing="false" onAction="#Agregar" text="Aceptar" />
-                        <Label id="lblDNombreDepartamento" fx:id="lblDNombreDepartamento" layoutX="89.0" layoutY="150.0" text="Nombre departamento:" />
+                        <Label id="lblDNombreDepartamento" fx:id="lblDNombreDepartamento" layoutX="80.0" layoutY="151.0" text="Nombre departamento:" />
                         <Label id="lblDErrorInformacion" fx:id="lblDErrorInformacion" layoutX="279.0" layoutY="198.0" text="Falta información" textFill="#eb1414" />
                         <Label id="lblDErrorLetras" fx:id="lblDErrorLetras" layoutX="264.0" layoutY="181.0" text="Digite solamente letras" textFill="#eb1414" />
                         <TextField id="txtDNombreDepartamento" fx:id="txtDNombreDepartamento" layoutX="251.0" layoutY="146.0" />
                      </children>
                   </AnchorPane>
-            </content>
+               </content>
           </Tab>
         </tabs>
       </TabPane>
