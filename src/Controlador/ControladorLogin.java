@@ -27,5 +27,7 @@ public class ControladorLogin {
     int cedula = Integer.parseInt(Vista.Login.TxtValidarCedula.getText());
    return ML.Registrar(cedula);
    }
+   
+
  
 }

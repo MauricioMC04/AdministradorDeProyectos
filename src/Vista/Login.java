@@ -17,6 +17,7 @@ public class Login extends javax.swing.JFrame {
         JPContraseña1.disable();
         JPContraseña2.disable();
         CbxPregunta.disable();
+        
 
     }
 
