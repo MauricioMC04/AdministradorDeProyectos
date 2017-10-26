@@ -23,9 +23,7 @@ public class Proyectos extends javax.swing.JFrame {
     public Proyectos() {
         Estado = "En Proceso";
         initComponents();
-        cargarcbxUsuario();
-        cargarcbxTarea();
-        cargarcbxDepartamento();
+       
                 this.setLocationRelativeTo(null);
                 setDefaultCloseOperation(0);
 
@@ -36,54 +34,7 @@ public class Proyectos extends javax.swing.JFrame {
 
     Controlador.ControladorProyecto CP = new ControladorProyecto();
 
-    public void cargarcbxDepartamento() {
-        String sql = "SELECT * FROM Departamentos";
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        String datos = "";
-        try {
-            Statement ejecutor = c.createStatement();
-            ResultSet rs = ejecutor.executeQuery(sql);
-            while (rs.next()) {
-                datos = rs.getString("Nombre");
-                cmb_DepartamentoProyecto.addItem(datos);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error");
-        }
-    }
-
-    public void cargarcbxUsuario() {
-        String sql = "SELECT * FROM Usuario";
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        String datos = "";
-        try {
-            Statement ejecutor = c.createStatement();
-            ResultSet rs = ejecutor.executeQuery(sql);
-            while (rs.next()) {
-                datos = rs.getString("Nombre");
-                cmb_UsuarioProyecto.addItem(datos);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error");
-        }
-    }
-
-    public void cargarcbxTarea() {
-        String sql = "SELECT * FROM Tareas";
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        String datos = "";
-        try {
-            Statement ejecutor = c.createStatement();
-            ResultSet rs = ejecutor.executeQuery(sql);
-            while (rs.next()) {
-                datos = rs.getString("Nombre");
-                cmb_TareasProyecto.addItem(datos);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error");
-        }
-    }
-
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -352,9 +303,9 @@ public class Proyectos extends javax.swing.JFrame {
     private javax.swing.JButton btn_AgregarTareas;
     private javax.swing.JButton btn_CrearProyecto;
     private javax.swing.JButton btn_MenuProyecto;
-    private javax.swing.JComboBox<String> cmb_DepartamentoProyecto;
-    private javax.swing.JComboBox<String> cmb_TareasProyecto;
-    private javax.swing.JComboBox<String> cmb_UsuarioProyecto;
+    public static javax.swing.JComboBox<String> cmb_DepartamentoProyecto;
+    public static javax.swing.JComboBox<String> cmb_TareasProyecto;
+    public static javax.swing.JComboBox<String> cmb_UsuarioProyecto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
