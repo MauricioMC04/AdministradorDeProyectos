@@ -33,6 +33,7 @@ public class LoginControador implements Initializable {
 
     Modelo.ModeloLogin ML = new Modelo.ModeloLogin();
     AdministradorDeProyectosFX AFX = new AdministradorDeProyectosFX();
+    MenuController menu = new MenuController();
     private AdministradorDeProyectosFX ProgramaPrincipal;
     @FXML
     private Pane Login;
@@ -130,16 +131,7 @@ public class LoginControador implements Initializable {
         String Nombreusuario = TxtNombreUsuario.getText();
         String Contrasena = PfContraseñalogin.getText();
        if( ML.Login(Nombreusuario, Contrasena)){
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Menu.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Menu");
-            stage.setScene(new Scene(root1));
-            stage.show();
-        } catch (Exception e) {
-            System.out.println("no");
-        }
+        menu.Personas();
         Stage stage = (Stage) BtnIngresar.getScene().getWindow();
         stage.close();
        }

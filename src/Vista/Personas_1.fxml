@@ -6,9 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PersonasController">
+<AnchorPane id="AnchorPane" prefHeight="529.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PersonasController">
    <children>
-      <TabPane layoutX="11.0" layoutY="8.0" prefHeight="482.0" prefWidth="699.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="39.0" prefHeight="501.0" prefWidth="713.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="tabAgregar" text="Agregar Personas">
                <content>
@@ -75,5 +75,24 @@
             </Tab>
         </tabs>
       </TabPane>
+      <MenuBar fx:id="MbMenu" layoutY="7.0" prefHeight="32.0" prefWidth="713.0" AnchorPane.leftAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Navegar">
+            <items>
+              
+              <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
+              <MenuItem mnemonicParsing="false" onAction="#Proyectos" text="Proyectos" />
+              <MenuItem mnemonicParsing="false" onAction="#Tareas" text="Tareas" />
+              <MenuItem mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
+              <MenuItem mnemonicParsing="false" onAction="#Departamentos" text="Departamentos" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Sistema">
+            <items>
+              <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

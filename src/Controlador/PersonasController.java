@@ -8,11 +8,15 @@ import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
 public class PersonasController implements Initializable {
 
@@ -98,8 +102,14 @@ public class PersonasController implements Initializable {
     private RadioButton rbtnSupervisorEditar;
     @FXML
     private RadioButton rbtnEmpleadoEditar;
+    @FXML
+    private MenuBar MbMenu;
     
-  
+  MenuController menu = new MenuController();
+    @FXML
+    private MenuItem MPersonas;
+    @FXML
+    private MenuItem MbCerrarS;
 
     public void setProgramaPrincipal(AdministradorDeProyectosFX ProgramaPrincipal) {
         this.ProgramaPrincipal = ProgramaPrincipal;
@@ -191,5 +201,38 @@ public class PersonasController implements Initializable {
         rbtnAdministrador.setSelected(false);
         rbtnSupervisor.setSelected(false);
         rbtnEmpleado.setSelected(false);
+    }
+
+    @FXML
+    private void Personas(javafx.event.ActionEvent event) {
+      menu.Personas();
+      Scene scene =MbMenu.getScene();
+      Stage stage = (Stage) scene.getWindow();
+      stage.close();
+    }
+
+    @FXML
+    private void Proyectos(javafx.event.ActionEvent event) {
+
+    }
+
+    @FXML
+    private void CerrarS(javafx.event.ActionEvent event) {
+        menu.Login();
+        Scene scene =MbMenu.getScene();
+        Stage stage = (Stage) scene.getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void Tareas(javafx.event.ActionEvent event) {
+    }
+
+    @FXML
+    private void EditProyectos(javafx.event.ActionEvent event) {
+    }
+
+    @FXML
+    private void Departamentos(javafx.event.ActionEvent event) {
     }
 }

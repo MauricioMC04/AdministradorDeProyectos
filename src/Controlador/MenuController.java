@@ -47,7 +47,24 @@ public class MenuController implements Initializable {
        }
 
     @FXML
-    private void Personas(ActionEvent event) {
+
+     public void Login() {
+        
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Login.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Login");
+            stage.setScene(new Scene(root1));
+            stage.show(); 
+        } catch (Exception e) {
+            System.out.println("no");
+
+        }
+       }
+    
+    
+     public void Personas() {
          try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Personas_1.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -60,8 +77,6 @@ public class MenuController implements Initializable {
             System.out.println("no");
 
         }
-        Stage stage = (Stage) BtnLogin.getScene().getWindow();
-        stage.close();
        }
     
 }
