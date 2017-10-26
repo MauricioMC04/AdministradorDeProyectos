@@ -281,9 +281,7 @@ public class Proyectos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_MenuProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MenuProyectoActionPerformed
-        Menu M = new Menu();
-        M.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_btn_MenuProyectoActionPerformed
 
     private void btn_AgregarTareasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarTareasActionPerformed

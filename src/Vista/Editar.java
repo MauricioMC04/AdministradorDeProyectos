@@ -473,16 +473,11 @@ public class Editar extends javax.swing.JFrame {
     }//GEN-LAST:event_rdbtn_MImplementadaActionPerformed
 
     private void btn_MMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MMenuActionPerformed
-        
-        Menu M = new Menu();
-        M.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_btn_MMenuActionPerformed
 
     private void btn_MenuDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MenuDepartamentosActionPerformed
-        Menu M = new Menu();
-        M.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_btn_MenuDepartamentosActionPerformed
 
     private void rdbtn_PEnProcesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbtn_PEnProcesoActionPerformed

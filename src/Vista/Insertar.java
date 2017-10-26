@@ -254,15 +254,11 @@ public class Insertar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_MenuTareasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MenuTareasActionPerformed
-        Menu M = new Menu();
-        M.setVisible(true);
-        this.dispose();
+ 
     }//GEN-LAST:event_btn_MenuTareasActionPerformed
 
     private void btn_MenuDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MenuDepartamentosActionPerformed
-        Menu M = new Menu();
-        M.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_btn_MenuDepartamentosActionPerformed
 
     private void btn_AceptarTareasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AceptarTareasActionPerformed
