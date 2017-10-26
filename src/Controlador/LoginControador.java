@@ -137,11 +137,8 @@ public class LoginControador implements Initializable {
             stage.setTitle("Menu");
             stage.setScene(new Scene(root1));
             stage.show();
-  
-            
         } catch (Exception e) {
             System.out.println("no");
-
         }
         Stage stage = (Stage) BtnIngresar.getScene().getWindow();
         stage.close();
