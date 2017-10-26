@@ -164,7 +164,6 @@ public class LoginControador implements Initializable {
 
         ML.Registrar(cedula, NombreUsuario, Contrasena, Pregunta);
     }
-
     @FXML
     private void Olvido(MouseEvent event) {
     }
