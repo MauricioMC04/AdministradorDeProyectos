@@ -20,17 +20,12 @@ public class PersonasController implements Initializable {
     private DatosPersonas datosPersonas = new DatosPersonas();
     private Conexion conect = new Conexion();
     private Connection conexion = conect.conexion();
-    
-    @FXML
-    private ToggleGroup Roles; 
-    @FXML
-    private ToggleGroup RolesEditar;
     @FXML
     private Tab tabAgregar;
     @FXML
     private Pane pnlAgregar;
     @FXML
-    private TableView<PersonaObservable> tblAgregar;
+    private TableView<PersonaObservable>tblAgregar;
     @FXML
     private Label lblCedula;
     @FXML
@@ -48,6 +43,8 @@ public class PersonasController implements Initializable {
     @FXML
     private RadioButton rbtnAdministrador;
     @FXML
+    private ToggleGroup Roles;
+    @FXML
     private RadioButton rbtnSupervisor;
     @FXML
     private RadioButton rbtnEmpleado;
@@ -55,6 +52,14 @@ public class PersonasController implements Initializable {
     private Button btnAgregar;
     @FXML
     private Button btnMenuAgregar;
+    @FXML
+    private Label lblNoCedula;
+    @FXML
+    private Label lblNoNombre;
+    @FXML
+    private Label lblNoApellido;
+    @FXML
+    private Label lblNoRol;
     @FXML
     private Tab tabEliminar;
     @FXML
@@ -88,17 +93,13 @@ public class PersonasController implements Initializable {
     @FXML
     private RadioButton rbtnAdministradorEditar;
     @FXML
+    private ToggleGroup RolesEditar;
+    @FXML
     private RadioButton rbtnSupervisorEditar;
     @FXML
     private RadioButton rbtnEmpleadoEditar;
-    @FXML
-    private Label lblNoCedula;
-    @FXML
-    private Label lblNoNombre;
-    @FXML
-    private Label lblNoApellido;
-    @FXML
-    private Label lblNoRol;
+    
+  
 
     public void setProgramaPrincipal(AdministradorDeProyectosFX ProgramaPrincipal) {
         this.ProgramaPrincipal = ProgramaPrincipal;
