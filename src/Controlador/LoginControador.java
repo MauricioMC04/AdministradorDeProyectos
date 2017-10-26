@@ -7,10 +7,13 @@ package Controlador;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,6 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -74,7 +78,8 @@ public class LoginControador implements Initializable {
     private PasswordField PassFieldContraseñaRegistrarse;
     @FXML
     private Label lblRContras;
-    private ComboBox<?> CbxPreguntaSeguridadRegistrarse;
+    @FXML
+    private ComboBox<String> CbxPreguntaSeguridadRegistrarse;
     @FXML
     private Label lblSPregunta;
     @FXML
@@ -100,11 +105,15 @@ public class LoginControador implements Initializable {
     @FXML
     private TabPane PanelLogin;
     @FXML
-    private ChoiceBox<?> CbPreguntaRegistrar;
-    @FXML
     private PasswordField PfContraseñalogin;
 
-    @Override
+    ObservableList<String> options = 
+    FXCollections.observableArrayList(
+        "Nombre de su primera mascota",
+        "Nombre del equipo de deporte favorito",
+        "¿Donde encontrar un tesoro pirata?",
+        "Super heroe Favorito"
+    );
     public void initialize(URL url, ResourceBundle rb) {
 
         lblASLogin1.setVisible(false);
@@ -119,6 +128,8 @@ public class LoginControador implements Initializable {
         lblASReg5.setVisible(false);
         lblASReg6.setVisible(false);
         PanelRegistrarse.setVisible(false);
+        CbxPreguntaSeguridadRegistrarse.setItems(options);
+        CbxPreguntaSeguridadRegistrarse.setTooltip(new Tooltip("Seleccion la pregunta de seguridad"));
 
     }
 
@@ -146,7 +157,6 @@ public class LoginControador implements Initializable {
             lblMSReg2.setVisible(true);
         }
     }
-
     @FXML
     private void Registrarse(ActionEvent event) {
         int cedula = Integer.parseInt(TxtValidarCedula.getText());
