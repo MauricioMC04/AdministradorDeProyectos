@@ -26,7 +26,7 @@ public class AdministradorDeProyectosFX extends Application {
     @Override
     public void start(Stage stagePrincipal) throws Exception {
         this.stagePrincipal = stagePrincipal;   
-        mostrarPersonas();
+        mostrarVentanaPrincipal();
     }
 
     public void mostrarVentanaPrincipal() {

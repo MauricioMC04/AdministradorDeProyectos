@@ -16,11 +16,11 @@ public class DatosPersonas {
     /*
     Nombre de metodo: CargarPersonas
     Parametros: Connection
-    Retorno: ObservableList<PersonaObservable>
+    Retorno: ObservableList<Usuario>
     Descripcion: Carga sobre un modelo las personas que puede ver un administrador
     */
-    public ObservableList<PersonaObservable> CargarPersonas(Connection conexion){
-        ObservableList <PersonaObservable> modelo = FXCollections.observableArrayList();
+    public ObservableList<Usuario> CargarPersonas(Connection conexion){
+        ObservableList <Usuario> modelo = FXCollections.observableArrayList();
         String sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario";
         String[] datos = new String[4];
         try {
@@ -32,7 +32,7 @@ public class DatosPersonas {
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
                 datos[3] = DefinirRol(datos[3]);
-                modelo.add(new PersonaObservable(datos[0],datos[1],datos[2],datos[3]));
+                modelo.add(new Usuario (datos[0],datos[1],datos[2],datos[3],"Desconocido","Desconocido" ,"Desconocido" ));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error CargarPersonas");
@@ -59,11 +59,11 @@ public class DatosPersonas {
     /*
     Nombre de metodo: CargarPersonasEditables
     Parametros: Connection
-    Retorno: ObservableList<PersonaObservable>
+    Retorno: ObservableList<Usuario>
     Descripcion: Carga sobre un modelo las personas que puede editar un administrador
     */
-   public ObservableList<PersonaObservable> CargarPersonasEditables(Connection conexion){
-        ObservableList<PersonaObservable> modelo = FXCollections.observableArrayList();
+   public ObservableList<Usuario> CargarPersonasEditables(Connection conexion){
+        ObservableList<Usuario> modelo = FXCollections.observableArrayList();
         String sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE Contrasena != 'Por Definir'";
         String[] datos = new String[4];
         try {
@@ -75,7 +75,7 @@ public class DatosPersonas {
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
                 datos[3] = DefinirRol(datos[3]);
-                modelo.add(new PersonaObservable(datos[0],datos[1],datos[2],datos[3]));
+                modelo.add(new Usuario (datos[0],datos[1],datos[2],datos[3],"Desconocido","Desconocido" ,"Desconocido" ));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error CargarPersonas Editables");
@@ -90,16 +90,15 @@ public class DatosPersonas {
     Descripcion: Genera un nuevo usuario insertado por el administrador
     */
     private Usuario GenerarPersonaNueva(String cedula, String nombre, String apellido, String rol){
-        int numCedula = Integer.parseInt(cedula);
-        int numRol;
+        String nuevoRol = "";
         if(rol.equals("Administrador")){
-            numRol = 1;
+            nuevoRol = "1";
         }else if(rol.equals("Supervisor")){
-            numRol = 2;
+            nuevoRol = "2";
         }else{
-            numRol = 3;
+            nuevoRol = "3";
         }
-        Usuario usuario = new Usuario(numCedula, nombre, apellido, numRol, "Por Definir", "Por Definir",
+        Usuario usuario = new Usuario(cedula, nombre, apellido, nuevoRol, "Por Definir", "Por Definir",
                 "Por Definir");
         return usuario;        
     }
@@ -115,10 +114,10 @@ public class DatosPersonas {
         try {
             PreparedStatement pst = conexion.prepareStatement("INSERT INTO Usuario(idUsuario,Nombre,"
                     + "Apellido,Rol,Contrasena,Pregunta,NombreUsuario) VALUES(?,?,?,?,?,?,?)");
-            pst.setString(1, Integer.toString(usuario.getIdUsuario()));
+            pst.setString(1, usuario.getIdUsuario());
             pst.setString(2, usuario.getNombre());
             pst.setString(3, usuario.getApellido());
-            pst.setString(4, Integer.toString(usuario.getRol()));
+            pst.setString(4, usuario.getRol());
             pst.setString(5, usuario.getContrasena());
             pst.setString(6, usuario.getPregunta());
             pst.setString(7, usuario.getNombreUsuario());

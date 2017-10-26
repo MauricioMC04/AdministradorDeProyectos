@@ -3,7 +3,7 @@ package Controlador;
 
 import Modelo.Conexion;
 import Modelo.DatosPersonas;
-import Modelo.PersonaObservable;
+import Modelo.Usuario;
 import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.Connection;
@@ -29,7 +29,7 @@ public class PersonasController implements Initializable {
     @FXML
     private Pane pnlAgregar;
     @FXML
-    private TableView<PersonaObservable>tblAgregar;
+    private TableView<Usuario>tblAgregar;
     @FXML
     private Label lblCedula;
     @FXML
@@ -69,7 +69,7 @@ public class PersonasController implements Initializable {
     @FXML
     private Pane pnlEliminar;
     @FXML
-    private TableView<PersonaObservable> tblEliminar;
+    private TableView<Usuario> tblEliminar;
     @FXML
     private Button btnEliminar;
     @FXML
@@ -79,7 +79,7 @@ public class PersonasController implements Initializable {
     @FXML
     private Pane pnlEditar;
     @FXML
-    private TableView<PersonaObservable> tblEditar;
+    private TableView<Usuario> tblEditar;
     @FXML
     private Label lblNombreEditar;
     @FXML
@@ -128,28 +128,28 @@ public class PersonasController implements Initializable {
         vaciar();
     }
     
-    public void cargarPersonas(TableView<PersonaObservable> table){
+    public void cargarPersonas(TableView<Usuario> table){
         table.setItems(datosPersonas.CargarPersonas(conexion));
         cargarColumnas(table);
     }
     
-    public void cargarColumnas(TableView<PersonaObservable> table){
+    public void cargarColumnas(TableView<Usuario> table){
         TableColumn tblCCedula = new TableColumn("Cedula");
-        tblCCedula.setCellValueFactory(new PropertyValueFactory<PersonaObservable, String>("IdUsuario"));
+        tblCCedula.setCellValueFactory(new PropertyValueFactory<Usuario, String>("IdUsuario"));
         tblCCedula.setMinWidth(171.25);
 	TableColumn tblCNombre = new TableColumn("Nombre");
-	tblCNombre.setCellValueFactory(new PropertyValueFactory<PersonaObservable, String>("Nombre"));
+	tblCNombre.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Nombre"));
         tblCNombre.setMinWidth(171.25);
 	TableColumn tblCApellido = new TableColumn("Apellido");
-        tblCApellido.setCellValueFactory(new PropertyValueFactory<PersonaObservable, String>("Apellido"));
+        tblCApellido.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Apellido"));
         tblCApellido.setMinWidth(171.25);
         TableColumn tblCRol = new TableColumn("Rol");
-        tblCRol.setCellValueFactory(new PropertyValueFactory<PersonaObservable, String>("Rol"));
+        tblCRol.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Rol"));
         tblCRol.setMinWidth(171.25);
         table.getColumns().addAll(tblCCedula, tblCNombre, tblCApellido, tblCRol);
     }
     
-    public void cargarPersonasEditables(TableView<PersonaObservable> table){
+    public void cargarPersonasEditables(TableView<Usuario> table){
         table.setItems(datosPersonas.CargarPersonasEditables(conexion));
         cargarColumnas(table);
     }
