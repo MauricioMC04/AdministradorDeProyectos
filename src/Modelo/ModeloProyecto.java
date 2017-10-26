@@ -21,9 +21,8 @@ import javafx.collections.ObservableList;
  *
  * @author Ricardo
  */
-
 public class ModeloProyecto {
-    
+
     public void InsertarProyecto(String Nombre, String FI, String Departamento, String Estado, int Iteracion, String FF, int Supervisor, Connection conexion) {
         try {
             PreparedStatement pps = conexion.prepareStatement("INSERT INTO Proyecto(Nombre, FechaInicio, Departamento, Estado, Iteraciones, FechaFinal, Supervisor) VALUES(?,?,?,?,?,?,?)");
@@ -37,25 +36,19 @@ public class ModeloProyecto {
             pps.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se pudo insertar Proyecto" + ex);
-            
+
         }
     }
-    
-   
-    
-   
-    
-    
-   public ObservableList<String> modelo = FXCollections.observableArrayList();
-      public ObservableList<String> modelo1 = FXCollections.observableArrayList();
-         public ObservableList<String> modelo2 = FXCollections.observableArrayList();
 
+    public ObservableList<String> modelo = FXCollections.observableArrayList();
+    public ObservableList<String> modelo1 = FXCollections.observableArrayList();
+    public ObservableList<String> modelo2 = FXCollections.observableArrayList();
 
     public ObservableList<String> CargarUsuarios(Connection conexion) {
-        
+
         String sql = "SELECT * FROM Usuario";
         String datos = "";
-        
+
         try {
             Statement st = conexion.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -68,13 +61,12 @@ public class ModeloProyecto {
         }
         return modelo;
     }
-    
-    
+
     public ObservableList<String> CargarTareas(Connection conexion) {
-        
+
         String sql = "SELECT * FROM Tareas";
         String datos = "";
-        
+
         try {
             Statement st = conexion.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -87,13 +79,12 @@ public class ModeloProyecto {
         }
         return modelo1;
     }
-    
-    
-       public ObservableList<String> CargarDepartamentos(Connection conexion) {
-        
+
+    public ObservableList<String> CargarDepartamentos(Connection conexion) {
+
         String sql = "SELECT * FROM Departamentos";
         String datos = "";
-        
+
         try {
             Statement st = conexion.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -106,5 +97,5 @@ public class ModeloProyecto {
         }
         return modelo2;
     }
-    
+
 }

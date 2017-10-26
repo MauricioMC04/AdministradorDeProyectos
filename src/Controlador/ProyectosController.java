@@ -31,7 +31,8 @@ import javafx.stage.Stage;
  * @author Ricardo
  */
 public class ProyectosController implements Initializable {
-MenuController menu = new MenuController();
+
+    MenuController menu = new MenuController();
     @FXML
     private Label lblNombreProyecto;
     @FXML
@@ -78,17 +79,17 @@ MenuController menu = new MenuController();
         CargarTareas();
         CargarDepartamentos();
         cbxIteraciones.setItems(options);
-    }    
-    
+    }
+
     private Conexion conect = new Conexion();
     private Connection conexion = conect.conexion();
 
     @FXML
     private void Personas(ActionEvent event) {
-         menu.Personas();
-      Scene scene =MbMenu.getScene();
-      Stage stage = (Stage) scene.getWindow();
-      stage.close(); 
+        menu.Personas();
+        Scene scene = MbMenu.getScene();
+        Stage stage = (Stage) scene.getWindow();
+        stage.close();
     }
 
     @FXML
@@ -106,41 +107,37 @@ MenuController menu = new MenuController();
     @FXML
     private void Departamentos(ActionEvent event) {
     }
-    ObservableList<String> options = 
-    FXCollections.observableArrayList("1","2","3","4","5");
+    ObservableList<String> options
+            = FXCollections.observableArrayList("1", "2", "3", "4", "5");
 
     @FXML
     private void CerrarS(ActionEvent event) {
-          menu.Login();
-        Scene scene =MbMenu.getScene();
+        menu.Login();
+        Scene scene = MbMenu.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
-        
+
     }
-       public ObservableList<String> modelo = FXCollections.observableArrayList();
-              public ObservableList<String> modelo1 = FXCollections.observableArrayList();
-       public ObservableList<String> modelo2 = FXCollections.observableArrayList();
+    public ObservableList<String> modelo = FXCollections.observableArrayList();
+    public ObservableList<String> modelo1 = FXCollections.observableArrayList();
+    public ObservableList<String> modelo2 = FXCollections.observableArrayList();
 
-       ModeloProyecto MP = new ModeloProyecto();
-       public void CargarUsuarios(){
-           modelo.addAll(MP.CargarUsuarios(conexion));
-           cbxCreadoPor.setItems(modelo);
-                   
-       }
-       
-       public void CargarTareas(){
-           modelo1.addAll(MP.CargarTareas(conexion));
-           cbxTareas.setItems(modelo1);
-       }
-       
-        public void CargarDepartamentos(){
-           modelo2.addAll(MP.CargarDepartamentos(conexion));
-           txtDepartamento.setItems(modelo2);
-       }
-       
-       
+    ModeloProyecto MP = new ModeloProyecto();
 
-    
-    
-    
+    public void CargarUsuarios() {
+        modelo.addAll(MP.CargarUsuarios(conexion));
+        cbxCreadoPor.setItems(modelo);
+
+    }
+
+    public void CargarTareas() {
+        modelo1.addAll(MP.CargarTareas(conexion));
+        cbxTareas.setItems(modelo1);
+    }
+
+    public void CargarDepartamentos() {
+        modelo2.addAll(MP.CargarDepartamentos(conexion));
+        txtDepartamento.setItems(modelo2);
+    }
+
 }
