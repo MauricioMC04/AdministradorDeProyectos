@@ -228,6 +228,10 @@ public class PersonasController implements Initializable {
 
     @FXML
     private void Tareas(javafx.event.ActionEvent event) {
+        menu.Insertar();
+        Scene scene =MbMenu.getScene();
+        Stage stage = (Stage) scene.getWindow();
+        stage.close();
     }
 
     @FXML

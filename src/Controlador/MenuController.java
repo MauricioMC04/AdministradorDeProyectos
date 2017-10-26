@@ -88,5 +88,21 @@ public class MenuController implements Initializable {
         }
     }
     
+    public void Insertar() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Insertar.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Proyectos");
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("no");
+
+        }
+    }
+    
+    
 
 }
