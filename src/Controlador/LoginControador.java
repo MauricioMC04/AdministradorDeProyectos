@@ -46,7 +46,6 @@ public class LoginControador implements Initializable {
     private Label lblNUsuario;
     @FXML
     private Label lblCont;
-    @FXML
     private TextField TxtContraseña;
     @FXML
     private Label lblASLogin1;
@@ -101,6 +100,8 @@ public class LoginControador implements Initializable {
     private TabPane PanelLogin;
     @FXML
     private ChoiceBox<?> CbPreguntaRegistrar;
+    @FXML
+    private PasswordField PfContraseñalogin;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -127,7 +128,7 @@ public class LoginControador implements Initializable {
     @FXML
     private void Ingresar(ActionEvent event) {
         String Nombreusuario = TxtNombreUsuario.getText();
-        String Contrasena = TxtContraseña.getText();
+        String Contrasena = PfContraseñalogin.getText();
        if( ML.Login(Nombreusuario, Contrasena)){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Menu.fxml"));

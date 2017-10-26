@@ -26,7 +26,6 @@
                            <children>
                               <Label fx:id="lblNUsuario" layoutX="38.0" layoutY="26.0" text="Nombre de usuario" />
                               <TextField fx:id="TxtNombreUsuario" layoutX="38.0" layoutY="57.0" />
-                              <TextField fx:id="TxtContraseña" layoutX="38.0" layoutY="125.0" />
                               <Label fx:id="lblCont" layoutX="38.0" layoutY="104.0" text="Contraseña" />
                               <Button fx:id="BtnIngresar" layoutX="312.0" layoutY="172.0" mnemonicParsing="false" onAction="#Ingresar" prefHeight="28.0" prefWidth="81.0" text="Ingresar" />
                               <Label fx:id="lblOContraseña" layoutY="173.0" onMouseClicked="#Olvido" text="¿Olvidó su contraseña?" textFill="#3700ff" underline="true" wrapText="true" />
@@ -41,6 +40,7 @@
                                  </font>
                               </Label>
                               <Label fx:id="lblMSLogin1" layoutX="243.0" layoutY="228.0" text="* CAMPOS OBLIGATORIOS" textFill="#ee0b0b" />
+                              <PasswordField fx:id="PfContraseñalogin" layoutX="38.0" layoutY="125.0" />
                            </children>
                         </Pane>
                      </children>
