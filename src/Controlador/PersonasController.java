@@ -14,7 +14,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 
-
 public class PersonasController implements Initializable {
 
     private AdministradorDeProyectosFX ProgramaPrincipal;
