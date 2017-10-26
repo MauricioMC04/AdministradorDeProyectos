@@ -5,8 +5,13 @@
  */
 package Controlador;
 
+import Modelo.Conexion;
+import Modelo.ModeloProyecto;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,9 +47,9 @@ MenuController menu = new MenuController();
     @FXML
     private Label lblTareas;
     @FXML
-    private ComboBox<?> txtDepartamento;
+    private ComboBox<String> txtDepartamento;
     @FXML
-    private ComboBox<?> cbxTareas;
+    private ComboBox<String> cbxTareas;
     @FXML
     private DatePicker txtDatePickerInicio;
     @FXML
@@ -52,11 +57,11 @@ MenuController menu = new MenuController();
     @FXML
     private TextField txtNombreProyecto;
     @FXML
-    private ComboBox<?> cbxCreadoPor;
+    private ComboBox<String> cbxCreadoPor;
     @FXML
     private Button btnGuardarProyecto;
     @FXML
-    private ComboBox<?> cbxIteraciones;
+    private ComboBox<String> cbxIteraciones;
     @FXML
     private MenuBar MbMenu;
     @FXML
@@ -69,8 +74,14 @@ MenuController menu = new MenuController();
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        CargarUsuarios();
+        CargarTareas();
+        CargarDepartamentos();
+        cbxIteraciones.setItems(options);
     }    
+    
+    private Conexion conect = new Conexion();
+    private Connection conexion = conect.conexion();
 
     @FXML
     private void Personas(ActionEvent event) {
@@ -95,6 +106,8 @@ MenuController menu = new MenuController();
     @FXML
     private void Departamentos(ActionEvent event) {
     }
+    ObservableList<String> options = 
+    FXCollections.observableArrayList("1","2","3","4","5");
 
     @FXML
     private void CerrarS(ActionEvent event) {
@@ -104,6 +117,29 @@ MenuController menu = new MenuController();
         stage.close();
         
     }
+       public ObservableList<String> modelo = FXCollections.observableArrayList();
+              public ObservableList<String> modelo1 = FXCollections.observableArrayList();
+       public ObservableList<String> modelo2 = FXCollections.observableArrayList();
+
+       ModeloProyecto MP = new ModeloProyecto();
+       public void CargarUsuarios(){
+           modelo.addAll(MP.CargarUsuarios(conexion));
+           cbxCreadoPor.setItems(modelo);
+                   
+       }
+       
+       public void CargarTareas(){
+           modelo1.addAll(MP.CargarTareas(conexion));
+           cbxTareas.setItems(modelo1);
+       }
+       
+        public void CargarDepartamentos(){
+           modelo2.addAll(MP.CargarDepartamentos(conexion));
+           txtDepartamento.setItems(modelo2);
+       }
+       
+       
+
     
     
     
