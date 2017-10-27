@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="536.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.InsertarController">
+   <children>
+      <TabPane prefHeight="536.0" prefWidth="516.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab id="tabTareasAsignadas" fx:id="tabTareasAsignadas" text="Tareas Asignadas">
+            <content>
+              <AnchorPane id="tbpInsertarTareas" minHeight="0.0" minWidth="0.0" prefHeight="507.0" prefWidth="519.0">
+                     <children>
+                        <Button id="btnTMenu" fx:id="btnTMenu" layoutX="39.0" layoutY="445.0" mnemonicParsing="false" text="Menú" />
+                        <Button id="btnTAceptar" fx:id="btnTAceptar" layoutX="426.0" layoutY="445.0" mnemonicParsing="false" onAction="#Aceptar" text="Aceptar" />
+                        <Label id="lblTNombreTareas" fx:id="lblTNombreTareas" layoutX="97.0" layoutY="63.0" text="Nombre:" />
+                        <TextField id="txtTNombreTareas" fx:id="txtTNombreTarea" layoutX="158.0" layoutY="59.0" />
+                        <Label id="lblTErrorLetras" fx:id="lblTErrorLetras" layoutX="158.0" layoutY="91.0" text="Digite solamente letras" textFill="#eb1414" />
+                        <Label id="lblTErrorInformacion" fx:id="lblTErrorInformacion" layoutX="321.0" layoutY="449.0" text="Falta información" textFill="#eb1414" />
+                        <TextArea fx:id="txtATDescipcion" layoutX="121.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" />
+                        <Label id="lblTSErrorNombre" fx:id="lblTSErrorNombre" layoutX="316.0" layoutY="63.0" text="*" textFill="#eb1414" />
+                        <Label id="lblTSErrorDescripcion" fx:id="lblTSErrorDescripcion" layoutX="339.0" layoutY="215.0" text="*" textFill="#eb1414" />
+                        <Label id="lblTDescripcion" fx:id="lblTDescripcion" layoutX="97.0" layoutY="156.0" text="Descripción" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab id="tabDepartamentos" fx:id="tabDepartamentos" text="Departamentos">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button id="btnDMenu" fx:id="btnDMenu" layoutX="63.0" layoutY="414.0" mnemonicParsing="false" text="Menú" />
+                        <Button id="btnDAceptar" fx:id="btnDAceptar" layoutX="409.0" layoutY="414.0" mnemonicParsing="false" onAction="#Agregar" text="Aceptar" />
+                        <Label id="lblDNombreDepartamento" fx:id="lblDNombreDepartamento" layoutX="89.0" layoutY="150.0" text="Nombre departamento:" />
+                        <Label id="lblDErrorInformacion" fx:id="lblDErrorInformacion" layoutX="279.0" layoutY="198.0" text="Falta información" textFill="#eb1414" />
+                        <Label id="lblDErrorLetras" fx:id="lblDErrorLetras" layoutX="264.0" layoutY="181.0" text="Digite solamente letras" textFill="#eb1414" />
+                        <TextField id="txtDNombreDepartamento" fx:id="txtDNombreDepartamento" layoutX="251.0" layoutY="146.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

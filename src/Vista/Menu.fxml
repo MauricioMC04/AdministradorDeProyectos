@@ -12,6 +12,7 @@
          <children>
             <Button fx:id="BtnLogin" layoutX="35.0" layoutY="33.0" mnemonicParsing="false" onAction="#Login" text="Login" />
             <Button fx:id="btnPersonas" layoutX="35.0" layoutY="82.0" mnemonicParsing="false" onAction="#Personas" text="Personas" />
+            <Button fx:id="BtnTareasDepartamentos" layoutX="35.0" layoutY="126.0" mnemonicParsing="false" onAction="#TareasDepartamentos" prefHeight="25.0" prefWidth="147.0" text="Tareas/Departamentos" />
          </children>
       </Pane>
    </children>
