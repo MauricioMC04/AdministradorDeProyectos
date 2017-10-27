@@ -145,6 +145,10 @@ public class LoginControador implements Initializable {
         menu.Personas();
         Stage stage = (Stage) BtnIngresar.getScene().getWindow();
         stage.close();
+       }else{
+       lblASLogin1.setVisible(true);
+        lblASLogin2.setVisible(true);
+        lblMSLogin1.setVisible(true);
        }
     }
 

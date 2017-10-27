@@ -15,21 +15,24 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
-
+import javafx.stage.Stage;
 
 public class InsertarController implements Initializable {
-    
+
     private InsertarTareas InsertarT = new InsertarTareas();
     private InsertarDepartamento InsertarD = new InsertarDepartamento();
+    MenuController menu = new MenuController();
+    
     private Conexion conect = new Conexion();
     private Connection conexion = conect.conexion();
-    
+
     private TextField txtTNombreTareas;
     @FXML
     private javafx.scene.control.TextArea txtATDescipcion;
@@ -62,37 +65,45 @@ public class InsertarController implements Initializable {
     private MenuItem MPersonas;
     @FXML
     private MenuItem MbCerrarS;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
- 
-       lblTErrorInformacion.setVisible(false);
-       lblTErrorLetras.setVisible(false);
-       lblTSErrorDescripcion.setVisible(false);
-       lblTSErrorNombre.setVisible(false);
-       
-    }    
-    
-    
+
+        lblTErrorInformacion.setVisible(false);
+        lblTErrorLetras.setVisible(false);
+        lblTSErrorDescripcion.setVisible(false);
+        lblTSErrorNombre.setVisible(false);
+        
+        
+
+    }
 
     @FXML
     private void Aceptar(ActionEvent event) {
-        
+
         InsertarT.InsertarTarea(txtTNombreTarea.getText(), txtATDescipcion.getText(), conexion);
     }
 
     @FXML
     private void Agregar(ActionEvent event) {
-        
+
         InsertarD.InsertarDepartamento(txtDNombreDepartamento.getText(), conexion);
     }
 
     @FXML
     private void Personas(ActionEvent event) {
+        menu.Personas();
+        Scene scene =MbMenu.getScene();
+        Stage stage = (Stage) scene.getWindow();
+        stage.close();
     }
 
     @FXML
     private void Proyectos(ActionEvent event) {
+        menu.Proyecto();
+        Scene scene =MbMenu.getScene();
+        Stage stage = (Stage) scene.getWindow();
+        stage.close();
     }
 
     @FXML
@@ -105,6 +116,10 @@ public class InsertarController implements Initializable {
 
     @FXML
     private void CerrarS(ActionEvent event) {
+        menu.Login();
+        Scene scene =MbMenu.getScene();
+        Stage stage = (Stage) scene.getWindow();
+        stage.close();
     }
-    
+
 }

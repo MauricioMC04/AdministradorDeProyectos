@@ -26,16 +26,16 @@ public class ModeloLogin {
     }
 
     public boolean ValidarCedula(int Cedula) {
-        String SSQL = "SELECT * FROM Usuario WHERE idUsuario  ='" + Cedula + "'";
+        String definir = "Por definir";
+        String SSQL = "SELECT * FROM Usuario WHERE (idUsuario = '"+Cedula+"')AND(Contrasena = '"+definir+"')";
         try {
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery(SSQL);
             while (rs.next()) {
                 return true;
             }
-
         } catch (SQLException ex) {
-            
+           JOptionPane.showMessageDialog(null, "Error al Validar"); 
         }
         return false;
     }
