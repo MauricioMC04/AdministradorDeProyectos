@@ -154,7 +154,6 @@ public class ProyectosController implements Initializable {
         cbxCreadoPor.setItems(modelo);
 
     }
-    public String cedulaf=MP.CedulaU;
     public void InsertarProyecto() {
          String a =  String.valueOf(cbxCreadoPor.getSelectionModel().getSelectedItem());
         String[] partes = a.split("-");

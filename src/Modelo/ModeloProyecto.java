@@ -44,7 +44,6 @@ public class ModeloProyecto {
     public ObservableList<String> modelo1 = FXCollections.observableArrayList();
     public ObservableList<String> modelo2 = FXCollections.observableArrayList();
 
-    public String CedulaU;
 
     public ObservableList<String> CargarUsuarios(Connection conexion) {
 
@@ -62,8 +61,6 @@ public class ModeloProyecto {
                 cedula = rs.getString("idUsuario");
                 datos2 = datos + " " + cedula;
                 modelo.addAll(datos2);
-                CedulaU = cedula;
-
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error CargarUsuarios");
