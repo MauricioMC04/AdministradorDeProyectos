@@ -7,10 +7,12 @@ package Controlador;
 
 import Modelo.Conexion;
 import Modelo.ModeloProyecto;
+import Modelo.TareaUsuario;
 import Modelo.TareasProyecto;
 import Modelo.Usuario;
 import java.net.URL;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,6 +43,7 @@ public class ProyectosController implements Initializable {
 
     TareasProyecto TP = new TareasProyecto();
     MenuController menu = new MenuController();
+    ArrayList<TareaUsuario> tareasUsuarios = new ArrayList<TareaUsuario>();
     @FXML
     private Label lblNombreProyecto;
     @FXML
@@ -80,7 +83,7 @@ public class ProyectosController implements Initializable {
     @FXML
     private Label lblTareasProyecto;
     @FXML
-    private ComboBox<?> cbxTareasProyecto;
+    private ComboBox<String> cbxTareasProyecto;
     @FXML
     private Label lblEmpleadosDisponibles;
     @FXML
@@ -193,8 +196,7 @@ public class ProyectosController implements Initializable {
     @FXML
     private void Trasladar(MouseEvent event) {
         Usuario persona = tblEmpleadosDisponibles.getSelectionModel().getSelectedItem();
-        txtEmpleadoSeleccionado.setText(persona.getIdUsuario() + " " + persona.getNombre());
-
+        txtEmpleadoSeleccionado.setText(persona.getIdUsuario());
     }
 
     @FXML
@@ -202,4 +204,22 @@ public class ProyectosController implements Initializable {
         InsertarProyecto();
     }
 
-}
+    @FXML
+    private void AgregarTarea(ActionEvent event) {
+        if(!txtEmpleadoSeleccionado.getText().equals("")){
+            tareasUsuarios.add(new TareaUsuario(txtEmpleadoSeleccionado.getText(), cbxTareas.getSelectionModel().getSelectedItem()));
+            tblEmpleadosDisponibles.getItems().remove(tblEmpleadosDisponibles.getSelectionModel().getSelectedItem());
+            txtEmpleadoSeleccionado.setText("");
+            cargarTareasUsuarios();
+        }
+    }
+
+    private void cargarTareasUsuarios(){
+        cbxTareasProyecto.getItems().clear();
+        ObservableList<String> tareas = FXCollections.observableArrayList();
+        for(int i = 0; i < tareasUsuarios.size(); i++){
+            tareas.addAll(tareasUsuarios.get(i).getIdUsuario() + " - " + tareasUsuarios.get(i).getNombreTarea());
+        }
+        cbxTareasProyecto.setItems(tareas);
+    }
+}   

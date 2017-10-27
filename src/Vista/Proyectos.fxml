@@ -47,7 +47,7 @@
                               <ComboBox fx:id="cbxTareas" layoutX="225.0" layoutY="39.0" prefWidth="150.0" />
                               <TableView fx:id="tblEmpleadosDisponibles" layoutX="228.0" layoutY="126.0" onMouseClicked="#Trasladar" prefHeight="193.0" prefWidth="506.0" />
                               <TextField fx:id="txtEmpleadoSeleccionado" disable="true" layoutX="265.0" layoutY="363.0" />
-                              <Button fx:id="btnAgregarTarea" layoutX="658.0" layoutY="360.0" mnemonicParsing="false" text="Agregar Tarea" />
+                              <Button fx:id="btnAgregarTarea" layoutX="658.0" layoutY="360.0" mnemonicParsing="false" onAction="#AgregarTarea" text="Agregar Tarea" />
                            </children>
                         </AnchorPane>
                     </items>
