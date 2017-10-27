@@ -143,12 +143,24 @@ public class ProyectosController implements Initializable {
     public ObservableList<String> modelo = FXCollections.observableArrayList();
     public ObservableList<String> modelo1 = FXCollections.observableArrayList();
     public ObservableList<String> modelo2 = FXCollections.observableArrayList();
+    String Estado= "XXXX";
 
     ModeloProyecto MP = new ModeloProyecto();
 
     public void CargarUsuarios() {
         modelo.addAll(MP.CargarUsuarios(conexion));
         cbxCreadoPor.setItems(modelo);
+
+    }
+
+    public void InsertarProyecto() {
+        
+        MP.InsertarProyecto(txtNombreProyecto.getText(), String.valueOf(txtDatePickerInicio.getValue()),
+                txtDepartamento.getSelectionModel().getSelectedItem(), Estado, Integer.parseInt(cbxIteraciones.getSelectionModel().getSelectedItem()), String.valueOf(txtDatePickerFinal.getValue()),cbxCreadoPor.getSelectionModel().getSelectedItem(), conexion);
+        
+        
+        
+        
 
     }
 
@@ -161,24 +173,24 @@ public class ProyectosController implements Initializable {
         modelo2.addAll(MP.CargarDepartamentos(conexion));
         txtDepartamento.setItems(modelo2);
     }
-    
-    public void cargarColumnas(TableView<Usuario> table){
+
+    public void cargarColumnas(TableView<Usuario> table) {
         TableColumn tblCCedula = new TableColumn("Cedula");
         tblCCedula.setCellValueFactory(new PropertyValueFactory<Usuario, String>("IdUsuario"));
         tblCCedula.setMinWidth(171.25);
-        
-	TableColumn tblCNombre = new TableColumn("Nombre");
-	tblCNombre.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Nombre"));
+
+        TableColumn tblCNombre = new TableColumn("Nombre");
+        tblCNombre.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Nombre"));
         tblCNombre.setMinWidth(171.25);
-        
-	TableColumn tblCApellido = new TableColumn("Apellido");
+
+        TableColumn tblCApellido = new TableColumn("Apellido");
         tblCApellido.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Apellido"));
         tblCApellido.setMinWidth(171.25);
-        
+
         table.getColumns().addAll(tblCCedula, tblCNombre, tblCApellido);
     }
-    
-    public void cargarTareas(TableView<Usuario> table){
+
+    public void cargarTareas(TableView<Usuario> table) {
         table.setItems(TP.CargarUsuario(conexion));
         cargarColumnas(table);
     }
@@ -186,11 +198,13 @@ public class ProyectosController implements Initializable {
     @FXML
     private void Trasladar(MouseEvent event) {
         Usuario persona = tblEmpleadosDisponibles.getSelectionModel().getSelectedItem();
-        txtEmpleadoSeleccionado.setText(persona.getIdUsuario() +" "+ persona.getNombre());
-        
-    }
-    
-    
+        txtEmpleadoSeleccionado.setText(persona.getIdUsuario() + " " + persona.getNombre());
 
+    }
+
+    @FXML
+    private void Guardar(ActionEvent event) {
+        InsertarProyecto();
+    }
 
 }

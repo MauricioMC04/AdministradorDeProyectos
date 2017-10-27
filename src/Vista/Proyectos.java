@@ -6,7 +6,6 @@
 package Vista;
 
 import Controlador.ControladorInsertar;
-import Controlador.ControladorProyecto;
 import Modelo.Conexion;
 import java.sql.Connection;
 import java.sql.Date;
@@ -32,7 +31,6 @@ public class Proyectos extends javax.swing.JFrame {
     Conexion conec = new Conexion();
     Connection c = conec.conexion();
 
-    Controlador.ControladorProyecto CP = new ControladorProyecto();
 
    
     @SuppressWarnings("unchecked")

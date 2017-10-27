@@ -35,7 +35,7 @@
                               <ComboBox fx:id="cbxIteraciones" layoutX="223.0" layoutY="129.0" prefWidth="150.0" />
                               <Label fx:id="lblTareasProyecto" layoutX="90.0" layoutY="188.0" text="Tareas Proyecto:" />
                               <ComboBox fx:id="cbxTareasProyecto" layoutX="223.0" layoutY="184.0" prefWidth="150.0" />
-                              <Button fx:id="btnGuardarProyecto" layoutX="699.0" layoutY="181.0" mnemonicParsing="false" text="Guardar" />
+                              <Button fx:id="btnGuardarProyecto" layoutX="699.0" layoutY="181.0" mnemonicParsing="false" onAction="#Guardar" text="Guardar" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="878.0">
