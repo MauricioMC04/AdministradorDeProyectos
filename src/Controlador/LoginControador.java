@@ -116,6 +116,24 @@ public class LoginControador implements Initializable {
     );
     @FXML
     private PasswordField PsContraseñaCorrecta;
+    @FXML
+    private PasswordField PfCambiarC1;
+    @FXML
+    private PasswordField PfCambiarC2;
+    @FXML
+    private Button btnConfirmar;
+    @FXML
+    private Pane Pane2;
+    @FXML
+    private Pane Pane1;
+    @FXML
+    private Pane Pane3;
+    @FXML
+    private Button btnConfirmarPane2;
+    @FXML
+    private TextField TxtRespuestaPane2;
+    @FXML
+    private TextField txtCedula;
     public void initialize(URL url, ResourceBundle rb) {
 
         lblASLogin1.setVisible(false);
@@ -129,6 +147,8 @@ public class LoginControador implements Initializable {
         lblASReg4.setVisible(false);
         lblASReg5.setVisible(false);
         lblASReg6.setVisible(false);
+        Pane2.setVisible(false);
+        Pane3.setVisible(false);
         PanelRegistrarse.setVisible(false);
         CbxPreguntaSeguridadRegistrarse.setItems(options);
         CbxPreguntaSeguridadRegistrarse.setTooltip(new Tooltip("Seleccion la pregunta de seguridad"));
@@ -189,10 +209,30 @@ public class LoginControador implements Initializable {
     }
     @FXML
     private void Olvido(MouseEvent event) {
-        
-        
+     Pane1.setVisible(false);
+        Pane2.setVisible(true);
     }
     @FXML
     private void ValidarNumeros(KeyEvent event) {
+    }
+
+    @FXML
+    private void ConfirmarCambio(ActionEvent event) {
+       int Cedula = Integer.parseInt(txtCedula.getText());
+       String Contrasena= PfCambiarC1.getText();
+       ML.CambiarContraseña(Contrasena, Cedula);
+       Pane2.setVisible(false);
+       Pane1.setVisible(true);
+       
+    }
+
+    @FXML
+    private void ValidarRespuesta(ActionEvent event) {
+    int Cedula = Integer.parseInt(txtCedula.getText());
+    String Respuesta = String.valueOf(TxtRespuestaPane2.getText());
+   if(ML.ValidarCambioContraseña(Cedula, Respuesta)==true){
+       btnConfirmarPane2.setVisible(false);
+        Pane3.setVisible(true);
+   }
     }
 }

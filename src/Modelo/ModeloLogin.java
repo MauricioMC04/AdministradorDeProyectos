@@ -20,14 +20,14 @@ public class ModeloLogin {
                 return true;
             }
         } catch (SQLException ex) {
-           
+
         }
         return false;
     }
 
     public boolean ValidarCedula(int Cedula) {
         String definir = "Por Definir";
-        String SSQL = "SELECT * FROM Usuario WHERE (idUsuario = '"+Cedula+"')AND(Contrasena = '"+definir+"')";
+        String SSQL = "SELECT * FROM Usuario WHERE (idUsuario = '" + Cedula + "')AND(Contrasena = '" + definir + "')";
         try {
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery(SSQL);
@@ -35,21 +35,50 @@ public class ModeloLogin {
                 return true;
             }
         } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "Error al Validar"); 
+            JOptionPane.showMessageDialog(null, "Error al Validar");
         }
         return false;
     }
 
-    public boolean Registrar(int Cedula, String Nombre, String Contrasena, String Respuesta,int Pregunta) {
-    try {
+    public boolean ValidarCambioContraseña(int Cedula, String respuesta) {
+        String SSQL = "SELECT * FROM Usuario WHERE (idUsuario = '" + Cedula + "')";
+        String cap = "";
+        try {
+            Statement st = c.createStatement();
+            ResultSet rs = st.executeQuery(SSQL);
+            while (rs.next()) {
+                cap = rs.getString("Respuesta");
+            }
+            if (cap.equals(respuesta)) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al validar la respuesta");
+        }
+        return false;
+    }
+
+    public boolean Registrar(int Cedula, String Nombre, String Contrasena, String Respuesta, int Pregunta) {
+        try {
             PreparedStatement pst = c.prepareStatement("Update Usuario Set NombreUsuario = '" + Nombre + "', Contrasena "
-                    + "= '" + Contrasena + "', Respuesta= '" + Respuesta + "', Pregunta ='"+Pregunta+"' Where idUsuario = '" + Cedula + "'");
+                    + "= '" + Contrasena + "', Respuesta= '" + Respuesta + "', Pregunta ='" + Pregunta + "' Where idUsuario = '" + Cedula + "'");
             pst.executeUpdate();
             return true;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Registrar" + e);
         }
         return false;
+    }
+    
+    public boolean CambiarContraseña(String contrasena,int Cedula){
+    try {
+            PreparedStatement pst = c.prepareStatement("Update Usuario Set Contrasena = '" + contrasena + "' Where idUsuario = '" + Cedula + "'");
+            pst.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al Registrar" + e);
+        }
+    return false;
     }
     Conexion conec = new Conexion();
     Connection c = conec.conexion();

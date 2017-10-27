@@ -87,7 +87,7 @@ public class InsertarController implements Initializable {
     @FXML
     private void Agregar(ActionEvent event) {
 
-        InsertarD.InsertarDepartamento(txtDNombreDepartamento.getText(), conexion);
+        InsertarD.InsertarDepartamento(txtTNombreDep.getText(), conexion);
     }
 
     @FXML
