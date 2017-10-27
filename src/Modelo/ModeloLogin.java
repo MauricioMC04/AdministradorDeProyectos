@@ -26,7 +26,7 @@ public class ModeloLogin {
     }
 
     public boolean ValidarCedula(int Cedula) {
-        String definir = "Por definir";
+        String definir = "Por Definir";
         String SSQL = "SELECT * FROM Usuario WHERE (idUsuario = '"+Cedula+"')AND(Contrasena = '"+definir+"')";
         try {
             Statement st = c.createStatement();
@@ -40,10 +40,10 @@ public class ModeloLogin {
         return false;
     }
 
-    public boolean Registrar(int Cedula, String Nombre, String Contrasena, String Pregunta) {
+    public boolean Registrar(int Cedula, String Nombre, String Contrasena, String Respuesta,int Pregunta) {
     try {
             PreparedStatement pst = c.prepareStatement("Update Usuario Set NombreUsuario = '" + Nombre + "', Contrasena "
-                    + "= '" + Contrasena + "', Pregunta= '" + Pregunta + "' Where idUsuario = '" + Cedula + "'");
+                    + "= '" + Contrasena + "', Respuesta= '" + Respuesta + "', Pregunta ='"+Pregunta+"' Where idUsuario = '" + Cedula + "'");
             pst.executeUpdate();
             return true;
         } catch (Exception e) {

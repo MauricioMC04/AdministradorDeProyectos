@@ -64,25 +64,47 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="710.0">
                      <children>
-                        <Label fx:id="lblNumCedula" layoutX="29.0" layoutY="26.0" text="Digite su número de cedula" />
-                        <TextField fx:id="TxtValidarCedula" layoutX="27.0" layoutY="47.0" />
-                        <Button fx:id="btnValidarCedula" layoutX="258.0" layoutY="47.0" mnemonicParsing="false" onAction="#ValidarCedula" text="Validar" />
-                        <Label fx:id="lblASReg1" layoutX="214.0" layoutY="37.0" text="*" textFill="#e10404">
+                        <Label fx:id="lblNumCedula" layoutX="29.0" layoutY="21.0" text="Digite su número de cedula">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <TextField fx:id="TxtValidarCedula" layoutX="29.0" layoutY="57.0" onKeyPressed="#ValidarNumeros" />
+                        <Button fx:id="btnValidarCedula" layoutX="257.0" layoutY="53.0" mnemonicParsing="false" onAction="#ValidarCedula" prefHeight="39.0" prefWidth="80.0" text="Validar">
+                           <styleClass>
+                              <String fx:value="color" />
+                              <String fx:value="forma" />
+                           </styleClass></Button>
+                        <Label fx:id="lblASReg1" layoutX="216.0" layoutY="55.0" text="*" textFill="#e10404">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Pane fx:id="PanelRegistrarse" layoutX="14.0" layoutY="106.0" prefHeight="253.0" prefWidth="577.0">
+                        <Pane fx:id="PanelRegistrarse" layoutX="14.0" layoutY="106.0" prefHeight="486.0" prefWidth="620.0">
                            <children>
-                              <Label fx:id="lblRNusuario" layoutX="14.0" layoutY="14.0" text="Nombre de usuario" />
+                              <Label fx:id="lblRNusuario" layoutX="14.0" layoutY="14.0" text="Nombre de usuario">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></Label>
                               <TextField fx:id="txtNombreUsuarioRegistrar" layoutX="14.0" layoutY="42.0" />
-                              <Label fx:id="lblRCont" layoutX="14.0" layoutY="84.0" text="Contraseña" />
+                              <Label fx:id="lblRCont" layoutX="14.0" layoutY="95.0" text="Contraseña">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></Label>
                               <PasswordField fx:id="PassFieldContraseñaRegistrarse" layoutX="14.0" layoutY="118.0" />
-                              <PasswordField layoutX="278.0" layoutY="118.0" />
-                              <Label fx:id="lblRContras" layoutX="278.0" layoutY="84.0" text="Ingrese de nuevo su contraseña" />
-                              <Label fx:id="lblSPregunta" layoutX="14.0" layoutY="160.0" text="Seleccione su pregunta se seguridad" />
-                              <Label fx:id="lblRespuesta" layoutX="278.0" layoutY="160.0" text="Respuesta" />
-                              <TextField fx:id="txtRespuestaRegistrarse" layoutX="278.0" layoutY="190.0" />
+                              <PasswordField fx:id="PsContraseñaCorrecta" layoutX="340.0" layoutY="118.0" />
+                              <Label fx:id="lblRContras" layoutX="340.0" layoutY="95.0" text="Ingrese de nuevo su contraseña">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></Label>
+                              <Label fx:id="lblSPregunta" layoutX="14.0" layoutY="178.0" text="Seleccione su pregunta se seguridad">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></Label>
+                              <Label fx:id="lblRespuesta" layoutX="340.0" layoutY="179.0" text="Respuesta">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></Label>
+                              <TextField fx:id="txtRespuestaRegistrarse" layoutX="340.0" layoutY="215.0" />
                               <Label fx:id="lblASReg2" layoutX="200.0" layoutY="40.0" text="*" textFill="#e10404">
                                  <font>
                                     <Font size="24.0" />
@@ -93,31 +115,35 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblASReg4" layoutX="200.0" layoutY="189.0" text="*" textFill="#e10404">
+                              <Label fx:id="lblASReg4" layoutX="195.0" layoutY="213.0" text="*" textFill="#e10404">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblASReg5" layoutX="464.0" layoutY="116.0" text="*" textFill="#e10404">
+                              <Label fx:id="lblASReg5" layoutX="529.0" layoutY="116.0" text="*" textFill="#e10404">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblASReg6" layoutX="464.0" layoutY="188.0" text="*" textFill="#e10404">
+                              <Label fx:id="lblASReg6" layoutX="529.0" layoutY="213.0" text="*" textFill="#e10404">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="btnRegistrarse" layoutX="497.0" layoutY="220.0" mnemonicParsing="false" onAction="#Registrarse" text="Registrarse" />
-                              <ComboBox fx:id="CbxPreguntaSeguridadRegistrarse" layoutX="20.0" layoutY="190.0" prefHeight="31.0" prefWidth="177.0" />
+                              <Button fx:id="btnRegistrarse" layoutX="450.0" layoutY="366.0" mnemonicParsing="false" onAction="#Registrarse" prefHeight="49.0" prefWidth="129.0" text="Registrarse">
+                                 <styleClass>
+                                    <String fx:value="forma" />
+                                    <String fx:value="color" />
+                                 </styleClass></Button>
+                              <ComboBox fx:id="CbxPreguntaSeguridadRegistrarse" layoutX="14.0" layoutY="215.0" prefHeight="31.0" prefWidth="177.0" />
+                              <Label fx:id="lblMSReg1" layoutX="28.0" layoutY="339.0" text="* CAMPOS INCORRECTOS" textFill="#ee0b0b">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
                               
                            </children>
                         </Pane>
-                        <Label fx:id="lblMSReg1" layoutX="378.0" layoutY="23.0" text="* CAMPOS OBLIGATORIOS" textFill="#ee0b0b">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
                         <Label fx:id="lblMSReg2" layoutX="378.0" layoutY="34.0" text="* CEDULA INCORRECTA" textFill="#ee0b0b">
                            <font>
                               <Font size="18.0" />

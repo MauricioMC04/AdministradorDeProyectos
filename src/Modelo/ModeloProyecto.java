@@ -50,7 +50,6 @@ public class ModeloProyecto {
         String sql = "SELECT * FROM Usuario ";
         String datos = "";
         String datos2 = "";
-
         String cedula = "";
 
         try {
@@ -59,7 +58,7 @@ public class ModeloProyecto {
             while (rs.next()) {
                 datos = rs.getString("Nombre");
                 cedula = rs.getString("idUsuario");
-                datos2 = datos + " " + cedula;
+                datos2 = datos + "-" + cedula;
                 modelo.addAll(datos2);
             }
         } catch (SQLException ex) {

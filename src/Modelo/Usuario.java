@@ -23,7 +23,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String idUsuario, String nombre, String apellido, String rol, String contrasena, String pregunta, String nombreUsuario, String respuesta) {
+    public Usuario(String idUsuario, String nombre, String apellido, String rol, String contrasena, String respuesta, String nombreUsuario, String pregunta ) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;

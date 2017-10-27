@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import static com.sun.javafx.tk.Toolkit.getToolkit;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -24,9 +25,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import static javax.management.Query.gt;
+import static javax.management.Query.lt;
 
 /**
  * FXML Controller class
@@ -47,10 +51,6 @@ public class LoginControador implements Initializable {
     private Label lblOContraseña;
     @FXML
     private TextField TxtNombreUsuario;
-    @FXML
-    private Label lblNUsuario;
-    @FXML
-    private Label lblCont;
     private TextField TxtContraseña;
     @FXML
     private Label lblASLogin1;
@@ -109,11 +109,13 @@ public class LoginControador implements Initializable {
 
     ObservableList<String> options = 
     FXCollections.observableArrayList(
-        "Nombre de su primera mascota",
-        "Nombre del equipo de deporte favorito",
-        "¿Donde encontrar un tesoro pirata?",
-        "Super heroe Favorito"
+        "1-Nombre de su primera mascota",
+        "2-Nombre del equipo de deporte favorito",
+        "3-¿Donde encontrar un tesoro pirata?",
+        "4-Super heroe Favorito"
     );
+    @FXML
+    private PasswordField PsContraseñaCorrecta;
     public void initialize(URL url, ResourceBundle rb) {
 
         lblASLogin1.setVisible(false);
@@ -157,8 +159,10 @@ public class LoginControador implements Initializable {
         int cedula = Integer.parseInt(TxtValidarCedula.getText());
         if (ML.ValidarCedula(cedula) == true) {
             PanelRegistrarse.setVisible(true);
+            lblMSReg2.setVisible(false);
         } else {
             lblMSReg2.setVisible(true);
+            PanelRegistrarse.setVisible(false);
         }
     }
     @FXML
@@ -166,12 +170,29 @@ public class LoginControador implements Initializable {
         int cedula = Integer.parseInt(TxtValidarCedula.getText());
         String NombreUsuario = String.valueOf(txtNombreUsuarioRegistrar.getText());
         String Contrasena = PassFieldContraseñaRegistrarse.getText();
-        String Pregunta = txtRespuestaRegistrarse.getText();
-
-        ML.Registrar(cedula, NombreUsuario, Contrasena, Pregunta);
+        String Respuesta = txtRespuestaRegistrarse.getText();
+        String a =  String.valueOf(CbxPreguntaSeguridadRegistrarse.getSelectionModel().getSelectedItem());
+        if(a!=""){
+        String[] partes = a.split("-");
+        String partes1= partes[0];
+        String partes2= partes[1];
+        if(ML.Registrar(cedula, NombreUsuario, Contrasena, Respuesta,Integer.parseInt(partes1))==true){
+        PanelRegistrarse.setVisible(false);
+        TxtValidarCedula.setText("");
+        }else{
+        lblMSReg2.setVisible(true);
+         PanelRegistrarse.setVisible(false);
+        TxtValidarCedula.setText("");
+        lblMSReg1.setVisible(true);
+        }
+        }
     }
     @FXML
     private void Olvido(MouseEvent event) {
+        
+        
     }
-
+    @FXML
+    private void ValidarNumeros(KeyEvent event) {
+    }
 }

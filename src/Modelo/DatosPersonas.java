@@ -115,15 +115,15 @@ public class DatosPersonas {
         Usuario usuario = GenerarPersonaNueva(cedula, nombre, apellido,rol);
         try {
             PreparedStatement pst = conexion.prepareStatement("INSERT INTO Usuario(idUsuario,Nombre,"
-                    + "Apellido,Rol,Contrasena,Pregunta,NombreUsuario, Respuesta) VALUES(?,?,?,?,?,?,?,?)");
+                    + "Apellido,Rol,Contrasena,Respuesta,NombreUsuario, Pregunta) VALUES(?,?,?,?,?,?,?,?)");
             pst.setString(1, usuario.getIdUsuario());
             pst.setString(2, usuario.getNombre());
             pst.setString(3, usuario.getApellido());
             pst.setString(4, usuario.getRol());
             pst.setString(5, usuario.getContrasena());
-            pst.setString(6, usuario.getPregunta());
+            pst.setString(6, usuario.getRespuesta());
             pst.setString(7, usuario.getNombreUsuario());
-            pst.setString(8, usuario.getRespuesta());
+            pst.setString(8, usuario.getPregunta());
             int a = pst.executeUpdate();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar la persona");
