@@ -156,9 +156,13 @@ public class ProyectosController implements Initializable {
     }
     public String cedulaf=MP.CedulaU;
     public void InsertarProyecto() {
-        
+         String a =  String.valueOf(cbxCreadoPor.getSelectionModel().getSelectedItem());
+        String[] partes = a.split("-");
+        String partes1= partes[0];
+        String partes2= partes[1];
         MP.InsertarProyecto(txtNombreProyecto.getText(), String.valueOf(txtDatePickerInicio.getValue()),
-                txtDepartamento.getSelectionModel().getSelectedItem(), Estado, Integer.parseInt(cbxIteraciones.getSelectionModel().getSelectedItem()), String.valueOf(txtDatePickerFinal.getValue()),cedulaf, conexion);
+        txtDepartamento.getSelectionModel().getSelectedItem(), Estado, Integer.parseInt(cbxIteraciones.getSelectionModel().getSelectedItem()), 
+        String.valueOf(txtDatePickerFinal.getValue()),Integer.parseInt(partes2), conexion); 
     }
 
     public void CargarTareas() {

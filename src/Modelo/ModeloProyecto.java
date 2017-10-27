@@ -23,7 +23,7 @@ import javafx.collections.ObservableList;
  */
 public class ModeloProyecto {
 
-    public void InsertarProyecto(String Nombre, String FI, String Departamento, String Estado, int Iteracion, String FF, String Supervisor, Connection conexion) {
+    public void InsertarProyecto(String Nombre, String FI, String Departamento, String Estado, int Iteracion, String FF, int Supervisor, Connection conexion) {
         try {
             PreparedStatement pps = conexion.prepareStatement("INSERT INTO Proyecto(Nombre, FechaInicio, Departamento, Estado, Iteraciones, FechaFinal, Supervisor) VALUES(?,?,?,?,?,?,?)");
             pps.setString(1, Nombre);
@@ -32,7 +32,7 @@ public class ModeloProyecto {
             pps.setString(4, Estado);
             pps.setInt(5, Iteracion);
             pps.setString(6, FF);
-            pps.setString(7, Supervisor);
+            pps.setInt(7, Supervisor);
             pps.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se pudo insertar Proyecto" + ex);
