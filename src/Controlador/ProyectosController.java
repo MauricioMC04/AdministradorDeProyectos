@@ -138,12 +138,11 @@ public class ProyectosController implements Initializable {
         Scene scene = MbMenu.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
-
     }
     public ObservableList<String> modelo = FXCollections.observableArrayList();
     public ObservableList<String> modelo1 = FXCollections.observableArrayList();
     public ObservableList<String> modelo2 = FXCollections.observableArrayList();
-    String Estado= "XXXX";
+   public String Estado= "XXXX";
 
     ModeloProyecto MP = new ModeloProyecto();
 
@@ -152,16 +151,11 @@ public class ProyectosController implements Initializable {
         cbxCreadoPor.setItems(modelo);
 
     }
-
+    public String cedulaf=MP.CedulaU;
     public void InsertarProyecto() {
         
         MP.InsertarProyecto(txtNombreProyecto.getText(), String.valueOf(txtDatePickerInicio.getValue()),
-                txtDepartamento.getSelectionModel().getSelectedItem(), Estado, Integer.parseInt(cbxIteraciones.getSelectionModel().getSelectedItem()), String.valueOf(txtDatePickerFinal.getValue()),cbxCreadoPor.getSelectionModel().getSelectedItem(), conexion);
-        
-        
-        
-        
-
+                txtDepartamento.getSelectionModel().getSelectedItem(), Estado, Integer.parseInt(cbxIteraciones.getSelectionModel().getSelectedItem()), String.valueOf(txtDatePickerFinal.getValue()),cedulaf, conexion);
     }
 
     public void CargarTareas() {
@@ -173,6 +167,7 @@ public class ProyectosController implements Initializable {
         modelo2.addAll(MP.CargarDepartamentos(conexion));
         txtDepartamento.setItems(modelo2);
     }
+  
 
     public void cargarColumnas(TableView<Usuario> table) {
         TableColumn tblCCedula = new TableColumn("Cedula");

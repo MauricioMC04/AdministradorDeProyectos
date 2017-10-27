@@ -44,42 +44,34 @@ public class ModeloProyecto {
     public ObservableList<String> modelo1 = FXCollections.observableArrayList();
     public ObservableList<String> modelo2 = FXCollections.observableArrayList();
 
+    public String CedulaU;
+
     public ObservableList<String> CargarUsuarios(Connection conexion) {
 
-        String sql = "SELECT * FROM Usuario WHERE Rol =2 ";
+        String sql = "SELECT * FROM Usuario ";
         String datos = "";
         String datos2 = "";
 
-        String cedula="";
+        String cedula = "";
 
         try {
             Statement st = conexion.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 datos = rs.getString("Nombre");
-                cedula=rs.getString("idUsuario");
-                datos2=datos+" " + cedula;
+                cedula = rs.getString("idUsuario");
+                datos2 = datos + " " + cedula;
                 modelo.addAll(datos2);
-                
-  
+                CedulaU = cedula;
+
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error CargarUsuarios");
         }
         return modelo;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+   
 
     public ObservableList<String> CargarTareas(Connection conexion) {
 
