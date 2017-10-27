@@ -17,6 +17,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 
@@ -33,14 +35,9 @@ public class InsertarController implements Initializable {
     private javafx.scene.control.TextArea txtATDescipcion;
     @FXML
     private Button btnTAceptar;
-    @FXML
     private TextField txtDNombreDepartamento;
     @FXML
-    private Button btnDAceptar;
-    @FXML
     private Tab tabTareasAsignadas;
-    @FXML
-    private Button btnTMenu;
     @FXML
     private Label lblTNombreTareas;
     @FXML
@@ -54,17 +51,17 @@ public class InsertarController implements Initializable {
     @FXML
     private Label lblTDescripcion;
     @FXML
-    private Tab tabDepartamentos;
-    @FXML
-    private Button btnDMenu;
-    @FXML
-    private Label lblDNombreDepartamento;
-    @FXML
-    private Label lblDErrorInformacion;
-    @FXML
-    private Label lblDErrorLetras;
-    @FXML
     private TextField txtTNombreTarea;
+    @FXML
+    private TextField txtTNombreDep;
+    @FXML
+    private Button Aceptar;
+    @FXML
+    private MenuBar MbMenu;
+    @FXML
+    private MenuItem MPersonas;
+    @FXML
+    private MenuItem MbCerrarS;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -90,6 +87,26 @@ public class InsertarController implements Initializable {
     private void Agregar(ActionEvent event) {
         
         InsertarD.InsertarDepartamento(txtDNombreDepartamento.getText(), conexion);
+    }
+
+    @FXML
+    private void Personas(ActionEvent event) {
+    }
+
+    @FXML
+    private void Proyectos(ActionEvent event) {
+    }
+
+    @FXML
+    private void Tareas(ActionEvent event) {
+    }
+
+    @FXML
+    private void EditProyectos(ActionEvent event) {
+    }
+
+    @FXML
+    private void CerrarS(ActionEvent event) {
     }
     
 }
