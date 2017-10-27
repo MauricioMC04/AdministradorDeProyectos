@@ -65,9 +65,7 @@ public class InsertarController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-       lblDErrorInformacion.setVisible(false);
-       lblDErrorLetras.setVisible(false);
+ 
        lblTErrorInformacion.setVisible(false);
        lblTErrorLetras.setVisible(false);
        lblTSErrorDescripcion.setVisible(false);
