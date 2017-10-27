@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -24,6 +25,8 @@ public class PersonasController implements Initializable {
     private DatosPersonas datosPersonas = new DatosPersonas();
     private Conexion conect = new Conexion();
     private Connection conexion = conect.conexion();
+    private String cedula = "";
+    MenuController menu = new MenuController();
     @FXML
     private Tab tabAgregar;
     @FXML
@@ -55,8 +58,6 @@ public class PersonasController implements Initializable {
     @FXML
     private Button btnAgregar;
     @FXML
-    private Button btnMenuAgregar;
-    @FXML
     private Label lblNoCedula;
     @FXML
     private Label lblNoNombre;
@@ -72,8 +73,6 @@ public class PersonasController implements Initializable {
     private TableView<Usuario> tblEliminar;
     @FXML
     private Button btnEliminar;
-    @FXML
-    private Button btnMenuEliminar;
     @FXML
     private Tab tabEditar;
     @FXML
@@ -91,8 +90,6 @@ public class PersonasController implements Initializable {
     @FXML
     private Button btnEditar;
     @FXML
-    private Button btnMenuEditar;
-    @FXML
     private Label lblRolEditar;
     @FXML
     private RadioButton rbtnAdministradorEditar;
@@ -104,12 +101,18 @@ public class PersonasController implements Initializable {
     private RadioButton rbtnEmpleadoEditar;
     @FXML
     private MenuBar MbMenu;
-    
-  MenuController menu = new MenuController();
     @FXML
     private MenuItem MPersonas;
     @FXML
     private MenuItem MbCerrarS;
+    @FXML
+    private Label lblNoNombreEditar;
+    @FXML
+    private Label lblNoApellidoEditar;
+    @FXML
+    private Label lblNoRolEditar;
+    @FXML
+    private Label lblNoSeleccionaEditar;
 
     public void setProgramaPrincipal(AdministradorDeProyectosFX ProgramaPrincipal) {
         this.ProgramaPrincipal = ProgramaPrincipal;
@@ -121,10 +124,13 @@ public class PersonasController implements Initializable {
     }    
     
     public void porDefecto(){
+        tblAgregar.getColumns().clear();
+        tblEliminar.getColumns().clear();
+        tblEditar.getColumns().clear();
         cargarPersonas(tblAgregar);
         cargarPersonas(tblEliminar);
         cargarPersonasEditables(tblEditar);
-        ocultarLabelsAgregar();
+        ocultarLabels();
         vaciar();
     }
     
@@ -154,14 +160,18 @@ public class PersonasController implements Initializable {
         cargarColumnas(table);
     }
     
-    public void ocultarLabelsAgregar(){
+    public void ocultarLabels(){
         lblNoCedula.setVisible(false);
         lblNoNombre.setVisible(false);
         lblNoApellido.setVisible(false);
         lblNoRol.setVisible(false);
+        lblNoNombreEditar.setVisible(false);
+        lblNoApellidoEditar.setVisible(false);
+        lblNoRolEditar.setVisible(false);
+        lblNoSeleccionaEditar.setVisible(false);
     }
     
-    public void verificarNoSeleccionados(){
+    public void verificarNoSeleccionadosAgregar(){
         if(txtCedula.getText().equals(""))lblNoCedula.setVisible(true);
         if(txtNombre.getText().equals(""))lblNoNombre.setVisible(true);
         if(txtApellido.getText().equals(""))lblNoApellido.setVisible(true);
@@ -177,7 +187,7 @@ public class PersonasController implements Initializable {
     @FXML
     private void Agregar(javafx.event.ActionEvent event) {
         if(txtCedula.getText().equals("") || txtNombre.getText().equals("") ||txtApellido.getText().equals("")){
-            verificarNoSeleccionados();
+            verificarNoSeleccionadosAgregar();
         }else{
             if(rbtnAdministrador.isSelected()){
                 datosPersonas.InsertarPersonaNueva(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnAdministrador.getText(), conexion);
@@ -189,7 +199,7 @@ public class PersonasController implements Initializable {
                 datosPersonas.InsertarPersonaNueva(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnEmpleado.getText(), conexion);
                 porDefecto();
             }else{
-                verificarNoSeleccionados();
+                verificarNoSeleccionadosAgregar();
             }
         }
     }
@@ -201,6 +211,12 @@ public class PersonasController implements Initializable {
         rbtnAdministrador.setSelected(false);
         rbtnSupervisor.setSelected(false);
         rbtnEmpleado.setSelected(false);
+        txtCedula.setText("");
+        txtNombreEditar.setText("");
+        txtApellidoEditar.setText("");
+        rbtnAdministradorEditar.setSelected(false);
+        rbtnSupervisorEditar.setSelected(false);
+        rbtnEmpleadoEditar.setSelected(false);
     }
 
     @FXML
@@ -239,6 +255,63 @@ public class PersonasController implements Initializable {
     }
 
     @FXML
-    private void Departamentos(javafx.event.ActionEvent event) {
+    private void Eliminar(javafx.event.ActionEvent event) {
+        Usuario persona = tblEliminar.getSelectionModel().getSelectedItem();
+        if(persona != null){
+            datosPersonas.EliminarPersona(persona.getIdUsuario(), conexion);
+            porDefecto();
+        }
+    }
+
+    @FXML
+    private void Seleccionar(MouseEvent event) {
+        Usuario persona = tblEditar.getSelectionModel().getSelectedItem();
+        if(persona != null){
+            cedula = persona.getIdUsuario();
+            txtNombreEditar.setText(persona.getNombre());
+            txtApellidoEditar.setText(persona.getApellido());
+            if(persona.getRol().equals("Administrador")){
+                rbtnAdministradorEditar.setSelected(true);
+            }else if(persona.getRol().equals("Supervisor")){
+                rbtnSupervisorEditar.setSelected(true);
+            }else if(persona.getRol().equals("Empleado")){
+                rbtnEmpleado.setSelected(true);
+            }
+        }
+    }
+    
+    public void verificarNoSeleccionadosEditar(){
+        if(txtNombreEditar.getText().equals(""))lblNoNombreEditar.setVisible(true);
+        if(txtApellidoEditar.getText().equals(""))lblNoApellidoEditar.setVisible(true);
+        if(!rbtnAdministradorEditar.isSelected()){
+            if(!rbtnSupervisorEditar.isSelected()){
+                if(!rbtnEmpleadoEditar.isSelected()){
+                    lblNoRolEditar.setVisible(true);
+                }
+            }
+        }
+    }
+
+    @FXML
+    private void Editar(javafx.event.ActionEvent event) {
+        if(cedula.equals("") || txtNombreEditar.getText().equals("") ||txtApellidoEditar.getText().equals("")){
+            verificarNoSeleccionadosEditar();
+        }else{
+            if(rbtnAdministradorEditar.isSelected()){
+                datosPersonas.EditarPersona(cedula, txtNombreEditar.getText(), txtApellidoEditar.getText(), rbtnAdministradorEditar.getText(), conexion);
+                porDefecto();
+                cedula = "";
+            }else if(rbtnSupervisorEditar.isSelected()){
+                datosPersonas.EditarPersona(cedula, txtNombreEditar.getText(), txtApellidoEditar.getText(), rbtnSupervisorEditar.getText(), conexion);
+                porDefecto();
+                cedula = "";
+            }else if(rbtnEmpleadoEditar.isSelected()){
+                datosPersonas.EditarPersona(cedula, txtNombreEditar.getText(), txtApellidoEditar.getText(), rbtnEmpleadoEditar.getText(), conexion);
+                porDefecto();
+                cedula = "";
+            }else{
+                verificarNoSeleccionadosEditar();
+            }
+        }
     }
 }
