@@ -199,7 +199,9 @@ public class ProyectosController implements Initializable {
     @FXML
     private void Trasladar(MouseEvent event) {
         Usuario persona = tblEmpleadosDisponibles.getSelectionModel().getSelectedItem();
-        txtEmpleadoSeleccionado.setText(persona.getIdUsuario());
+        if(persona != null){
+            txtEmpleadoSeleccionado.setText(persona.getIdUsuario());
+        }    
     }
 
     @FXML
