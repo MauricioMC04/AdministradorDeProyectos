@@ -84,6 +84,8 @@ public class InsertarController implements Initializable {
 
     @FXML
     private void Aceptar(ActionEvent event) {
+        
+        InsertarT.InsertarTarea(txtTNombreTarea.getText(), txtATDescipcion.getText(), conexion);
     }
 
     @FXML
