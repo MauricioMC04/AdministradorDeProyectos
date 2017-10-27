@@ -25,7 +25,8 @@ public class TareasProyecto {
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 
-                modelo.add(new Usuario (datos[0],datos[1],datos[2],"Desconocido","Desconocido","Desconocido" ,"Desconocido" ));
+                modelo.add(new Usuario (datos[0],datos[1],datos[2],"Desconocido","Desconocido","Desconocido" ,"Desconocido",
+                           "Desconocido"));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error CargarPersonas");

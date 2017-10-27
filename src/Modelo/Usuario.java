@@ -10,11 +10,20 @@ public class Usuario {
     private String contrasena;
     private String pregunta;
     private String nombreUsuario;
+    private String respuesta;
+
+    public String getRespuesta() {
+        return respuesta;
+    }
+
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
+    }
 
     public Usuario() {
     }
 
-    public Usuario(String idUsuario, String nombre, String apellido, String rol, String contrasena, String pregunta, String nombreUsuario) {
+    public Usuario(String idUsuario, String nombre, String apellido, String rol, String contrasena, String pregunta, String nombreUsuario, String respuesta) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -22,6 +31,7 @@ public class Usuario {
         this.contrasena = contrasena;
         this.pregunta = pregunta;
         this.nombreUsuario = nombreUsuario;
+        this.respuesta = respuesta;
     }
 
     public String getNombreUsuario() {

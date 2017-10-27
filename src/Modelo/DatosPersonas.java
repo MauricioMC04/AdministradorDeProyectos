@@ -32,7 +32,8 @@ public class DatosPersonas {
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
                 datos[3] = DefinirRol(datos[3]);
-                modelo.add(new Usuario (datos[0],datos[1],datos[2],datos[3],"Desconocido","Desconocido" ,"Desconocido" ));
+                modelo.add(new Usuario (datos[0],datos[1],datos[2],datos[3],"Desconocido","Desconocido" ,"Desconocido",
+                           "Desconocido"));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error CargarPersonas");
@@ -75,7 +76,8 @@ public class DatosPersonas {
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
                 datos[3] = DefinirRol(datos[3]);
-                modelo.add(new Usuario (datos[0],datos[1],datos[2],datos[3],"Desconocido","Desconocido" ,"Desconocido" ));
+                modelo.add(new Usuario (datos[0],datos[1],datos[2],datos[3],"Desconocido","Desconocido" ,"Desconocido",
+                           "Desconocido"));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error CargarPersonas Editables");
@@ -99,7 +101,7 @@ public class DatosPersonas {
             nuevoRol = "3";
         }
         Usuario usuario = new Usuario(cedula, nombre, apellido, nuevoRol, "Por Definir", "Por Definir",
-                "Por Definir");
+                "Por Definir", "0");
         return usuario;        
     }
     
@@ -113,7 +115,7 @@ public class DatosPersonas {
         Usuario usuario = GenerarPersonaNueva(cedula, nombre, apellido,rol);
         try {
             PreparedStatement pst = conexion.prepareStatement("INSERT INTO Usuario(idUsuario,Nombre,"
-                    + "Apellido,Rol,Contrasena,Pregunta,NombreUsuario) VALUES(?,?,?,?,?,?,?)");
+                    + "Apellido,Rol,Contrasena,Pregunta,NombreUsuario, Respuesta) VALUES(?,?,?,?,?,?,?,?)");
             pst.setString(1, usuario.getIdUsuario());
             pst.setString(2, usuario.getNombre());
             pst.setString(3, usuario.getApellido());
@@ -121,6 +123,7 @@ public class DatosPersonas {
             pst.setString(5, usuario.getContrasena());
             pst.setString(6, usuario.getPregunta());
             pst.setString(7, usuario.getNombreUsuario());
+            pst.setString(8, usuario.getRespuesta());
             int a = pst.executeUpdate();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar la persona");
