@@ -96,6 +96,24 @@ public class ProyectosController implements Initializable {
     private TextField txtEmpleadoSeleccionado;
     @FXML
     private Button btnAgregarTarea;
+    @FXML
+    private Label lblNoTareasProyecto;
+    @FXML
+    private Label lblNoIteraciones;
+    @FXML
+    private Label lblNoCreado;
+    @FXML
+    private Label lblNoDepartamento;
+    @FXML
+    private Label lblNoFechaI;
+    @FXML
+    private Label lblNoFechaE;
+    @FXML
+    private Label lblNoNombre;
+    @FXML
+    private Label lblGuardar;
+    @FXML
+    private Label lblNoTarea;
 
     /**
      * Initializes the controller class.
@@ -107,6 +125,7 @@ public class ProyectosController implements Initializable {
         cargarTareas(tblEmpleadosDisponibles);
         CargarDepartamentos();
         cbxIteraciones.setItems(options);
+        OcultarNo();
     }
 
     private Conexion conect = new Conexion();
@@ -206,7 +225,11 @@ public class ProyectosController implements Initializable {
 
     @FXML
     private void Guardar(ActionEvent event) {
-        InsertarProyecto();
+        if(MostrarError()==false){
+            InsertarProyecto();
+            RefrescarCampos();
+        }
+           
     }
 
     @FXML
@@ -226,6 +249,51 @@ public class ProyectosController implements Initializable {
             tareas.addAll(tareasUsuarios.get(i).getIdUsuario() + " - " + tareasUsuarios.get(i).getNombreTarea());
         }
         cbxTareasProyecto.setItems(tareas);
+    }
+     public void OcultarNo() {
+        lblNoNombre.setVisible(false);
+        lblNoCreado.setVisible(false);
+        lblNoTareasProyecto.setVisible(false);
+        lblNoDepartamento.setVisible(false);
+        lblNoFechaE.setVisible(false);
+        lblNoFechaI.setVisible(false);
+        lblNoIteraciones.setVisible(false);
+        lblGuardar.setVisible(false);
+
+    }
+    public boolean MostrarError() {
+        
+        if (txtNombreProyecto.getText().isEmpty()) {
+            lblNoNombre.setVisible(true);
+            return true;
+        }
+        
+        if (cbxCreadoPor.getSelectionModel().getSelectedItem().isEmpty()) {
+            lblNoCreado.setVisible(true); 
+            return true;
+        }
+      
+
+//        if(cbxTareasProyecto.getSelectionModel().getSelectedItem().isEmpty())lblNoTareasProyecto.setVisible(true);
+        if (txtDepartamento.getSelectionModel().isEmpty()) {
+            lblNoDepartamento.setVisible(true);
+            return true;
+        }
+        
+
+        if (cbxIteraciones.getSelectionModel().getSelectedItem().isEmpty()) {
+            lblNoIteraciones.setVisible(true);
+            return true;
+        }
+    return false;
+          
+//        if(txtDatePickerInicio.getValue().equals(""))lblNoFechaI.setVisible(true);
+//        if(txtDatePickerFinal.getValue().)lblNoFechaE.setVisible(true);
+    }
+    
+    public void RefrescarCampos(){
+        txtNombreProyecto.setText("");
+     
     }
     
 }   
