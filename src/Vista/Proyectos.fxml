@@ -36,6 +36,14 @@
                               <Label fx:id="lblTareasProyecto" layoutX="90.0" layoutY="188.0" text="Tareas Proyecto:" />
                               <ComboBox fx:id="cbxTareasProyecto" layoutX="223.0" layoutY="184.0" prefWidth="150.0" />
                               <Button fx:id="btnGuardarProyecto" layoutX="699.0" layoutY="181.0" mnemonicParsing="false" onAction="#Guardar" text="Guardar" />
+                              <Label fx:id="lblNoTareasProyecto" layoutX="78.0" layoutY="188.0" text="*" textFill="#f20606" />
+                              <Label fx:id="lblNoIteraciones" layoutX="105.0" layoutY="137.0" text="*" textFill="#f80606" />
+                              <Label fx:id="lblNoCreado" layoutX="108.0" layoutY="83.0" text="*" textFill="#f50505" />
+                              <Label fx:id="lblNoDepartamento" layoutX="442.0" layoutY="28.0" text="*" textFill="#f20303" />
+                              <Label fx:id="lblNoFechaI" layoutX="439.0" layoutY="75.0" text="*" textFill="#f50303" />
+                              <Label fx:id="lblNoFechaE" layoutX="436.0" layoutY="123.0" text="*" textFill="#f80505" />
+                              <Label fx:id="lblNoNombre" layoutX="71.0" layoutY="29.0" prefHeight="17.0" prefWidth="10.0" text="*" textFill="#f20404" />
+                              <Label fx:id="lblGuardar" layoutX="665.0" layoutY="185.0" text="*" textFill="#f80707" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="878.0">
@@ -48,6 +56,7 @@
                               <TableView fx:id="tblEmpleadosDisponibles" layoutX="228.0" layoutY="126.0" onMouseClicked="#Trasladar" prefHeight="193.0" prefWidth="506.0" />
                               <TextField fx:id="txtEmpleadoSeleccionado" disable="true" layoutX="265.0" layoutY="363.0" />
                               <Button fx:id="btnAgregarTarea" layoutX="658.0" layoutY="360.0" mnemonicParsing="false" onAction="#AgregarTarea" text="Agregar Tarea" />
+                              <Label fx:id="lblNoTarea" layoutX="116.0" layoutY="43.0" text="*" textFill="#f20303" />
                            </children>
                         </AnchorPane>
                     </items>
