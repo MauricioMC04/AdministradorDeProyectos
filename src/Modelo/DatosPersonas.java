@@ -111,7 +111,7 @@ public class DatosPersonas {
     Retorno: Ninguno
     Descripcion: Inserta la nueva persona creada por el administrador
     */
-    public void InsertarPersonaNueva(String cedula, String nombre, String apellido, String rol, Connection conexion){
+   public void InsertarPersonaNueva(String cedula, String nombre, String apellido, String rol, Connection conexion){
         Usuario usuario = GenerarPersonaNueva(cedula, nombre, apellido,rol);
         try {
             PreparedStatement pst = conexion.prepareStatement("INSERT INTO Usuario(idUsuario,Nombre,"
