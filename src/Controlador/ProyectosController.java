@@ -7,6 +7,8 @@ package Controlador;
 
 import Modelo.Conexion;
 import Modelo.ModeloProyecto;
+import Modelo.TareasProyecto;
+import Modelo.Usuario;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
@@ -22,7 +24,12 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SortEvent;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -32,6 +39,7 @@ import javafx.stage.Stage;
  */
 public class ProyectosController implements Initializable {
 
+    TareasProyecto TP = new TareasProyecto();
     MenuController menu = new MenuController();
     @FXML
     private Label lblNombreProyecto;
@@ -69,6 +77,22 @@ public class ProyectosController implements Initializable {
     private MenuItem MPersonas;
     @FXML
     private MenuItem MbCerrarS;
+    @FXML
+    private Label lblTareasProyecto;
+    @FXML
+    private ComboBox<?> cbxTareasProyecto;
+    @FXML
+    private Label lblEmpleadosDisponibles;
+    @FXML
+    private Label lblEmpleadoSeleccionado;
+    @FXML
+    private Label lblErrorSeleccionarEmpleado;
+    @FXML
+    private TableView<Usuario> tblEmpleadosDisponibles;
+    @FXML
+    private TextField txtEmpleadoSeleccionado;
+    @FXML
+    private Button btnAgregarTarea;
 
     /**
      * Initializes the controller class.
@@ -77,6 +101,7 @@ public class ProyectosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         CargarUsuarios();
         CargarTareas();
+        cargarTareas(tblEmpleadosDisponibles);
         CargarDepartamentos();
         cbxIteraciones.setItems(options);
     }
@@ -104,9 +129,6 @@ public class ProyectosController implements Initializable {
     private void EditProyectos(ActionEvent event) {
     }
 
-    @FXML
-    private void Departamentos(ActionEvent event) {
-    }
     ObservableList<String> options
             = FXCollections.observableArrayList("1", "2", "3", "4", "5");
 
@@ -139,5 +161,36 @@ public class ProyectosController implements Initializable {
         modelo2.addAll(MP.CargarDepartamentos(conexion));
         txtDepartamento.setItems(modelo2);
     }
+    
+    public void cargarColumnas(TableView<Usuario> table){
+        TableColumn tblCCedula = new TableColumn("Cedula");
+        tblCCedula.setCellValueFactory(new PropertyValueFactory<Usuario, String>("IdUsuario"));
+        tblCCedula.setMinWidth(171.25);
+        
+	TableColumn tblCNombre = new TableColumn("Nombre");
+	tblCNombre.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Nombre"));
+        tblCNombre.setMinWidth(171.25);
+        
+	TableColumn tblCApellido = new TableColumn("Apellido");
+        tblCApellido.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Apellido"));
+        tblCApellido.setMinWidth(171.25);
+        
+        table.getColumns().addAll(tblCCedula, tblCNombre, tblCApellido);
+    }
+    
+    public void cargarTareas(TableView<Usuario> table){
+        table.setItems(TP.CargarUsuario(conexion));
+        cargarColumnas(table);
+    }
+
+    @FXML
+    private void Trasladar(MouseEvent event) {
+        Usuario persona = tblEmpleadosDisponibles.getSelectionModel().getSelectedItem();
+        txtEmpleadoSeleccionado.setText(persona.getIdUsuario() +" "+ persona.getNombre());
+        
+    }
+    
+    
+
 
 }

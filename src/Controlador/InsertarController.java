@@ -72,15 +72,7 @@ public class InsertarController implements Initializable {
        
     }    
     
-    private void AgregarTarea(javafx.event.ActionEvent event){
     
-        InsertarT.InsertarTarea(txtTNombreTareas.getText(), txtATDescipcion.getText(), conexion);
-    }
-    
-    private void AgregarDepartamento(javafx.event.ActionEvent event){
-        
-        InsertarD.InsertarDepartamento(txtDNombreDepartamento.getText(), conexion);
-    }
 
     @FXML
     private void Aceptar(ActionEvent event) {
