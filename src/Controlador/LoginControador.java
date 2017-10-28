@@ -25,6 +25,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -107,13 +108,13 @@ public class LoginControador implements Initializable {
     @FXML
     private PasswordField PfContraseñalogin;
 
-    ObservableList<String> options = 
-    FXCollections.observableArrayList(
-        "1-Nombre de su primera mascota",
-        "2-Nombre del equipo de deporte favorito",
-        "3-¿Donde encontrar un tesoro pirata?",
-        "4-Super heroe Favorito"
-    );
+    ObservableList<String> options
+            = FXCollections.observableArrayList(
+                    "1-Nombre de su primera mascota",
+                    "2-Nombre del equipo de deporte favorito",
+                    "3-¿Donde encontrar un tesoro pirata?",
+                    "4-Super heroe Favorito"
+            );
     @FXML
     private PasswordField PsContraseñaCorrecta;
     @FXML
@@ -134,6 +135,19 @@ public class LoginControador implements Initializable {
     private TextField TxtRespuestaPane2;
     @FXML
     private TextField txtCedula;
+    @FXML
+    private Label lblVolvrt;
+    @FXML
+    private Label LblErrorOlvido1;
+    @FXML
+    private Label lblCamposIOlvido;
+    @FXML
+    private Label LblErrorOlvido2;
+    @FXML
+    private Label LblErrorIgual;
+    @FXML
+    private Label lblMSReg3;
+
     public void initialize(URL url, ResourceBundle rb) {
 
         lblASLogin1.setVisible(false);
@@ -147,8 +161,13 @@ public class LoginControador implements Initializable {
         lblASReg4.setVisible(false);
         lblASReg5.setVisible(false);
         lblASReg6.setVisible(false);
+        lblVolvrt.setVisible(false);
         Pane2.setVisible(false);
         Pane3.setVisible(false);
+        LblErrorOlvido1.setVisible(false);
+        LblErrorOlvido2.setVisible(false);
+        lblCamposIOlvido.setVisible(false);
+        LblErrorIgual.setVisible(false);
         PanelRegistrarse.setVisible(false);
         CbxPreguntaSeguridadRegistrarse.setItems(options);
         CbxPreguntaSeguridadRegistrarse.setTooltip(new Tooltip("Seleccion la pregunta de seguridad"));
@@ -163,15 +182,16 @@ public class LoginControador implements Initializable {
     private void Ingresar(ActionEvent event) {
         String Nombreusuario = TxtNombreUsuario.getText();
         String Contrasena = PfContraseñalogin.getText();
-       if( ML.Login(Nombreusuario, Contrasena)){
-        menu.Personas();
-        Stage stage = (Stage) BtnIngresar.getScene().getWindow();
-        stage.close();
-       }else{
-       lblASLogin1.setVisible(true);
-        lblASLogin2.setVisible(true);
-        lblMSLogin1.setVisible(true);
-       }
+        if (ML.Login(Nombreusuario, Contrasena)) {
+            menu.Personas();
+            Stage stage = (Stage) BtnIngresar.getScene().getWindow();
+            stage.close();
+        } else {
+            lblASLogin1.setVisible(true);
+            lblASLogin2.setVisible(true);
+            lblMSLogin1.setVisible(true);
+            PfContraseñalogin.setText("");
+        }
     }
 
     @FXML
@@ -185,54 +205,123 @@ public class LoginControador implements Initializable {
             PanelRegistrarse.setVisible(false);
         }
     }
+
     @FXML
     private void Registrarse(ActionEvent event) {
-        int cedula = Integer.parseInt(TxtValidarCedula.getText());
         String NombreUsuario = String.valueOf(txtNombreUsuarioRegistrar.getText());
         String Contrasena = PassFieldContraseñaRegistrarse.getText();
         String Respuesta = txtRespuestaRegistrarse.getText();
-        String a =  String.valueOf(CbxPreguntaSeguridadRegistrarse.getSelectionModel().getSelectedItem());
-        if(a!=""){
-        String[] partes = a.split("-");
-        String partes1= partes[0];
-        String partes2= partes[1];
-        if(ML.Registrar(cedula, NombreUsuario, Contrasena, Respuesta,Integer.parseInt(partes1))==true){
-        PanelRegistrarse.setVisible(false);
-        TxtValidarCedula.setText("");
-        }else{
-        lblMSReg2.setVisible(true);
-         PanelRegistrarse.setVisible(false);
-        TxtValidarCedula.setText("");
-        lblMSReg1.setVisible(true);
-        }
+        String Contrasena2 = PsContraseñaCorrecta.getText();
+        String a = String.valueOf(CbxPreguntaSeguridadRegistrarse.getSelectionModel().getSelectedItem());
+        if (ML.ValidarNombreusuario(NombreUsuario) == true||(ValidarIguales(Contrasena, Contrasena2) == true)) {
+
+                int cedula = Integer.parseInt(TxtValidarCedula.getText());
+                if (a != "") {
+                    String[] partes = a.split("-");
+                    String partes1 = partes[0];
+                    String partes2 = partes[1];
+                    if (ML.Registrar(cedula, NombreUsuario, Contrasena, Respuesta, Integer.parseInt(partes1)) == true) {
+                        PanelRegistrarse.setVisible(false);
+                        TxtValidarCedula.setText("");
+                        lblMSReg1.setVisible(false);
+                    } else {
+                        lblMSReg2.setVisible(true);
+                        PanelRegistrarse.setVisible(false);
+                        TxtValidarCedula.setText("");
+                        lblMSReg1.setVisible(true);
+                        lblASReg2.setVisible(false);
+
+                    }
+                }
+           
+                
+            
+        } else {
+           if(ValidarIguales(Contrasena, Contrasena2) == false){
+            lblMSReg1.setVisible(true);
+            lblASReg3.setVisible(true);
+            lblASReg5.setVisible(true);
+           }
+           if(ML.ValidarNombreusuario(NombreUsuario) == false){
+            lblMSReg3.setVisible(true);
+            lblASReg2.setVisible(true);
+           }
+
         }
     }
+
     @FXML
     private void Olvido(MouseEvent event) {
-     Pane1.setVisible(false);
+        Pane1.setVisible(false);
         Pane2.setVisible(true);
+        lblVolvrt.setVisible(true);
+        btnConfirmarPane2.setVisible(true);
+        lblASLogin1.setVisible(false);
+        lblASLogin2.setVisible(false);
+        lblMSLogin1.setVisible(false);
     }
+
     @FXML
     private void ValidarNumeros(KeyEvent event) {
     }
 
     @FXML
     private void ConfirmarCambio(ActionEvent event) {
-       int Cedula = Integer.parseInt(txtCedula.getText());
-       String Contrasena= PfCambiarC1.getText();
-       ML.CambiarContraseña(Contrasena, Cedula);
-       Pane2.setVisible(false);
-       Pane1.setVisible(true);
-       
+        int Cedula = Integer.parseInt(txtCedula.getText());
+        String Contrasena = PfCambiarC1.getText();
+        String Contrasena2 = PfCambiarC2.getText();
+        if (ValidarIguales(Contrasena, Contrasena2) == true) {
+            ML.CambiarContraseña(Contrasena, Cedula);
+            Pane2.setVisible(false);
+            Pane3.setVisible(false);
+            Pane1.setVisible(true);
+            TxtRespuestaPane2.setText("");
+            txtCedula.setText("");
+            txtCedula.setText("");
+            PfCambiarC1.setText("");
+            PfCambiarC2.setText("");
+            LblErrorIgual.setVisible(false);
+        } else {
+            LblErrorIgual.setVisible(true);
+        }
     }
 
     @FXML
     private void ValidarRespuesta(ActionEvent event) {
-    int Cedula = Integer.parseInt(txtCedula.getText());
-    String Respuesta = String.valueOf(TxtRespuestaPane2.getText());
-   if(ML.ValidarCambioContraseña(Cedula, Respuesta)==true){
-       btnConfirmarPane2.setVisible(false);
-        Pane3.setVisible(true);
-   }
+        if (!(txtCedula.getText().equals("") || TxtRespuestaPane2.getText().equals(""))) {
+            int Cedula = Integer.parseInt(txtCedula.getText());
+            String Respuesta = String.valueOf(TxtRespuestaPane2.getText());
+            if (ML.ValidarCambioContraseña(Cedula, Respuesta) == true) {
+                btnConfirmarPane2.setVisible(false);
+                Pane3.setVisible(true);
+                LblErrorOlvido1.setVisible(false);
+                LblErrorOlvido2.setVisible(false);
+                lblCamposIOlvido.setVisible(false);
+            }
+        } else {
+            LblErrorOlvido1.setVisible(true);
+            LblErrorOlvido2.setVisible(true);
+            lblCamposIOlvido.setVisible(true);
+        }
+
+    }
+
+    @FXML
+    private void Volver(MouseEvent event) {
+        lblVolvrt.setVisible(false);
+        Pane1.setVisible(true);
+        Pane2.setVisible(false);
+        Pane3.setVisible(false);
+        TxtRespuestaPane2.setText("");
+        txtCedula.setText("");
+
+    }
+
+    private boolean ValidarIguales(String a, String b) {
+
+        if (b.equals(a)) {
+            return true;
+        }
+        return false;
     }
 }

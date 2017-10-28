@@ -33,6 +33,10 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
         this.respuesta = respuesta;
     }
+    
+    public Usuario(String NombreUsuario){
+        this.nombreUsuario = NombreUsuario;
+    }
 
     public String getNombreUsuario() {
         return nombreUsuario;

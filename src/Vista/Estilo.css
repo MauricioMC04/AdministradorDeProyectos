@@ -22,3 +22,10 @@
 -fx-font-family :"Arial Rounded MT Bold";
     -fx-font-size: 20px;
 }
+
+.atras{
+    -fx-background-image: url("Flecha_atras.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 100px;
+    -fx-background-position: center;
+}

@@ -17,6 +17,8 @@ public class MenuController implements Initializable {
     private Button BtnLogin;
     @FXML
     private Button btnPersonas;
+    @FXML
+    private Button BtnTareasDepartamentos;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -41,8 +43,6 @@ public class MenuController implements Initializable {
         stage.close();
     }
 
-    @FXML
-
     public void Login() {
 
         try {
@@ -58,6 +58,7 @@ public class MenuController implements Initializable {
         }
     }
 
+    @FXML
     public void Personas() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Personas_1.fxml"));
@@ -101,6 +102,10 @@ public class MenuController implements Initializable {
             System.out.println("no");
 
         }
+    }
+
+    @FXML
+    private void TareasDepartamentos(ActionEvent event) {
     }
     
     

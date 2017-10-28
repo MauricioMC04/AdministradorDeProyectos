@@ -58,13 +58,21 @@
                         </Pane>
                         <Pane fx:id="Pane2" layoutX="132.0" layoutY="130.0" prefHeight="458.0" prefWidth="692.0">
                            <children>
+                              <Label fx:id="LblErrorOlvido1" layoutX="308.0" layoutY="-2.0" text="*" textFill="RED">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
                               <TextField fx:id="TxtRespuestaPane2" layoutX="81.0" layoutY="68.0" promptText="Respuesta aquí">
                                  <styleClass>
                                     <String fx:value="forma" />
                                     <String fx:value="letra" />
                                  </styleClass>
                               </TextField>
-                              <Label layoutX="81.0" layoutY="31.0" />
+                              <Label fx:id="lblCamposIOlvido" layoutX="402.0" layoutY="24.0" text="* CAMPOS INCORRECTOS" textFill="RED">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font></Label>
                               <Pane fx:id="Pane3" layoutX="81.0" layoutY="105.0" prefHeight="316.0" prefWidth="571.0">
                                  <children>
                                     <PasswordField fx:id="PfCambiarC1" layoutX="177.0" layoutY="66.0" styleClass="forma">
@@ -93,6 +101,7 @@
                                           <String fx:value="color" />
                                        </styleClass>
                                     </Button>
+                                    <Label fx:id="LblErrorIgual" layoutX="316.0" layoutY="197.0" text="LAS CONTRASEÑAS NO COINCIDEN" textFill="RED" />
                                  </children>
                               </Pane>
                               <Button fx:id="btnConfirmarPane2" layoutX="378.0" layoutY="69.0" mnemonicParsing="false" onAction="#ValidarRespuesta" prefHeight="31.0" prefWidth="162.0" text="Confirmar">
@@ -107,8 +116,14 @@
                                     <String fx:value="letra" />
                                  </styleClass>
                               </TextField>
+                              <Label fx:id="LblErrorOlvido2" layoutX="315.0" layoutY="43.0" text="*" textFill="RED">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </Pane>
+                        <Label fx:id="lblVolvrt" layoutX="62.0" layoutY="60.0" onMouseClicked="#Volver" prefHeight="74.0" prefWidth="126.0" styleClass="atras" />
                      </children>
                   </AnchorPane>
             </content>
@@ -190,6 +205,11 @@
                                  </styleClass></Button>
                               <ComboBox fx:id="CbxPreguntaSeguridadRegistrarse" layoutX="14.0" layoutY="215.0" prefHeight="31.0" prefWidth="177.0" />
                               <Label fx:id="lblMSReg1" layoutX="28.0" layoutY="339.0" text="* CAMPOS INCORRECTOS" textFill="#ee0b0b">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblMSReg3" layoutX="20.0" layoutY="373.0" text="* Nombre de usuario no disponible " textFill="#ee0b0b" visible="false">
                                  <font>
                                     <Font size="24.0" />
                                  </font>

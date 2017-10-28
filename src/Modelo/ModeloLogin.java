@@ -1,8 +1,11 @@
 package Modelo;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
 
 public class ModeloLogin {
@@ -69,16 +72,46 @@ public class ModeloLogin {
         }
         return false;
     }
-    
-    public boolean CambiarContraseña(String contrasena,int Cedula){
-    try {
+
+    public boolean ValidarNombreusuario(String Nombre) {
+        ArrayList<String> NombreUsuarios = NombreUsuarioDisponible();
+        for (int i = 0; i < NombreUsuarios.size(); i++) {
+            if (Nombre.equals(NombreUsuarios.get(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public ArrayList<String> NombreUsuarioDisponible() {
+//    Falta restringir los usuarios que ya finalizaron la tarea
+        ArrayList<String> NombreUsuarioD = new ArrayList<String>();
+        String sql = "SELECT NombreUsuario FROM Usuario";
+        String datos = "";
+        try {
+            Statement st = c.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                datos = rs.getString("NombreUsuario");
+                NombreUsuarioD.add(datos);
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return NombreUsuarioD;
+    }
+
+    public boolean CambiarContraseña(String contrasena, int Cedula) {
+        try {
             PreparedStatement pst = c.prepareStatement("Update Usuario Set Contrasena = '" + contrasena + "' Where idUsuario = '" + Cedula + "'");
             pst.executeUpdate();
             return true;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Registrar" + e);
+
         }
-    return false;
+        return false;
     }
     Conexion conec = new Conexion();
     Connection c = conec.conexion();
