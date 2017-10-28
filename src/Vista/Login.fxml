@@ -35,17 +35,17 @@
                                     <String fx:value="color" />
                                  </styleClass></Button>
                               <Label fx:id="lblOContraseña" layoutX="167.0" layoutY="212.0" onMouseClicked="#Olvido" text="¿Olvidó su contraseña?" underline="true" wrapText="true" />
-                              <Label fx:id="lblASLogin2" layoutX="346.0" layoutY="39.0" text="*" textFill="#f80e0e">
+                              <Label fx:id="lblASLogin2" layoutX="346.0" layoutY="39.0" text="*" textFill="#f80e0e" visible="false">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblASLogin1" layoutX="344.0" layoutY="87.0" text="*" textFill="#f80e0e">
+                              <Label fx:id="lblASLogin1" layoutX="344.0" layoutY="87.0" text="*" textFill="#f80e0e" visible="false">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblMSLogin1" layoutX="45.0" layoutY="280.0" text="* USUARIO O CONTRASEÑA INCORRECTOS" textFill="#ee0b0b">
+                              <Label fx:id="lblMSLogin1" layoutX="45.0" layoutY="280.0" text="* USUARIO O CONTRASEÑA INCORRECTOS" textFill="#ee0b0b" visible="false">
                                  <font>
                                     <Font size="18.0" />
                                  </font></Label>
@@ -56,7 +56,7 @@
                                  </styleClass></PasswordField>
                            </children>
                         </Pane>
-                        <Pane fx:id="Pane2" layoutX="132.0" layoutY="130.0" prefHeight="458.0" prefWidth="692.0">
+                        <Pane fx:id="Pane2" layoutX="132.0" layoutY="130.0" prefHeight="458.0" prefWidth="692.0" visible="false">
                            <children>
                               <Label fx:id="LblErrorOlvido1" layoutX="308.0" layoutY="-2.0" text="*" textFill="RED">
                                  <font>
@@ -123,7 +123,7 @@
                               </Label>
                            </children>
                         </Pane>
-                        <Label fx:id="lblVolvrt" layoutX="62.0" layoutY="60.0" onMouseClicked="#Volver" prefHeight="74.0" prefWidth="126.0" styleClass="atras" />
+                        <Label fx:id="lblVolvrt" layoutX="62.0" layoutY="60.0" onMouseClicked="#Volver" prefHeight="74.0" prefWidth="126.0" styleClass="atras" visible="false" />
                      </children>
                   </AnchorPane>
             </content>
@@ -142,12 +142,12 @@
                               <String fx:value="color" />
                               <String fx:value="forma" />
                            </styleClass></Button>
-                        <Label fx:id="lblASReg1" layoutX="216.0" layoutY="55.0" text="*" textFill="#e10404">
+                        <Label fx:id="lblASReg1" layoutX="216.0" layoutY="55.0" text="*" textFill="#e10404" visible="false">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Pane fx:id="PanelRegistrarse" layoutX="14.0" layoutY="106.0" prefHeight="486.0" prefWidth="620.0">
+                        <Pane fx:id="PanelRegistrarse" layoutX="14.0" layoutY="106.0" prefHeight="486.0" prefWidth="620.0" visible="false">
                            <children>
                               <Label fx:id="lblRNusuario" layoutX="14.0" layoutY="14.0" text="Nombre de usuario">
                                  <font>
@@ -173,27 +173,27 @@
                                     <Font size="18.0" />
                                  </font></Label>
                               <TextField fx:id="txtRespuestaRegistrarse" layoutX="340.0" layoutY="215.0" />
-                              <Label fx:id="lblASReg2" layoutX="200.0" layoutY="40.0" text="*" textFill="#e10404">
+                              <Label fx:id="lblASReg2" layoutX="200.0" layoutY="40.0" text="*" textFill="#e10404" visible="false">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblASReg3" layoutX="200.0" layoutY="116.0" text="*" textFill="#e10404">
+                              <Label fx:id="lblASReg3" layoutX="200.0" layoutY="116.0" text="*" textFill="#e10404" visible="false">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblASReg4" layoutX="195.0" layoutY="213.0" text="*" textFill="#e10404">
+                              <Label fx:id="lblASReg4" layoutX="195.0" layoutY="213.0" text="*" textFill="#e10404" visible="false">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblASReg5" layoutX="529.0" layoutY="116.0" text="*" textFill="#e10404">
+                              <Label fx:id="lblASReg5" layoutX="529.0" layoutY="116.0" text="*" textFill="#e10404" visible="false">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblASReg6" layoutX="529.0" layoutY="213.0" text="*" textFill="#e10404">
+                              <Label fx:id="lblASReg6" layoutX="529.0" layoutY="213.0" text="*" textFill="#e10404" visible="false">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -204,7 +204,7 @@
                                     <String fx:value="color" />
                                  </styleClass></Button>
                               <ComboBox fx:id="CbxPreguntaSeguridadRegistrarse" layoutX="14.0" layoutY="215.0" prefHeight="31.0" prefWidth="177.0" />
-                              <Label fx:id="lblMSReg1" layoutX="28.0" layoutY="339.0" text="* CAMPOS INCORRECTOS" textFill="#ee0b0b">
+                              <Label fx:id="lblMSReg1" layoutX="28.0" layoutY="339.0" text="* CAMPOS INCORRECTOS" textFill="#ee0b0b" visible="false">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -217,7 +217,7 @@
                               
                            </children>
                         </Pane>
-                        <Label fx:id="lblMSReg2" layoutX="378.0" layoutY="34.0" text="* CEDULA INCORRECTA" textFill="#ee0b0b">
+                        <Label fx:id="lblMSReg2" layoutX="378.0" layoutY="34.0" text="* CEDULA INCORRECTA" textFill="#ee0b0b" visible="false">
                            <font>
                               <Font size="18.0" />
                            </font>

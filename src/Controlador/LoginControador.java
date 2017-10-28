@@ -150,25 +150,6 @@ public class LoginControador implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
 
-        lblASLogin1.setVisible(false);
-        lblASLogin2.setVisible(false);
-        lblMSLogin1.setVisible(false);
-        lblMSReg2.setVisible(false);
-        lblMSReg1.setVisible(false);
-        lblASReg1.setVisible(false);
-        lblASReg2.setVisible(false);
-        lblASReg3.setVisible(false);
-        lblASReg4.setVisible(false);
-        lblASReg5.setVisible(false);
-        lblASReg6.setVisible(false);
-        lblVolvrt.setVisible(false);
-        Pane2.setVisible(false);
-        Pane3.setVisible(false);
-        LblErrorOlvido1.setVisible(false);
-        LblErrorOlvido2.setVisible(false);
-        lblCamposIOlvido.setVisible(false);
-        LblErrorIgual.setVisible(false);
-        PanelRegistrarse.setVisible(false);
         CbxPreguntaSeguridadRegistrarse.setItems(options);
         CbxPreguntaSeguridadRegistrarse.setTooltip(new Tooltip("Seleccion la pregunta de seguridad"));
 
@@ -208,44 +189,48 @@ public class LoginControador implements Initializable {
 
     @FXML
     private void Registrarse(ActionEvent event) {
+        lblMSReg1.setVisible(false);
+        lblASReg3.setVisible(false);
+        lblASReg5.setVisible(false);
+        lblMSReg3.setVisible(false);
+        lblASReg2.setVisible(false);
+
         String NombreUsuario = String.valueOf(txtNombreUsuarioRegistrar.getText());
         String Contrasena = PassFieldContraseñaRegistrarse.getText();
         String Respuesta = txtRespuestaRegistrarse.getText();
         String Contrasena2 = PsContraseñaCorrecta.getText();
         String a = String.valueOf(CbxPreguntaSeguridadRegistrarse.getSelectionModel().getSelectedItem());
-        if (ML.ValidarNombreusuario(NombreUsuario) == true||(ValidarIguales(Contrasena, Contrasena2) == true)) {
+        if (ML.ValidarNombreusuario(NombreUsuario) == true && (ValidarIguales(Contrasena, Contrasena2) == true)) {
 
-                int cedula = Integer.parseInt(TxtValidarCedula.getText());
-                if (a != "") {
-                    String[] partes = a.split("-");
-                    String partes1 = partes[0];
-                    String partes2 = partes[1];
-                    if (ML.Registrar(cedula, NombreUsuario, Contrasena, Respuesta, Integer.parseInt(partes1)) == true) {
-                        PanelRegistrarse.setVisible(false);
-                        TxtValidarCedula.setText("");
-                        lblMSReg1.setVisible(false);
-                    } else {
-                        lblMSReg2.setVisible(true);
-                        PanelRegistrarse.setVisible(false);
-                        TxtValidarCedula.setText("");
-                        lblMSReg1.setVisible(true);
-                        lblASReg2.setVisible(false);
+            int cedula = Integer.parseInt(TxtValidarCedula.getText());
+            if (a != "") {
+                String[] partes = a.split("-");
+                String partes1 = partes[0];
+                String partes2 = partes[1];
+                if (ML.Registrar(cedula, NombreUsuario, Contrasena, Respuesta, Integer.parseInt(partes1)) == true) {
+                    PanelRegistrarse.setVisible(false);
+                    TxtValidarCedula.setText("");
+                    lblMSReg1.setVisible(false);
+                } else {
+                    lblMSReg2.setVisible(true);
+                    PanelRegistrarse.setVisible(false);
+                    TxtValidarCedula.setText("");
+                    lblMSReg1.setVisible(true);
+                    lblASReg2.setVisible(false);
 
-                    }
                 }
-           
-                
-            
+            }
+
         } else {
-           if(ValidarIguales(Contrasena, Contrasena2) == false){
-            lblMSReg1.setVisible(true);
-            lblASReg3.setVisible(true);
-            lblASReg5.setVisible(true);
-           }
-           if(ML.ValidarNombreusuario(NombreUsuario) == false){
-            lblMSReg3.setVisible(true);
-            lblASReg2.setVisible(true);
-           }
+            if (ValidarIguales(Contrasena, Contrasena2) == false) {
+                lblMSReg1.setVisible(true);
+                lblASReg3.setVisible(true);
+                lblASReg5.setVisible(true);
+            }
+            if (ML.ValidarNombreusuario(NombreUsuario) == false) {
+                lblMSReg3.setVisible(true);
+                lblASReg2.setVisible(true);
+            }
 
         }
     }

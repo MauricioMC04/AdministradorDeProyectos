@@ -84,7 +84,6 @@ public class ModeloLogin {
     }
 
     public ArrayList<String> NombreUsuarioDisponible() {
-//    Falta restringir los usuarios que ya finalizaron la tarea
         ArrayList<String> NombreUsuarioD = new ArrayList<String>();
         String sql = "SELECT NombreUsuario FROM Usuario";
         String datos = "";
