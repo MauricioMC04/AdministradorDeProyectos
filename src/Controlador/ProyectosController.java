@@ -125,6 +125,7 @@ public class ProyectosController implements Initializable {
         cargarTareas(tblEmpleadosDisponibles);
         CargarDepartamentos();
         cbxIteraciones.setItems(options);
+        NoMostrar();
     }
 
     private Conexion conect = new Conexion();
@@ -163,7 +164,7 @@ public class ProyectosController implements Initializable {
     public ObservableList<String> modelo = FXCollections.observableArrayList();
     public ObservableList<String> modelo1 = FXCollections.observableArrayList();
     public ObservableList<String> modelo2 = FXCollections.observableArrayList();
-   public String Estado= "XXXX";
+    public String Estado = "XXXX";
 
     ModeloProyecto MP = new ModeloProyecto();
 
@@ -172,14 +173,15 @@ public class ProyectosController implements Initializable {
         cbxCreadoPor.setItems(modelo);
 
     }
+
     public void InsertarProyecto() {
-         String a =  String.valueOf(cbxCreadoPor.getSelectionModel().getSelectedItem());
+        String a = String.valueOf(cbxCreadoPor.getSelectionModel().getSelectedItem());
         String[] partes = a.split("-");
-        String partes1= partes[0];
-        String partes2= partes[1];
+        String partes1 = partes[0];
+        String partes2 = partes[1];
         MP.InsertarProyecto(txtNombreProyecto.getText(), String.valueOf(txtDatePickerInicio.getValue()),
-        txtDepartamento.getSelectionModel().getSelectedItem(), Estado, Integer.parseInt(cbxIteraciones.getSelectionModel().getSelectedItem()), 
-        String.valueOf(txtDatePickerFinal.getValue()),Integer.parseInt(partes2), conexion); 
+                txtDepartamento.getSelectionModel().getSelectedItem(), Estado, Integer.parseInt(cbxIteraciones.getSelectionModel().getSelectedItem()),
+                String.valueOf(txtDatePickerFinal.getValue()), Integer.parseInt(partes2), conexion);
     }
 
     public void CargarTareas() {
@@ -191,7 +193,6 @@ public class ProyectosController implements Initializable {
         modelo2.addAll(MP.CargarDepartamentos(conexion));
         txtDepartamento.setItems(modelo2);
     }
-  
 
     public void cargarColumnas(TableView<Usuario> table) {
         TableColumn tblCCedula = new TableColumn("Cedula");
@@ -217,23 +218,23 @@ public class ProyectosController implements Initializable {
     @FXML
     private void Trasladar(MouseEvent event) {
         Usuario persona = tblEmpleadosDisponibles.getSelectionModel().getSelectedItem();
-        if(persona != null){
+        if (persona != null) {
             txtEmpleadoSeleccionado.setText(persona.getIdUsuario());
-        }    
+        }
     }
 
     @FXML
     private void Guardar(ActionEvent event) {
-        if(MostrarError()==false){
+        if (MostrarError() == false) {
             InsertarProyecto();
             RefrescarCampos();
         }
-           
+
     }
 
     @FXML
     private void AgregarTarea(ActionEvent event) {
-        if(!txtEmpleadoSeleccionado.getText().equals("")){
+        if (!txtEmpleadoSeleccionado.getText().equals("")) {
             tareasUsuarios.add(new TareaUsuario(txtEmpleadoSeleccionado.getText(), cbxTareas.getSelectionModel().getSelectedItem()));
             tblEmpleadosDisponibles.getItems().remove(tblEmpleadosDisponibles.getSelectionModel().getSelectedItem());
             txtEmpleadoSeleccionado.setText("");
@@ -241,46 +242,58 @@ public class ProyectosController implements Initializable {
         }
     }
 
-    private void cargarTareasUsuarios(){
+    private void cargarTareasUsuarios() {
         cbxTareasProyecto.getItems().clear();
         ObservableList<String> tareas = FXCollections.observableArrayList();
-        for(int i = 0; i < tareasUsuarios.size(); i++){
+        for (int i = 0; i < tareasUsuarios.size(); i++) {
             tareas.addAll(tareasUsuarios.get(i).getIdUsuario() + " - " + tareasUsuarios.get(i).getNombreTarea());
         }
         cbxTareasProyecto.setItems(tareas);
     }
-     public boolean MostrarError() {
-        
+
+    public boolean MostrarError() {
+
         if (txtNombreProyecto.getText().isEmpty()) {
             lblNoNombre.setVisible(true);
             return true;
         }
-        
+
         if (cbxCreadoPor.getSelectionModel().getSelectedItem().isEmpty()) {
-            lblNoCreado.setVisible(true); 
+            lblNoCreado.setVisible(true);
             return true;
         }
-      
 
 //        if(cbxTareasProyecto.getSelectionModel().getSelectedItem().isEmpty())lblNoTareasProyecto.setVisible(true);
         if (txtDepartamento.getSelectionModel().isEmpty()) {
             lblNoDepartamento.setVisible(true);
             return true;
         }
-        
 
         if (cbxIteraciones.getSelectionModel().getSelectedItem().isEmpty()) {
             lblNoIteraciones.setVisible(true);
             return true;
         }
-    return false;
-          
+        return false;
+
 //        if(txtDatePickerInicio.getValue().equals(""))lblNoFechaI.setVisible(true);
 //        if(txtDatePickerFinal.getValue().)lblNoFechaE.setVisible(true);
     }
-    
-    public void RefrescarCampos(){
+
+    public void RefrescarCampos() {
         txtNombreProyecto.setText("");
-     
+//RESFRESCAR LOS DEMAS CAMPOS
     }
-}   
+    
+    
+    public void NoMostrar(){
+       lblNombreProyecto.setVisible(false);
+       lblNoTareasProyecto.setVisible(false);
+       lblNoIteraciones.setVisible(false);
+       lblNoCreado.setVisible(false);
+       lblNoDepartamento.setVisible(false);
+       lblNoFechaE.setVisible(false);
+       lblNoFechaI.setVisible(false);
+  
+    }
+}
+
