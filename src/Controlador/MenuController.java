@@ -22,9 +22,10 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
+        
     }
-
+    public static int Tipo =0;
     @FXML
     private void Login(ActionEvent event) {
         try {
@@ -73,7 +74,7 @@ public class MenuController implements Initializable {
 
         }
     }
-    
+
     public void Proyecto() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Proyectos.fxml"));
@@ -88,7 +89,7 @@ public class MenuController implements Initializable {
 
         }
     }
-    
+
     public void Insertar() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Insertar.fxml"));
@@ -103,11 +104,25 @@ public class MenuController implements Initializable {
 
         }
     }
+    
+    
+     public void MisProyectos() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Consultas.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Mis Proyectos");
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("no");
+
+        }
+    }
 
     @FXML
     private void TareasDepartamentos(ActionEvent event) {
     }
-    
-    
 
 }

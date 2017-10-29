@@ -1,4 +1,3 @@
-
 package Controlador;
 
 import Modelo.Conexion;
@@ -32,7 +31,7 @@ public class PersonasController implements Initializable {
     @FXML
     private Pane pnlAgregar;
     @FXML
-    private TableView<Usuario>tblAgregar;
+    private TableView<Usuario> tblAgregar;
     @FXML
     private Label lblCedula;
     @FXML
@@ -45,8 +44,6 @@ public class PersonasController implements Initializable {
     private TextField txtNombre;
     @FXML
     private TextField txtApellido;
-    @FXML
-    private Label lblRol;
     @FXML
     private RadioButton rbtnAdministrador;
     @FXML
@@ -113,17 +110,19 @@ public class PersonasController implements Initializable {
     private Label lblNoRolEditar;
     @FXML
     private Label lblNoSeleccionaEditar;
+    @FXML
+    private MenuItem MbMisProyectos;
 
     public void setProgramaPrincipal(AdministradorDeProyectosFX ProgramaPrincipal) {
         this.ProgramaPrincipal = ProgramaPrincipal;
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         porDefecto();
-    }    
-    
-    public void porDefecto(){
+    }
+
+    public void porDefecto() {
         tblAgregar.getColumns().clear();
         tblEliminar.getColumns().clear();
         tblEditar.getColumns().clear();
@@ -133,20 +132,20 @@ public class PersonasController implements Initializable {
         ocultarLabels();
         vaciar();
     }
-    
-    public void cargarPersonas(TableView<Usuario> table){
+
+    public void cargarPersonas(TableView<Usuario> table) {
         table.setItems(datosPersonas.CargarPersonas(conexion));
         cargarColumnas(table);
     }
-    
-    public void cargarColumnas(TableView<Usuario> table){
+
+    public void cargarColumnas(TableView<Usuario> table) {
         TableColumn tblCCedula = new TableColumn("Cedula");
         tblCCedula.setCellValueFactory(new PropertyValueFactory<Usuario, String>("IdUsuario"));
         tblCCedula.setMinWidth(171.25);
-	TableColumn tblCNombre = new TableColumn("Nombre");
-	tblCNombre.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Nombre"));
+        TableColumn tblCNombre = new TableColumn("Nombre");
+        tblCNombre.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Nombre"));
         tblCNombre.setMinWidth(171.25);
-	TableColumn tblCApellido = new TableColumn("Apellido");
+        TableColumn tblCApellido = new TableColumn("Apellido");
         tblCApellido.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Apellido"));
         tblCApellido.setMinWidth(171.25);
         TableColumn tblCRol = new TableColumn("Rol");
@@ -154,13 +153,13 @@ public class PersonasController implements Initializable {
         tblCRol.setMinWidth(171.25);
         table.getColumns().addAll(tblCCedula, tblCNombre, tblCApellido, tblCRol);
     }
-    
-    public void cargarPersonasEditables(TableView<Usuario> table){
+
+    public void cargarPersonasEditables(TableView<Usuario> table) {
         table.setItems(datosPersonas.CargarPersonasEditables(conexion));
         cargarColumnas(table);
     }
-    
-    public void ocultarLabels(){
+
+    public void ocultarLabels() {
         lblNoCedula.setVisible(false);
         lblNoNombre.setVisible(false);
         lblNoApellido.setVisible(false);
@@ -170,41 +169,47 @@ public class PersonasController implements Initializable {
         lblNoRolEditar.setVisible(false);
         lblNoSeleccionaEditar.setVisible(false);
     }
-    
-    public void verificarNoSeleccionadosAgregar(){
-        if(txtCedula.getText().equals(""))lblNoCedula.setVisible(true);
-        if(txtNombre.getText().equals(""))lblNoNombre.setVisible(true);
-        if(txtApellido.getText().equals(""))lblNoApellido.setVisible(true);
-        if(!rbtnAdministrador.isSelected()){
-            if(!rbtnSupervisor.isSelected()){
-                if(!rbtnEmpleado.isSelected()){
+
+    public void verificarNoSeleccionadosAgregar() {
+        if (txtCedula.getText().equals("")) {
+            lblNoCedula.setVisible(true);
+        }
+        if (txtNombre.getText().equals("")) {
+            lblNoNombre.setVisible(true);
+        }
+        if (txtApellido.getText().equals("")) {
+            lblNoApellido.setVisible(true);
+        }
+        if (!rbtnAdministrador.isSelected()) {
+            if (!rbtnSupervisor.isSelected()) {
+                if (!rbtnEmpleado.isSelected()) {
                     lblNoRol.setVisible(true);
                 }
             }
         }
     }
-    
+
     @FXML
     private void Agregar(javafx.event.ActionEvent event) {
-        if(txtCedula.getText().equals("") || txtNombre.getText().equals("") ||txtApellido.getText().equals("")){
+        if (txtCedula.getText().equals("") || txtNombre.getText().equals("") || txtApellido.getText().equals("")) {
             verificarNoSeleccionadosAgregar();
-        }else{
-            if(rbtnAdministrador.isSelected()){
+        } else {
+            if (rbtnAdministrador.isSelected()) {
                 datosPersonas.InsertarPersonaNueva(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnAdministrador.getText(), conexion);
                 porDefecto();
-            }else if(rbtnSupervisor.isSelected()){
+            } else if (rbtnSupervisor.isSelected()) {
                 datosPersonas.InsertarPersonaNueva(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnSupervisor.getText(), conexion);
                 porDefecto();
-            }else if(rbtnEmpleado.isSelected()){
+            } else if (rbtnEmpleado.isSelected()) {
                 datosPersonas.InsertarPersonaNueva(txtCedula.getText(), txtNombre.getText(), txtApellido.getText(), rbtnEmpleado.getText(), conexion);
                 porDefecto();
-            }else{
+            } else {
                 verificarNoSeleccionadosAgregar();
             }
         }
     }
-    
-    public void vaciar(){
+
+    public void vaciar() {
         txtCedula.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
@@ -227,17 +232,16 @@ public class PersonasController implements Initializable {
     @FXML
     private void Proyectos(javafx.event.ActionEvent event) {
         menu.Proyecto();
-        Scene scene =MbMenu.getScene();
+        Scene scene = MbMenu.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
-        
-        
+
     }
 
     @FXML
     private void CerrarS(javafx.event.ActionEvent event) {
         menu.Login();
-        Scene scene =MbMenu.getScene();
+        Scene scene = MbMenu.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
     }
@@ -245,7 +249,7 @@ public class PersonasController implements Initializable {
     @FXML
     private void Tareas(javafx.event.ActionEvent event) {
         menu.Insertar();
-        Scene scene =MbMenu.getScene();
+        Scene scene = MbMenu.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
     }
@@ -257,7 +261,7 @@ public class PersonasController implements Initializable {
     @FXML
     private void Eliminar(javafx.event.ActionEvent event) {
         Usuario persona = tblEliminar.getSelectionModel().getSelectedItem();
-        if(persona != null){
+        if (persona != null) {
             datosPersonas.EliminarPersona(persona.getIdUsuario(), conexion);
             porDefecto();
         }
@@ -266,26 +270,30 @@ public class PersonasController implements Initializable {
     @FXML
     private void Seleccionar(MouseEvent event) {
         Usuario persona = tblEditar.getSelectionModel().getSelectedItem();
-        if(persona != null){
+        if (persona != null) {
             cedula = persona.getIdUsuario();
             txtNombreEditar.setText(persona.getNombre());
             txtApellidoEditar.setText(persona.getApellido());
-            if(persona.getRol().equals("Administrador")){
+            if (persona.getRol().equals("Administrador")) {
                 rbtnAdministradorEditar.setSelected(true);
-            }else if(persona.getRol().equals("Supervisor")){
+            } else if (persona.getRol().equals("Supervisor")) {
                 rbtnSupervisorEditar.setSelected(true);
-            }else if(persona.getRol().equals("Empleado")){
+            } else if (persona.getRol().equals("Empleado")) {
                 rbtnEmpleado.setSelected(true);
             }
         }
     }
-    
-    public void verificarNoSeleccionadosEditar(){
-        if(txtNombreEditar.getText().equals(""))lblNoNombreEditar.setVisible(true);
-        if(txtApellidoEditar.getText().equals(""))lblNoApellidoEditar.setVisible(true);
-        if(!rbtnAdministradorEditar.isSelected()){
-            if(!rbtnSupervisorEditar.isSelected()){
-                if(!rbtnEmpleadoEditar.isSelected()){
+
+    public void verificarNoSeleccionadosEditar() {
+        if (txtNombreEditar.getText().equals("")) {
+            lblNoNombreEditar.setVisible(true);
+        }
+        if (txtApellidoEditar.getText().equals("")) {
+            lblNoApellidoEditar.setVisible(true);
+        }
+        if (!rbtnAdministradorEditar.isSelected()) {
+            if (!rbtnSupervisorEditar.isSelected()) {
+                if (!rbtnEmpleadoEditar.isSelected()) {
                     lblNoRolEditar.setVisible(true);
                 }
             }
@@ -294,24 +302,32 @@ public class PersonasController implements Initializable {
 
     @FXML
     private void Editar(javafx.event.ActionEvent event) {
-        if(cedula.equals("") || txtNombreEditar.getText().equals("") ||txtApellidoEditar.getText().equals("")){
+        if (cedula.equals("") || txtNombreEditar.getText().equals("") || txtApellidoEditar.getText().equals("")) {
             verificarNoSeleccionadosEditar();
-        }else{
-            if(rbtnAdministradorEditar.isSelected()){
+        } else {
+            if (rbtnAdministradorEditar.isSelected()) {
                 datosPersonas.EditarPersona(cedula, txtNombreEditar.getText(), txtApellidoEditar.getText(), rbtnAdministradorEditar.getText(), conexion);
                 porDefecto();
                 cedula = "";
-            }else if(rbtnSupervisorEditar.isSelected()){
+            } else if (rbtnSupervisorEditar.isSelected()) {
                 datosPersonas.EditarPersona(cedula, txtNombreEditar.getText(), txtApellidoEditar.getText(), rbtnSupervisorEditar.getText(), conexion);
                 porDefecto();
                 cedula = "";
-            }else if(rbtnEmpleadoEditar.isSelected()){
+            } else if (rbtnEmpleadoEditar.isSelected()) {
                 datosPersonas.EditarPersona(cedula, txtNombreEditar.getText(), txtApellidoEditar.getText(), rbtnEmpleadoEditar.getText(), conexion);
                 porDefecto();
                 cedula = "";
-            }else{
+            } else {
                 verificarNoSeleccionadosEditar();
             }
         }
+    }
+
+    @FXML
+    private void Irproyectos(javafx.event.ActionEvent event) {
+        menu.MisProyectos();
+        Scene scene = MbMenu.getScene();
+        Stage stage = (Stage) scene.getWindow();
+        stage.close();
     }
 }

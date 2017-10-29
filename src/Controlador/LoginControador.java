@@ -158,20 +158,36 @@ public class LoginControador implements Initializable {
     public void setProgramaPrincipal(AdministradorDeProyectosFX ProgramaPrincipal) {
         this.ProgramaPrincipal = ProgramaPrincipal;
     }
-
+    
     @FXML
     private void Ingresar(ActionEvent event) {
         String Nombreusuario = TxtNombreUsuario.getText();
         String Contrasena = PfContraseñalogin.getText();
-        if (ML.Login(Nombreusuario, Contrasena)) {
+        if (ML.Login(Nombreusuario, Contrasena) == 1) {
+           MenuController.Tipo = 1;
             menu.Personas();
             Stage stage = (Stage) BtnIngresar.getScene().getWindow();
             stage.close();
         } else {
-            lblASLogin1.setVisible(true);
-            lblASLogin2.setVisible(true);
-            lblMSLogin1.setVisible(true);
-            PfContraseñalogin.setText("");
+            if (ML.Login(Nombreusuario, Contrasena) == 2) {
+                MenuController.Tipo = 2;
+                menu.MisProyectos();
+                Stage stage = (Stage) BtnIngresar.getScene().getWindow();
+                stage.close();
+            } else {
+
+                if (ML.Login(Nombreusuario, Contrasena) == 3) {
+                    MenuController.Tipo = 3;
+                    menu.MisProyectos();
+                    Stage stage = (Stage) BtnIngresar.getScene().getWindow();
+                    stage.close();
+                } else {
+                    lblASLogin1.setVisible(true);
+                    lblASLogin2.setVisible(true);
+                    lblMSLogin1.setVisible(true);
+                    PfContraseñalogin.setText("");
+                }
+            }
         }
     }
 

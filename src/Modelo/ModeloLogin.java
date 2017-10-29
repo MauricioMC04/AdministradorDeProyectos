@@ -10,7 +10,11 @@ import javax.swing.JOptionPane;
 
 public class ModeloLogin {
 
-    public boolean Login(String Nombreusuario, String Contrasena) {
+    /*
+    Metodo de Ingreso al sistema
+    */
+    
+    public int Login(String Nombreusuario, String Contrasena) {
         String SSQL = "SELECT * FROM Usuario WHERE NombreUsuario ='" + Nombreusuario + "' AND Contrasena=('" + Contrasena + "')";
         String cap = "";
         try {
@@ -20,14 +24,20 @@ public class ModeloLogin {
                 cap = rs.getString("Rol");
             }
             if (cap.equals("1")) {
-                return true;
+                return 1;
+            }
+             if (cap.equals("2")) {
+                return 2;
+            }
+              if (cap.equals("3")) {
+                return 3;
             }
         } catch (SQLException ex) {
 
         }
-        return false;
+        return 0;
     }
-
+    
     public boolean ValidarCedula(int Cedula) {
         String definir = "Por Definir";
         String SSQL = "SELECT * FROM Usuario WHERE (idUsuario = '" + Cedula + "')AND(Contrasena = '" + definir + "')";
