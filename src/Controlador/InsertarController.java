@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
@@ -29,7 +30,7 @@ public class InsertarController implements Initializable {
     private InsertarTareas InsertarT = new InsertarTareas();
     private InsertarDepartamento InsertarD = new InsertarDepartamento();
     MenuController menu = new MenuController();
-    
+
     private Conexion conect = new Conexion();
     private Connection conexion = conect.conexion();
 
@@ -65,6 +66,10 @@ public class InsertarController implements Initializable {
     private MenuItem MPersonas;
     @FXML
     private MenuItem MbCerrarS;
+    @FXML
+    private MenuItem MbSalirS;
+    @FXML
+    private MenuItem MbMisProyectos;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,8 +78,6 @@ public class InsertarController implements Initializable {
         lblTErrorLetras.setVisible(false);
         lblTSErrorDescripcion.setVisible(false);
         lblTSErrorNombre.setVisible(false);
-        
-        
 
     }
 
@@ -93,7 +96,7 @@ public class InsertarController implements Initializable {
     @FXML
     private void Personas(ActionEvent event) {
         menu.Personas();
-        Scene scene =MbMenu.getScene();
+        Scene scene = MbMenu.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
     }
@@ -101,7 +104,7 @@ public class InsertarController implements Initializable {
     @FXML
     private void Proyectos(ActionEvent event) {
         menu.Proyecto();
-        Scene scene =MbMenu.getScene();
+        Scene scene = MbMenu.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
     }
@@ -117,9 +120,18 @@ public class InsertarController implements Initializable {
     @FXML
     private void CerrarS(ActionEvent event) {
         menu.Login();
-        Scene scene =MbMenu.getScene();
+        Scene scene = MbMenu.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void SalirS(ActionEvent event) {
+        menu.Salir();
+    }
+
+    @FXML
+    private void Irproyectos(ActionEvent event) {
     }
 
 }

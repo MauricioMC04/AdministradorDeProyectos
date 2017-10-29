@@ -7,29 +7,32 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1823.0" prefWidth="2466.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ConsultasController">
-   <children>
-       <MenuBar fx:id="MbMenu" layoutX="-12.0" layoutY="-9.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="54.0" prefWidth="2478.0" stylesheets="@Estilo.css" AnchorPane.leftAnchor="-12.0">
-           <menus>
-             <Menu fx:id="MInavegar" mnemonicParsing="false" text="Navegar">
-               <items>
-                 
-                 <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
-                 <MenuItem fx:id="MProyectos" mnemonicParsing="false" onAction="#Proyectos" onMenuValidation="#ProyectosValidar" text="Proyectos" />
-                 <MenuItem fx:id="MPtareas" mnemonicParsing="false" onAction="#Tareas" text="Tareas" />
-                 <MenuItem fx:id="MPEdittar" mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
-               </items>
-             </Menu>
-             <Menu fx:id="MenuIsistema" mnemonicParsing="false" text="Sistema">
-               <items>
-                 <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
-               </items>
-             </Menu>
-             <Menu fx:id="MenuIpersonal" mnemonicParsing="false" text="Personal">
-            <items>
-              <MenuItem fx:id="MbMisProyectos" mnemonicParsing="false" onAction="#Irproyectos" text="Mis Proyectos" />
-            </items>
-          </Menu>
-           </menus>
-         </MenuBar>
-   </children>
+    <children>
+        <MenuBar fx:id="MbMenu" layoutX="-9.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="46.0" prefWidth="1927.0" stylesheets="@Estilo.css" AnchorPane.leftAnchor="-9.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Navegar">
+                    <items>
+              
+                        <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
+                        <MenuItem mnemonicParsing="false" onAction="#Proyectos" text="Proyectos" />
+                        <MenuItem mnemonicParsing="false" onAction="#Tareas" text="Tareas" />
+              
+                        <MenuItem mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
+                    </items>
+                </Menu>
+  
+                <Menu mnemonicParsing="false" text="Personal">
+                    <items>
+                        <MenuItem fx:id="MbMisProyectos" mnemonicParsing="false" onAction="#Irproyectos" text="Mis Proyectos" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Sistema">
+                    <items>
+                        <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
+                        <MenuItem fx:id="MbSalirS" mnemonicParsing="false" onAction="#SalirS" text="Salir del sistema" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </children>
 </AnchorPane>

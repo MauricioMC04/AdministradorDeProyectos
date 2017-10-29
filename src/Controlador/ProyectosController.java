@@ -114,6 +114,10 @@ public class ProyectosController implements Initializable {
     private Label lblGuardar;
     @FXML
     private Label lblNoTarea;
+    @FXML
+    private MenuItem MbMisProyectos;
+    @FXML
+    private MenuItem MbSalirS;
 
     /**
      * Initializes the controller class.
@@ -294,6 +298,16 @@ public class ProyectosController implements Initializable {
     public void RefrescarCampos(){
         txtNombreProyecto.setText("");
      
+    }
+
+    @FXML
+    private void Irproyectos(ActionEvent event) {
+    }
+
+    @FXML
+    private void SalirS(ActionEvent event) {
+        
+        menu.Salir();
     }
     
 }   
