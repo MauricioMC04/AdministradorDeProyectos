@@ -26,6 +26,7 @@ public class MenuController implements Initializable {
 
     }
     public static int Tipo = 0;
+    public static int Cedula = 0;
 
     @FXML
     private void Login(ActionEvent event) {
@@ -126,9 +127,9 @@ public class MenuController implements Initializable {
 
         }
     }
-    
-    public void Salir(){
-    System.exit(0);
+
+    public void Salir() {
+        System.exit(0);
     }
 
     @FXML

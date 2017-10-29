@@ -1,5 +1,6 @@
 package Modelo;
 
+import Controlador.MenuController;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -17,13 +18,16 @@ public class ModeloLogin {
     public int Login(String Nombreusuario, String Contrasena) {
         String SSQL = "SELECT * FROM Usuario WHERE NombreUsuario ='" + Nombreusuario + "' AND Contrasena=('" + Contrasena + "')";
         String cap = "";
+        String cedula = "";
         try {
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery(SSQL);
             while (rs.next()) {
                 cap = rs.getString("Rol");
+                cedula = rs.getString("idUsuario");
             }
             if (cap.equals("1")) {
+                MenuController.Cedula= Integer.parseInt(cedula);
                 return 1;
             }
              if (cap.equals("2")) {
