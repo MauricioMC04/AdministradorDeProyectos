@@ -23,16 +23,16 @@ import javafx.collections.ObservableList;
  */
 public class ModeloProyecto {
 
-    public void InsertarProyecto(String Nombre, String FI, String Departamento, String Estado, int Iteracion, String FF, int Supervisor, Connection conexion) {
+    public void InsertarProyecto(String Nombre, String FI, String Departamento, String Estado,  String FF, int Supervisor, int Administrador, Connection conexion) {
         try {
             PreparedStatement pps = conexion.prepareStatement("INSERT INTO Proyecto(Nombre, FechaInicio, Departamento, Estado, Iteraciones, FechaFinal, Supervisor) VALUES(?,?,?,?,?,?,?)");
             pps.setString(1, Nombre);
             pps.setString(2, FI);
             pps.setString(3, Departamento);
             pps.setString(4, Estado);
-            pps.setInt(5, Iteracion);
-            pps.setString(6, FF);
-            pps.setInt(7, Supervisor);
+            pps.setString(5, FF);
+            pps.setInt(6, Supervisor);
+            pps.setInt (7, Administrador);
             pps.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se pudo insertar Proyecto" + ex);
@@ -104,5 +104,27 @@ public class ModeloProyecto {
         }
         return modelo2;
     }
+    
+    
+    
+    public void InsertarTareaUsuario(String NombreProyecto, String NombreDepartamento, String TareaNombre, 
+            int idUsuarioEmpleado,  int Estado, int Iteraciones, Connection conexion) {
+        try {
+            PreparedStatement pps = conexion.prepareStatement("INSERT INTO Usuario_has_Tareas(Proyecto_Nombre,"
+                    + " Proyecto_Departamento, Tareas_Nombre, Usuario_idEmpleados, EstadosTareas_idEstadosTareas, iteraciones) VALUES(?,?,?,?,?,?)");
+            pps.setString(1, NombreProyecto);
+            pps.setString(2, NombreDepartamento);
+            pps.setString(3, TareaNombre);
+            pps.setInt(4, idUsuarioEmpleado);
+            pps.setInt(5, Estado);
+            pps.setInt(6, Iteraciones);
+            pps.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se pudo insertar Usuario/Tarea" + ex);
+
+        }
+    }
 
 }
+
+

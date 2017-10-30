@@ -114,10 +114,6 @@ public class ProyectosController implements Initializable {
     private Label lblGuardar;
     @FXML
     private Label lblNoTarea;
-    @FXML
-    private MenuItem MbMisProyectos;
-    @FXML
-    private MenuItem MbSalirS;
 
     /**
      * Initializes the controller class.
@@ -168,8 +164,17 @@ public class ProyectosController implements Initializable {
     public ObservableList<String> modelo = FXCollections.observableArrayList();
     public ObservableList<String> modelo1 = FXCollections.observableArrayList();
     public ObservableList<String> modelo2 = FXCollections.observableArrayList();
-   public String Estado= "XXXX";
+    public String Estado= "XXXX";
+    public int EstadoTarea = 1; 
+    public int n = 0;
+    private Usuario us;
 
+    public void setUs(Usuario us) {
+        this.us = us;
+    }
+    
+    
+    
     ModeloProyecto MP = new ModeloProyecto();
 
     public void CargarUsuarios() {
@@ -178,13 +183,13 @@ public class ProyectosController implements Initializable {
 
     }
     public void InsertarProyecto() {
-         String a =  String.valueOf(cbxCreadoPor.getSelectionModel().getSelectedItem());
+        String a =  String.valueOf(cbxCreadoPor.getSelectionModel().getSelectedItem());
         String[] partes = a.split("-");
         String partes1= partes[0];
         String partes2= partes[1];
         MP.InsertarProyecto(txtNombreProyecto.getText(), String.valueOf(txtDatePickerInicio.getValue()),
-        txtDepartamento.getSelectionModel().getSelectedItem(), Estado, Integer.parseInt(cbxIteraciones.getSelectionModel().getSelectedItem()), 
-        String.valueOf(txtDatePickerFinal.getValue()),Integer.parseInt(partes2), conexion); 
+        txtDepartamento.getSelectionModel().getSelectedItem(), Estado, 
+        String.valueOf(txtDatePickerFinal.getValue()),Integer.parseInt(partes2),Integer.parseInt(us.getIdUsuario()) , conexion); 
     }
 
     public void CargarTareas() {
@@ -231,9 +236,11 @@ public class ProyectosController implements Initializable {
     private void Guardar(ActionEvent event) {
         if(MostrarError()==false){
             InsertarProyecto();
+            insertarUsuarioTarea();
             RefrescarCampos();
         }
            
+
     }
 
     @FXML
@@ -253,7 +260,10 @@ public class ProyectosController implements Initializable {
             tareas.addAll(tareasUsuarios.get(i).getIdUsuario() + " - " + tareasUsuarios.get(i).getNombreTarea());
         }
         cbxTareasProyecto.setItems(tareas);
+        
     }
+    
+   
      public void OcultarNo() {
         lblNoNombre.setVisible(false);
         lblNoCreado.setVisible(false);
@@ -299,15 +309,21 @@ public class ProyectosController implements Initializable {
         txtNombreProyecto.setText("");
      
     }
-
-    @FXML
-    private void Irproyectos(ActionEvent event) {
-    }
-
-    @FXML
-    private void SalirS(ActionEvent event) {
+    
+   private void insertarUsuarioTarea(){
+        String a =  String.valueOf(cbxTareasProyecto.getSelectionModel().getSelectedItem());
+        String[] partes = a.split(" - ");
+        String partes1= partes[0];
+        String partes2= partes[1];
         
-        menu.Salir();
-    }
+        for(int i = 0; i < tareasUsuarios.size(); i++){
+            MP.InsertarTareaUsuario(txtNombreProyecto.getText(), txtDepartamento.getSelectionModel().getSelectedItem(),
+            tareasUsuarios.get(i).getNombreTarea(), Integer.parseInt(tareasUsuarios.get(i).getIdUsuario()), EstadoTarea,
+                    Integer.parseInt(cbxIteraciones.getSelectionModel().getSelectedItem()) ,conexion);
+        }
+       
+   }
+    
+    
     
 }   
