@@ -13,17 +13,15 @@ public class ProyectoObservable {
 
     private String Nombre;
     private String CreadoPor;
-    private int Iteracion;
     private String Tareas;
     private String Departamento;
     private String FI;
     private String FF;
     
     
-    public ProyectoObservable(String Nombre, String Creador, int Iteracion, String Tareas, String Departamento, String FI, String FF){
+    public ProyectoObservable(String Nombre, String Creador, String Tareas, String Departamento, String FI, String FF){
         this.Nombre=Nombre;
         this.CreadoPor=Creador;
-        this.Iteracion=Iteracion;
         this.Tareas=Tareas;
         this.Departamento=Departamento;
         this.FI=FI;
@@ -45,14 +43,6 @@ public class ProyectoObservable {
 
     public void setCreadoPor(String CreadoPor) {
         this.CreadoPor = CreadoPor;
-    }
-
-    public int getIteracion() {
-        return Iteracion;
-    }
-
-    public void setIteracion(int Iteracion) {
-        this.Iteracion = Iteracion;
     }
 
     public String getTareas() {
