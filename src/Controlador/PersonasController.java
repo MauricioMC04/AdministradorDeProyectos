@@ -3,11 +3,14 @@ package Controlador;
 import Modelo.Conexion;
 import Modelo.DatosPersonas;
 import Modelo.Usuario;
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -109,8 +112,6 @@ public class PersonasController implements Initializable {
     private Label lblNoSeleccionaEditar;
     @FXML
     private MenuItem MbMisProyectos;
-    @FXML
-    private MenuItem MbSalirS;
 
     public void setProgramaPrincipal(AdministradorDeProyectosFX ProgramaPrincipal) {
         this.ProgramaPrincipal = ProgramaPrincipal;
@@ -328,10 +329,5 @@ public class PersonasController implements Initializable {
         Scene scene = MbMenu.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
-    }
-
-    @FXML
-    private void SalirS(javafx.event.ActionEvent event) {
-        menu.Salir();
     }
 }

@@ -18,11 +18,10 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="226.0" prefWidth="893.0">
                            <children>
                               <Label fx:id="lblNombreProyecto" layoutX="80.0" layoutY="29.0" text="Nombre Proyecto:" />
-                              <Label fx:id="lblCreadoPor" layoutX="114.0" layoutY="83.0" text="Creado por:" />
-                              <Label fx:id="lblIteraciones" layoutX="115.0" layoutY="137.0" text="Iteraciones:" />
+                              <Label fx:id="lblCreadoPor" layoutX="114.0" layoutY="83.0" text="Supervisado por:" />
                               <Label fx:id="lblDepartamento" layoutX="451.0" layoutY="29.0" text="Departamento:" />
-                              <Label fx:id="lblFechaInicio" layoutX="450.0" layoutY="73.0" text="Fecha inicio:" />
-                              <Label fx:id="lblFechaEntrega" layoutX="442.0" layoutY="123.0" text="Fecha entrega:" />
+                              <Label fx:id="lblFechaInicio" layoutX="461.0" layoutY="73.0" text="Fecha inicio:" />
+                              <Label fx:id="lblFechaEntrega" layoutX="449.0" layoutY="123.0" text="Fecha entrega:" />
                               <ComboBox fx:id="txtDepartamento" layoutX="607.0" layoutY="24.0" prefWidth="150.0" />
                               <DatePicker fx:id="txtDatePickerInicio" layoutX="607.0" layoutY="69.0" prefHeight="25.0" prefWidth="150.0" />
                               <DatePicker fx:id="txtDatePickerFinal" layoutX="607.0" layoutY="118.0" prefHeight="22.0" prefWidth="151.0">
@@ -32,12 +31,10 @@
                               </DatePicker>
                               <TextField fx:id="txtNombreProyecto" layoutX="223.0" layoutY="24.0" />
                               <ComboBox fx:id="cbxCreadoPor" layoutX="223.0" layoutY="78.0" prefWidth="150.0" />
-                              <ComboBox fx:id="cbxIteraciones" layoutX="223.0" layoutY="129.0" prefWidth="150.0" />
-                              <Label fx:id="lblTareasProyecto" layoutX="90.0" layoutY="188.0" text="Tareas Proyecto:" />
-                              <ComboBox fx:id="cbxTareasProyecto" layoutX="223.0" layoutY="184.0" prefWidth="150.0" />
+                              <Label fx:id="lblTareasProyecto" layoutX="114.0" layoutY="131.0" text="Tareas Proyecto:" />
+                              <ComboBox fx:id="cbxTareasProyecto" layoutX="226.0" layoutY="127.0" prefWidth="150.0" />
                               <Button fx:id="btnGuardarProyecto" layoutX="699.0" layoutY="181.0" mnemonicParsing="false" onAction="#Guardar" text="Guardar" />
-                              <Label fx:id="lblNoTareasProyecto" layoutX="78.0" layoutY="188.0" text="*" textFill="#f20606" />
-                              <Label fx:id="lblNoIteraciones" layoutX="105.0" layoutY="137.0" text="*" textFill="#f80606" />
+                              <Label fx:id="lblNoTareasProyecto" layoutX="106.0" layoutY="132.0" text="*" textFill="#f20606" />
                               <Label fx:id="lblNoCreado" layoutX="108.0" layoutY="83.0" text="*" textFill="#f50505" />
                               <Label fx:id="lblNoDepartamento" layoutX="442.0" layoutY="28.0" text="*" textFill="#f20303" />
                               <Label fx:id="lblNoFechaI" layoutX="439.0" layoutY="75.0" text="*" textFill="#f50303" />
@@ -57,6 +54,9 @@
                               <TextField fx:id="txtEmpleadoSeleccionado" disable="true" layoutX="265.0" layoutY="363.0" />
                               <Button fx:id="btnAgregarTarea" layoutX="658.0" layoutY="360.0" mnemonicParsing="false" onAction="#AgregarTarea" text="Agregar Tarea" />
                               <Label fx:id="lblNoTarea" layoutX="116.0" layoutY="43.0" text="*" textFill="#f20303" />
+                              <Label fx:id="lblIteraciones" layoutX="486.0" layoutY="41.0" text="Iteraciones:" />
+                              <ComboBox fx:id="cbxIteraciones" layoutX="581.0" layoutY="38.0" prefWidth="150.0" />
+                              <Label fx:id="lblNoIteraciones" layoutX="458.0" layoutY="38.0" text="*" textFill="#f80606" />
                            </children>
                         </AnchorPane>
                     </items>
@@ -66,31 +66,23 @@
         </content>
         
       </TitledPane>
-     <MenuBar fx:id="MbMenu" layoutX="-9.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="46.0" prefWidth="1927.0" stylesheets="@Estilo.css" AnchorPane.leftAnchor="-9.0">
-            <menus>
-                <Menu mnemonicParsing="false" text="Navegar">
-                    <items>
-              
-                        <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
-                        <MenuItem mnemonicParsing="false" onAction="#Proyectos" text="Proyectos" />
-                        <MenuItem mnemonicParsing="false" onAction="#Tareas" text="Tareas" />
-              
-                        <MenuItem mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
-                    </items>
-                </Menu>
-  
-                <Menu mnemonicParsing="false" text="Personal">
-                    <items>
-                        <MenuItem fx:id="MbMisProyectos" mnemonicParsing="false" onAction="#Irproyectos" text="Mis Proyectos" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Sistema">
-                    <items>
-                        <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
-                        <MenuItem fx:id="MbSalirS" mnemonicParsing="false" onAction="#SalirS" text="Salir del sistema" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
+      <MenuBar fx:id="MbMenu" layoutY="-2.0" prefHeight="25.0" prefWidth="845.0" AnchorPane.leftAnchor="0.0">
+  <menus>
+    <Menu mnemonicParsing="false" text="Navegar">
+      <items>
+        
+              <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
+        <MenuItem mnemonicParsing="false" onAction="#Proyectos" text="Proyectos" />
+        <MenuItem mnemonicParsing="false" onAction="#Tareas" text="Tareas y Departamentos" />
+        <MenuItem mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
+      </items>
+    </Menu>
+    <Menu mnemonicParsing="false" text="Sistema">
+      <items>
+        <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
+      </items>
+    </Menu>
+  </menus>
+</MenuBar>
    </children>
 </AnchorPane>

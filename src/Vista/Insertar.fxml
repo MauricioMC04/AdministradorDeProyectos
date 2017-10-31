@@ -54,32 +54,24 @@
   
             </tabs>
         </TabPane>
-        <MenuBar fx:id="MbMenu" layoutX="-9.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="46.0" prefWidth="1927.0" stylesheets="@Estilo.css" AnchorPane.leftAnchor="-9.0">
-            <menus>
-                <Menu mnemonicParsing="false" text="Navegar">
-                    <items>
-              
-                        <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
-                        <MenuItem mnemonicParsing="false" onAction="#Proyectos" text="Proyectos" />
-                        <MenuItem mnemonicParsing="false" onAction="#Tareas" text="Tareas" />
-              
-                        <MenuItem mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
-                    </items>
-                </Menu>
-  
-                <Menu mnemonicParsing="false" text="Personal">
-                    <items>
-                        <MenuItem fx:id="MbMisProyectos" mnemonicParsing="false" onAction="#Irproyectos" text="Mis Proyectos" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Sistema">
-                    <items>
-                        <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
-                        <MenuItem fx:id="MbSalirS" mnemonicParsing="false" onAction="#SalirS" text="Salir del sistema" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
+        <MenuBar fx:id="MbMenu" layoutY="-2.0" prefHeight="32.0" prefWidth="2028.0" AnchorPane.leftAnchor="-5.0">
+  <menus>
+    <Menu mnemonicParsing="false" text="Navegar">
+      <items>
+        
+              <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
+        <MenuItem mnemonicParsing="false" onAction="#Proyectos" text="Proyectos" />
+        <MenuItem mnemonicParsing="false" onAction="#Tareas" text="Tareas y Departamentos" />
+        <MenuItem mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
+      </items>
+    </Menu>
+    <Menu mnemonicParsing="false" text="Sistema">
+      <items>
+        <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
+      </items>
+    </Menu>
+  </menus>
+</MenuBar>
         
         
     </children>

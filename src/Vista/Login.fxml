@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.LoginControador">
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.LoginControador">
    <children>
       <Pane fx:id="Login" layoutX="61.0" layoutY="87.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
       <ImageView fitHeight="756.0" fitWidth="955.0" opacity="0.56">
@@ -132,11 +132,11 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="710.0">
                      <children>
-                        <Label fx:id="lblNumCedula" layoutX="29.0" layoutY="21.0" text="Digite su número de cedula" textFill="WHITE">
+                        <Label fx:id="lblNumCedula" layoutX="29.0" layoutY="21.0" text="Digite su número de cedula">
                            <font>
                               <Font size="18.0" />
                            </font></Label>
-                        <TextField fx:id="TxtValidarCedula" layoutX="29.0" layoutY="57.0" onKeyPressed="#ValidarNumeros" styleClass="forma" />
+                        <TextField fx:id="TxtValidarCedula" layoutX="29.0" layoutY="57.0" onKeyPressed="#ValidarNumeros" />
                         <Button fx:id="btnValidarCedula" layoutX="257.0" layoutY="53.0" mnemonicParsing="false" onAction="#ValidarCedula" prefHeight="39.0" prefWidth="80.0" text="Validar">
                            <styleClass>
                               <String fx:value="color" />
@@ -149,46 +149,30 @@
                         </Label>
                         <Pane fx:id="PanelRegistrarse" layoutX="14.0" layoutY="106.0" prefHeight="486.0" prefWidth="620.0" visible="false">
                            <children>
-                              <Label fx:id="lblRNusuario" layoutX="14.0" layoutY="14.0" text="Nombre de usuario" textFill="#0d0000">
+                              <Label fx:id="lblRNusuario" layoutX="14.0" layoutY="14.0" text="Nombre de usuario">
                                  <font>
                                     <Font size="18.0" />
                                  </font></Label>
-                              <TextField fx:id="txtNombreUsuarioRegistrar" layoutX="14.0" layoutY="42.0">
-                                 <styleClass>
-                                    <String fx:value="forma" />
-                                    <String fx:value="letra" />
-                                 </styleClass></TextField>
-                              <Label fx:id="lblRCont" layoutX="14.0" layoutY="95.0" text="Contraseña" textFill="#0d0000">
+                              <TextField fx:id="txtNombreUsuarioRegistrar" layoutX="14.0" layoutY="42.0" />
+                              <Label fx:id="lblRCont" layoutX="14.0" layoutY="95.0" text="Contraseña">
                                  <font>
                                     <Font size="18.0" />
                                  </font></Label>
-                              <PasswordField fx:id="PassFieldContraseñaRegistrarse" layoutX="14.0" layoutY="118.0">
-                                 <styleClass>
-                                    <String fx:value="forma" />
-                                    <String fx:value="letra" />
-                                 </styleClass></PasswordField>
-                              <PasswordField fx:id="PsContraseñaCorrecta" layoutX="340.0" layoutY="118.0">
-                                 <styleClass>
-                                    <String fx:value="letra" />
-                                    <String fx:value="forma" />
-                                 </styleClass></PasswordField>
-                              <Label fx:id="lblRContras" layoutX="340.0" layoutY="95.0" text="Ingrese de nuevo su contraseña" textFill="#0d0000">
+                              <PasswordField fx:id="PassFieldContraseñaRegistrarse" layoutX="14.0" layoutY="118.0" />
+                              <PasswordField fx:id="PsContraseñaCorrecta" layoutX="340.0" layoutY="118.0" />
+                              <Label fx:id="lblRContras" layoutX="340.0" layoutY="95.0" text="Ingrese de nuevo su contraseña">
                                  <font>
                                     <Font size="18.0" />
                                  </font></Label>
-                              <Label fx:id="lblSPregunta" layoutX="14.0" layoutY="178.0" text="Seleccione su pregunta se seguridad" textFill="#0d0000">
+                              <Label fx:id="lblSPregunta" layoutX="14.0" layoutY="178.0" text="Seleccione su pregunta se seguridad">
                                  <font>
                                     <Font size="18.0" />
                                  </font></Label>
-                              <Label fx:id="lblRespuesta" layoutX="340.0" layoutY="179.0" text="Respuesta" textFill="#0d0000">
+                              <Label fx:id="lblRespuesta" layoutX="340.0" layoutY="179.0" text="Respuesta">
                                  <font>
                                     <Font size="18.0" />
                                  </font></Label>
-                              <TextField fx:id="txtRespuestaRegistrarse" layoutX="340.0" layoutY="215.0">
-                                 <styleClass>
-                                    <String fx:value="letra" />
-                                    <String fx:value="forma" />
-                                 </styleClass></TextField>
+                              <TextField fx:id="txtRespuestaRegistrarse" layoutX="340.0" layoutY="215.0" />
                               <Label fx:id="lblASReg2" layoutX="200.0" layoutY="40.0" text="*" textFill="#e10404" visible="false">
                                  <font>
                                     <Font size="24.0" />
@@ -219,11 +203,7 @@
                                     <String fx:value="forma" />
                                     <String fx:value="color" />
                                  </styleClass></Button>
-                              <ComboBox fx:id="CbxPreguntaSeguridadRegistrarse" layoutX="14.0" layoutY="215.0" prefHeight="31.0" prefWidth="177.0">
-                                 <styleClass>
-                                    <String fx:value="forma" />
-                                    <String fx:value="letra" />
-                                 </styleClass></ComboBox>
+                              <ComboBox fx:id="CbxPreguntaSeguridadRegistrarse" layoutX="14.0" layoutY="215.0" prefHeight="31.0" prefWidth="177.0" />
                               <Label fx:id="lblMSReg1" layoutX="28.0" layoutY="339.0" text="* CAMPOS INCORRECTOS" textFill="#ee0b0b" visible="false">
                                  <font>
                                     <Font size="24.0" />

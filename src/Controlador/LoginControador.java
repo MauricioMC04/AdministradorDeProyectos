@@ -30,7 +30,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import static javax.management.Query.gt;
 import static javax.management.Query.lt;
 
@@ -150,10 +149,9 @@ public class LoginControador implements Initializable {
     private Label lblMSReg3;
 
     public void initialize(URL url, ResourceBundle rb) {
-              
+
         CbxPreguntaSeguridadRegistrarse.setItems(options);
         CbxPreguntaSeguridadRegistrarse.setTooltip(new Tooltip("Seleccion la pregunta de seguridad"));
-         
 
     }
 

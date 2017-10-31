@@ -18,16 +18,16 @@ public class ModeloLogin {
     public int Login(String Nombreusuario, String Contrasena) {
         String SSQL = "SELECT * FROM Usuario WHERE NombreUsuario ='" + Nombreusuario + "' AND Contrasena=('" + Contrasena + "')";
         String cap = "";
-        String cedula = "";
+        String cap2 = "";
         try {
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery(SSQL);
             while (rs.next()) {
                 cap = rs.getString("Rol");
-                cedula = rs.getString("idUsuario");
+                cap2 = rs.getString("idUsuario");
             }
+            MenuController.Cedula = Integer.parseInt(cap2);
             if (cap.equals("1")) {
-                MenuController.Cedula= Integer.parseInt(cedula);
                 return 1;
             }
              if (cap.equals("2")) {
@@ -128,5 +128,6 @@ public class ModeloLogin {
     }
     Conexion conec = new Conexion();
     Connection c = conec.conexion();
-
+    
+    
 }

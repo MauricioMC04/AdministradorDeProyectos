@@ -21,13 +21,20 @@ public class ConsultasController implements Initializable {
     private MenuItem MPersonas;
     @FXML
     private MenuItem MbCerrarS;
+    @FXML
     private MenuItem MProyectos;
     @FXML
     private MenuItem MbMisProyectos;
-    private MenuItem MPtareas;
-    private MenuItem MPEdittar;
     @FXML
-    private MenuItem MbSalirS;
+    private Menu MInavegar;
+    @FXML
+    private Menu MenuIsistema;
+    @FXML
+    private Menu MenuIpersonal;
+    @FXML
+    private MenuItem MPtareas;
+    @FXML
+    private MenuItem MPEdittar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -72,13 +79,12 @@ public class ConsultasController implements Initializable {
         stage.close();
     }
 
-
     @FXML
-    private void Irproyectos(ActionEvent event) {
+    private void ProyectosValidar(Event event) {
+
     }
 
     @FXML
-    private void SalirS(ActionEvent event) {
-        menu.Salir();
+    private void Irproyectos(ActionEvent event) {
     }
 }

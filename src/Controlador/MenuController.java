@@ -10,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class MenuController implements Initializable {
 
@@ -23,11 +22,11 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
+        
     }
-    public static int Tipo = 0;
-    public static int Cedula = 0;
-
+    public static int Cedula=0;
+    public static int Tipo =0;
     @FXML
     private void Login(ActionEvent event) {
         try {
@@ -47,6 +46,7 @@ public class MenuController implements Initializable {
     }
 
     public void Login() {
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Login.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -68,8 +68,6 @@ public class MenuController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Usuarios");
             stage.setScene(new Scene(root1));
-            stage.setMaximized(true);
-            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
 
         } catch (Exception e) {
@@ -85,8 +83,6 @@ public class MenuController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Proyectos");
             stage.setScene(new Scene(root1));
-            stage.setMaximized(true);
-            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
 
         } catch (Exception e) {
@@ -100,10 +96,8 @@ public class MenuController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Insertar.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-            stage.setTitle("Insertar");
+            stage.setTitle("Proyectos");
             stage.setScene(new Scene(root1));
-            stage.setMaximized(true);
-            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
 
         } catch (Exception e) {
@@ -111,29 +105,26 @@ public class MenuController implements Initializable {
 
         }
     }
-
-    public void MisProyectos() {
+    
+    
+     public void MisProyectos() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Consultas.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Mis Proyectos");
             stage.setScene(new Scene(root1));
-            stage.setMaximized(true);
-            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
+
         } catch (Exception e) {
             System.out.println("no");
 
         }
     }
 
-    public void Salir() {
-        System.exit(0);
-    }
-
     @FXML
     private void TareasDepartamentos(ActionEvent event) {
     }
+    
 
 }

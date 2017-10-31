@@ -25,7 +25,7 @@ public class ModeloProyecto {
 
     public void InsertarProyecto(String Nombre, String FI, String Departamento, String Estado,  String FF, int Supervisor, int Administrador, Connection conexion) {
         try {
-            PreparedStatement pps = conexion.prepareStatement("INSERT INTO Proyecto(Nombre, FechaInicio, Departamento, Estado, Iteraciones, FechaFinal, Supervisor) VALUES(?,?,?,?,?,?,?)");
+            PreparedStatement pps = conexion.prepareStatement("INSERT INTO Proyecto(Nombre, FechaInicio, Departamento, Estado,  FechaFinal, Supervisor, Administrador) VALUES(?,?,?,?,?,?,?)");
             pps.setString(1, Nombre);
             pps.setString(2, FI);
             pps.setString(3, Departamento);
@@ -126,5 +126,3 @@ public class ModeloProyecto {
     }
 
 }
-
-
