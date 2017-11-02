@@ -311,4 +311,5 @@ public class ConsultasController implements Initializable {
         if(rbtnProyecto.isSelected())rbtnProyecto.setSelected(false);
         if(rbtnSupervisor.isSelected())rbtnSupervisor.setSelected(false);
     }
+    
 }
