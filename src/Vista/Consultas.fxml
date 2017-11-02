@@ -6,30 +6,62 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1823.0" prefWidth="2466.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ConsultasController">
-   <children>
-       <MenuBar fx:id="MbMenu" layoutX="-12.0" layoutY="-9.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="54.0" prefWidth="2478.0" stylesheets="@Estilo.css" AnchorPane.leftAnchor="-12.0">
-           <menus>
-             <Menu fx:id="MInavegar" mnemonicParsing="false" text="Navegar">
-               <items>
-                 
-                 <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
-                 <MenuItem fx:id="MProyectos" mnemonicParsing="false" onAction="#Proyectos" onMenuValidation="#ProyectosValidar" text="Proyectos" />
-                 <MenuItem fx:id="MPtareas" mnemonicParsing="false" onAction="#Tareas" text="Tareas" />
-                 <MenuItem fx:id="MPEdittar" mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
-               </items>
-             </Menu>
-             <Menu fx:id="MenuIsistema" mnemonicParsing="false" text="Sistema">
-               <items>
-                 <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
-               </items>
-             </Menu>
-             <Menu fx:id="MenuIpersonal" mnemonicParsing="false" text="Personal">
-            <items>
-              <MenuItem fx:id="MbMisProyectos" mnemonicParsing="false" onAction="#Irproyectos" text="Mis Proyectos" />
-            </items>
-          </Menu>
-           </menus>
-         </MenuBar>
-   </children>
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="759.0" prefWidth="1442.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ConsultasController">
+    <children>
+        <MenuBar fx:id="MbMenu" layoutX="-9.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="46.0" prefWidth="913.0" stylesheets="@Estilo.css" AnchorPane.leftAnchor="-9.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Navegar">
+                    <items>
+              
+                        <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
+                        <MenuItem mnemonicParsing="false" onAction="#Proyectos" text="Proyectos" />
+                        <MenuItem mnemonicParsing="false" onAction="#Tareas" text="Tareas" />
+              
+                        <MenuItem mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
+                    </items>
+                </Menu>
+  
+                <Menu mnemonicParsing="false" text="Personal">
+                    <items>
+                        <MenuItem fx:id="MbMisProyectos" mnemonicParsing="false" onAction="#Irproyectos" text="Mis Proyectos" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Sistema">
+                    <items>
+                        <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
+                        <MenuItem fx:id="MbSalirS" mnemonicParsing="false" onAction="#SalirS" text="Salir del sistema" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+      <SplitPane dividerPositions="0.49583333333333335" layoutX="2.0" layoutY="42.0" prefHeight="714.0" prefWidth="1442.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="tblProyectos" layoutX="14.0" layoutY="281.0" onMouseClicked="#MostrarTareas" prefHeight="418.0" prefWidth="689.0" />
+                  <RadioButton fx:id="rbtnSupervisor" layoutX="84.0" layoutY="138.0" mnemonicParsing="false" text="Supervisor">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="rbtngFiltros" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton fx:id="rbtnDepartamento" layoutX="74.0" layoutY="88.0" mnemonicParsing="false" text="Departamento" toggleGroup="$rbtngFiltros" />
+                  <RadioButton fx:id="rbtnEstado" layoutX="81.0" layoutY="187.0" mnemonicParsing="false" text="Estado" toggleGroup="$rbtngFiltros" />
+                  <Button fx:id="btnBusqueda" layoutX="466.0" layoutY="96.0" mnemonicParsing="false" onAction="#Buscar" prefHeight="26.0" prefWidth="68.0" text="Buscar" />
+                  <TextField fx:id="txtBusqueda" layoutX="255.0" layoutY="96.0" />
+                  <RadioButton fx:id="rbtnProyecto" layoutX="73.0" layoutY="42.0" mnemonicParsing="false" text="Proyecto" toggleGroup="$rbtngFiltros" />
+                  <Button fx:id="btnCargarTodos" layoutX="578.0" layoutY="95.0" mnemonicParsing="false" onAction="#CargarTodos" prefHeight="28.0" prefWidth="90.0" text="Cargar Todos" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="712.0" prefWidth="1000.0">
+               <children>
+                  <Label fx:id="lblProyecto" layoutX="126.0" layoutY="40.0" prefHeight="23.0" prefWidth="90.0" text="Proyecto:" />
+                  <Label fx:id="lblDepartamento" layoutX="131.0" layoutY="101.0" text="Departamento:" />
+                  <Label fx:id="lblNombreProyecto" layoutX="293.0" layoutY="43.0" prefHeight="17.0" prefWidth="236.0" />
+                  <Label fx:id="lblNombreDepartamento" layoutX="306.0" layoutY="101.0" prefHeight="17.0" prefWidth="241.0" />
+                  <TableView fx:id="tblTarea" layoutX="8.0" layoutY="278.0" prefHeight="430.0" prefWidth="708.0" />
+                  <ComboBox fx:id="cmbEstados" layoutX="141.0" layoutY="190.0" prefWidth="150.0" />
+                  <Button fx:id="btnEditar" layoutX="435.0" layoutY="190.0" mnemonicParsing="false" onAction="#Editar" prefHeight="28.0" prefWidth="68.0" text="Editar" />
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+    </children>
 </AnchorPane>

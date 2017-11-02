@@ -10,7 +10,12 @@ public class Conexion {
     
     Connection conexion = null;
 
-
+    /*
+    Nombre de metodo: conexion
+    Parametros: Ninguno
+    Retorno: Un obejeto Connection
+    Descripcion: Metodo encargado de hacer la coneccion con el hosting de la base de datos
+    */
     public Connection conexion() {
         try {
             conexion = null;
@@ -21,14 +26,4 @@ public class Conexion {
         }
         return conexion;
     }
-    
-
-    /*
-    Nombre de metodo: conexion
-    Parametros: Ninguno
-    Retorno: Un obejeto Connection
-    Descripcion: Metodo encargado de hacer la coneccion con el hosting de la base de datos
-    */
-   
-
 }
