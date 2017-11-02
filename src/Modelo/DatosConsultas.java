@@ -118,7 +118,7 @@ public class DatosConsultas {
             return "SELECT Tareas_Nombre, Usuario_idEmpleados, EstadosTareas_idEstadosTareas, iteraciones from Usuario_"
                     + "has_Tareas WHERE Proyecto_Nombre = '" + proyecto.getNombre() + "' AND Proyecto_Departamento = '"
                     + proyecto.getDepartamento() + "' AND Usuario_idEmpleados = " + cedula + " AND EstadosTareas_idEstadosTareas !"
-                    + "= 3";
+                    + "= 3"; 
         }
     }
     
