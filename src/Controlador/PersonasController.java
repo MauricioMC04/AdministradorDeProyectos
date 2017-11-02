@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Conexion;
 import Modelo.DatosPersonas;
 import Modelo.Usuario;
+import Modelo.EditarProyecto;
 import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.Connection;
@@ -256,6 +257,12 @@ public class PersonasController implements Initializable {
 
     @FXML
     private void EditProyectos(javafx.event.ActionEvent event) {
+          menu.EditarProyectos();
+        Scene scene =MbMenu.getScene();
+        Stage stage = (Stage) scene.getWindow();
+        stage.close();
+        
+        
     }
 
     @FXML

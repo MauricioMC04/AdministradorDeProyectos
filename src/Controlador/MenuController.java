@@ -121,6 +121,21 @@ public class MenuController implements Initializable {
 
         }
     }
+     
+     public void EditarProyectos(){
+         try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/EditarProy.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Editar Proyectos");
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("no");
+
+        }
+     }
 
     @FXML
     private void TareasDepartamentos(ActionEvent event) {

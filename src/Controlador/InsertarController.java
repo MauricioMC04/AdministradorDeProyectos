@@ -112,6 +112,11 @@ public class InsertarController implements Initializable {
 
     @FXML
     private void EditProyectos(ActionEvent event) {
+         menu.EditarProyectos();
+        Scene scene =MbMenu.getScene();
+        Stage stage = (Stage) scene.getWindow();
+        stage.close();
+      
     }
 
     @FXML

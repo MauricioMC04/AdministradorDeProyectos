@@ -1,32 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelo;
 
 /**
  *
  * @author Ricardo
  */
-public class ProyectoObservable {
-
+public class Proyecto {
     private String Nombre;
-    private String CreadoPor;
+    private int Supervisor;
     private String Tareas;
     private String Departamento;
     private String FI;
     private String FF;
+    private int Administrador;
     
     
-    public ProyectoObservable(String Nombre, String Creador, String Tareas, String Departamento, String FI, String FF){
+    public Proyecto(String Nombre,String Tareas, String Departamento, String FI, String FF, int Administrador,int Supervisor){
         this.Nombre=Nombre;
-        this.CreadoPor=Creador;
         this.Tareas=Tareas;
         this.Departamento=Departamento;
         this.FI=FI;
         this.FF=FF;
-   
+        this.Administrador=Administrador;
+        this.Supervisor=Supervisor;
     }
 
     public String getNombre() {
@@ -37,13 +33,23 @@ public class ProyectoObservable {
         this.Nombre = Nombre;
     }
 
-    public String getCreadoPor() {
-        return CreadoPor;
+    public int getSupervisor() {
+        return Supervisor;
     }
 
-    public void setCreadoPor(String CreadoPor) {
-        this.CreadoPor = CreadoPor;
+    public void setSupervisor(int Supervisor) {
+        this.Supervisor = Supervisor;
     }
+
+    public int getAdministrador() {
+        return Administrador;
+    }
+
+    public void setAdministrador(int Administrador) {
+        this.Administrador = Administrador;
+    }
+
+   
 
     public String getTareas() {
         return Tareas;
@@ -77,6 +83,4 @@ public class ProyectoObservable {
         this.FF = FF;
     }
     
-    
-
 }

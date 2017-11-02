@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="449.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.EditarProyController">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <TableView fx:id="tblProyectos" onMouseClicked="#Trasladar" prefHeight="200.0" prefWidth="827.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Button fx:id="btnActualizar" layoutX="701.0" layoutY="384.0" mnemonicParsing="false" text="Actualizar" />
+      <DatePicker fx:id="DatePickerFechaE" layoutX="470.0" layoutY="354.0" />
+      <TextField fx:id="txtDepartamento" layoutX="133.0" layoutY="372.0" />
+      <TextField fx:id="txtSupervisor" layoutX="521.0" layoutY="228.0" />
+      <TextField fx:id="txtTareas" layoutX="96.0" layoutY="314.0" />
+      <Label fx:id="lblTareasP" layoutX="47.0" layoutY="318.0" text="Tareas" />
+      <Label fx:id="lblFechaE" layoutX="386.0" layoutY="357.0" text="FechaEntrega" />
+      <Label fx:id="lblDepartamento" layoutX="46.0" layoutY="375.0" text="Departamento:" />
+      <Label fx:id="lblSupervisorP" layoutX="436.0" layoutY="230.0" text="Supervisado por" />
+      <Label fx:id="lblNombreP" layoutX="48.0" layoutY="262.0" text="Nombre:" />
+      <TextField fx:id="txtNombreP" layoutX="96.0" layoutY="258.0" />
+   </children>
+</AnchorPane>

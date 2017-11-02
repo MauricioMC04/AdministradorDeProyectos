@@ -24,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SortEvent;
@@ -31,6 +32,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import static javafx.scene.input.KeyCode.T;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -127,7 +129,9 @@ public class ProyectosController implements Initializable {
         CargarDepartamentos();
         cbxIteraciones.setItems(options);
         OcultarNo();
+        
     }
+
 
     private Conexion conect = new Conexion();
     private Connection conexion = conect.conexion();
