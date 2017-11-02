@@ -324,7 +324,11 @@ public class ProyectosController implements Initializable {
         }
        
    }
-    
-    
-    
+   
+   private void CargarSupDisponibles(){
+       Usuario us = new Usuario();
+       
+   
+   }
+     
 }   

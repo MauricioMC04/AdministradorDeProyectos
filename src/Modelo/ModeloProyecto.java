@@ -124,5 +124,28 @@ public class ModeloProyecto {
 
         }
     }
+    
+    public void CargarSupervisores( Connection conexion){
+        
+        
+        String sql = "SELECT * FROM Usuario WHERE Rol = 2";
+        DefaultComboBoxModel modeA = new DefaultComboBoxModel();
+        String datos = "";
+        String datos2 = "";
+        
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            while (rs.next()) {                
+                
+                datos = rs.getString("idUsuario");
+                datos2 = rs.getString("Nombre");
+                
+            }
+            
+        } catch (Exception e) {
+        }
+    }
 
 }
