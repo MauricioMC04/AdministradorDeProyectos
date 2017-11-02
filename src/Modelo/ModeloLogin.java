@@ -19,14 +19,21 @@ public class ModeloLogin {
         String SSQL = "SELECT * FROM Usuario WHERE NombreUsuario ='" + Nombreusuario + "' AND Contrasena=('" + Contrasena + "')";
         String cap = "";
         String cap2 = "";
+        String cap3 = "";
         try {
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery(SSQL);
             while (rs.next()) {
                 cap = rs.getString("Rol");
                 cap2 = rs.getString("idUsuario");
+                cap3 = rs.getString("NombreUsuario");
+                if(Nombreusuario.equals(cap3)){
+                System.out.println("asd");
+                break;
+            }
             }
             MenuController.Cedula = Integer.parseInt(cap2);
+            
             if (cap.equals("1")) {
                 return 1;
             }

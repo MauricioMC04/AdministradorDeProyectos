@@ -53,14 +53,7 @@ private void comparar(){
  System.out.println("******************************" +
     "******************************\n");
  }
- 
- /**
-  * Comparamos las Fechas
-  * @author CHENAO
-  * @param fecha1
-  * @param fechaActual
-  * @return
-  */
+
  private String compararFechasConDate(String fecha1, String fechaActual) {  
   System.out.println("Parametro String Fecha 1 = "+fecha1+"\n" +
     "Parametro String fechaActual = "+fechaActual+"\n");  
