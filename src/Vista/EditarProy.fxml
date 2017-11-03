@@ -18,7 +18,7 @@
             </TableView>
          </children>
       </Pane>
-      <Button fx:id="btnActualizar" layoutX="701.0" layoutY="384.0" mnemonicParsing="false" text="Actualizar" />
+      <Button fx:id="btnActualizar" layoutX="701.0" layoutY="384.0" mnemonicParsing="false" onAction="#EditarProyectoEnBase" text="Actualizar" />
       <DatePicker fx:id="DatePickerFechaE" layoutX="470.0" layoutY="354.0" />
       <TextField fx:id="txtDepartamento" layoutX="133.0" layoutY="372.0" />
       <TextField fx:id="txtSupervisor" layoutX="521.0" layoutY="228.0" />

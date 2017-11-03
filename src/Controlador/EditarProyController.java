@@ -12,6 +12,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -30,7 +31,7 @@ import javafx.scene.layout.Pane;
  * @author Ricardo
  */
 public class EditarProyController implements Initializable {
-
+    
     @FXML
     private TableView<Proyecto> tblProyectos;
     @FXML
@@ -62,70 +63,92 @@ public class EditarProyController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-                tblProyectos.getColumns().clear();
-       cargarProyectos(tblProyectos);
-       
-       NoVer();
-       
-    }    
+        tblProyectos.getColumns().clear();
+        cargarProyectos(tblProyectos);
+        
+        NoVer();
+        
+    }
     
-     MenuController menu = new MenuController();
+    MenuController menu = new MenuController();
     private Conexion conect = new Conexion();
     private Connection conexion = conect.conexion();
-
+    
     public void cargarColumnasProyecto(TableView<Proyecto> table) {
         TableColumn tblPNombre = new TableColumn("Nombre");
         tblPNombre.setCellValueFactory(new PropertyValueFactory<Proyecto, String>("Nombre"));
         tblPNombre.setMinWidth(171.25);
-
+        
         TableColumn tblPFechaInicio = new TableColumn("FechaInicio");
         tblPFechaInicio.setCellValueFactory(new PropertyValueFactory<Proyecto, String>("FechaInicio"));
         tblPFechaInicio.setMinWidth(171.25);
-
+        
         TableColumn tblPDepartamento = new TableColumn("Departamento");
         tblPDepartamento.setCellValueFactory(new PropertyValueFactory<Proyecto, String>("Departamento"));
         tblPDepartamento.setMinWidth(171.25);
-
+        
         TableColumn tblPEstado = new TableColumn("Estado");
         tblPEstado.setCellValueFactory(new PropertyValueFactory<Proyecto, String>("Estado"));
         tblPEstado.setMinWidth(171.25);
-
+        
         TableColumn tblPFechaFinal = new TableColumn("FechaFinal");
         tblPFechaFinal.setCellValueFactory(new PropertyValueFactory<Proyecto, String>("FechaFinal"));
         tblPFechaFinal.setMinWidth(171.25);
-
+        
         TableColumn tblPSupervisor = new TableColumn("Supervisor");
         tblPSupervisor.setCellValueFactory(new PropertyValueFactory<Proyecto, Integer>("Supervisor"));
         tblPSupervisor.setMinWidth(171.25);
-
+        
         TableColumn tblPAdministrador = new TableColumn("Administrador");
         tblPAdministrador.setCellValueFactory(new PropertyValueFactory<Proyecto, Integer>("Administrador"));
         tblPAdministrador.setMinWidth(171.25);
-
+        
         table.getColumns().addAll(tblPNombre, tblPFechaInicio, tblPDepartamento, tblPEstado, tblPFechaFinal, tblPSupervisor, tblPAdministrador);
     }
     EditarProyecto EP = new EditarProyecto();
-
+    
     public void cargarProyectos(TableView<Proyecto> table) {
         table.setItems(EP.CargarProyecto(conexion));
         cargarColumnasProyecto(table);
     }
-
+    
     @FXML
     private void Trasladar(MouseEvent event) {
         Proyecto p = tblProyectos.getSelectionModel().getSelectedItem();
-      
-        if(p!=null){
+        
+        if (p != null) {
             Ver();
             txtNombreP.setText(p.getNombre());
             txtDepartamento.setText(p.getDepartamento());
             txtSupervisor.setText(String.valueOf(p.getSupervisor()));
             //FALTAN LA FECHA DE ENTREGA
-            
+
         }
     }
+    EditarProyecto E = new EditarProyecto();
     
-    public void NoVer(){
+    public void ActualizaProyecto() {
+        Proyecto p = tblProyectos.getSelectionModel().getSelectedItem();
+        String N = p.getNombre();
+        String D = p.getDepartamento();
+        E.EditarProyecto(txtNombreP.getText(), txtDepartamento.getText(), txtSupervisor.getText(), N, D, conexion);
+        ActualizarTabla(tblProyectos);
+        Refrescar();
+    }
+
+    public void ActualizarTabla(TableView<Proyecto> table) {
+        table.setItems(EP.CargarProyecto(conexion));
+        
+    }
+
+    public void Refrescar() {
+        txtNombreP.setText("");
+        txtDepartamento.setText("");
+        txtSupervisor.setText("");
+        
+    }
+    
+    public void NoVer() {
         txtNombreP.setVisible(false);
         txtDepartamento.setVisible(false);
         txtSupervisor.setVisible(false);
@@ -138,10 +161,10 @@ public class EditarProyController implements Initializable {
         lblDepartamento.setVisible(false);
         lblFechaE.setVisible(false);
         btnActualizar.setVisible(false);
- 
+        
     }
     
-    public void Ver(){
+    public void Ver() {
         txtNombreP.setVisible(true);
         txtDepartamento.setVisible(true);
         txtSupervisor.setVisible(true);
@@ -155,6 +178,10 @@ public class EditarProyController implements Initializable {
         lblFechaE.setVisible(true);
         btnActualizar.setVisible(true);
     }
-
+    
+    @FXML
+    private void EditarProyectoEnBase(ActionEvent event) {
+        ActualizaProyecto();
+    }
     
 }
