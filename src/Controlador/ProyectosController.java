@@ -120,7 +120,8 @@ public class ProyectosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        CargarUsuarios();
+//        CargarUsuarios();
+        CargarSupDisponibles();
         CargarTareas();
         cargarTareas(tblEmpleadosDisponibles);
         CargarDepartamentos();
@@ -161,7 +162,7 @@ public class ProyectosController implements Initializable {
         Stage stage = (Stage) scene.getWindow();
         stage.close();
     }
-    public ObservableList<String> modelo = FXCollections.observableArrayList();
+    public ObservableList<Usuario> modelo = FXCollections.observableArrayList();
     public ObservableList<String> modelo1 = FXCollections.observableArrayList();
     public ObservableList<String> modelo2 = FXCollections.observableArrayList();
     public String Estado= "XXXX";
@@ -177,20 +178,17 @@ public class ProyectosController implements Initializable {
     
     ModeloProyecto MP = new ModeloProyecto();
 
-    public void CargarUsuarios() {
-        modelo.addAll(MP.CargarUsuarios(conexion));
-        cbxCreadoPor.setItems(modelo);
+    
 
-    }
     public void InsertarProyecto() {
         int cedula1 = MenuController.Cedula;
         String a =  String.valueOf(cbxCreadoPor.getSelectionModel().getSelectedItem());
-        String[] partes = a.split("-");
+        String[] partes = a.split(" - ");
         String partes1= partes[0];
         String partes2= partes[1];
         MP.InsertarProyecto(txtNombreProyecto.getText(), String.valueOf(txtDatePickerInicio.getValue()),
         txtDepartamento.getSelectionModel().getSelectedItem(), Estado, 
-        String.valueOf(txtDatePickerFinal.getValue()),Integer.parseInt(partes2),cedula1 , conexion); 
+        String.valueOf(txtDatePickerFinal.getValue()),Integer.parseInt(partes1),cedula1 , conexion); 
     }
 
     public void CargarTareas() {
@@ -239,6 +237,8 @@ public class ProyectosController implements Initializable {
             InsertarProyecto();
             insertarUsuarioTarea();
             RefrescarCampos();
+            CargarSupDisponibles();
+            cbxTareasProyecto.getItems().clear();
         }
            
 
@@ -283,10 +283,11 @@ public class ProyectosController implements Initializable {
             return true;
         }
         
-        if (cbxCreadoPor.getSelectionModel().getSelectedItem().isEmpty()) {
-            lblNoCreado.setVisible(true); 
-            return true;
-        }
+//        if (cbxCreadoPor.getSelectionModel().getSelectedItem().getIdUsuario().isEmpty() &&
+//                cbxCreadoPor.getSelectionModel().getSelectedItem().getNombreUsuario().isEmpty()) {
+//            lblNoCreado.setVisible(true); 
+//            return true;
+//        }
       
 
 //        if(cbxTareasProyecto.getSelectionModel().getSelectedItem().isEmpty())lblNoTareasProyecto.setVisible(true);
@@ -326,9 +327,14 @@ public class ProyectosController implements Initializable {
    }
    
    private void CargarSupDisponibles(){
-       Usuario us = new Usuario();
-       
-   
+       cbxCreadoPor.getItems().clear();
+        ObservableList<String> Sup = FXCollections.observableArrayList();
+        for(int i = 0; i < MP.CargarUsuarios1(conexion).size(); i++){
+            Sup.addAll(MP.CargarUsuarios1(conexion).get(i).getIdUsuario() + " - " + MP.CargarUsuarios1(conexion).get(i).getNombre());
+        }
+        
+        cbxCreadoPor.setItems(Sup);
+ 
    }
      
 }   

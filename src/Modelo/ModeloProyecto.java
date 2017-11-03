@@ -14,6 +14,7 @@ import java.sql.Statement;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import Controlador.ProyectosController;
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -146,6 +147,65 @@ public class ModeloProyecto {
             
         } catch (Exception e) {
         }
+    }
+    
+    public ObservableList<Usuario> CargarUsuarios1(Connection conexion) {
+        ArrayList<String> UsuarioNO = SupervisorNoDisponible(conexion);
+        ObservableList <Usuario> modelo = FXCollections.observableArrayList();
+
+        String sql = "SELECT idUsuario, Nombre FROM Usuario WHERE Rol = 2";
+        String datos = "";
+        String datos2 = "";
+        String cedula = "";
+
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                datos = rs.getString("Nombre");
+                cedula = rs.getString("idUsuario");
+                
+                Usuario Us = new Usuario (cedula, datos, "Desconocido", "Desconocido", "Desconocido", "Desconocido", "Desconocido", "Desconocido");
+                
+                
+                boolean bandera = true; 
+                for (int i = 0; i < UsuarioNO.size(); i++) {
+                    if(Us.getIdUsuario().equals(UsuarioNO.get(i))){
+                        bandera = false;
+                        break;
+                    }
+                }
+                if(bandera == true){
+                    modelo.addAll(Us);
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error CargarUsuarios");
+        }
+        return modelo;
+    }
+    
+   
+    
+    
+     public ArrayList<String> SupervisorNoDisponible(Connection conexion){
+//    Falta restringir los usuarios que ya finalizaron la tarea
+        ArrayList<String> UsuarioNO = new ArrayList<String>();
+        String sql = "SELECT Supervisor FROM Proyecto";
+        String datos = "";
+        
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()){
+                datos = rs.getString("Supervisor");
+                UsuarioNO.add(datos);
+            }
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+         return UsuarioNO;
     }
 
 }
