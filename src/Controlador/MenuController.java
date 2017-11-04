@@ -35,6 +35,7 @@ public class MenuController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Login");
             stage.setScene(new Scene(root1));
+            
             stage.show();
 
         } catch (Exception e) {
@@ -68,6 +69,10 @@ public class MenuController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Usuarios");
             stage.setScene(new Scene(root1));
+            double a =stage.getMaxWidth();
+            double b = stage.getMaxHeight();
+            stage.setMaxHeight(b);
+            stage.setMaxWidth(a);
             stage.show();
 
         } catch (Exception e) {
@@ -83,6 +88,10 @@ public class MenuController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Proyectos");
             stage.setScene(new Scene(root1));
+            double a =stage.getMaxWidth();
+            double b = stage.getMaxHeight();
+            stage.setMaxHeight(b);
+            stage.setMaxWidth(a);
             stage.show();
 
         } catch (Exception e) {
@@ -98,6 +107,10 @@ public class MenuController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Proyectos");
             stage.setScene(new Scene(root1));
+            double a =stage.getMaxWidth();
+            double b = stage.getMaxHeight();
+            stage.setMaxHeight(b);
+            stage.setMaxWidth(a);
             stage.show();
 
         } catch (Exception e) {
@@ -114,6 +127,11 @@ public class MenuController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Mis Proyectos");
             stage.setScene(new Scene(root1));
+            double a =stage.getMaxWidth();
+            double b = stage.getMaxHeight();
+            stage.setMaxHeight(b);
+            stage.setMaxWidth(a);
+            stage.setMaximized(true);
             stage.show();
 
         } catch (Exception e) {

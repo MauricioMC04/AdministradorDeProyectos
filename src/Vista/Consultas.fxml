@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="759.0" prefWidth="1442.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ConsultasController">
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ConsultasController">
     <children>
         <MenuBar fx:id="MbMenu" layoutX="-9.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="46.0" prefWidth="913.0" stylesheets="@Estilo.css" AnchorPane.leftAnchor="-9.0">
             <menus>
@@ -46,7 +46,7 @@
                   <RadioButton fx:id="rbtnDepartamento" layoutX="74.0" layoutY="88.0" mnemonicParsing="false" text="Departamento" toggleGroup="$rbtngFiltros" />
                   <RadioButton fx:id="rbtnEstado" layoutX="81.0" layoutY="187.0" mnemonicParsing="false" text="Estado" toggleGroup="$rbtngFiltros" />
                   <Button fx:id="btnBusqueda" layoutX="466.0" layoutY="96.0" mnemonicParsing="false" onAction="#Buscar" prefHeight="26.0" prefWidth="68.0" text="Buscar" />
-                  <TextField fx:id="txtBusqueda" layoutX="255.0" layoutY="96.0" />
+                  <TextField fx:id="txtBusqueda" layoutX="255.0" layoutY="96.0" onKeyTyped="#Buscarproyecto" />
                   <RadioButton fx:id="rbtnProyecto" layoutX="73.0" layoutY="42.0" mnemonicParsing="false" text="Proyecto" toggleGroup="$rbtngFiltros" />
                   <Button fx:id="btnCargarTodos" layoutX="578.0" layoutY="95.0" mnemonicParsing="false" onAction="#CargarTodos" prefHeight="28.0" prefWidth="90.0" text="Cargar Todos" />
                </children>

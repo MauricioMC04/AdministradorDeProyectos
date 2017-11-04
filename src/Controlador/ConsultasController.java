@@ -30,6 +30,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -134,7 +135,6 @@ public class ConsultasController implements Initializable {
         stage.close();
     }
 
-
     @FXML
     private void Irproyectos(ActionEvent event) {
     }
@@ -142,26 +142,26 @@ public class ConsultasController implements Initializable {
     @FXML
     private void MostrarTareas(MouseEvent event) {
         ProyectoConsulta proyecto = tblProyectos.getSelectionModel().getSelectedItem();
-        if(proyecto != null){
+        if (proyecto != null) {
             mostrarParteTareas(proyecto);
-            cargarTareas(tblTarea, proyecto , cedula, rol, conexion);
-        }else{
+            cargarTareas(tblTarea, proyecto, cedula, rol, conexion);
+        } else {
             ocultar();
         }
     }
 
     @FXML
     private void Buscar(ActionEvent event) {
-        if(!txtBusqueda.getText().equals("")){
+        if (!txtBusqueda.getText().equals("")) {
             ocultar();
-            if(rbtnDepartamento.isSelected()){
-                cargarProyectosBusqueda(tblProyectos, cedula, rol,rbtnDepartamento.getText(), txtBusqueda.getText(), conexion);
-            }else if(rbtnEstado.isSelected()){
-                cargarProyectosBusqueda(tblProyectos, cedula, rol,rbtnEstado.getText(), txtBusqueda.getText(), conexion);
-            }else if(rbtnProyecto.isSelected()){
-                cargarProyectosBusqueda(tblProyectos, cedula, rol,rbtnProyecto.getText(), txtBusqueda.getText(), conexion);
-            }else if(rbtnSupervisor.isSelected()){
-                cargarProyectosBusqueda(tblProyectos, cedula, rol,rbtnSupervisor.getText(), txtBusqueda.getText(), conexion);
+            if (rbtnDepartamento.isSelected()) {
+                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnDepartamento.getText(), txtBusqueda.getText(), conexion);
+            } else if (rbtnEstado.isSelected()) {
+                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnEstado.getText(), txtBusqueda.getText(), conexion);
+            } else if (rbtnProyecto.isSelected()) {
+                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnProyecto.getText(), txtBusqueda.getText(), conexion);
+            } else if (rbtnSupervisor.isSelected()) {
+                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnSupervisor.getText(), txtBusqueda.getText(), conexion);
             }
             Vaciar();
         }
@@ -170,16 +170,16 @@ public class ConsultasController implements Initializable {
     @FXML
     private void Editar(ActionEvent event) {
         Usuario_has_Tareas tarea = tblTarea.getSelectionModel().getSelectedItem();
-        if(tarea != null){
+        if (tarea != null) {
             datosConsultas.Editar(tarea, cmbEstados.getSelectionModel().getSelectedItem(), conexion);
             ProyectoConsulta proyecto = tblProyectos.getSelectionModel().getSelectedItem();
             mostrarParteTareas(proyecto);
             tblTarea.getColumns().clear();
-            cargarTareas(tblTarea, proyecto , cedula, rol, conexion);
+            cargarTareas(tblTarea, proyecto, cedula, rol, conexion);
         }
     }
-    
-    private void ocultar(){
+
+    private void ocultar() {
         lblProyecto.setVisible(false);
         lblDepartamento.setVisible(false);
         lblNombreProyecto.setVisible(false);
@@ -187,14 +187,14 @@ public class ConsultasController implements Initializable {
         cmbEstados.setVisible(false);
         btnEditar.setVisible(false);
         tblTarea.setVisible(false);
-        if(rol == 2 || rol == 3){
+        if (rol == 2 || rol == 3) {
             Filtros(false);
-        }else{
+        } else {
             Filtros(true);
         }
     }
-    
-    private void Filtros(boolean bandera){
+
+    private void Filtros(boolean bandera) {
         rbtnDepartamento.setVisible(bandera);
         rbtnEstado.setVisible(bandera);
         rbtnProyecto.setVisible(bandera);
@@ -203,16 +203,16 @@ public class ConsultasController implements Initializable {
         btnBusqueda.setVisible(bandera);
         btnCargarTodos.setVisible(bandera);
     }
-    
-    private void cargarProyectos(TableView<ProyectoConsulta> table, int cedula, int rol, Connection conexion){
+
+    private void cargarProyectos(TableView<ProyectoConsulta> table, int cedula, int rol, Connection conexion) {
         table.setItems(datosConsultas.CargarProyectos(cedula, rol, conexion));
-        if(rol == 3){
+        if (rol == 3) {
             cargarColumnasEmpleado(table);
-        }else{
+        } else {
             cargarColumnas(table, rol);
-        } 
+        }
     }
-    
+
     private void cargarColumnas(TableView<ProyectoConsulta> table, int rol) {
         TableColumn tblCNombre = new TableColumn("Nombre");
         tblCNombre.setCellValueFactory(new PropertyValueFactory<ProyectoConsulta, String>("Nombre"));
@@ -237,7 +237,7 @@ public class ConsultasController implements Initializable {
         tblCSupervisor.setMinWidth(98.42);
         table.getColumns().addAll(tblCNombre, tblCDepartamento, tblCFechaI, tblCFechaF, tblCAdministrador, tblCSupervisor, tblCEstado);
     }
-    
+
     private void cargarColumnasEmpleado(TableView<ProyectoConsulta> table) {
         TableColumn tblCNombre = new TableColumn("Nombre");
         tblCNombre.setCellValueFactory(new PropertyValueFactory<ProyectoConsulta, String>("Nombre"));
@@ -247,8 +247,8 @@ public class ConsultasController implements Initializable {
         tblCDepartamento.setMinWidth(344.5);
         table.getColumns().addAll(tblCNombre, tblCDepartamento);
     }
-    
-    private void mostrarParteTareas(ProyectoConsulta proyecto){
+
+    private void mostrarParteTareas(ProyectoConsulta proyecto) {
         lblProyecto.setVisible(true);
         lblDepartamento.setVisible(true);
         lblNombreProyecto.setVisible(true);
@@ -256,16 +256,16 @@ public class ConsultasController implements Initializable {
         tblTarea.setVisible(true);
         lblNombreProyecto.setText(proyecto.getNombre());
         lblNombreDepartamento.setText(proyecto.getDepartamento());
-        if(rol == 2 || rol == 3){
+        if (rol == 2 || rol == 3) {
             cmbEstados.setVisible(true);
             btnEditar.setVisible(true);
-        }else{
+        } else {
             cmbEstados.setVisible(false);
             btnEditar.setVisible(false);
         }
     }
-    
-    private void cargarTareas(TableView<Usuario_has_Tareas> table, ProyectoConsulta proyecto ,int cedula, int rol, Connection conexion){
+
+    private void cargarTareas(TableView<Usuario_has_Tareas> table, ProyectoConsulta proyecto, int cedula, int rol, Connection conexion) {
         table.setItems(datosConsultas.CargarTareas(proyecto, cedula, rol, conexion));
         cargarColumnasTareas(table);
     }
@@ -285,11 +285,11 @@ public class ConsultasController implements Initializable {
         tblCIteraciones.setMinWidth(177);
         table.getColumns().addAll(tblCTarea, tblCEmpleado, tblCEstado, tblCIteraciones);
     }
-    
-    private void cargarProyectosBusqueda(TableView<ProyectoConsulta> table, int cedula, int rol, String filtro, String dato, Connection conexion){
+
+    private void cargarProyectosBusqueda(TableView<ProyectoConsulta> table, int cedula, int rol, String filtro, String dato, Connection conexion) {
         table.getColumns().clear();
         table.setItems(datosConsultas.CargarProyectosBusqueda(cedula, rol, filtro, dato, conexion));
-        cargarColumnas(table, rol); 
+        cargarColumnas(table, rol);
     }
 
     @FXML
@@ -303,13 +303,38 @@ public class ConsultasController implements Initializable {
         cargarProyectos(tblProyectos, cedula, rol, conexion);
         Vaciar();
     }
-    
-    private void Vaciar(){
+
+    private void Vaciar() {
         txtBusqueda.setText("");
-        if(rbtnDepartamento.isSelected())rbtnDepartamento.setSelected(false);
-        if(rbtnEstado.isSelected())rbtnEstado.setSelected(false);
-        if(rbtnProyecto.isSelected())rbtnProyecto.setSelected(false);
-        if(rbtnSupervisor.isSelected())rbtnSupervisor.setSelected(false);
+        if (rbtnDepartamento.isSelected()) {
+            rbtnDepartamento.setSelected(false);
+        }
+        if (rbtnEstado.isSelected()) {
+            rbtnEstado.setSelected(false);
+        }
+        if (rbtnProyecto.isSelected()) {
+            rbtnProyecto.setSelected(false);
+        }
+        if (rbtnSupervisor.isSelected()) {
+            rbtnSupervisor.setSelected(false);
+        }
     }
-    
+
+    @FXML
+    private void Buscarproyecto(KeyEvent event) {
+        if (!txtBusqueda.getText().equals("")) {
+            ocultar();
+            if (rbtnDepartamento.isSelected()) {
+                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnDepartamento.getText(), txtBusqueda.getText(), conexion);
+            } else if (rbtnEstado.isSelected()) {
+                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnEstado.getText(), txtBusqueda.getText(), conexion);
+            } else if (rbtnProyecto.isSelected()) {
+                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnProyecto.getText(), txtBusqueda.getText(), conexion);
+            } else if (rbtnSupervisor.isSelected()) {
+                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnSupervisor.getText(), txtBusqueda.getText(), conexion);
+            }
+        }
+
+    }
+
 }

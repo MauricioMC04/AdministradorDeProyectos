@@ -28,7 +28,6 @@ public class ModeloLogin {
                 cap2 = rs.getString("idUsuario");
                 cap3 = rs.getString("NombreUsuario");
                 if(Nombreusuario.equals(cap3)){
-                System.out.println("asd");
                 break;
             }
             }
