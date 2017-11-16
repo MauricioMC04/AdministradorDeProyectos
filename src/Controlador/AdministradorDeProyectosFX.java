@@ -91,7 +91,6 @@ private void comparar(){
             stagePrincipal.setTitle("Personas");
             stagePrincipal.setScene(scene);
             PersonasController controller = loader.getController();
-            controller.setProgramaPrincipal(this);
             stagePrincipal.show();
         } catch (IOException e) {
         }

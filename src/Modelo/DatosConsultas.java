@@ -12,6 +12,12 @@ import javax.swing.JOptionPane;
 
 public class DatosConsultas {
     
+    /*
+    Nombre de metodo: CargarProyectos
+    Parametros: int cedula, int rol, Connection conexion
+    Retorno: ObservableList<ProyectoConsulta>
+    Descripcion: Retorna la llamada al metodo que carga los proyectos dependiendo del rol
+    */
     public ObservableList<ProyectoConsulta> CargarProyectos(int cedula, int rol, Connection conexion){
         if(rol == 1 || rol == 2){
             return CargarProyectosAdmiSup(cedula, rol,"Ninguno", "Ninguno", conexion);
@@ -20,6 +26,12 @@ public class DatosConsultas {
         }
     }
     
+    /*
+    Nombre de metodo: GenerarSqlProyectos
+    Parametros: int cedula, int rol, String filtro, String dato
+    Retorno: String
+    Descripcion: Retorna el sql para cargar los proyectos dependiendo del rol 
+    */
     private String GenerarSqlProyectos(int cedula, int rol, String filtro, String dato){
         if(rol == 1){
             if(filtro.equals("Proyecto")){
@@ -33,7 +45,7 @@ public class DatosConsultas {
                     + "Proyecto WHERE Supervisor LIKE '" + dato + "%'";
             }else if(filtro.equals("Estado")){
                 return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
-                    + "Proyecto WHERE Estado = " + dato;
+                    + "Proyecto WHERE Estado LIKE '" + dato + "%'";
             } 
             return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
                     + "Proyecto";
@@ -47,6 +59,12 @@ public class DatosConsultas {
         }
     }
     
+    /*
+    Nombre de metodo: CargarProyectosAdmiSup
+    Parametros: int cedula, int rol, String filtro, String dato,Connection conexion
+    Retorno: ObservableList<ProyectoConsulta>
+    Descripcion: Retorna el ObservableList con los proyectos que puede ver el actor  
+    */
     private ObservableList<ProyectoConsulta> CargarProyectosAdmiSup(int cedula, int rol, String filtro, String dato,Connection conexion){
         ObservableList <ProyectoConsulta> modelo = FXCollections.observableArrayList();
         String sql = GenerarSqlProyectos(cedula, rol, filtro, dato);
@@ -70,6 +88,12 @@ public class DatosConsultas {
         return modelo;
     }
     
+    /*
+    Nombre de metodo: CargarProyectosEmpleado
+    Parametros: int cedula, Connection conexion
+    Retorno: ObservableList<ProyectoConsulta>
+    Descripcion: Retorna el ObservableList con los proyectos que puede ver el empleado  
+    */
     private ObservableList<ProyectoConsulta> CargarProyectosEmpleado(int cedula, Connection conexion){ 
         ObservableList <ProyectoConsulta> modelo = FXCollections.observableArrayList();
         String sql = GenerarSqlProyectos(cedula, 3, "", "");
@@ -88,6 +112,12 @@ public class DatosConsultas {
         return modelo;
     }
     
+    /*
+    Nombre de metodo: CargarTareas
+    Parametros: ProyectoConsulta proyecto, int cedula, int rol, Connection conexion
+    Retorno: ObservableList<Usuario_has_Tareas>
+    Descripcion: Retorna el ObservableList con las tareas en un proyecto que puede ver el actor  
+    */
     public ObservableList<Usuario_has_Tareas> CargarTareas(ProyectoConsulta proyecto, int cedula, int rol, Connection conexion){
         ObservableList <Usuario_has_Tareas> modelo = FXCollections.observableArrayList();
         String sql = GenerarSqlTareas(proyecto, cedula, rol);
@@ -109,6 +139,12 @@ public class DatosConsultas {
         return modelo;
     }
     
+    /*
+    Nombre de metodo: GenerarSqlTareas
+    Parametros: ProyectoConsulta proyecto, int cedula, int rol
+    Retorno: String
+    Descripcion:  Retorna el sql para las tareas dependiendo del rol  
+    */
     private String GenerarSqlTareas(ProyectoConsulta proyecto, int cedula, int rol){
         if(rol == 1 || rol == 2){
             return "SELECT Tareas_Nombre, Usuario_idEmpleados, EstadosTareas_idEstadosTareas, iteraciones from Usuario_"
@@ -122,6 +158,12 @@ public class DatosConsultas {
         }
     }
     
+    /*
+    Nombre de metodo: definirEstadoTarea
+    Parametros: String estado
+    Retorno: String
+    Descripcion:  Retorna la tarea dependiendo del numero de la tarea   
+    */
     private String definirEstadoTarea(String estado){
         if(estado.equals("1")){
             return "No Implementada";
@@ -132,10 +174,22 @@ public class DatosConsultas {
         }
     }
     
+    /*
+    Nombre de metodo: CargarProyectosBusqueda
+    Parametros: int cedula, int rol, String filtro, String dato, Connection conexion
+    Retorno: ObservableList<ProyectoConsulta>
+    Descripcion:  Retorna la llamada al metodo que carga lo proyectos que el actor puede ver
+    */
     public ObservableList<ProyectoConsulta> CargarProyectosBusqueda(int cedula, int rol, String filtro, String dato, Connection conexion){
         return CargarProyectosAdmiSup(cedula, rol, filtro, dato, conexion);
     }
     
+    /*
+    Nombre de metodo: Editar
+    Parametros: Usuario_has_Tareas tarea, String estado, Connection conexion
+    Retorno: Ninguno 
+    Descripcion: Edita la tarea del proyecto en el sistema
+    */
     public void Editar(Usuario_has_Tareas tarea, String estado, Connection conexion){
         String numEstado;
         if(estado.equals("No Implementada")){

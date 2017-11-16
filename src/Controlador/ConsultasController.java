@@ -86,6 +86,12 @@ public class ConsultasController implements Initializable {
     @FXML
     private Button btnCargarTodos;
 
+    /*
+    Nombre de metodo: initialize
+    Parametros: URL url, ResourceBundle rb
+    Retorno: Ninguno
+    Descripcion: metodo generado por defecto para inicializar
+    */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if (MenuController.Tipo == 3) {
@@ -102,11 +108,23 @@ public class ConsultasController implements Initializable {
         estados.addAll("Implementada");
         cmbEstados.setItems(estados);
     }
-
+    
+    /*
+    Nombre de metodo: Personas
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion:
+    */
     @FXML
     private void Personas(ActionEvent event) {
     }
 
+    /*
+    Nombre de metodo: Proyectos
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Cierra la escena y llama a proyectos de menu
+    */
     @FXML
     private void Proyectos(ActionEvent event) {
         menu.Proyecto();
@@ -115,6 +133,12 @@ public class ConsultasController implements Initializable {
         stage.close();
     }
 
+    /*
+    Nombre de metodo: Tareas
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Cierra la escena y llama a insertar de menu
+    */
     @FXML
     private void Tareas(ActionEvent event) {
         menu.Insertar();
@@ -123,10 +147,22 @@ public class ConsultasController implements Initializable {
         stage.close();
     }
 
+    /*
+    Nombre de metodo: EditProyectos
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion:
+    */
     @FXML
     private void EditProyectos(ActionEvent event) {
     }
 
+    /*
+    Nombre de metodo: CerrarS
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Cierra la escena y llama a login de menu
+    */
     @FXML
     private void CerrarS(ActionEvent event) {
         menu.Login();
@@ -135,10 +171,23 @@ public class ConsultasController implements Initializable {
         stage.close();
     }
 
+    /*
+    Nombre de metodo: Irproyectos
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion:
+    */
     @FXML
     private void Irproyectos(ActionEvent event) {
     }
 
+    /*
+    Nombre de metodo: MostrarTareas
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Muestra en la parte derecha de la pantalla la tabla con las tareas y personas que el actor puede ver del
+    proyecto seleccionado
+    */
     @FXML
     private void MostrarTareas(MouseEvent event) {
         ProyectoConsulta proyecto = tblProyectos.getSelectionModel().getSelectedItem();
@@ -150,6 +199,12 @@ public class ConsultasController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: MostrarTareas
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Carga los proyectos en la tabla dependiendo de la busqueda seleccionada
+    */
     @FXML
     private void Buscar(ActionEvent event) {
         if (!txtBusqueda.getText().equals("")) {
@@ -167,6 +222,12 @@ public class ConsultasController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: Editar
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Edita la estado de la tarea seleccionada y vuelve a cargar los datos sobre la tabla
+    */
     @FXML
     private void Editar(ActionEvent event) {
         Usuario_has_Tareas tarea = tblTarea.getSelectionModel().getSelectedItem();
@@ -179,6 +240,12 @@ public class ConsultasController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: ocultar
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Oculta la parte derecha donde iran las tareas del proyecto seleccionado
+    */
     private void ocultar() {
         lblProyecto.setVisible(false);
         lblDepartamento.setVisible(false);
@@ -194,6 +261,12 @@ public class ConsultasController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: Filtros
+    Parametros: boolean bandera
+    Retorno: Ninguno
+    Descripcion: Muestra o oculta los filtros dependiendo del parametro
+    */
     private void Filtros(boolean bandera) {
         rbtnDepartamento.setVisible(bandera);
         rbtnEstado.setVisible(bandera);
@@ -204,16 +277,28 @@ public class ConsultasController implements Initializable {
         btnCargarTodos.setVisible(bandera);
     }
 
+    /*
+    Nombre de metodo: cargarProyectos
+    Parametros: TableView<ProyectoConsulta> table, int cedula, int rol, Connection conexion
+    Retorno: Ninguno
+    Descripcion: Carga sobre la tabla los proyectos que puede ver el actor
+    */
     private void cargarProyectos(TableView<ProyectoConsulta> table, int cedula, int rol, Connection conexion) {
         table.setItems(datosConsultas.CargarProyectos(cedula, rol, conexion));
         if (rol == 3) {
             cargarColumnasEmpleado(table);
         } else {
-            cargarColumnas(table, rol);
+            cargarColumnas(table);
         }
     }
 
-    private void cargarColumnas(TableView<ProyectoConsulta> table, int rol) {
+    /*
+    Nombre de metodo: cargarColumnas
+    Parametros: TableView<ProyectoConsulta> table
+    Retorno: Ninguno
+    Descripcion: Carga sobre la tabla las columnas necesarias para ver todo lo relacionado a un proyecto
+    */
+    private void cargarColumnas(TableView<ProyectoConsulta> table) {
         TableColumn tblCNombre = new TableColumn("Nombre");
         tblCNombre.setCellValueFactory(new PropertyValueFactory<ProyectoConsulta, String>("Nombre"));
         tblCNombre.setMinWidth(98.42);
@@ -238,6 +323,12 @@ public class ConsultasController implements Initializable {
         table.getColumns().addAll(tblCNombre, tblCDepartamento, tblCFechaI, tblCFechaF, tblCAdministrador, tblCSupervisor, tblCEstado);
     }
 
+    /*
+    Nombre de metodo: cargarColumnasEmpleado
+    Parametros: TableView<ProyectoConsulta> table
+    Retorno: Ninguno
+    Descripcion: Carga sobre la tabla las columnas necesarias para que un empleado vea un proyecto
+    */
     private void cargarColumnasEmpleado(TableView<ProyectoConsulta> table) {
         TableColumn tblCNombre = new TableColumn("Nombre");
         tblCNombre.setCellValueFactory(new PropertyValueFactory<ProyectoConsulta, String>("Nombre"));
@@ -248,6 +339,12 @@ public class ConsultasController implements Initializable {
         table.getColumns().addAll(tblCNombre, tblCDepartamento);
     }
 
+    /*
+    Nombre de metodo: mostrarParteTareas
+    Parametros: ProyectoConsulta proyecto
+    Retorno: Ninguno
+    Descripcion: Muestra la parte derecha donde iran las tareas del proyecto seleccionado
+    */
     private void mostrarParteTareas(ProyectoConsulta proyecto) {
         lblProyecto.setVisible(true);
         lblDepartamento.setVisible(true);
@@ -265,11 +362,23 @@ public class ConsultasController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: cargarTareas
+    Parametros: TableView<Usuario_has_Tareas> table, ProyectoConsulta proyecto, int cedula, int rol, Connection conexion
+    Retorno: Ninguno
+    Descripcion: Carga las tareas del proyecto seleccionado
+    */
     private void cargarTareas(TableView<Usuario_has_Tareas> table, ProyectoConsulta proyecto, int cedula, int rol, Connection conexion) {
         table.setItems(datosConsultas.CargarTareas(proyecto, cedula, rol, conexion));
         cargarColumnasTareas(table);
     }
 
+    /*
+    Nombre de metodo: cargarColumnasTareas
+    Parametros: TableView<Usuario_has_Tareas> table
+    Retorno: Ninguno
+    Descripcion: Carga las columas necesarias para ver todo lo relacionado con una tarea en un proyecto
+    */
     private void cargarColumnasTareas(TableView<Usuario_has_Tareas> table) {
         TableColumn tblCTarea = new TableColumn("Tarea");
         tblCTarea.setCellValueFactory(new PropertyValueFactory<Usuario_has_Tareas, String>("Tarea"));
@@ -286,16 +395,35 @@ public class ConsultasController implements Initializable {
         table.getColumns().addAll(tblCTarea, tblCEmpleado, tblCEstado, tblCIteraciones);
     }
 
+    /*
+    Nombre de metodo: cargarProyectosBusqueda
+    Parametros: TableView<ProyectoConsulta> table, int cedula, int rol, String filtro, String dato, Connection conexion
+    Retorno: Ninguno
+    Descripcion: Carga en la tabla los proyectos dependiendo de la busqueda seleccionada
+    */
     private void cargarProyectosBusqueda(TableView<ProyectoConsulta> table, int cedula, int rol, String filtro, String dato, Connection conexion) {
         table.getColumns().clear();
         table.setItems(datosConsultas.CargarProyectosBusqueda(cedula, rol, filtro, dato, conexion));
-        cargarColumnas(table, rol);
+        cargarColumnas(table);
     }
 
+    /*
+    Nombre de metodo: SalirS
+    Parametros: ActionEvent event 
+    Retorno: Ninguno
+    Descripcion: 
+    */
     @FXML
     private void SalirS(ActionEvent event) {
     }
 
+    /*
+    Nombre de metodo: CargarTodos
+    Parametros: ActionEvent event 
+    Retorno: Ninguno
+    Descripcion: Llama a los metodos que ocultan la parte derecha, vacian los filtros y que cargan todos los proyectos
+    en la tabla
+    */
     @FXML
     private void CargarTodos(ActionEvent event) {
         tblProyectos.getColumns().clear();
@@ -304,6 +432,12 @@ public class ConsultasController implements Initializable {
         Vaciar();
     }
 
+    /*
+    Nombre de metodo: Vaciar
+    Parametros: Ninguno 
+    Retorno: Ninguno
+    Descripcion: Vacia los filtros
+    */
     private void Vaciar() {
         txtBusqueda.setText("");
         if (rbtnDepartamento.isSelected()) {
@@ -320,6 +454,12 @@ public class ConsultasController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: Buscarproyecto
+    Parametros: KeyEvent event
+    Retorno: Ninguno
+    Descripcion: Carga en la tabla los proyectos dependiendo de l busqueda seleccionada 
+    */
     @FXML
     private void Buscarproyecto(KeyEvent event) {
         if (!txtBusqueda.getText().equals("")) {
@@ -336,5 +476,4 @@ public class ConsultasController implements Initializable {
         }
 
     }
-
 }

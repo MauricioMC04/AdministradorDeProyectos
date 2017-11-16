@@ -94,6 +94,12 @@
                               <String fx:value="color" />
                               <String fx:value="forma" />
                            </styleClass></Button>
+                        <TextField fx:id="txtBusquedaEliminar" layoutX="1014.0" layoutY="169.0" onKeyReleased="#CargarTodosEliminar" onKeyTyped="#BuscarEliminar" />
+                        <Label fx:id="lblBuscarEliminar" layoutX="889.0" layoutY="169.0" text="Buscar:" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                </content>
@@ -145,6 +151,12 @@
                            <font>
                               <Font size="24.0" />
                            </font></Label>
+                        <Label fx:id="lblBuscarEditar" layoutX="911.0" layoutY="134.0" text="Buscar:" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtBusquedaEditar" layoutX="1002.0" layoutY="139.0" onKeyReleased="#CargarTodosEditar" onKeyTyped="#BuscarEditar" prefHeight="25.0" prefWidth="171.0" />
                      </children>
                   </Pane>
                </content>

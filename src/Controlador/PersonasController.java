@@ -15,13 +15,13 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 public class PersonasController implements Initializable {
 
-    private AdministradorDeProyectosFX ProgramaPrincipal;
     private DatosPersonas datosPersonas = new DatosPersonas();
     private Conexion conect = new Conexion();
     private Connection conexion = conect.conexion();
@@ -113,16 +113,32 @@ public class PersonasController implements Initializable {
     private Label lblNoSeleccionaEditar;
     @FXML
     private MenuItem MbMisProyectos;
+    @FXML
+    private TextField txtBusquedaEliminar;
+    @FXML
+    private Label lblBuscarEliminar;
+    @FXML
+    private Label lblBuscarEditar;
+    @FXML
+    private TextField txtBusquedaEditar;
 
-    public void setProgramaPrincipal(AdministradorDeProyectosFX ProgramaPrincipal) {
-        this.ProgramaPrincipal = ProgramaPrincipal;
-    }
-
+    /*
+    Nombre de metodo: initialize
+    Parametros: URL url, ResourceBundle rb
+    Retorno: Ninguno
+    Descripcion: metodo generado por defecto para inicializar
+    */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         porDefecto();
     }
 
+    /*
+    Nombre de metodo: porDefecto
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Metodo que restaura las condiciones de la ventana
+    */
     public void porDefecto() {
         tblAgregar.getColumns().clear();
         tblEliminar.getColumns().clear();
@@ -133,12 +149,24 @@ public class PersonasController implements Initializable {
         ocultarLabels();
         vaciar();
     }
-
+    
+    /*
+    Nombre de metodo: cargarPersonas
+    Parametros: TableView<Usuario> table
+    Retorno: Ninguno
+    Descripcion: Carga en la tabla las personas del sistema
+    */
     public void cargarPersonas(TableView<Usuario> table) {
         table.setItems(datosPersonas.CargarPersonas(conexion));
         cargarColumnas(table);
     }
 
+    /*
+    Nombre de metodo: cargarColumnas
+    Parametros: TableView<Usuario> table
+    Retorno: Ninguno
+    Descripcion: Carga en la tabla las columnas necesarias para ver las personas del sistema
+    */
     public void cargarColumnas(TableView<Usuario> table) {
         TableColumn tblCCedula = new TableColumn("Cedula");
         tblCCedula.setCellValueFactory(new PropertyValueFactory<Usuario, String>("IdUsuario"));
@@ -155,11 +183,23 @@ public class PersonasController implements Initializable {
         table.getColumns().addAll(tblCCedula, tblCNombre, tblCApellido, tblCRol);
     }
 
+    /*
+    Nombre de metodo: cargarPersonasEditables
+    Parametros: TableView<Usuario> table
+    Retorno: Ninguno
+    Descripcion: Carga en la tabla las personas que se pueden editar
+    */
     public void cargarPersonasEditables(TableView<Usuario> table) {
         table.setItems(datosPersonas.CargarPersonasEditables(conexion));
         cargarColumnas(table);
     }
 
+    /*
+    Nombre de metodo: ocultarLabels
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Oculta los labels que representan datos faltantes
+    */
     public void ocultarLabels() {
         lblNoCedula.setVisible(false);
         lblNoNombre.setVisible(false);
@@ -171,6 +211,12 @@ public class PersonasController implements Initializable {
         lblNoSeleccionaEditar.setVisible(false);
     }
 
+    /*
+    Nombre de metodo: verificarNoSeleccionadosAgregar
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Verifica los datos faltantes en la parte de agregar
+    */
     public void verificarNoSeleccionadosAgregar() {
         if (txtCedula.getText().equals("")) {
             lblNoCedula.setVisible(true);
@@ -190,6 +236,12 @@ public class PersonasController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: Agregar
+    Parametros: javafx.event.ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Agrega la persona al sistema y restaura la ventana
+    */
     @FXML
     private void Agregar(javafx.event.ActionEvent event) {
         if (txtCedula.getText().equals("") || txtNombre.getText().equals("") || txtApellido.getText().equals("")) {
@@ -210,6 +262,12 @@ public class PersonasController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: vaciar
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Vacia los campos de datos
+    */
     public void vaciar() {
         txtCedula.setText("");
         txtNombre.setText("");
@@ -225,11 +283,23 @@ public class PersonasController implements Initializable {
         rbtnEmpleadoEditar.setSelected(false);
     }
 
+    /*
+    Nombre de metodo: Personas
+    Parametros: javafx.event.ActionEvent event
+    Retorno: Ninguno
+    Descripcion:
+    */
     @FXML
     private void Personas(javafx.event.ActionEvent event) {
 
     }
 
+    /*
+    Nombre de metodo: Proyectos
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Cierra la escena y llama a proyectos de menu
+    */
     @FXML
     private void Proyectos(javafx.event.ActionEvent event) {
         menu.Proyecto();
@@ -239,6 +309,12 @@ public class PersonasController implements Initializable {
 
     }
 
+    /*
+    Nombre de metodo: CerrarS
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Cierra la escena y llama a login de menu
+    */
     @FXML
     private void CerrarS(javafx.event.ActionEvent event) {
         menu.Login();
@@ -247,6 +323,12 @@ public class PersonasController implements Initializable {
         stage.close();
     }
 
+    /*
+    Nombre de metodo: Tareas
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Cierra la escena y llama a insertar de menu
+    */
     @FXML
     private void Tareas(javafx.event.ActionEvent event) {
         menu.Insertar();
@@ -255,16 +337,26 @@ public class PersonasController implements Initializable {
         stage.close();
     }
 
+    /*
+    Nombre de metodo: EditProyectos
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Cierra la escena y llama a EditarProyectos de menu
+    */
     @FXML
     private void EditProyectos(javafx.event.ActionEvent event) {
           menu.EditarProyectos();
         Scene scene =MbMenu.getScene();
         Stage stage = (Stage) scene.getWindow();
-        stage.close();
-        
-        
+        stage.close();        
     }
 
+    /*
+    Nombre de metodo: Eliminar
+    Parametros: javafx.event.ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Elimina a la persona seleccionada
+    */
     @FXML
     private void Eliminar(javafx.event.ActionEvent event) {
         Usuario persona = tblEliminar.getSelectionModel().getSelectedItem();
@@ -274,6 +366,12 @@ public class PersonasController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: Seleccionar
+    Parametros: MouseEvent event
+    Retorno: Ninguno
+    Descripcion: Carga los datos de la persona seleccionada
+    */
     @FXML
     private void Seleccionar(MouseEvent event) {
         Usuario persona = tblEditar.getSelectionModel().getSelectedItem();
@@ -291,6 +389,12 @@ public class PersonasController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: verificarNoSeleccionadosEditar
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Verifica los datos faltantes en la parte de editar
+    */
     public void verificarNoSeleccionadosEditar() {
         if (txtNombreEditar.getText().equals("")) {
             lblNoNombreEditar.setVisible(true);
@@ -307,6 +411,12 @@ public class PersonasController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: Editar
+    Parametros: javafx.event.ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Edita a la persona
+    */
     @FXML
     private void Editar(javafx.event.ActionEvent event) {
         if (cedula.equals("") || txtNombreEditar.getText().equals("") || txtApellidoEditar.getText().equals("")) {
@@ -330,11 +440,92 @@ public class PersonasController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: Irproyectos
+    Parametros: javafx.event.ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Cierra la escena y llama a MisProyectos de menu
+    */
     @FXML
     private void Irproyectos(javafx.event.ActionEvent event) {
         menu.MisProyectos();
         Scene scene = MbMenu.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
+    }
+
+    /*
+    Nombre de metodo: CargarTodosEliminar
+    Parametros: KeyEvent event
+    Retorno: Ninguno
+    Descripcion: Restaura el estado de la vista
+    */
+    @FXML
+    private void CargarTodosEliminar(KeyEvent event) {
+        if(txtBusquedaEliminar.getText().equals("")){
+            porDefecto();
+        } 
+    }
+
+    /*
+    Nombre de metodo: BuscarEliminar
+    Parametros: KeyEvent event
+    Retorno: Ninguno
+    Descripcion: Llama al metodo que carga las personas de la busqueda en la tabla
+    */
+    @FXML
+    private void BuscarEliminar(KeyEvent event) {
+        if(!txtBusquedaEliminar.getText().equals("")){
+            tblEliminar.getColumns().clear();
+            cargarBusquedaEliminar(tblEliminar, txtBusquedaEliminar.getText()); 
+        }
+    }
+    /*
+    Nombre de metodo: CargarTodosEditar
+    Parametros: KeyEvent event
+    Retorno: Ninguno
+    Descripcion: Restaura el estado de la vista
+    */
+    @FXML
+    private void CargarTodosEditar(KeyEvent event) {
+        if(txtBusquedaEditar.getText().equals("")){
+            porDefecto();
+        } 
+    }
+
+    /*
+    Nombre de metodo: BuscarEditar
+    Parametros: KeyEvent event
+    Retorno: Ninguno
+    Descripcion: Llama al metodo que carga las personas de la busqueda en la tabla
+    */
+    @FXML
+    private void BuscarEditar(KeyEvent event) {
+        if(!txtBusquedaEditar.getText().equals("")){
+            tblEditar.getColumns().clear();
+            cargarBusquedaEditar(tblEditar, txtBusquedaEditar.getText()); 
+        }
+    }
+    
+    /*
+    Nombre de metodo: cargarBusquedaEliminar
+    Parametros: TableView<Usuario> table, String busqueda
+    Retorno: Ninguno
+    Descripcion: Carga en la tabla las personas segun la busqueda
+    */
+    private void cargarBusquedaEliminar(TableView<Usuario> table, String busqueda){
+        table.setItems(datosPersonas.CargarBusquedaEliminar(conexion, busqueda));
+        cargarColumnas(table);
+    }
+    
+    /*
+    Nombre de metodo: cargarBusquedaEditar
+    Parametros: TableView<Usuario> table, String busqueda
+    Retorno: Ninguno
+    Descripcion: Carga en la tabla las personas segun la busqueda
+    */
+    private void cargarBusquedaEditar(TableView<Usuario> table, String busqueda){
+        table.setItems(datosPersonas.CargarBusquedaEditar(conexion, busqueda));
+        cargarColumnas(table);
     }
 }

@@ -74,12 +74,5 @@ public class ProyectoConsulta {
 
     public void setEstado(String Estado) {
         this.Estado = Estado;
-    }
-    
-
-
-
-
-
-    
+    }   
 }

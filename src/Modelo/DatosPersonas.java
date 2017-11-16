@@ -15,13 +15,23 @@ public class DatosPersonas {
     
     /*
     Nombre de metodo: CargarPersonas
-    Parametros: Connection
+    Parametros: Connection conexion
     Retorno: ObservableList<Usuario>
-    Descripcion: Carga sobre un modelo las personas que puede ver un administrador
+    Descripcion: Retorna la llamada a Personas con el sql necesario
     */
     public ObservableList<Usuario> CargarPersonas(Connection conexion){
-        ObservableList <Usuario> modelo = FXCollections.observableArrayList();
         String sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario";
+        return Personas(conexion, sql);
+    }
+    
+    /*
+    Nombre de metodo: Personas
+    Parametros: Connection conexion, String sql
+    Retorno: ObservableList<Usuario>
+    Descripcion: Retorna el ObservableList con las personas dependiendo del sql 
+    */
+    private ObservableList<Usuario> Personas(Connection conexion, String sql){
+        ObservableList <Usuario> modelo = FXCollections.observableArrayList();
         String[] datos = new String[4];
         try {
             Statement st = conexion.createStatement();
@@ -43,9 +53,9 @@ public class DatosPersonas {
     
     /*
     Nombre de metodo: DefinirRol 
-    Parametros: String
+    Parametros: String rol
     Retorno: String
-    Descripcion: Retorna el rol correspondiente dependiento del Rol
+    Descripcion: Retorna el rol correspondiente dependiento del numero de Rol
     */
     private String DefinirRol(String rol){
         if(rol.equals("1")){
@@ -59,37 +69,20 @@ public class DatosPersonas {
     
     /*
     Nombre de metodo: CargarPersonasEditables
-    Parametros: Connection
+    Parametros: Connection conexion 
     Retorno: ObservableList<Usuario>
     Descripcion: Carga sobre un modelo las personas que puede editar un administrador
     */
    public ObservableList<Usuario> CargarPersonasEditables(Connection conexion){
-        ObservableList<Usuario> modelo = FXCollections.observableArrayList();
         String sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE Contrasena != 'Por Definir'";
-        String[] datos = new String[4];
-        try {
-            Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                datos[3] = rs.getString(4);
-                datos[3] = DefinirRol(datos[3]);
-                modelo.add(new Usuario (datos[0],datos[1],datos[2],datos[3],"Desconocido","Desconocido" ,"Desconocido",
-                           "Desconocido"));
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error CargarPersonas Editables");
-        }
-        return modelo;
+        return Personas(conexion, sql);
     }  
     
     /*
     Nombre de metodo: GenerarPersonaNueva
-    Parametros: String, String
+    Parametros: String cedula, String nombre, String apellido, String rol
     Retorno: Usuario
-    Descripcion: Genera un nuevo usuario insertado por el administrador
+    Descripcion: Genera un nuevo usuario para ser insertado por el administrador
     */
     private Usuario GenerarPersonaNueva(String cedula, String nombre, String apellido, String rol){
         String nuevoRol = "";
@@ -107,7 +100,7 @@ public class DatosPersonas {
     
     /*
     Nombre de metodo: InsertarPersonaNueva
-    Parametros: String, String, Connection
+    Parametros: String cedula, String nombre, String apellido, String rol, Connection conexion
     Retorno: Ninguno
     Descripcion: Inserta la nueva persona creada por el administrador
     */
@@ -124,7 +117,7 @@ public class DatosPersonas {
             pst.setString(6, usuario.getRespuesta());
             pst.setString(7, usuario.getNombreUsuario());
             pst.setString(8, usuario.getPregunta());
-            int a = pst.executeUpdate();
+            pst.executeUpdate();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar la persona");
         }
@@ -132,7 +125,7 @@ public class DatosPersonas {
     
     /*
     Nombre de metodo: EliminarPersona
-    Parametros: String, Connection
+    Parametros: String cedula, Connection conexion
     Retorno: Ninguno
     Descripcion: Elimina una persona del sistema
     */
@@ -147,7 +140,7 @@ public class DatosPersonas {
     
      /*
     Nombre de metodo: EditarPersona
-    Parametros: String, String, String, String, Connection
+    Parametros: String cedula, String nombre, String apellido, String rol, Connection conexion
     Retorno: Ninguno
     Descripcion: Edita una persona del sistema con la nueva informacion
     */
@@ -168,4 +161,29 @@ public class DatosPersonas {
             JOptionPane.showMessageDialog(null, "Error al editarPersona");
         }  
     } 
+    
+    /*
+    Nombre de metodo: CargarBusquedaEliminar
+    Parametros: Connection conexion, String busqueda
+    Retorno: ObservableList<Usuario>
+    Descripcion: Retorna la llamada a Personas con el sql necesario
+    */
+    public ObservableList<Usuario> CargarBusquedaEliminar (Connection conexion, String busqueda){
+        String sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE idUsuario Like '" + busqueda + "%' OR "
+                + "Nombre Like '" + busqueda + "%' OR Apellido Like '" + busqueda + "%' OR Rol Like '" + busqueda + "%'";
+        return Personas(conexion, sql);
+    }
+    
+    /*
+    Nombre de metodo: CargarBusquedaEditar
+    Parametros: Connection conexion, String busqueda
+    Retorno: ObservableList<Usuario>
+    Descripcion: Retorna la llamada a Personas con el sql necesario
+    */
+    public ObservableList<Usuario> CargarBusquedaEditar (Connection conexion, String busqueda){
+        String sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE Contrasena != 'Por Definir' AND ("
+                + "idUsuario Like '" + busqueda + "%' OR Nombre Like '" + busqueda + "%' OR Apellido Like '" + 
+                busqueda + "%' OR Rol Like '" + busqueda + "%')";
+        return Personas(conexion, sql);
+    }
 }
