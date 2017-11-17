@@ -45,10 +45,8 @@
                      </toggleGroup></RadioButton>
                   <RadioButton fx:id="rbtnDepartamento" layoutX="74.0" layoutY="88.0" mnemonicParsing="false" text="Departamento" toggleGroup="$rbtngFiltros" />
                   <RadioButton fx:id="rbtnEstado" layoutX="81.0" layoutY="187.0" mnemonicParsing="false" text="Estado" toggleGroup="$rbtngFiltros" />
-                  <Button fx:id="btnBusqueda" layoutX="466.0" layoutY="96.0" mnemonicParsing="false" onAction="#Buscar" prefHeight="26.0" prefWidth="68.0" text="Buscar" />
-                  <TextField fx:id="txtBusqueda" layoutX="255.0" layoutY="96.0" onKeyTyped="#Buscarproyecto" />
+                  <TextField fx:id="txtBusqueda" layoutX="255.0" layoutY="96.0" onKeyReleased="#Buscarproyecto" prefHeight="25.0" prefWidth="218.0" />
                   <RadioButton fx:id="rbtnProyecto" layoutX="73.0" layoutY="42.0" mnemonicParsing="false" text="Proyecto" toggleGroup="$rbtngFiltros" />
-                  <Button fx:id="btnCargarTodos" layoutX="578.0" layoutY="95.0" mnemonicParsing="false" onAction="#CargarTodos" prefHeight="28.0" prefWidth="90.0" text="Cargar Todos" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="712.0" prefWidth="1000.0">

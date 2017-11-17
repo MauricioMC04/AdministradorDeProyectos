@@ -58,12 +58,15 @@ public class DatosPersonas {
     Descripcion: Retorna el rol correspondiente dependiento del numero de Rol
     */
     private String DefinirRol(String rol){
-        if(rol.equals("1")){
-            return "Administrador";
-        }else if(rol.equals("2")){
-            return "Supervisor";
-        }else{
-            return "Empleado";
+        switch (rol) {
+            case "1":
+                return "Administrador";
+            case "2":
+                return "Supervisor";
+            case "3":
+                return "Empleado";
+            default:
+                return "No encontrado";
         }
     }
     
@@ -86,12 +89,19 @@ public class DatosPersonas {
     */
     private Usuario GenerarPersonaNueva(String cedula, String nombre, String apellido, String rol){
         String nuevoRol = "";
-        if(rol.equals("Administrador")){
-            nuevoRol = "1";
-        }else if(rol.equals("Supervisor")){
-            nuevoRol = "2";
-        }else{
-            nuevoRol = "3";
+        switch (rol) {
+            case "Administrador":
+                nuevoRol = "1";
+            break;
+            case "Supervisor":
+                nuevoRol = "2";
+            break;
+            case "Empleado":
+                nuevoRol = "3";
+            break;
+            default:
+                nuevoRol = "3";
+            break;
         }
         Usuario usuario = new Usuario(cedula, nombre, apellido, nuevoRol, "Por Definir", "Por Definir",
                 "Por Definir", "0");
@@ -146,12 +156,19 @@ public class DatosPersonas {
     */
     public void EditarPersona(String cedula, String nombre, String apellido, String rol, Connection conexion){
         String numRol;
-        if(rol.equals("Administrador")){
-            numRol = "1";
-        }else if(rol.equals("Supervisor")){
-            numRol = "2";
-        }else{
-            numRol = "3";
+        switch (rol) {
+            case "Administrador":
+                numRol = "1";
+            break;
+            case "Supervisor":
+                numRol = "2";
+            break;
+            case "Empleado":
+                numRol = "3";
+            break;
+            default:
+                numRol = "3";
+            break;
         }
         try {
             PreparedStatement pst = conexion.prepareStatement("Update Usuario Set Nombre = '" + nombre + "', Apellido "

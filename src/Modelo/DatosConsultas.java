@@ -33,27 +33,30 @@ public class DatosConsultas {
     Descripcion: Retorna el sql para cargar los proyectos dependiendo del rol 
     */
     private String GenerarSqlProyectos(int cedula, int rol, String filtro, String dato){
-        if(rol == 1){
-            if(filtro.equals("Proyecto")){
-                return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
-                    + "Proyecto WHERE Nombre LIKE '" + dato + "%'";
-            }else if (filtro.equals("Departamento")){
-                return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
-                    + "Proyecto WHERE Departamento LIKE '" + dato + "%'";
-            }else if(filtro.equals("Supervisor")){
-                return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
-                    + "Proyecto WHERE Supervisor LIKE '" + dato + "%'";
-            }else if(filtro.equals("Estado")){
-                return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
-                    + "Proyecto WHERE Estado LIKE '" + dato + "%'";
-            } 
-            return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
-                    + "Proyecto";
-        }else if(rol == 2) {
-            return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM " +
+         switch (rol) {
+            case 1:
+                switch (filtro) {
+                    case "Proyecto":
+                        return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
+                            + "Proyecto WHERE Nombre LIKE '" + dato + "%'";
+                    case "Departamento":
+                        return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
+                            + "Proyecto WHERE Departamento LIKE '" + dato + "%'";
+                    case "Supervisor":
+                        return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
+                            + "Proyecto WHERE Supervisor LIKE '" + dato + "%'";
+                    case "Estado":
+                        return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
+                            + "Proyecto WHERE Estado LIKE '" + dato + "%'";
+                    default:
+                        return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
+                            + "Proyecto";
+                }
+            case 2:
+                return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM " +
                     "Proyecto WHERE Supervisor = " + cedula + " And Estado != 'Finalizado'";
-        }else {
-            return "SELECT Proyecto_Nombre, Proyecto_Departamento FROM Usuario_has_Tareas WHERE Usuario_idEmpleados = "
+            default:
+                return "SELECT Proyecto_Nombre, Proyecto_Departamento FROM Usuario_has_Tareas WHERE Usuario_idEmpleados = "
                     + cedula + " AND Proyecto_Nombre in (select Nombre from Proyecto WHERE Estado != 'Finalizado') AND "
                     + "Proyecto_Departamento in (select Departamento from Proyecto WHERE Estado != 'Finalizado')";
         }
@@ -165,12 +168,15 @@ public class DatosConsultas {
     Descripcion:  Retorna la tarea dependiendo del numero de la tarea   
     */
     private String definirEstadoTarea(String estado){
-        if(estado.equals("1")){
-            return "No Implementada";
-        }else if(estado.equals("2")){
-            return "En Proceso";
-        }else{
-            return "Implementada";
+        switch (estado) {
+            case "1":
+                return "No Implementada";
+            case "2":
+                return "En Proceso";
+            case "3":
+                return "Implementada";
+            default:
+                return "Implementada";
         }
     }
     
@@ -192,12 +198,19 @@ public class DatosConsultas {
     */
     public void Editar(Usuario_has_Tareas tarea, String estado, Connection conexion){
         String numEstado;
-        if(estado.equals("No Implementada")){
-            numEstado = "1";
-        }else if(estado.equals("En Proceso")){
-            numEstado = "2";
-        }else{
-            numEstado = "3";
+        switch (estado) {
+            case "No Implementada":
+                numEstado = "1";
+            break;
+            case "En Proceso":
+                numEstado = "2";
+            break;
+            case "Implementada":
+                numEstado = "3";
+            break;
+            default:
+                numEstado = "3";
+            break;
         }
         try {
             PreparedStatement pst = conexion.prepareStatement("Update Usuario_has_Tareas Set EstadosTareas_idEstadosTareas"

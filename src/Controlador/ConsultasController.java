@@ -62,8 +62,6 @@ public class ConsultasController implements Initializable {
     @FXML
     private RadioButton rbtnEstado;
     @FXML
-    private Button btnBusqueda;
-    @FXML
     private TextField txtBusqueda;
     @FXML
     private Label lblProyecto;
@@ -83,8 +81,6 @@ public class ConsultasController implements Initializable {
     private ComboBox<String> cmbEstados;
     @FXML
     private Button btnEditar;
-    @FXML
-    private Button btnCargarTodos;
 
     /*
     Nombre de metodo: initialize
@@ -205,7 +201,6 @@ public class ConsultasController implements Initializable {
     Retorno: Ninguno
     Descripcion: Carga los proyectos en la tabla dependiendo de la busqueda seleccionada
     */
-    @FXML
     private void Buscar(ActionEvent event) {
         if (!txtBusqueda.getText().equals("")) {
             ocultar();
@@ -273,8 +268,6 @@ public class ConsultasController implements Initializable {
         rbtnProyecto.setVisible(bandera);
         rbtnSupervisor.setVisible(bandera);
         txtBusqueda.setVisible(bandera);
-        btnBusqueda.setVisible(bandera);
-        btnCargarTodos.setVisible(bandera);
     }
 
     /*
@@ -424,7 +417,6 @@ public class ConsultasController implements Initializable {
     Descripcion: Llama a los metodos que ocultan la parte derecha, vacian los filtros y que cargan todos los proyectos
     en la tabla
     */
-    @FXML
     private void CargarTodos(ActionEvent event) {
         tblProyectos.getColumns().clear();
         ocultar();
@@ -473,7 +465,10 @@ public class ConsultasController implements Initializable {
             } else if (rbtnSupervisor.isSelected()) {
                 cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnSupervisor.getText(), txtBusqueda.getText(), conexion);
             }
+        }else{
+            tblProyectos.getColumns().clear();
+            ocultar();
+            cargarProyectos(tblProyectos, cedula, rol, conexion);
         }
-
     }
 }

@@ -464,7 +464,10 @@ public class PersonasController implements Initializable {
     private void CargarTodosEliminar(KeyEvent event) {
         if(txtBusquedaEliminar.getText().equals("")){
             porDefecto();
-        } 
+        }else{
+            tblEliminar.getColumns().clear();
+            cargarBusquedaEliminar(tblEliminar, txtBusquedaEliminar.getText());
+        }
     }
 
     /*
@@ -473,11 +476,9 @@ public class PersonasController implements Initializable {
     Retorno: Ninguno
     Descripcion: Llama al metodo que carga las personas de la busqueda en la tabla
     */
-    @FXML
     private void BuscarEliminar(KeyEvent event) {
         if(!txtBusquedaEliminar.getText().equals("")){
-            tblEliminar.getColumns().clear();
-            cargarBusquedaEliminar(tblEliminar, txtBusquedaEliminar.getText()); 
+             
         }
     }
     /*
@@ -490,7 +491,10 @@ public class PersonasController implements Initializable {
     private void CargarTodosEditar(KeyEvent event) {
         if(txtBusquedaEditar.getText().equals("")){
             porDefecto();
-        } 
+        }else{
+            tblEditar.getColumns().clear();
+            cargarBusquedaEditar(tblEditar, txtBusquedaEditar.getText()); 
+        }
     }
 
     /*
@@ -499,11 +503,9 @@ public class PersonasController implements Initializable {
     Retorno: Ninguno
     Descripcion: Llama al metodo que carga las personas de la busqueda en la tabla
     */
-    @FXML
     private void BuscarEditar(KeyEvent event) {
         if(!txtBusquedaEditar.getText().equals("")){
-            tblEditar.getColumns().clear();
-            cargarBusquedaEditar(tblEditar, txtBusquedaEditar.getText()); 
+            
         }
     }
     
