@@ -41,12 +41,32 @@
             </Tab>
             <Tab text="Editar Tarea">
                <content>
-                  <Pane fx:id="pnlEditarTarea" prefHeight="200.0" prefWidth="200.0" />
+                  <Pane fx:id="pnlEditarTarea" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="lblBuscarTarea" layoutX="238.0" layoutY="49.0" prefHeight="17.0" prefWidth="63.0" text="Buscar: " />
+                        <TextField fx:id="txtBusquedaTarea" layoutX="365.0" layoutY="45.0" onKeyReleased="#BuscarTarea" prefHeight="25.0" prefWidth="240.0" />
+                        <TableView fx:id="tblTareas" layoutX="36.0" layoutY="125.0" onMouseClicked="#MostrarTarea" prefHeight="575.0" prefWidth="735.0" />
+                        <Label fx:id="lblNombreTarea" layoutX="888.0" layoutY="136.0" prefHeight="17.0" prefWidth="99.0" text="Nombre Tarea:" />
+                        <Label fx:id="lblDescripcion" layoutX="888.0" layoutY="243.0" prefHeight="17.0" prefWidth="78.0" text="Descripcion:" />
+                        <Button fx:id="btnEditarTarea" layoutX="904.0" layoutY="453.0" mnemonicParsing="false" onAction="#EditarTarea" text="Editar" />
+                        <Button fx:id="btnEliminarTarea" layoutX="1211.0" layoutY="453.0" mnemonicParsing="false" onAction="#EliminarTarea" text="Eliminar" />
+                        <TextArea fx:id="txtDescripcionTarea" layoutX="987.0" layoutY="243.0" prefHeight="128.0" prefWidth="320.0" />
+                        <TextField fx:id="txtNombreTarea" layoutX="987.0" layoutY="132.0" prefHeight="25.0" prefWidth="319.0" />
+                     </children></Pane>
                </content>
             </Tab>
             <Tab text="Editar Departamento">
                <content>
-                  <Pane fx:id="pnlEditarDepartamento" prefHeight="200.0" prefWidth="200.0" />
+                  <Pane fx:id="pnlEditarDepartamento" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tblDepartamentos" layoutX="40.0" layoutY="44.0" onMouseClicked="#MostrarDepartamento" prefHeight="651.0" prefWidth="601.0" />
+                        <Label fx:id="lblBuscarDepartamento" layoutX="795.0" layoutY="56.0" prefHeight="17.0" prefWidth="63.0" text="Buscar: " />
+                        <TextField fx:id="txtBusquedaDepartamento" layoutX="919.0" layoutY="52.0" onKeyReleased="#BuscarDepartamento" prefHeight="25.0" prefWidth="240.0" />
+                        <Label fx:id="lblNombreDepartamento" layoutX="795.0" layoutY="209.0" prefHeight="17.0" prefWidth="61.0" text="Nombre:" />
+                        <TextField fx:id="txtNombreDepartamento" layoutX="919.0" layoutY="205.0" prefHeight="25.0" prefWidth="239.0" />
+                        <Button fx:id="btnEditarDepartamento" layoutX="800.0" layoutY="407.0" mnemonicParsing="false" onAction="#EditarDepartamento" text="Editar" />
+                        <Button fx:id="btnEliminarDepartamento" layoutX="1159.0" layoutY="407.0" mnemonicParsing="false" onAction="#EliminarDepartamento" text="Eliminar" />
+                     </children></Pane>
                </content>
             </Tab>
          </tabs>

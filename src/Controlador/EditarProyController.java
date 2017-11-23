@@ -8,6 +8,7 @@ package Controlador;
 import Modelo.Conexion;
 import Modelo.EditarProyecto;
 import Modelo.Proyecto;
+import Modelo.Tarea;
 import java.net.URL;
 import java.sql.Connection;
 import java.time.LocalDate;
@@ -20,8 +21,10 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -62,18 +65,48 @@ public class EditarProyController implements Initializable {
     private Pane pnlEditarTarea;
     @FXML
     private Pane pnlEditarDepartamento;
+    @FXML
+    private Label lblBuscarTarea;
+    @FXML
+    private TextField txtBusquedaTarea;
+    @FXML
+    private TableView<Tarea> tblTareas;
+    @FXML
+    private Label lblNombreTarea;
+    @FXML
+    private Label lblDescripcion;
+    @FXML
+    private Button btnEditarTarea;
+    @FXML
+    private Button btnEliminarTarea;
+    @FXML
+    private TextArea txtDescripcionTarea;
+    @FXML
+    private TextField txtNombreTarea;
+    @FXML
+    private TableView<?> tblDepartamentos;
+    @FXML
+    private Label lblBuscarDepartamento;
+    @FXML
+    private TextField txtBusquedaDepartamento;
+    @FXML
+    private Label lblNombreDepartamento;
+    @FXML
+    private TextField txtNombreDepartamento;
+    @FXML
+    private Button btnEditarDepartamento;
+    @FXML
+    private Button btnEliminarDepartamento;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         tblProyectos.getColumns().clear();
         cargarProyectos(tblProyectos);
-        
         NoVer();
-        
+        porDefectoTareas();
     }
     
     MenuController menu = new MenuController();
@@ -189,5 +222,93 @@ public class EditarProyController implements Initializable {
     private void EditarProyectoEnBase(ActionEvent event) {
         ActualizaProyecto();
     }
+
+    @FXML
+    private void BuscarTarea(KeyEvent event) {
+        tblTareas.getColumns().clear();
+        if(txtBusquedaTarea.getText().equals("")){
+            porDefectoTareas();
+        }else{
+            MostrarParteTarea(false);
+            CargarTareas(tblTareas, conexion, txtBusquedaTarea.getText());
+        }
+    }
+
+    @FXML
+    private void EditarTarea(ActionEvent event) {
+        Tarea tarea = tblTareas.getSelectionModel().getSelectedItem();
+        if(tarea != null){
+            if(!txtNombreTarea.getText().equals("") && !txtDescripcionTarea.getText().equals("")){
+                E.EditarTarea(tarea, txtNombreTarea.getText(), txtDescripcionTarea.getText(), conexion);
+                porDefectoTareas();
+            }
+        }
+    }
+
+    @FXML
+    private void EliminarTarea(ActionEvent event) {
+        Tarea tarea = tblTareas.getSelectionModel().getSelectedItem();
+        if(tarea != null){
+            E.EliminarTarea(tarea, conexion);
+            porDefectoTareas();
+        }
+    }
+
+    @FXML
+    private void BuscarDepartamento(KeyEvent event) {
+    }
+
+    @FXML
+    private void EditarDepartamento(ActionEvent event) {
+    }
+
+    @FXML
+    private void EliminarDepartamento(ActionEvent event) {
+    }
     
+    private void porDefectoTareas(){
+        MostrarParteTarea(false);
+        tblTareas.getColumns().clear();
+        CargarTareas(tblTareas, conexion, "Ninguna");
+    }
+    
+    private void MostrarParteTarea(boolean bandera){
+        lblNombreTarea.setVisible(bandera);
+        txtNombreTarea.setVisible(bandera);
+        lblDescripcion.setVisible(bandera);
+        txtDescripcionTarea.setVisible(bandera);
+        btnEditarTarea.setVisible(bandera);
+        btnEliminarTarea.setVisible(bandera);
+    }
+    
+    private void CargarTareas(TableView<Tarea> table, Connection conexion, String busqueda){
+        table.setItems(E.CargarTareas(busqueda, conexion));
+        cargarColumnasTareas(table);
+    }
+    
+    private void cargarColumnasTareas(TableView<Tarea> table) {
+        TableColumn tblCNombre = new TableColumn("Nombre");
+        tblCNombre.setCellValueFactory(new PropertyValueFactory<Tarea, String>("Nombre"));
+        tblCNombre.setMinWidth(367.5);
+        TableColumn tblCDescripcion = new TableColumn("Descripcion");
+        tblCDescripcion.setCellValueFactory(new PropertyValueFactory<Tarea, String>("Descripcion"));
+        tblCDescripcion.setMinWidth(367.5);
+        table.getColumns().addAll(tblCNombre, tblCDescripcion);
+    }
+
+    @FXML
+    private void MostrarTarea(MouseEvent event) {
+        Tarea tarea = tblTareas.getSelectionModel().getSelectedItem();
+        if(tarea != null){
+            MostrarParteTarea(true);
+            txtNombreTarea.setText(tarea.getNombre());
+            txtDescripcionTarea.setText(tarea.getDescripcion());
+        }else{
+            MostrarParteTarea(false);
+        }
+    }
+
+    @FXML
+    private void MostrarDepartamento(MouseEvent event) {
+    }
 }
