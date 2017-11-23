@@ -56,6 +56,12 @@ public class EditarProyController implements Initializable {
     private TextField txtNombreP;
     @FXML
     private TextField txtTareas;
+    @FXML
+    private Pane pnlEditarProyecto;
+    @FXML
+    private Pane pnlEditarTarea;
+    @FXML
+    private Pane pnlEditarDepartamento;
 
     /**
      * Initializes the controller class.
