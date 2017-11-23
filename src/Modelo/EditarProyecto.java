@@ -58,9 +58,15 @@ public class EditarProyecto {
         }  
     }
 
+    /*
+    Nombre de metodo: CargarTareas
+    Parametros: String busqueda, Connection conexion
+    Retorno: ObservableList<Tarea>
+    Descripcion: Retorna un ObservableList con las tareas que se pueden editar
+    */
     public ObservableList<Tarea> CargarTareas(String busqueda, Connection conexion){
         ObservableList <Tarea> modelo = FXCollections.observableArrayList();
-        String sql = GenerarSqlProyectos(busqueda);
+        String sql = GenerarSqlTareas(busqueda);
         String[] datos = new String[2];
         try {
             Statement st = conexion.createStatement();
@@ -76,7 +82,13 @@ public class EditarProyecto {
         return modelo;
     }
     
-    private String GenerarSqlProyectos(String busqueda){
+    /*
+    Nombre de metodo: GenerarSqlTareas
+    Parametros: String busqueda
+    Retorno: String
+    Descripcion: Retorna el sql necesario para la consulta de las tareas
+    */
+    private String GenerarSqlTareas(String busqueda){
         if(busqueda.equals("Ninguna")){
             return "Select T1.* From Tareas T1 Left Outer Join Usuario_has_Tareas T2 ON T1.Nombre = T2.Tareas_Nombre "
                    + "WHERE T2.Tareas_Nombre IS NULL";
@@ -87,6 +99,12 @@ public class EditarProyecto {
         }
     }
     
+    /*
+    Nombre de metodo: EditarTarea
+    Parametros: Tarea tarea, String Nombre, String Descripcion, Connection conexion
+    Retorno: Ninguno
+    Descripcion: Edita una tarea del sistema
+    */
     public void EditarTarea(Tarea tarea, String Nombre, String Descripcion, Connection conexion){
         try {
             PreparedStatement pst = conexion.prepareStatement("Update Tareas Set Nombre = '" + Nombre + "', Descripcion"
@@ -98,6 +116,12 @@ public class EditarProyecto {
         }
     }
     
+    /*
+    Nombre de metodo: EliminarTarea
+    Parametros: Tarea tarea, Connection conexion
+    Retorno: Ninguno
+    Descripcion: Elimina una tarea del sistema
+    */
     public void EliminarTarea(Tarea tarea, Connection conexion){
         try {
             PreparedStatement pst = conexion.prepareStatement("Delete from Tareas Where Nombre = '" + tarea.getNombre() + "'"
@@ -105,6 +129,77 @@ public class EditarProyecto {
             pst.executeUpdate();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al eliminar Tarea: " + e);
+        }
+    }
+    
+    /*
+    Nombre de metodo: CargarDepartamentos
+    Parametros: String busqueda, Connection conexion
+    Retorno: ObservableList<Departamento>
+    Descripcion: Retorna un ObservableList con los departamentos que se pueden editar en el sistema
+    */
+    public ObservableList<Departamento> CargarDepartamentos(String busqueda, Connection conexion){
+        ObservableList <Departamento> modelo = FXCollections.observableArrayList();
+        String sql = GenerarSqlDepartamentos(busqueda);
+        String[] datos = new String[1];
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                modelo.add(new Departamento(datos[0]));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Cargar Departamentos");
+        }
+        return modelo;
+    }
+    
+    /*
+    Nombre de metodo: GenerarSqlDepartamentos
+    Parametros: String busqueda
+    Retorno: String
+    Descripcion: Retorna el sql necesario para la consulta de los departamentos
+    */
+    private String GenerarSqlDepartamentos(String busqueda){
+        if(busqueda.equals("Ninguna")){
+            return "Select T1.* From Departamentos T1 Left Outer Join Proyecto T2 ON T1.Nombre = T2.Departamento WHERE "
+                   + "T2.Departamento IS NULL";
+        }else{
+            return "Select T1.* From Departamentos T1 Left Outer Join Proyecto T2 ON T1.Nombre = T2.Departamento WHERE "
+                   + "T2.Departamento IS NULL And T1.Nombre LIKE '" + busqueda + "%' group by Nombre";
+        }
+    }
+    
+    /*
+    Nombre de metodo: EditarDepartamento
+    Parametros: Departamento departamento, String Nombre, Connection conexion
+    Retorno: Ninguno
+    Descripcion: Edita un departamento del sistema
+    */
+    public void EditarDepartamento(Departamento departamento, String Nombre, Connection conexion){
+        try {
+            PreparedStatement pst = conexion.prepareStatement("Update Departamentos Set Nombre = '" + Nombre + "' Where"
+                    + " Nombre = '" + departamento.getNombre() + "'");
+            pst.executeUpdate();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al editar Departamento: " + e);
+        }
+    }
+    
+    /*
+    Nombre de metodo: EliminarDepartamento
+    Parametros: Departamento departamento, Connection conexion
+    Retorno: Ninguno
+    Descripcion: Elimina un departamento del sistema
+    */
+    public void EliminarDepartamento(Departamento departamentos, Connection conexion){
+        try {
+            PreparedStatement pst = conexion.prepareStatement("Delete from Departamentos Where Nombre = '" + 
+                    departamentos.getNombre() + "'");
+            pst.executeUpdate();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar Departamento: " + e);
         }
     }
 }

@@ -6,6 +6,7 @@
 package Controlador;
 
 import Modelo.Conexion;
+import Modelo.Departamento;
 import Modelo.EditarProyecto;
 import Modelo.Proyecto;
 import Modelo.Tarea;
@@ -84,7 +85,7 @@ public class EditarProyController implements Initializable {
     @FXML
     private TextField txtNombreTarea;
     @FXML
-    private TableView<?> tblDepartamentos;
+    private TableView<Departamento> tblDepartamentos;
     @FXML
     private Label lblBuscarDepartamento;
     @FXML
@@ -107,6 +108,7 @@ public class EditarProyController implements Initializable {
         cargarProyectos(tblProyectos);
         NoVer();
         porDefectoTareas();
+        porDefectoDepartamentos();
     }
     
     MenuController menu = new MenuController();
@@ -223,6 +225,12 @@ public class EditarProyController implements Initializable {
         ActualizaProyecto();
     }
 
+    /*
+    Nombre de metodo: BuscarTarea
+    Parametros: KeyEvent event
+    Retorno: Ninguno
+    Descripcion: Carga las tareas segun la busqueda
+    */
     @FXML
     private void BuscarTarea(KeyEvent event) {
         tblTareas.getColumns().clear();
@@ -234,6 +242,12 @@ public class EditarProyController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: EditarTarea
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Llama al metodo para editar la tarea seleccionada
+    */
     @FXML
     private void EditarTarea(ActionEvent event) {
         Tarea tarea = tblTareas.getSelectionModel().getSelectedItem();
@@ -245,6 +259,12 @@ public class EditarProyController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: EliminarTarea
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Llama al metodo para eliminar la tarea seleccionada
+    */
     @FXML
     private void EliminarTarea(ActionEvent event) {
         Tarea tarea = tblTareas.getSelectionModel().getSelectedItem();
@@ -254,24 +274,73 @@ public class EditarProyController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: BuscarDepartamento
+    Parametros: KeyEvent event
+    Retorno: Ninguno
+    Descripcion: Carga los departamentos segun la busqueda
+    */
     @FXML
     private void BuscarDepartamento(KeyEvent event) {
+        tblDepartamentos.getColumns().clear();
+        if(txtBusquedaDepartamento.getText().equals("")){
+            porDefectoDepartamentos();
+        }else{
+            MostrarParteDepartamentos(false);
+            CargarDepartamentos(tblDepartamentos, conexion, txtBusquedaDepartamento.getText());
+        }
     }
 
+    /*
+    Nombre de metodo: EditarDepartamento
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Llama al metodo para editar el departamento seleccionado
+    */
     @FXML
     private void EditarDepartamento(ActionEvent event) {
+        Departamento departamento = tblDepartamentos.getSelectionModel().getSelectedItem();
+        if(departamento != null){
+            if(!txtNombreDepartamento.getText().equals("")){
+                E.EditarDepartamento(departamento, txtNombreDepartamento.getText(), conexion);
+                porDefectoDepartamentos();
+            }
+        }
     }
 
+    /*
+    Nombre de metodo: EliminarDepartamento
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Llama al metodo para eliminar el departamento seleccionado
+    */
     @FXML
     private void EliminarDepartamento(ActionEvent event) {
+        Departamento departamento = tblDepartamentos.getSelectionModel().getSelectedItem();
+        if(departamento != null){
+            E.EliminarDepartamento(departamento, conexion);
+            porDefectoDepartamentos();
+        }
     }
     
+    /*
+    Nombre de metodo: porDefectoTareas
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Restaura la vista de Tareas
+    */
     private void porDefectoTareas(){
         MostrarParteTarea(false);
         tblTareas.getColumns().clear();
         CargarTareas(tblTareas, conexion, "Ninguna");
     }
     
+    /*
+    Nombre de metodo: MostrarParteTarea
+    Parametros: boolean bandera
+    Retorno: Ninguno
+    Descripcion: Muestra u oculta la parte de editar una tarea
+    */
     private void MostrarParteTarea(boolean bandera){
         lblNombreTarea.setVisible(bandera);
         txtNombreTarea.setVisible(bandera);
@@ -281,11 +350,23 @@ public class EditarProyController implements Initializable {
         btnEliminarTarea.setVisible(bandera);
     }
     
+    /*
+    Nombre de metodo: CargarTareas
+    Parametros: TableView<Tarea> table, Connection conexion, String busqueda
+    Retorno: Ninguno
+    Descripcion: Carga en la tabla las tareas que se pueden editar
+    */
     private void CargarTareas(TableView<Tarea> table, Connection conexion, String busqueda){
         table.setItems(E.CargarTareas(busqueda, conexion));
         cargarColumnasTareas(table);
     }
     
+    /*
+    Nombre de metodo: cargarColumnasTareas
+    Parametros: TableView<Tarea> table
+    Retorno: Ninguno
+    Descripcion: Carga las columnas en la tabla para mostrar las tareas
+    */
     private void cargarColumnasTareas(TableView<Tarea> table) {
         TableColumn tblCNombre = new TableColumn("Nombre");
         tblCNombre.setCellValueFactory(new PropertyValueFactory<Tarea, String>("Nombre"));
@@ -296,6 +377,12 @@ public class EditarProyController implements Initializable {
         table.getColumns().addAll(tblCNombre, tblCDescripcion);
     }
 
+    /*
+    Nombre de metodo: MostrarTarea
+    Parametros: MouseEvent event
+    Retorno: Ninguno
+    Descripcion: Muestra la informacion de la tarea seleccionada
+    */
     @FXML
     private void MostrarTarea(MouseEvent event) {
         Tarea tarea = tblTareas.getSelectionModel().getSelectedItem();
@@ -308,7 +395,69 @@ public class EditarProyController implements Initializable {
         }
     }
 
+    /*
+    Nombre de metodo: MostrarDepartamento
+    Parametros: MouseEvent event
+    Retorno: Ninguno
+    Descripcion: Muestra la informacion del departamento seleccionado
+    */
     @FXML
     private void MostrarDepartamento(MouseEvent event) {
+        Departamento departamento = tblDepartamentos.getSelectionModel().getSelectedItem();
+        if(departamento != null){
+            MostrarParteDepartamentos(true);
+            txtNombreDepartamento.setText(departamento.getNombre());
+        }else{
+            MostrarParteDepartamentos(false);
+        }
+    }
+    
+    /*
+    Nombre de metodo: porDefectoDepartamentos
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Restaura la vista de Departamentos
+    */
+    private void porDefectoDepartamentos(){
+        MostrarParteDepartamentos(false);
+        tblDepartamentos.getColumns().clear();
+        CargarDepartamentos(tblDepartamentos, conexion, "Ninguna");
+    }
+    
+    /*
+    Nombre de metodo: MostrarParteDepartamentos
+    Parametros: boolean bandera
+    Retorno: Ninguno
+    Descripcion: Muestra u oculta la parte para editar departamentos
+    */
+    private void MostrarParteDepartamentos(boolean bandera){
+        lblNombreDepartamento.setVisible(bandera);
+        txtNombreDepartamento.setVisible(bandera);
+        btnEditarDepartamento.setVisible(bandera);
+        btnEliminarDepartamento.setVisible(bandera);
+    }
+    
+    /*
+    Nombre de metodo: CargarDepartamentos
+    Parametros: TableView<Departamento> table, Connection conexion, String busqueda
+    Retorno: Ninguno
+    Descripcion: Cargar en la tabla los departamentos que se pueden editar 
+    */
+     private void CargarDepartamentos(TableView<Departamento> table, Connection conexion, String busqueda){
+        table.setItems(E.CargarDepartamentos(busqueda, conexion));
+        cargarColumnasDepartamentos(table);
+    }
+    
+    /*
+    Nombre de metodo: cargarColumnasDepartamentos
+    Parametros: TableView<Departamento> table
+    Retorno: Ninguno
+    Descripcion: Cargar las columnas en la tabla para mostrar los departamentos 
+    */
+    private void cargarColumnasDepartamentos(TableView<Departamento> table) {
+        TableColumn tblCNombre = new TableColumn("Nombre");
+        tblCNombre.setCellValueFactory(new PropertyValueFactory<Departamento, String>("Nombre"));
+        tblCNombre.setMinWidth(601);
+        table.getColumns().addAll(tblCNombre);
     }
 }
