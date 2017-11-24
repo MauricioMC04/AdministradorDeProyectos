@@ -48,10 +48,9 @@ public class EditarProyecto {
         return modelo;
     }
     
-    public void EditarProyecto(String Nombre, String Departamento, String Supervisor, String NP, String DP, Connection conexion){
+    public void EditarProyecto(String Nombre, String Supervisor, String NP, String DP, Connection conexion){
         try {
-            PreparedStatement pst = conexion.prepareStatement("Update Proyecto Set Nombre = '" + Nombre + "', Departamento "
-                    + "= '" + Departamento + "', Supervisor = " + Supervisor + " Where Nombre  = '" + NP +  "' AND " + "Departamento = '" + DP + "'");
+            PreparedStatement pst = conexion.prepareStatement("Update Proyecto Set Nombre = '" + Nombre + "', Supervisor = " + Supervisor + " Where Nombre  = '" + NP +  "' AND " + "Departamento = '" + DP + "'");
             pst.executeUpdate();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

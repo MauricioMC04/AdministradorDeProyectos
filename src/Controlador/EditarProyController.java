@@ -34,6 +34,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.util.converter.LocalDateStringConverter;
 
 /**
  * FXML Controller class
@@ -57,15 +58,11 @@ public class EditarProyController implements Initializable {
     @FXML
     private TextField txtSupervisor;
     @FXML
-    private TextField txtDepartamento;
-    @FXML
     private DatePicker DatePickerFechaE;
     @FXML
     private Button btnActualizar;
     @FXML
     private TextField txtNombreP;
-    @FXML
-    private TextField txtTareas;
     @FXML
     private Pane pnlEditarProyecto;
     @FXML
@@ -159,9 +156,7 @@ public class EditarProyController implements Initializable {
         tblPDepartamento.setCellValueFactory(new PropertyValueFactory<Proyecto, String>("Departamento"));
         tblPDepartamento.setMinWidth(171.25);
         
-        TableColumn tblPEstado = new TableColumn("Estado");
-        tblPEstado.setCellValueFactory(new PropertyValueFactory<Proyecto, String>("Estado"));
-        tblPEstado.setMinWidth(171.25);
+      
         
         TableColumn tblPFechaFinal = new TableColumn("FechaFinal");
         tblPFechaFinal.setCellValueFactory(new PropertyValueFactory<Proyecto, String>("FechaFinal"));
@@ -175,7 +170,7 @@ public class EditarProyController implements Initializable {
         tblPAdministrador.setCellValueFactory(new PropertyValueFactory<Proyecto, Integer>("Administrador"));
         tblPAdministrador.setMinWidth(171.25);
         
-        table.getColumns().addAll(tblPNombre, tblPFechaInicio, tblPDepartamento, tblPEstado, tblPFechaFinal, tblPSupervisor, tblPAdministrador);
+        table.getColumns().addAll(tblPNombre, tblPFechaInicio, tblPDepartamento, tblPFechaFinal, tblPSupervisor, tblPAdministrador);
     }
 //    EditarProyecto EP = new EditarProyecto();
     
@@ -187,12 +182,13 @@ public class EditarProyController implements Initializable {
     @FXML
     private void Trasladar(MouseEvent event) {
         Proyecto p = tblProyectos.getSelectionModel().getSelectedItem();
-        
+         
         if (p != null) {
+          
             Ver();
             txtNombreP.setText(p.getNombre());
-            txtDepartamento.setText(p.getDepartamento());
             txtSupervisor.setText(String.valueOf(p.getSupervisor()));
+            
             //FALTAN LA FECHA DE ENTREGA
             cargarTareasProyecto(tblTareasProyectos, p, conexion);
         }
@@ -203,7 +199,7 @@ public class EditarProyController implements Initializable {
         Proyecto p = tblProyectos.getSelectionModel().getSelectedItem();
         String N = p.getNombre();
         String D = p.getDepartamento();
-        E.EditarProyecto(txtNombreP.getText(), txtDepartamento.getText(), txtSupervisor.getText(), N, D, conexion);
+        E.EditarProyecto(txtNombreP.getText(), txtSupervisor.getText(), N, D, conexion);
         ActualizarTabla(tblProyectos);
         Refrescar();
     }
@@ -215,16 +211,13 @@ public class EditarProyController implements Initializable {
 
     public void Refrescar() {
         txtNombreP.setText("");
-        txtDepartamento.setText("");
         txtSupervisor.setText("");
         
     }
     
     public void NoVer() {
         txtNombreP.setVisible(false);
-        txtDepartamento.setVisible(false);
         txtSupervisor.setVisible(false);
-        txtTareas.setVisible(false);
         DatePickerFechaE.setVisible(false);
         txtNombreP.setVisible(false);
         lblNombreP.setVisible(false);
@@ -238,9 +231,7 @@ public class EditarProyController implements Initializable {
     
     public void Ver() {
         txtNombreP.setVisible(true);
-        txtDepartamento.setVisible(true);
         txtSupervisor.setVisible(true);
-        txtTareas.setVisible(true);
         DatePickerFechaE.setVisible(true);
         txtNombreP.setVisible(true);
         lblNombreP.setVisible(true);

@@ -25,9 +25,7 @@
                            </children>
                         </Pane>
                         <DatePicker fx:id="DatePickerFechaE" layoutX="240.0" layoutY="214.0" prefHeight="25.0" prefWidth="151.0" />
-                        <TextField fx:id="txtDepartamento" layoutX="516.0" layoutY="64.0" />
                         <TextField fx:id="txtSupervisor" layoutX="240.0" layoutY="145.0" />
-                        <TextField fx:id="txtTareas" layoutX="509.0" layoutY="145.0" />
                         <Label fx:id="lblTareasP" layoutX="785.0" layoutY="71.0" text="Tareas Disponibles" />
                         <TextField fx:id="txtNombreP" layoutX="241.0" layoutY="74.0" />
                         <Button fx:id="btnActualizar" layoutX="557.0" layoutY="261.0" mnemonicParsing="false" onAction="#EditarProyectoEnBase" text="Actualizar" />
@@ -39,7 +37,6 @@
                         </TableView>
                         <Separator layoutX="719.0" layoutY="-8.0" orientation="VERTICAL" prefHeight="740.0" prefWidth="9.0" />
                         <TableView fx:id="tblTareasProyectos" layoutX="793.0" layoutY="320.0" onMouseClicked="#TrasladarTP" prefHeight="354.0" prefWidth="515.0" />
-                        <Label fx:id="lblDepartamento" layoutX="549.0" layoutY="103.0" text="Departamento:" />
                         <Label fx:id="lblFechaE" layoutX="66.0" layoutY="218.0" text="FechaEntrega" />
                         <Rectangle fx:id="FigRectanguloTarea" arcHeight="5.0" arcWidth="5.0" fill="#0d0d0d14" height="184.0" layoutX="1136.0" layoutY="64.0" stroke="#00000044" strokeType="INSIDE" width="173.0" />
                         <RadioButton fx:id="rbtnNoImplementada" layoutX="1171.0" layoutY="203.0" mnemonicParsing="false" text="No implementada">
