@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -12,29 +16,49 @@
          <tabs>
             <Tab text="Editar Proyecto">
                <content>
-                  <Pane fx:id="pnlEditarProyecto" prefHeight="200.0" prefWidth="200.0">
+                  <Pane fx:id="pnlEditarProyecto" prefHeight="727.0" prefWidth="1385.0">
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <TableView fx:id="tblProyectos" onMouseClicked="#Trasladar" prefHeight="200.0" prefWidth="827.0">
-                                <columns>
-                                  <TableColumn prefWidth="75.0" text="C1" />
-                                  <TableColumn prefWidth="75.0" text="C2" />
-                                </columns>
-                              </TableView>
+                              <Label fx:id="lblNombreP" layoutX="66.0" layoutY="79.0" text="Nombre:" />
+                              <Label fx:id="lblSupervisorP" layoutX="65.0" layoutY="153.0" text="Supervisado por" />
                            </children>
                         </Pane>
-                        <DatePicker fx:id="DatePickerFechaE" layoutX="580.0" layoutY="247.0" />
-                        <TextField fx:id="txtDepartamento" layoutX="165.0" layoutY="247.0" />
-                        <TextField fx:id="txtSupervisor" layoutX="199.0" layoutY="415.0" />
-                        <TextField fx:id="txtTareas" layoutX="283.0" layoutY="505.0" />
-                        <Label fx:id="lblTareasP" layoutX="239.0" layoutY="509.0" text="Tareas" />
-                        <Label fx:id="lblFechaE" layoutX="469.0" layoutY="251.0" text="FechaEntrega" />
-                        <Label fx:id="lblDepartamento" layoutX="69.0" layoutY="251.0" text="Departamento:" />
-                        <Label fx:id="lblSupervisorP" layoutX="86.0" layoutY="410.0" text="Supervisado por" />
-                        <Label fx:id="lblNombreP" layoutX="86.0" layoutY="310.0" text="Nombre:" />
-                        <TextField fx:id="txtNombreP" layoutX="199.0" layoutY="315.0" />
-                        <Button fx:id="btnActualizar" layoutX="633.0" layoutY="465.0" mnemonicParsing="false" onAction="#EditarProyectoEnBase" text="Actualizar" />
+                        <DatePicker fx:id="DatePickerFechaE" layoutX="240.0" layoutY="214.0" prefHeight="25.0" prefWidth="151.0" />
+                        <TextField fx:id="txtDepartamento" layoutX="516.0" layoutY="64.0" />
+                        <TextField fx:id="txtSupervisor" layoutX="240.0" layoutY="145.0" />
+                        <TextField fx:id="txtTareas" layoutX="509.0" layoutY="145.0" />
+                        <Label fx:id="lblTareasP" layoutX="785.0" layoutY="71.0" text="Tareas Disponibles" />
+                        <TextField fx:id="txtNombreP" layoutX="241.0" layoutY="74.0" />
+                        <Button fx:id="btnActualizar" layoutX="557.0" layoutY="261.0" mnemonicParsing="false" onAction="#EditarProyectoEnBase" text="Actualizar" />
+                        <TableView fx:id="tblProyectos" layoutX="79.0" layoutY="323.0" onMouseClicked="#Trasladar" prefHeight="349.0" prefWidth="567.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                        <Separator layoutX="719.0" layoutY="-8.0" orientation="VERTICAL" prefHeight="740.0" prefWidth="9.0" />
+                        <TableView fx:id="tblTareasProyectos" layoutX="793.0" layoutY="320.0" onMouseClicked="#TrasladarTP" prefHeight="354.0" prefWidth="515.0" />
+                        <Label fx:id="lblDepartamento" layoutX="549.0" layoutY="103.0" text="Departamento:" />
+                        <Label fx:id="lblFechaE" layoutX="66.0" layoutY="218.0" text="FechaEntrega" />
+                        <Rectangle fx:id="FigRectanguloTarea" arcHeight="5.0" arcWidth="5.0" fill="#0d0d0d14" height="184.0" layoutX="1136.0" layoutY="64.0" stroke="#00000044" strokeType="INSIDE" width="173.0" />
+                        <RadioButton fx:id="rbtnNoImplementada" layoutX="1171.0" layoutY="203.0" mnemonicParsing="false" text="No implementada">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="Estados" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rbtnImplementada" layoutX="1171.0" layoutY="166.0" mnemonicParsing="false" text="Implementada" toggleGroup="$Estados" />
+                        <RadioButton fx:id="rbtnEnProceso" layoutX="1171.0" layoutY="127.0" mnemonicParsing="false" selected="true" text="En proceso" toggleGroup="$Estados" />
+                        <Label fx:id="lblEstadosTareasP" layoutX="1191.0" layoutY="75.0" text="Estados">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cbmTareasProyectos" layoutX="920.0" layoutY="66.0" prefWidth="150.0" />
+                        <Label fx:id="lblEmpleadosDisponibles" layoutX="783.0" layoutY="134.0" text="Empleados Disponibles" />
+                        <ComboBox fx:id="cmbEmpleadosDisponibles" layoutX="920.0" layoutY="128.0" prefWidth="150.0" />
+                        <Label fx:id="lblIteracionesTarea" layoutX="782.0" layoutY="195.0" text="Iteraciones" />
+                        <ComboBox fx:id="cmbIteracionesTP" layoutX="920.0" layoutY="191.0" prefWidth="150.0" />
                      </children>
                   </Pane>
                </content>

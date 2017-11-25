@@ -9,7 +9,9 @@ import Modelo.Conexion;
 import Modelo.Departamento;
 import Modelo.EditarProyecto;
 import Modelo.Proyecto;
+import Modelo.ProyectoConsulta;
 import Modelo.Tarea;
+import Modelo.Usuario_has_Tareas;
 import java.net.URL;
 import java.sql.Connection;
 import java.time.LocalDate;
@@ -18,16 +20,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 
 /**
  * FXML Controller class
@@ -98,6 +104,30 @@ public class EditarProyController implements Initializable {
     private Button btnEditarDepartamento;
     @FXML
     private Button btnEliminarDepartamento;
+    @FXML
+    private TableView<Usuario_has_Tareas> tblTareasProyectos;
+    @FXML
+    private ToggleGroup Estados;
+    @FXML
+    private RadioButton rbtnNoImplementada;
+    @FXML
+    private RadioButton rbtnImplementada;
+    @FXML
+    private RadioButton rbtnEnProceso;
+    @FXML
+    private Label lblEstadosTareasP;
+    @FXML
+    private ComboBox<?> cbmTareasProyectos;
+    @FXML
+    private Label lblEmpleadosDisponibles;
+    @FXML
+    private ComboBox<?> cmbEmpleadosDisponibles;
+    @FXML
+    private ComboBox<?> cmbIteracionesTP;
+    @FXML
+    private Label lblIteracionesTarea;
+    @FXML
+    private Rectangle FigRectanguloTarea;
 
     /**
      * Initializes the controller class.
@@ -109,6 +139,7 @@ public class EditarProyController implements Initializable {
         NoVer();
         porDefectoTareas();
         porDefectoDepartamentos();
+        MostrarTareasProyecto(false);
     }
     
     MenuController menu = new MenuController();
@@ -146,10 +177,10 @@ public class EditarProyController implements Initializable {
         
         table.getColumns().addAll(tblPNombre, tblPFechaInicio, tblPDepartamento, tblPEstado, tblPFechaFinal, tblPSupervisor, tblPAdministrador);
     }
-    EditarProyecto EP = new EditarProyecto();
+//    EditarProyecto EP = new EditarProyecto();
     
     public void cargarProyectos(TableView<Proyecto> table) {
-        table.setItems(EP.CargarProyecto(conexion));
+        table.setItems(E.CargarProyecto(conexion));
         cargarColumnasProyecto(table);
     }
     
@@ -163,7 +194,7 @@ public class EditarProyController implements Initializable {
             txtDepartamento.setText(p.getDepartamento());
             txtSupervisor.setText(String.valueOf(p.getSupervisor()));
             //FALTAN LA FECHA DE ENTREGA
-
+            cargarTareasProyecto(tblTareasProyectos, p, conexion);
         }
     }
     EditarProyecto E = new EditarProyecto();
@@ -178,7 +209,7 @@ public class EditarProyController implements Initializable {
     }
 
     public void ActualizarTabla(TableView<Proyecto> table) {
-        table.setItems(EP.CargarProyecto(conexion));
+        table.setItems(E.CargarProyecto(conexion));
         
     }
 
@@ -196,12 +227,12 @@ public class EditarProyController implements Initializable {
         txtTareas.setVisible(false);
         DatePickerFechaE.setVisible(false);
         txtNombreP.setVisible(false);
-        lblTareasP.setVisible(false);
         lblNombreP.setVisible(false);
         lblSupervisorP.setVisible(false);
         lblDepartamento.setVisible(false);
         lblFechaE.setVisible(false);
         btnActualizar.setVisible(false);
+        tblTareasProyectos.setVisible(false);
         
     }
     
@@ -212,12 +243,12 @@ public class EditarProyController implements Initializable {
         txtTareas.setVisible(true);
         DatePickerFechaE.setVisible(true);
         txtNombreP.setVisible(true);
-        lblTareasP.setVisible(true);
         lblNombreP.setVisible(true);
         lblSupervisorP.setVisible(true);
         lblDepartamento.setVisible(true);
         lblFechaE.setVisible(true);
         btnActualizar.setVisible(true);
+        tblTareasProyectos.setVisible(true);
     }
     
     @FXML
@@ -459,5 +490,65 @@ public class EditarProyController implements Initializable {
         tblCNombre.setCellValueFactory(new PropertyValueFactory<Departamento, String>("Nombre"));
         tblCNombre.setMinWidth(601);
         table.getColumns().addAll(tblCNombre);
+    }
+    
+    
+    /*
+    Nombre de metodo: cargarTareas
+    Parametros: TableView<Usuario_has_Tareas> table, ProyectoConsulta proyecto, int cedula, int rol, Connection conexion
+    Retorno: Ninguno
+    Descripcion: Carga las tareas del proyecto seleccionado
+    */
+    private void cargarTareasProyecto(TableView<Usuario_has_Tareas> table, Proyecto proyecto, Connection conexion) {
+        table.setItems(E.CargarTareas(proyecto,  conexion));
+        cargarColumnasTareasProyecto(table);
+    }
+
+    /*
+    Nombre de metodo: cargarColumnasTareas
+    Parametros: TableView<Usuario_has_Tareas> table
+    Retorno: Ninguno
+    Descripcion: Carga las columas necesarias para ver todo lo relacionado con una tarea en un proyecto
+    */
+    private void cargarColumnasTareasProyecto(TableView<Usuario_has_Tareas> table) {
+        TableColumn tblCTarea = new TableColumn("Tarea");
+        tblCTarea.setCellValueFactory(new PropertyValueFactory<Usuario_has_Tareas, String>("Tarea"));
+        tblCTarea.setMinWidth(160);
+        TableColumn tblCEmpleado = new TableColumn("Empleado");
+        tblCEmpleado.setCellValueFactory(new PropertyValueFactory<Usuario_has_Tareas, String>("Empleado"));
+        tblCEmpleado.setMinWidth(160);
+        TableColumn tblCEstado = new TableColumn("Estado");
+        tblCEstado.setCellValueFactory(new PropertyValueFactory<Usuario_has_Tareas, String>("Estado"));
+        tblCEstado.setMinWidth(113);
+        TableColumn tblCIteraciones = new TableColumn("Iteraciones");
+        tblCIteraciones.setCellValueFactory(new PropertyValueFactory<Usuario_has_Tareas, String>("Iteraciones"));
+        tblCIteraciones.setMinWidth(80);
+        table.getColumns().addAll(tblCTarea, tblCEmpleado, tblCEstado, tblCIteraciones);
+    }
+    
+    private void MostrarTareasProyecto(boolean bandera){
+        lblTareasP.setVisible(bandera);
+        cbmTareasProyectos.setVisible(bandera);
+        lblEmpleadosDisponibles.setVisible(bandera);
+        cmbEmpleadosDisponibles.setVisible(bandera);
+        lblIteracionesTarea.setVisible(bandera);
+        cmbIteracionesTP.setVisible(bandera);
+        FigRectanguloTarea.setVisible(bandera);
+        lblEstadosTareasP.setVisible(bandera);
+        rbtnEnProceso.setVisible(bandera);
+        rbtnImplementada.setVisible(bandera);
+        rbtnNoImplementada.setVisible(bandera);
+        
+    }
+
+    @FXML
+    private void TrasladarTP(MouseEvent event) {
+         Usuario_has_Tareas Us_Ta = tblTareasProyectos.getSelectionModel().getSelectedItem();
+        
+        if (Us_Ta != null) {
+            MostrarTareasProyecto(true);
+            
+        }
+        
     }
 }

@@ -202,4 +202,53 @@ public class EditarProyecto {
             JOptionPane.showMessageDialog(null, "Error al eliminar Departamento: " + e);
         }
     }
+    
+     /*
+    Nombre de metodo: CargarTareas
+    Parametros: ProyectoConsulta proyecto, int cedula, int rol, Connection conexion
+    Retorno: ObservableList<Usuario_has_Tareas>
+    Descripcion: Retorna el ObservableList con las tareas en un proyecto que puede ver el actor  
+    */
+    public ObservableList<Usuario_has_Tareas> CargarTareas(Proyecto proyecto,  Connection conexion){
+        ObservableList <Usuario_has_Tareas> modelo = FXCollections.observableArrayList();
+        String sql = "SELECT Tareas_Nombre, Usuario_idEmpleados, EstadosTareas_idEstadosTareas, "
+                + "Iteraciones FROM Usuario_has_Tareas WHERE Proyecto_Nombre = '"+ proyecto.getNombre() + "' AND Proyecto_Departamento = '" + proyecto.getDepartamento() +"'";
+        String[] datos = new String[4];
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
+                datos[2] = definirEstadoTarea(datos[2]);
+                modelo.add(new Usuario_has_Tareas(proyecto.getNombre(), proyecto.getDepartamento(), datos[0], datos[1], datos[2], datos[3]));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error CargarTareas");
+        }
+        return modelo;
+    }
+    
+    /*
+    Nombre de metodo: definirEstadoTarea
+    Parametros: String estado
+    Retorno: String
+    Descripcion:  Retorna la tarea dependiendo del numero de la tarea   
+    */
+    private String definirEstadoTarea(String estado){
+        switch (estado) {
+            case "1":
+                return "No Implementada";
+            case "2":
+                return "En Proceso";
+            case "3":
+                return "Implementada";
+            default:
+                return "Implementada";
+        }
+    }
+    
+    
 }
