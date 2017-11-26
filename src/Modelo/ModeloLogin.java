@@ -13,8 +13,7 @@ public class ModeloLogin {
 
     /*
     Metodo de Ingreso al sistema
-    */
-    
+     */
     public int Login(String Nombreusuario, String Contrasena) {
         String SSQL = "SELECT * FROM Usuario WHERE NombreUsuario ='" + Nombreusuario + "' AND Contrasena=('" + Contrasena + "')";
         String cap = "";
@@ -27,27 +26,60 @@ public class ModeloLogin {
                 cap = rs.getString("Rol");
                 cap2 = rs.getString("idUsuario");
                 cap3 = rs.getString("NombreUsuario");
-                if(Nombreusuario.equals(cap3)){
-                break;
-            }
+                if (Nombreusuario.equals(cap3)) {
+                    break;
+                }
             }
             MenuController.Cedula = Integer.parseInt(cap2);
-            
-            if (cap.equals("1")) {
-                return 1;
-            }
-             if (cap.equals("2")) {
-                return 2;
-            }
-              if (cap.equals("3")) {
-                return 3;
+            switch (cap) {
+                case "1":
+                    return 1;
+                case "2":
+                    return 2;
+                case "3":
+                    return 3;
+                default:
+                    return 4;
+
             }
         } catch (SQLException ex) {
-
         }
         return 0;
     }
-    
+
+//    public int Login(String Nombreusuario, String Contrasena) {
+//        String SSQL = "SELECT * FROM Usuario WHERE NombreUsuario ='" + Nombreusuario + "' AND Contrasena=('" + Contrasena + "')";
+//        String cap = "";
+//        String cap2 = "";
+//        String cap3 = "";
+//        try {
+//            Statement st = c.createStatement();
+//            ResultSet rs = st.executeQuery(SSQL);
+//            while (rs.next()) {
+//                cap = rs.getString("Rol");
+//                cap2 = rs.getString("idUsuario");
+//                cap3 = rs.getString("NombreUsuario");
+//                if(Nombreusuario.equals(cap3)){
+//                break;
+//            }
+//            }
+//            MenuController.Cedula = Integer.parseInt(cap2);
+//            if (cap.equals("1")) {
+//                return 1;
+//            }
+//             if (cap.equals("2")) {
+//                return 2;
+//            }
+//              if (cap.equals("3")) {
+//                return 3;
+//            }
+//              if (cap.equals("")) {
+//                return 4;
+//            }
+//        } catch (SQLException ex) {
+//        }
+//        return 0;
+//    }
     public boolean ValidarCedula(int Cedula) {
         String definir = "Por Definir";
         String SSQL = "SELECT * FROM Usuario WHERE (idUsuario = '" + Cedula + "')AND(Contrasena = '" + definir + "')";
@@ -134,6 +166,5 @@ public class ModeloLogin {
     }
     Conexion conec = new Conexion();
     Connection c = conec.conexion();
-    
-    
+
 }

@@ -92,18 +92,15 @@ public class InsertarController implements Initializable {
 
     @FXML
     private void Personas(ActionEvent event) {
-        menu.Personas();
-        Scene scene =MbMenu.getScene();
-        Stage stage = (Stage) scene.getWindow();
-        stage.close();
+        menu.Login();
+        CodigoR();
     }
 
     @FXML
     private void Proyectos(ActionEvent event) {
-        menu.Proyecto();
-        Scene scene =MbMenu.getScene();
-        Stage stage = (Stage) scene.getWindow();
-        stage.close();
+        menu.Login();
+        CodigoR();
+        
     }
 
     @FXML
@@ -112,19 +109,23 @@ public class InsertarController implements Initializable {
 
     @FXML
     private void EditProyectos(ActionEvent event) {
-         menu.EditarProyectos();
-        Scene scene =MbMenu.getScene();
-        Stage stage = (Stage) scene.getWindow();
-        stage.close();
+         menu.Login();
+        CodigoR();
+        
       
     }
 
     @FXML
     private void CerrarS(ActionEvent event) {
         menu.Login();
-        Scene scene =MbMenu.getScene();
-        Stage stage = (Stage) scene.getWindow();
-        stage.close();
+        CodigoR();
+        
+    }
+    
+    private void CodigoR(){
+    Scene scene =MbMenu.getScene();
+    Stage stage = (Stage) scene.getWindow();
+    stage.close();
     }
 
 }

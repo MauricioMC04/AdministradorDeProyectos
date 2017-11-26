@@ -158,41 +158,87 @@ public class LoginControador implements Initializable {
     public void setProgramaPrincipal(AdministradorDeProyectosFX ProgramaPrincipal) {
         this.ProgramaPrincipal = ProgramaPrincipal;
     }
-    
+
     @FXML
+/*
+    Nombre de metodo: Ingresar
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Ingresa al sistema, valida que tipo de usuario es que el ingreso y setea la variable global
+    */
     private void Ingresar(ActionEvent event) {
         String Nombreusuario = TxtNombreUsuario.getText();
         String Contrasena = PfContraseñalogin.getText();
-        if (ML.Login(Nombreusuario, Contrasena) == 1) {
-           MenuController.Tipo = 1;
-            menu.Personas();
-            Stage stage = (Stage) BtnIngresar.getScene().getWindow();
-            stage.close();
-        } else {
-            if (ML.Login(Nombreusuario, Contrasena) == 2) {
+        Stage stage = (Stage) BtnIngresar.getScene().getWindow();
+        int resultado = ML.Login(Nombreusuario, Contrasena);
+        switch (resultado) {
+            case 1:
+                MenuController.Tipo = 1;
+                menu.Personas();
+                lblASLogin1.setVisible(true);
+                lblASLogin2.setVisible(true);
+                lblMSLogin1.setVisible(true);
+                PfContraseñalogin.setText("");
+                break;
+            case 2:
                 MenuController.Tipo = 2;
                 menu.MisProyectos();
-                Stage stage = (Stage) BtnIngresar.getScene().getWindow();
-                stage.close();
-            } else {
-
-                if (ML.Login(Nombreusuario, Contrasena) == 3) {
-                    MenuController.Tipo = 3;
-                    menu.MisProyectos();
-                    Stage stage = (Stage) BtnIngresar.getScene().getWindow();
-                    stage.close();
-                } else {
-                    lblASLogin1.setVisible(true);
-                    lblASLogin2.setVisible(true);
-                    lblMSLogin1.setVisible(true);
-                    PfContraseñalogin.setText("");
-                }
-            }
+                break;
+            case 3:
+            MenuController.Tipo = 3;
+                menu.MisProyectos();
+                break;
+            case 4:
+                lblASLogin1.setVisible(true);
+                lblASLogin2.setVisible(true);
+                lblMSLogin1.setVisible(true);
+                PfContraseñalogin.setText("");
+                break;
         }
+        stage.close();
     }
 
+
+//private void Ingresar(ActionEvent event) {
+//        String Nombreusuario = TxtNombreUsuario.getText();
+//        String Contrasena = PfContraseñalogin.getText();
+//        if (ML.Login(Nombreusuario, Contrasena) == 1) {
+//           MenuController.Tipo = 1;
+//            menu.Personas();
+//            Stage stage = (Stage) BtnIngresar.getScene().getWindow();
+//            stage.close();
+//        } else {
+//            if (ML.Login(Nombreusuario, Contrasena) == 2) {
+//                MenuController.Tipo = 2;
+//                menu.MisProyectos();
+//                Stage stage = (Stage) BtnIngresar.getScene().getWindow();
+//                stage.close();
+//            } else {
+//
+//                if (ML.Login(Nombreusuario, Contrasena) == 3) {
+//                    MenuController.Tipo = 3;
+//                    menu.MisProyectos();
+//                    Stage stage = (Stage) BtnIngresar.getScene().getWindow();
+//                    stage.close();
+//                } else {
+//                    lblASLogin1.setVisible(true);
+//                    lblASLogin2.setVisible(true);
+//                    lblMSLogin1.setVisible(true);
+//                    PfContraseñalogin.setText("");
+//                }
+//            }
+//        }
+//    }
+//    
+    
     @FXML
-    private void ValidarCedula(ActionEvent event) {
+    /*
+    Nombre de metodo: ValidarCedula
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Verifica los datos insertados para registrarse
+    */
+        private void ValidarCedula(ActionEvent event) {
         int cedula = Integer.parseInt(TxtValidarCedula.getText());
         if (ML.ValidarCedula(cedula) == true) {
             PanelRegistrarse.setVisible(true);
@@ -203,8 +249,16 @@ public class LoginControador implements Initializable {
         }
     }
 
+        /*
+    Nombre de metodo: Registrarse
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Verifica e inserta los datos proporcionados por el usuario
+    */
+        
+        
     @FXML
-    private void Registrarse(ActionEvent event) {
+        private void Registrarse(ActionEvent event) {
         lblMSReg1.setVisible(false);
         lblASReg3.setVisible(false);
         lblASReg5.setVisible(false);
@@ -250,9 +304,15 @@ public class LoginControador implements Initializable {
 
         }
     }
+        /*
+    Nombre de metodo: Olvido
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Muestra el panel correspondiente a la accion de olvidar contraseña
+    */
 
     @FXML
-    private void Olvido(MouseEvent event) {
+        private void Olvido(MouseEvent event) {
         Pane1.setVisible(false);
         Pane2.setVisible(true);
         lblVolvrt.setVisible(true);
@@ -263,11 +323,17 @@ public class LoginControador implements Initializable {
     }
 
     @FXML
-    private void ValidarNumeros(KeyEvent event) {
+        private void ValidarNumeros(KeyEvent event) {
     }
+        /*
+    Nombre de metodo: ConfirmarCambio
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Verifica los para realizar un cambio en la contraseña
+    */
 
     @FXML
-    private void ConfirmarCambio(ActionEvent event) {
+        private void ConfirmarCambio(ActionEvent event) {
         int Cedula = Integer.parseInt(txtCedula.getText());
         String Contrasena = PfCambiarC1.getText();
         String Contrasena2 = PfCambiarC2.getText();
@@ -286,9 +352,14 @@ public class LoginControador implements Initializable {
             LblErrorIgual.setVisible(true);
         }
     }
-
+/*
+    Nombre de metodo: ValidarRespuesta
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Verifica la respuesta proporcionada por el usuario para cambiar la contraseña
+    */
     @FXML
-    private void ValidarRespuesta(ActionEvent event) {
+        private void ValidarRespuesta(ActionEvent event) {
         if (!(txtCedula.getText().equals("") || TxtRespuestaPane2.getText().equals(""))) {
             int Cedula = Integer.parseInt(txtCedula.getText());
             String Respuesta = String.valueOf(TxtRespuestaPane2.getText());
@@ -308,7 +379,7 @@ public class LoginControador implements Initializable {
     }
 
     @FXML
-    private void Volver(MouseEvent event) {
+        private void Volver(MouseEvent event) {
         lblVolvrt.setVisible(false);
         Pane1.setVisible(true);
         Pane2.setVisible(false);
