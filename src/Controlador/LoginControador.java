@@ -36,7 +36,7 @@ import static javax.management.Query.lt;
 /**
  * FXML Controller class
  *
- * @author Luis
+ * @author Luis 
  */
 public class LoginControador implements Initializable {
 
@@ -151,7 +151,7 @@ public class LoginControador implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         CbxPreguntaSeguridadRegistrarse.setItems(options);
-        CbxPreguntaSeguridadRegistrarse.setTooltip(new Tooltip("Seleccion la pregunta de seguridad"));
+        CbxPreguntaSeguridadRegistrarse.setTooltip(new Tooltip("Seleccione la pregunta de seguridad"));
 
     }
 
