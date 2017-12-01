@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.IdiomasController">
+   <children>
+      <TabPane prefHeight="649.0" prefWidth="1057.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab fx:id="nuevoIdioma" text="Nuevo Idioma">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="Nombreidioma" layoutX="14.0" layoutY="14.0" promptText="Nombre Idioma" />
+                        <TextField fx:id="ingreso" layoutX="184.0" layoutY="71.0" />
+                        <TextField fx:id="contra" layoutX="184.0" layoutY="108.0" />
+                        <TextField fx:id="NoImplementada" layoutX="184.0" layoutY="146.0" />
+                        <TextField fx:id="Nombre" layoutX="184.0" layoutY="187.0" />
+                        <TextField fx:id="Implementada" layoutX="184.0" layoutY="226.0" />
+                        <TextField fx:id="TareasDisponibles" layoutX="184.0" layoutY="502.0" />
+                        <TextField fx:id="Estados" layoutX="184.0" layoutY="540.0" />
+                        <TextField fx:id="Enproceso" layoutX="184.0" layoutY="578.0" />
+                        <TextField fx:id="SupervisadorPor" layoutX="184.0" layoutY="268.0" />
+                        <TextField fx:id="Implementada2" layoutX="497.0" layoutY="187.0" />
+                        <TextField fx:id="FechaEntrega" layoutX="184.0" layoutY="308.0" />
+                        <TextField fx:id="Implementada4" layoutX="497.0" layoutY="71.0" />
+                        <TextField fx:id="Implementada5" layoutX="497.0" layoutY="108.0" />
+                        <TextField fx:id="Implementada6" layoutX="497.0" layoutY="146.0" />
+                        <TextField fx:id="EmpleadosDisponibles" layoutX="184.0" layoutY="349.0" />
+                        <TextField fx:id="Guardar" layoutX="184.0" layoutY="386.0" />
+                        <TextField fx:id="Iteraciones" layoutX="184.0" layoutY="424.0" />
+                        <TextField fx:id="Actualizar" layoutX="184.0" layoutY="463.0" />
+                        <Label layoutX="12.0" layoutY="76.0" text="Ingreso" />
+                        <Label layoutX="12.0" layoutY="113.0" text="Contraseña" />
+                        <Label layoutX="13.0" layoutY="151.0" prefHeight="21.0" prefWidth="123.0" text="No Implementada" />
+                        <Label layoutX="10.0" layoutY="186.0" text="Nombre" />
+                        <Label layoutX="9.0" layoutY="231.0" text="Implementada" />
+                        <Label layoutX="9.0" layoutY="273.0" text="Supervisado" />
+                        <Label layoutX="10.0" layoutY="313.0" text="Fecha Entrega" />
+                        <Label layoutX="2.0" layoutY="354.0" text="Empleados Disponibles" />
+                        <Label layoutX="24.0" layoutY="386.0" text="Guardar" />
+                        <Label layoutX="24.0" layoutY="424.0" text="Iteraciones" />
+                        <Label layoutX="24.0" layoutY="463.0" text="Actualizar" />
+                        <Label layoutX="24.0" layoutY="502.0" text="Tareas Disponibles" />
+                        <Label layoutX="24.0" layoutY="540.0" text="Estado" />
+                        <Label layoutX="24.0" layoutY="578.0" text="En proceso" />
+                        <Label layoutX="415.0" layoutY="196.0" text="Ingreso" />
+                        <Label layoutX="415.0" layoutY="156.0" text="Ingreso" />
+                        <Label layoutX="415.0" layoutY="116.0" text="Ingreso" />
+                        <Label layoutX="415.0" layoutY="76.0" text="Ingreso" />
+                        <Button fx:id="Save" layoutX="278.0" layoutY="14.0" mnemonicParsing="false" onAction="#OKL" text="Ok" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

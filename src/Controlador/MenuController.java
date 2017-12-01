@@ -157,7 +157,7 @@ public class MenuController implements Initializable {
      
      public void Idioma(){
          try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Idioma.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Idiomas.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Idioma");
@@ -165,7 +165,7 @@ public class MenuController implements Initializable {
             stage.show();
 
         } catch (Exception e) {
-            System.out.println("no");
+            System.out.println(e);
 
         }
      }

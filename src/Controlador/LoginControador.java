@@ -5,7 +5,6 @@
  */
 package Controlador;
 
-import static Controlador.IdiomaController.Idioma;
 import Idiomas.Idiomas;
 import static com.sun.javafx.tk.Toolkit.getToolkit;
 import java.net.URL;
