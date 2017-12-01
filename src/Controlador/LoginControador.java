@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import static Controlador.IdiomaController.Idioma;
+import Idiomas.Idiomas;
 import static com.sun.javafx.tk.Toolkit.getToolkit;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,6 +34,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import static javax.management.Query.gt;
 import static javax.management.Query.lt;
+
 
 /**
  * FXML Controller class
@@ -147,13 +150,27 @@ public class LoginControador implements Initializable {
     private Label LblErrorIgual;
     @FXML
     private Label lblMSReg3;
+    @FXML
+    private Button Idioma;
+    
+    
+    
 
     public void initialize(URL url, ResourceBundle rb) {
-
+        cambiarIdioma(ML.idiomas);
         CbxPreguntaSeguridadRegistrarse.setItems(options);
         CbxPreguntaSeguridadRegistrarse.setTooltip(new Tooltip("Seleccione la pregunta de seguridad"));
-
+        
     }
+    
+    
+    public void cambiarIdioma(String nombreIdioma){
+        Idiomas idioma=new Idiomas(nombreIdioma);
+        LoginControador login = new LoginControador();
+        
+    BtnIngresar.setText(idioma.getProperty("hola"));  
+    }
+    
 
     public void setProgramaPrincipal(AdministradorDeProyectosFX ProgramaPrincipal) {
         this.ProgramaPrincipal = ProgramaPrincipal;
@@ -395,5 +412,14 @@ public class LoginControador implements Initializable {
             return true;
         }
         return false;
+    }
+
+    @FXML
+    private void Idioma(ActionEvent event) {
+        menu.Idioma();
+        Scene scene = Idioma.getScene();
+        Stage stage = (Stage) scene.getWindow();
+        stage.close();
+        
     }
 }

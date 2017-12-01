@@ -124,6 +124,12 @@
                            </children>
                         </Pane>
                         <Label fx:id="lblVolvrt" layoutX="62.0" layoutY="60.0" onMouseClicked="#Volver" prefHeight="74.0" prefWidth="126.0" styleClass="atras" visible="false" />
+                        <Button fx:id="Idioma" layoutX="759.0" layoutY="45.0" mnemonicParsing="false" onAction="#Idioma" prefHeight="50.0" prefWidth="106.0" text="Idioma">
+                           <styleClass>
+                              <String fx:value="color" />
+                              <String fx:value="forma" />
+                           </styleClass>
+                        </Button>
                      </children>
                   </AnchorPane>
             </content>

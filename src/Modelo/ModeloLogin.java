@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
 
 public class ModeloLogin {
-
+    public String idiomas = "Nostro";
     /*
     Metodo de Ingreso al sistema
      */
