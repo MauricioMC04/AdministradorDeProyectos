@@ -15,43 +15,27 @@ import javafx.stage.Stage;
 
 public class IdiomaController implements Initializable {
 
-    @FXML
     private Button Guardar;
-    @FXML
     private TextField Nombreidioma;
-    @FXML
     private TextField ingreso;
-    @FXML
     private TextField contra;
    public static String Idioma="";
-    @FXML
     private TextField NoImplementada;
-    @FXML
     private TextField Nombre;
-    @FXML
     private TextField Implementada;
-    @FXML
     private TextField SupervisadorPor;
-    @FXML
     private TextField FechaEntrega;
-    @FXML
     private TextField EmpleadosDisponibles;
-    @FXML
     private TextField Iteraciones;
-    @FXML
     private TextField Actualizar;
-    @FXML
     private TextField TareasDisponibles;
-    @FXML
     private TextField Estados;
-    @FXML
     private TextField Enproceso;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
     }    
 
-    @FXML
     private void Guardar(ActionEvent event) throws IOException {
        String userDir = System.getProperty("user.dir");
         System.out.println(userDir);
