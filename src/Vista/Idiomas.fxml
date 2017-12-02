@@ -52,6 +52,16 @@
                         <Label layoutX="415.0" layoutY="116.0" text="Ingreso" />
                         <Label layoutX="415.0" layoutY="76.0" text="Ingreso" />
                         <Button fx:id="Save" layoutX="278.0" layoutY="14.0" mnemonicParsing="false" onAction="#OKL" text="Ok" />
+                        <Label layoutX="421.0" layoutY="248.0" text="Buscar" />
+                        <TextField fx:id="Buscar" layoutX="497.0" layoutY="239.0" />
+                        <Label layoutX="397.0" layoutY="300.0" text="Nombre Tarea" />
+                        <TextField fx:id="NombreTarea" layoutX="497.0" layoutY="298.0" />
+                        <Label layoutX="400.0" layoutY="346.0" text="Descripcion" />
+                        <TextField fx:id="Descripcion" layoutX="497.0" layoutY="342.0" />
+                        <Label layoutX="410.0" layoutY="441.0" text="Eliminar" />
+                        <Label layoutX="420.0" layoutY="390.0" text="Editar" />
+                        <TextField fx:id="Editar" layoutX="497.0" layoutY="386.0" />
+                        <TextField fx:id="Eliminar" layoutX="497.0" layoutY="437.0" />
                      </children>
                   </AnchorPane>
                </content>

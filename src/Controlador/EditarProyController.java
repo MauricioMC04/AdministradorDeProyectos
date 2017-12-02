@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Controlador;
-
+import Idiomas.Idiomas;
 import Modelo.Conexion;
 import Modelo.Departamento;
 import Modelo.EditarProyecto;
@@ -49,8 +49,6 @@ public class EditarProyController implements Initializable {
     private Label lblNombreP;
     @FXML
     private Label lblSupervisorP;
-    @FXML
-    private Label lblDepartamento;
     @FXML
     private Label lblFechaE;
     @FXML
@@ -222,7 +220,6 @@ public class EditarProyController implements Initializable {
         txtNombreP.setVisible(false);
         lblNombreP.setVisible(false);
         lblSupervisorP.setVisible(false);
-        lblDepartamento.setVisible(false);
         lblFechaE.setVisible(false);
         btnActualizar.setVisible(false);
         tblTareasProyectos.setVisible(false);
@@ -236,7 +233,6 @@ public class EditarProyController implements Initializable {
         txtNombreP.setVisible(true);
         lblNombreP.setVisible(true);
         lblSupervisorP.setVisible(true);
-        lblDepartamento.setVisible(true);
         lblFechaE.setVisible(true);
         btnActualizar.setVisible(true);
         tblTareasProyectos.setVisible(true);
