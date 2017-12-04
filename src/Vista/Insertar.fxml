@@ -36,11 +36,11 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-            <Tab text="Departamentos">
+            <Tab fx:id="tabDepartamentos" text="Departamentos">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="100.0" layoutY="106.0" text="Nombre Departamento" textFill="WHITE">
+                        <Label fx:id="lblNombreDep" layoutX="100.0" layoutY="106.0" text="Nombre Departamento" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font></Label>
@@ -56,7 +56,7 @@
         </TabPane>
         <MenuBar fx:id="MbMenu" layoutY="-2.0" prefHeight="32.0" prefWidth="2028.0" AnchorPane.leftAnchor="-5.0">
   <menus>
-    <Menu mnemonicParsing="false" text="Navegar">
+    <Menu fx:id="BarMenuNavegar" mnemonicParsing="false" text="Navegar">
       <items>
         
               <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
@@ -65,7 +65,7 @@
         <MenuItem mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
       </items>
     </Menu>
-    <Menu mnemonicParsing="false" text="Sistema">
+    <Menu fx:id="BarMenuSistema" mnemonicParsing="false" text="Sistema">
       <items>
         <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
       </items>

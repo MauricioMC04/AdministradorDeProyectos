@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Idiomas.Idiomas;
 import Modelo.Conexion;
 import Modelo.ModeloProyecto;
 import Modelo.TareaUsuario;
@@ -25,15 +26,18 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SortEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
 import javafx.scene.control.cell.PropertyValueFactory;
 import static javafx.scene.input.KeyCode.T;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -116,6 +120,14 @@ public class ProyectosController implements Initializable {
     private Label lblGuardar;
     @FXML
     private Label lblNoTarea;
+    @FXML
+    private TitledPane tlPanelProyecto;
+    @FXML
+    private AnchorPane ASD;
+    @FXML
+    private Menu BarMenuNavegarP;
+    @FXML
+    private Menu BarMenuSistemaP;
 
     /**
      * Initializes the controller class.
@@ -340,5 +352,27 @@ public class ProyectosController implements Initializable {
         cbxCreadoPor.setItems(Sup);
  
    }
+   
+    public void cambiarIdioma(String nombreIdioma){
+        
+        Idiomas idioma=new Idiomas(nombreIdioma);
+        
+       lblNombreProyecto.setText(idioma.getProperty("NomProyecto"));
+       lblCreadoPor.setText(idioma.getProperty("SupervisadorPor"));
+       lblDepartamento.setText(idioma.getProperty("Dep"));
+       lblTareasProyecto.setText(idioma.getProperty("TareasProy"));
+       lblFechaInicio.setText(idioma.getProperty("FInicial"));
+       lblFechaEntrega.setText(idioma.getProperty("FEntrega"));
+       lblTareas.setText(idioma.getProperty("Tareas"));
+       lblIteraciones.setText(idioma.getProperty("Iteraciones"));
+       btnGuardarProyecto.setText(idioma.getProperty("Guardar"));
+       lblEmpleadosDisponibles.setText(idioma.getProperty("EmpleadosDisponibles"));
+       lblEmpleadoSeleccionado.setText(idioma.getProperty("EmpSelec"));
+       lblErrorSeleccionarEmpleado.setText(idioma.getProperty("SelecEmp"));
+       btnAgregarTarea.setText(idioma.getProperty("AgreTarea"));
+       tlPanelProyecto.setText(idioma.getProperty("AgregProy"));
+       BarMenuSistemaP.setText(idioma.getProperty("Sistema"));
+       BarMenuNavegarP.setText(idioma.getProperty("Navegar"));
+    }
      
 }   

@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Idiomas.Idiomas;
 import Modelo.Conexion;
 import Modelo.InsertarDepartamento;
 import Modelo.InsertarTareas;
@@ -18,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
@@ -65,6 +67,14 @@ public class InsertarController implements Initializable {
     private MenuItem MPersonas;
     @FXML
     private MenuItem MbCerrarS;
+    @FXML
+    private Label lblNombreDep;
+    @FXML
+    private Menu BarMenuNavegar;
+    @FXML
+    private Menu BarMenuSistema;
+    @FXML
+    private Tab tabDepartamentos;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -126,6 +136,23 @@ public class InsertarController implements Initializable {
     Scene scene =MbMenu.getScene();
     Stage stage = (Stage) scene.getWindow();
     stage.close();
+    }
+    
+     public void cambiarIdioma(String nombreIdioma){
+        
+        Idiomas idioma=new Idiomas(nombreIdioma);
+        
+       lblTNombreTareas.setText(idioma.getProperty("NombreTarea"));
+       lblTErrorLetras.setText(idioma.getProperty("SolLetras"));
+       lblTDescripcion.setText(idioma.getProperty("Descripcion"));
+       lblTErrorInformacion.setText(idioma.getProperty("FaltaInfo"));
+       btnTAceptar.setText(idioma.getProperty("Acep"));
+       lblNombreDep.setText(idioma.getProperty("NomDep"));
+       Aceptar.setText(idioma.getProperty("Acep"));
+       BarMenuSistema.setText(idioma.getProperty("Sistema"));
+       BarMenuNavegar.setText(idioma.getProperty("Navegar"));
+       tabTareasAsignadas.setText(idioma.getProperty("TareaAsig"));
+       tabDepartamentos.setText(idioma.getProperty("Dep"));
     }
 
 }

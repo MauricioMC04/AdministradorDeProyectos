@@ -68,6 +68,50 @@ public class IdiomasController implements Initializable {
     private TextField Implementada6;
     @FXML
     private Button Save;
+    @FXML
+    private TextField Buscar;
+    @FXML
+    private TextField NombreTarea;
+    @FXML
+    private TextField Descripcion;
+    @FXML
+    private TextField Editar;
+    @FXML
+    private TextField Eliminar;
+    @FXML
+    private TextField acep;
+    @FXML
+    private TextField NomDep;
+    @FXML
+    private TextField SolamenteLetras;
+    @FXML
+    private TextField FaltaInfo;
+    @FXML
+    private TextField NomProyecto;
+    @FXML
+    private TextField Dep;
+    @FXML
+    private TextField TareasProy;
+    @FXML
+    private TextField FechaI;
+    @FXML
+    private TextField FechaE;
+    @FXML
+    private TextField Tareas;
+    @FXML
+    private TextField EmpSelec;
+    @FXML
+    private TextField SelecEmp;
+    @FXML
+    private TextField AgreTarea;
+    @FXML
+    private TextField AgregProy;
+    @FXML
+    private TextField Nav;
+    @FXML
+    private TextField Sis;
+    @FXML
+    private TextField TAsig;
 
     /**
      * Initializes the controller class.
@@ -113,8 +157,48 @@ public class IdiomasController implements Initializable {
         bw.write("Estados="+Estados.getText());
         bw.newLine();
         bw.write("Enproceso="+Enproceso.getText());
-        
+        bw.newLine();
+        bw.write("Acep="+acep.getText());
         bw.close();
+        bw.write("NomDep="+NomDep.getText());
+        bw.close();
+        bw.write("SolLetras="+SolamenteLetras.getText());
+        bw.close();
+        bw.write("FaltaInfo="+FaltaInfo.getText());
+        bw.close();
+        bw.write("NomProyecto="+NomProyecto.getText());
+        bw.close();
+        bw.write("Dep="+Dep.getText());
+        bw.close();
+        bw.write("TareasProy="+TareasProy.getText());
+        bw.close();
+        bw.write("FInicial="+FechaI.getText());
+        bw.close();
+        bw.write("FEntrega="+FechaE.getText());
+        bw.close();
+        bw.write("Tareas="+Tareas.getText());
+        bw.close();
+        bw.write("EmpSelec="+EmpSelec.getText());
+        bw.close();
+        bw.write("SelecEmp="+SelecEmp.getText());
+        bw.close();
+        bw.write("AgreTarea="+AgreTarea.getText());
+        bw.close();
+        bw.write("AgregProy="+AgregProy.getText());
+        bw.close();
+        bw.write("NombreTarea="+NombreTarea.getText());
+        bw.close();
+        bw.write("Descripcion="+Descripcion.getText());
+        bw.close();
+        bw.write("Navegar="+Nav.getText());
+        bw.close();
+        bw.write("Sistema="+Sis.getText());
+        bw.close();
+        bw.write("TareaAsig="+TAsig.getText());
+        bw.close();
+        bw.write("Guardar="+Guardar.getText());
+        bw.close();
+        
         }  
         MenuController menu = new MenuController();
         menu.Login();

@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="794.0" prefWidth="1761.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ProyectosController">
    <children>
-      <TitledPane animated="false" layoutY="21.0" prefHeight="689.0" prefWidth="1754.0" text="Agregar Proyecto">
+      <TitledPane fx:id="tlPanelProyecto" animated="false" layoutY="21.0" prefHeight="689.0" prefWidth="1754.0" text="Agregar Proyecto">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="789.0" prefWidth="1752.0">
                <children>
@@ -69,7 +69,7 @@
       </TitledPane>
       <MenuBar fx:id="MbMenu" layoutY="-2.0" prefHeight="25.0" prefWidth="845.0" AnchorPane.leftAnchor="0.0">
   <menus>
-    <Menu mnemonicParsing="false" text="Navegar">
+    <Menu fx:id="BarMenuNavegarP" mnemonicParsing="false" text="Navegar">
       <items>
         
                                       <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
@@ -78,7 +78,7 @@
         <MenuItem mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
       </items>
     </Menu>
-    <Menu mnemonicParsing="false" text="Sistema">
+    <Menu fx:id="BarMenuSistemaP" mnemonicParsing="false" text="Sistema">
       <items>
         <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
       </items>
