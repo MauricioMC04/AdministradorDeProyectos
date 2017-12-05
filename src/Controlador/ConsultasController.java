@@ -1,5 +1,6 @@
 package Controlador;
 
+import Idiomas.Idiomas;
 import Modelo.Conexion;
 import Modelo.DatosConsultas;
 import Modelo.Proyecto;
@@ -43,6 +44,7 @@ public class ConsultasController implements Initializable {
     int cedula = MenuController.Cedula;
     private Conexion conect = new Conexion();
     private Connection conexion = conect.conexion();
+    Idiomas idioma = new Idiomas("Prueba");
     @FXML
     private MenuBar MbMenu;
     @FXML
@@ -96,6 +98,7 @@ public class ConsultasController implements Initializable {
             //MPEdittar.setDisable(true);
             //MPtareas.setDisable(true);
         }
+        cambiarIdioma();
         ocultar();
         cargarProyectos(tblProyectos, cedula, rol, conexion);
         ObservableList<String> estados = FXCollections.observableArrayList();
@@ -292,25 +295,25 @@ public class ConsultasController implements Initializable {
     Descripcion: Carga sobre la tabla las columnas necesarias para ver todo lo relacionado a un proyecto
     */
     private void cargarColumnas(TableView<ProyectoConsulta> table) {
-        TableColumn tblCNombre = new TableColumn("Nombre");
+        TableColumn tblCNombre = new TableColumn(idioma.getProperty("Nombre"));
         tblCNombre.setCellValueFactory(new PropertyValueFactory<ProyectoConsulta, String>("Nombre"));
         tblCNombre.setMinWidth(98.42);
-        TableColumn tblCDepartamento = new TableColumn("Departamento");
+        TableColumn tblCDepartamento = new TableColumn(idioma.getProperty("Departamento"));
         tblCDepartamento.setCellValueFactory(new PropertyValueFactory<ProyectoConsulta, String>("Departamento"));
         tblCDepartamento.setMinWidth(98.42);
-        TableColumn tblCFechaI = new TableColumn("Fecha Inicio");
+        TableColumn tblCFechaI = new TableColumn(idioma.getProperty("FechaInicio"));
         tblCFechaI.setCellValueFactory(new PropertyValueFactory<ProyectoConsulta, String>("FechaInicio"));
         tblCFechaI.setMinWidth(98.42);
-        TableColumn tblCFechaF = new TableColumn("Fecha Final");
+        TableColumn tblCFechaF = new TableColumn(idioma.getProperty("FechaFinal"));
         tblCFechaF.setCellValueFactory(new PropertyValueFactory<ProyectoConsulta, String>("FechaFinal"));
         tblCFechaF.setMinWidth(98.42);
-        TableColumn tblCEstado = new TableColumn("Estado");
+        TableColumn tblCEstado = new TableColumn(idioma.getProperty("Estado"));
         tblCEstado.setCellValueFactory(new PropertyValueFactory<ProyectoConsulta, String>("Estado"));
         tblCEstado.setMinWidth(98.42);
-        TableColumn tblCAdministrador = new TableColumn("Administrador");
+        TableColumn tblCAdministrador = new TableColumn(idioma.getProperty("Administrador"));
         tblCAdministrador.setCellValueFactory(new PropertyValueFactory<ProyectoConsulta, String>("Administrador"));
         tblCAdministrador.setMinWidth(98.42);
-        TableColumn tblCSupervisor = new TableColumn("Supervisor");
+        TableColumn tblCSupervisor = new TableColumn(idioma.getProperty("Supervisor"));
         tblCSupervisor.setCellValueFactory(new PropertyValueFactory<ProyectoConsulta, String>("Supervisor"));
         tblCSupervisor.setMinWidth(98.42);
         table.getColumns().addAll(tblCNombre, tblCDepartamento, tblCFechaI, tblCFechaF, tblCAdministrador, tblCSupervisor, tblCEstado);
@@ -323,10 +326,10 @@ public class ConsultasController implements Initializable {
     Descripcion: Carga sobre la tabla las columnas necesarias para que un empleado vea un proyecto
     */
     private void cargarColumnasEmpleado(TableView<ProyectoConsulta> table) {
-        TableColumn tblCNombre = new TableColumn("Nombre");
+        TableColumn tblCNombre = new TableColumn(idioma.getProperty("Nombre"));
         tblCNombre.setCellValueFactory(new PropertyValueFactory<ProyectoConsulta, String>("Nombre"));
         tblCNombre.setMinWidth(344.5);
-        TableColumn tblCDepartamento = new TableColumn("Departamento");
+        TableColumn tblCDepartamento = new TableColumn(idioma.getProperty("Departamento"));
         tblCDepartamento.setCellValueFactory(new PropertyValueFactory<ProyectoConsulta, String>("Departamento"));
         tblCDepartamento.setMinWidth(344.5);
         table.getColumns().addAll(tblCNombre, tblCDepartamento);
@@ -373,16 +376,16 @@ public class ConsultasController implements Initializable {
     Descripcion: Carga las columas necesarias para ver todo lo relacionado con una tarea en un proyecto
     */
     private void cargarColumnasTareas(TableView<Usuario_has_Tareas> table) {
-        TableColumn tblCTarea = new TableColumn("Tarea");
+        TableColumn tblCTarea = new TableColumn(idioma.getProperty("Tarea"));
         tblCTarea.setCellValueFactory(new PropertyValueFactory<Usuario_has_Tareas, String>("Tarea"));
         tblCTarea.setMinWidth(177);
-        TableColumn tblCEmpleado = new TableColumn("Empleado");
+        TableColumn tblCEmpleado = new TableColumn(idioma.getProperty("Empleado"));
         tblCEmpleado.setCellValueFactory(new PropertyValueFactory<Usuario_has_Tareas, String>("Empleado"));
         tblCEmpleado.setMinWidth(177);
-        TableColumn tblCEstado = new TableColumn("Estado");
+        TableColumn tblCEstado = new TableColumn(idioma.getProperty("Estado"));
         tblCEstado.setCellValueFactory(new PropertyValueFactory<Usuario_has_Tareas, String>("Estado"));
         tblCEstado.setMinWidth(177);
-        TableColumn tblCIteraciones = new TableColumn("Iteraciones");
+        TableColumn tblCIteraciones = new TableColumn(idioma.getProperty("Iteraciones"));
         tblCIteraciones.setCellValueFactory(new PropertyValueFactory<Usuario_has_Tareas, String>("Iteraciones"));
         tblCIteraciones.setMinWidth(177);
         table.getColumns().addAll(tblCTarea, tblCEmpleado, tblCEstado, tblCIteraciones);
@@ -470,5 +473,14 @@ public class ConsultasController implements Initializable {
             ocultar();
             cargarProyectos(tblProyectos, cedula, rol, conexion);
         }
+    }
+    
+    public void cambiarIdioma(){ 
+        MPersonas.setText(idioma.getProperty("Personas"));
+        MbCerrarS.setText(idioma.getProperty("CerrarSesion"));
+        MbMisProyectos.setText(idioma.getProperty("MisProyectos"));      
+        lblProyecto.setText(idioma.getProperty("Proyecto"));
+        lblDepartamento.setText(idioma.getProperty("Departamento"));
+        btnEditar.setText(idioma.getProperty("Editar"));
     }
 }

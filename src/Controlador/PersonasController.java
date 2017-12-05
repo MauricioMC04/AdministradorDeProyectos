@@ -1,5 +1,6 @@
 package Controlador;
 
+import Idiomas.Idiomas;
 import Modelo.Conexion;
 import Modelo.DatosPersonas;
 import Modelo.Usuario;
@@ -27,6 +28,7 @@ public class PersonasController implements Initializable {
     private Connection conexion = conect.conexion();
     private String cedula = "";
     MenuController menu = new MenuController();
+    Idiomas idioma = new Idiomas("Prueba");
     @FXML
     private Tab tabAgregar;
     @FXML
@@ -130,6 +132,7 @@ public class PersonasController implements Initializable {
     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        cambiarIdioma();
         porDefecto();
     }
 
@@ -168,16 +171,16 @@ public class PersonasController implements Initializable {
     Descripcion: Carga en la tabla las columnas necesarias para ver las personas del sistema
     */
     public void cargarColumnas(TableView<Usuario> table) {
-        TableColumn tblCCedula = new TableColumn("Cedula");
+        TableColumn tblCCedula = new TableColumn(idioma.getProperty("Cedula"));
         tblCCedula.setCellValueFactory(new PropertyValueFactory<Usuario, String>("IdUsuario"));
         tblCCedula.setMinWidth(171.25);
-        TableColumn tblCNombre = new TableColumn("Nombre");
+        TableColumn tblCNombre = new TableColumn(idioma.getProperty("Nombre"));
         tblCNombre.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Nombre"));
         tblCNombre.setMinWidth(171.25);
-        TableColumn tblCApellido = new TableColumn("Apellido");
+        TableColumn tblCApellido = new TableColumn(idioma.getProperty("Apellido"));
         tblCApellido.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Apellido"));
         tblCApellido.setMinWidth(171.25);
-        TableColumn tblCRol = new TableColumn("Rol");
+        TableColumn tblCRol = new TableColumn(idioma.getProperty("Rol"));
         tblCRol.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Rol"));
         tblCRol.setMinWidth(171.25);
         table.getColumns().addAll(tblCCedula, tblCNombre, tblCApellido, tblCRol);
@@ -529,5 +532,31 @@ public class PersonasController implements Initializable {
     private void cargarBusquedaEditar(TableView<Usuario> table, String busqueda){
         table.setItems(datosPersonas.CargarBusquedaEditar(conexion, busqueda));
         cargarColumnas(table);
+    }
+    
+    public void cambiarIdioma(){ 
+        tabAgregar.setText(idioma.getProperty("AgregarPersonas"));
+        lblCedula.setText(idioma.getProperty("Cedula"));
+        lblNombre.setText(idioma.getProperty("Nombre"));
+        lblApellido.setText(idioma.getProperty("Apellido"));
+        rbtnAdministrador.setText(idioma.getProperty("Administrador"));
+        rbtnSupervisor.setText(idioma.getProperty("Supervisor"));
+        rbtnEmpleado.setText(idioma.getProperty("Empleado"));
+        btnAgregar.setText(idioma.getProperty("Agregar"));
+        tabEliminar.setText(idioma.getProperty("EliminarPersonas"));
+        btnEliminar.setText(idioma.getProperty("Eliminar"));
+        tabEditar.setText(idioma.getProperty("EditarPersonas"));
+        lblNombreEditar.setText(idioma.getProperty("Nombre"));
+        lblApellidoEditar.setText(idioma.getProperty("Apellido"));
+        btnEditar.setText(idioma.getProperty("Editar"));
+        lblRolEditar.setText(idioma.getProperty("Rol"));
+        rbtnAdministradorEditar.setText(idioma.getProperty("Administrador"));
+        rbtnSupervisorEditar.setText(idioma.getProperty("Supervisor"));
+        rbtnEmpleadoEditar.setText(idioma.getProperty("Empleado"));
+        MPersonas.setText(idioma.getProperty("Personas"));
+        MbCerrarS.setText(idioma.getProperty("CerrarSesion"));
+        MbMisProyectos.setText(idioma.getProperty("MisProyectos"));
+        lblBuscarEliminar.setText(idioma.getProperty("Buscar"));
+        lblBuscarEditar.setText(idioma.getProperty("Buscar"));
     }
 }

@@ -112,6 +112,46 @@ public class IdiomasController implements Initializable {
     private TextField Sis;
     @FXML
     private TextField TAsig;
+    @FXML
+    private TextField Personas;
+    @FXML
+    private TextField Proyectos;
+    @FXML
+    private TextField EditarProyecto;
+    @FXML
+    private TextField CerrarSesion;
+    @FXML
+    private TextField Personal;
+    @FXML
+    private TextField MisProyectos;
+    @FXML
+    private TextField AgregarPersonas;
+    @FXML
+    private TextField EliminarPersonas;
+    @FXML
+    private TextField EditarPersonas;
+    @FXML
+    private TextField Apellido;
+    @FXML
+    private TextField Cedula;
+    @FXML
+    private TextField Administrador;
+    @FXML
+    private TextField Supervisor;
+    @FXML
+    private TextField Empleado;
+    @FXML
+    private TextField Agregar;
+    @FXML
+    private TextField Rol;
+    @FXML
+    private TextField SeleccioneLaPersona;
+    @FXML
+    private TextField Proyecto;
+    @FXML
+    private TextField FechaInicio;
+    @FXML
+    private TextField FechaFinal;
 
     /**
      * Initializes the controller class.
@@ -198,16 +238,50 @@ public class IdiomasController implements Initializable {
         bw.close();
         bw.write("Guardar="+Guardar.getText());
         bw.close();
-        
+        bw.write("Personas="+Personas.getText());
+        bw.close();
+        bw.write("Proyectos="+Proyectos.getText());
+        bw.close();
+        bw.write("EditarProyecto="+EditarProyecto.getText());
+        bw.close();
+        bw.write("CerrarSesion="+CerrarSesion.getText());
+        bw.close();
+        bw.write("Personal="+Personal.getText());
+        bw.close();
+        bw.write("MisProyectos="+MisProyectos.getText());
+        bw.close();
+        bw.write("AgregarPersonas="+AgregarPersonas.getText());
+        bw.close();
+        bw.write("EliminarPersonas="+EliminarPersonas.getText());
+        bw.close();
+        bw.write("EditarPersonas="+EditarPersonas.getText());
+        bw.close();
+        bw.write("Apellido="+Apellido.getText());
+        bw.close();
+        bw.write("Cedula="+Cedula.getText());
+        bw.close();
+        bw.write("Administrador="+Administrador.getText());
+        bw.close();
+        bw.write("Supervisor="+Supervisor.getText());
+        bw.close();
+        bw.write("Empleado="+Empleado.getText());
+        bw.close();
+        bw.write("Agregar="+Agregar.getText());
+        bw.close();
+        bw.write("Rol="+Rol.getText());
+        bw.close();
+        bw.write("SeleccioneLaPersona="+SeleccioneLaPersona.getText());
+        bw.close();
+        bw.write("Proyecto="+Proyecto.getText());
+        bw.close();
+        bw.write("FechaInicio="+FechaInicio.getText());
+        bw.close();
+        bw.write("FechaFinal="+FechaFinal.getText());
+        bw.close();
         }  
         MenuController menu = new MenuController();
         menu.Login();
         Stage stage = (Stage) Guardar.getScene().getWindow();
-        stage.close(); 
-        
-        
-        
-    }
-
-    
+        stage.close();    
+    }   
 }

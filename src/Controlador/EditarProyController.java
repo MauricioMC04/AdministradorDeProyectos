@@ -43,6 +43,8 @@ import javafx.util.converter.LocalDateStringConverter;
  */
 public class EditarProyController implements Initializable {
     
+    Idiomas idioma = new Idiomas("Prueba");
+    
     @FXML
     private TableView<Proyecto> tblProyectos;
     @FXML
@@ -129,6 +131,7 @@ public class EditarProyController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        cambiarIdioma();
         tblProyectos.getColumns().clear();
         cargarProyectos(tblProyectos);
         NoVer();
@@ -386,10 +389,10 @@ public class EditarProyController implements Initializable {
     Descripcion: Carga las columnas en la tabla para mostrar las tareas
     */
     private void cargarColumnasTareas(TableView<Tarea> table) {
-        TableColumn tblCNombre = new TableColumn("Nombre");
+        TableColumn tblCNombre = new TableColumn(idioma.getProperty("Nombre"));
         tblCNombre.setCellValueFactory(new PropertyValueFactory<Tarea, String>("Nombre"));
         tblCNombre.setMinWidth(367.5);
-        TableColumn tblCDescripcion = new TableColumn("Descripcion");
+        TableColumn tblCDescripcion = new TableColumn(idioma.getProperty("Descripcion"));
         tblCDescripcion.setCellValueFactory(new PropertyValueFactory<Tarea, String>("Descripcion"));
         tblCDescripcion.setMinWidth(367.5);
         table.getColumns().addAll(tblCNombre, tblCDescripcion);
@@ -473,7 +476,7 @@ public class EditarProyController implements Initializable {
     Descripcion: Cargar las columnas en la tabla para mostrar los departamentos 
     */
     private void cargarColumnasDepartamentos(TableView<Departamento> table) {
-        TableColumn tblCNombre = new TableColumn("Nombre");
+        TableColumn tblCNombre = new TableColumn(idioma.getProperty("Nombre"));
         tblCNombre.setCellValueFactory(new PropertyValueFactory<Departamento, String>("Nombre"));
         tblCNombre.setMinWidth(601);
         table.getColumns().addAll(tblCNombre);
@@ -537,5 +540,17 @@ public class EditarProyController implements Initializable {
             
         }
         
+    }
+    
+    public void cambiarIdioma(){ 
+        lblBuscarTarea.setText(idioma.getProperty("Buscar"));
+        lblNombreTarea.setText(idioma.getProperty("NombreTarea"));
+        lblDescripcion.setText(idioma.getProperty("Descripcion"));
+        btnEditarTarea.setText(idioma.getProperty("Editar"));
+        btnEliminarTarea.setText(idioma.getProperty("Eliminar"));
+        lblBuscarDepartamento.setText(idioma.getProperty("Buscar"));
+        lblNombreDepartamento.setText(idioma.getProperty("Nombre"));
+        btnEditarDepartamento.setText(idioma.getProperty("Editar"));
+        btnEliminarDepartamento.setText(idioma.getProperty("Eliminar"));
     }
 }

@@ -33,8 +33,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import static javax.management.Query.gt;
 import static javax.management.Query.lt;
-
-
 /**
  * FXML Controller class
  *
