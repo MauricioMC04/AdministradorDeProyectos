@@ -28,7 +28,7 @@ public class PersonasController implements Initializable {
     private Connection conexion = conect.conexion();
     private String cedula = "";
     MenuController menu = new MenuController();
-    Idiomas idioma = new Idiomas("Prueba");
+    Idiomas idioma = MenuController.idioma;
     @FXML
     private Tab tabAgregar;
     @FXML
@@ -101,7 +101,6 @@ public class PersonasController implements Initializable {
     private RadioButton rbtnEmpleadoEditar;
     @FXML
     private MenuBar MbMenu;
-    @FXML
     private MenuItem MPersonas;
     @FXML
     private MenuItem MbCerrarS;
@@ -123,6 +122,20 @@ public class PersonasController implements Initializable {
     private Label lblBuscarEditar;
     @FXML
     private TextField txtBusquedaEditar;
+    @FXML
+    private Menu MbNavegar;
+    @FXML
+    private MenuItem MbPersonas;
+    @FXML
+    private MenuItem MbProyectos;
+    @FXML
+    private MenuItem MbTareas;
+    @FXML
+    private MenuItem MbEditarProyecto;
+    @FXML
+    private Menu MbSistema;
+    @FXML
+    private Menu MbPersonal;
 
     /*
     Nombre de metodo: initialize
@@ -558,5 +571,12 @@ public class PersonasController implements Initializable {
         MbMisProyectos.setText(idioma.getProperty("MisProyectos"));
         lblBuscarEliminar.setText(idioma.getProperty("Buscar"));
         lblBuscarEditar.setText(idioma.getProperty("Buscar"));
+        MbNavegar.setText(idioma.getProperty("Navegar"));
+        MbPersonas.setText(idioma.getProperty("Personas"));
+        MbProyectos.setText(idioma.getProperty("Proyectos"));
+        MbTareas.setText(idioma.getProperty("Tareas"));
+        MbEditarProyecto.setText(idioma.getProperty("EditarProyecto"));
+        MbSistema.setText(idioma.getProperty("Sistema"));
+        MbPersonal.setText(idioma.getProperty("Personal"));
     }
 }

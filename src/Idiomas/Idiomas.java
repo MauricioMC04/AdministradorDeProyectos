@@ -14,8 +14,9 @@ public class Idiomas extends Properties{
     private static final long serialVersionUID = 1L;
 	        
     public Idiomas(String idioma){
-        Modelo.ModeloLogin ML = new ModeloLogin();
-        String a = ML.idiomas+".properties";
+        //Modelo.ModeloLogin ML = new ModeloLogin();
+        //String a = ML.idiomas+".properties";
+        String a = idioma+".properties";
         getProperties(a);
     }
 

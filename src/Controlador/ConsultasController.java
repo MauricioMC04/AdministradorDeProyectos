@@ -44,10 +44,9 @@ public class ConsultasController implements Initializable {
     int cedula = MenuController.Cedula;
     private Conexion conect = new Conexion();
     private Connection conexion = conect.conexion();
-    Idiomas idioma = new Idiomas("Prueba");
+    Idiomas idioma = MenuController.idioma;
     @FXML
     private MenuBar MbMenu;
-    @FXML
     private MenuItem MPersonas;
     @FXML
     private MenuItem MbCerrarS;
@@ -83,6 +82,20 @@ public class ConsultasController implements Initializable {
     private ComboBox<String> cmbEstados;
     @FXML
     private Button btnEditar;
+    @FXML
+    private Menu MbNavegar;
+    @FXML
+    private MenuItem MbPersonas;
+    @FXML
+    private MenuItem MbProyectos;
+    @FXML
+    private MenuItem MbTareas;
+    @FXML
+    private MenuItem MbEditarProyecto;
+    @FXML
+    private Menu MbPersonal;
+    @FXML
+    private Menu MbSistema;
 
     /*
     Nombre de metodo: initialize
@@ -482,5 +495,13 @@ public class ConsultasController implements Initializable {
         lblProyecto.setText(idioma.getProperty("Proyecto"));
         lblDepartamento.setText(idioma.getProperty("Departamento"));
         btnEditar.setText(idioma.getProperty("Editar"));
+        MbSalirS.setText(idioma.getProperty("SalirDelSistema"));
+        MbNavegar.setText(idioma.getProperty("Navegar"));
+        MbPersonas.setText(idioma.getProperty("Personas"));
+        MbProyectos.setText(idioma.getProperty("Proyectos"));
+        MbTareas.setText(idioma.getProperty("Tareas"));
+        MbEditarProyecto.setText(idioma.getProperty("EditarProyecto"));
+        MbPersonal.setText(idioma.getProperty("Personal"));
+        MbSistema.setText(idioma.getProperty("Sistema"));
     }
 }
