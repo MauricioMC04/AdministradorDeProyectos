@@ -454,6 +454,7 @@ public class LoginControador implements Initializable {
             String idiomaSelecionado = cmbIdiomas.getSelectionModel().getSelectedItem();
             if(idiomaSelecionado != null && !idiomaSelecionado.equals("")){
                 MenuController.idioma  = new Idiomas(idiomaSelecionado);
+               idioma = MenuController.idioma;
                 cambiarIdioma();
             }
         }catch(Exception e){

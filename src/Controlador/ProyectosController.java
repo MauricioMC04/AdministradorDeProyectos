@@ -220,15 +220,15 @@ public class ProyectosController implements Initializable {
   
 
     public void cargarColumnas(TableView<Usuario> table) {
-        TableColumn tblCCedula = new TableColumn("Cedula");
+        TableColumn tblCCedula = new TableColumn(idioma.getProperty("Cedula"));
         tblCCedula.setCellValueFactory(new PropertyValueFactory<Usuario, String>("IdUsuario"));
         tblCCedula.setMinWidth(171.25);
 
-        TableColumn tblCNombre = new TableColumn("Nombre");
+        TableColumn tblCNombre = new TableColumn(idioma.getProperty("Nombre"));
         tblCNombre.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Nombre"));
         tblCNombre.setMinWidth(171.25);
 
-        TableColumn tblCApellido = new TableColumn("Apellido");
+        TableColumn tblCApellido = new TableColumn(idioma.getProperty("Apellido"));
         tblCApellido.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Apellido"));
         tblCApellido.setMinWidth(171.25);
 
