@@ -43,7 +43,7 @@ import javafx.util.converter.LocalDateStringConverter;
  */
 public class EditarProyController implements Initializable {
     
-    Idiomas idioma = new Idiomas("Prueba");
+    Idiomas idioma = MenuController.idioma;
     
     @FXML
     private TableView<Proyecto> tblProyectos;

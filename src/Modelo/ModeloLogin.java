@@ -1,6 +1,7 @@
 package Modelo;
 
 import Controlador.MenuController;
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -167,4 +168,26 @@ public class ModeloLogin {
     Conexion conec = new Conexion();
     Connection c = conec.conexion();
 
+    /*
+    Nombre de metodo: CargarIdiomas
+    Parametros: Ninguno
+    Retorno: ObservableList<String>
+    Descripcion: Carga en el ObservableList los idiomas disponibles 
+    */
+    public ObservableList<String> CargarIdiomas(){
+        ObservableList <String> idiomas = FXCollections.observableArrayList();
+        String userDir = System.getProperty("user.dir");
+        String Directorio = userDir+"\\src\\Idiomas";
+        File f = new File(Directorio);
+        if (f.exists()){
+            File[] ficheros = f.listFiles();
+            for (int i = 0; i < ficheros.length; i++){
+                String nombre = ficheros[i].getName();
+                if(!nombre.equals("Idiomas.java")){
+                    idiomas.add(nombre.substring(0, nombre.length() - 11));
+                }
+            }
+        }        
+        return idiomas;
+    }
 }

@@ -130,6 +130,7 @@
                               <String fx:value="forma" />
                            </styleClass>
                         </Button>
+                        <ComboBox fx:id="cmbIdiomas" layoutX="21.0" layoutY="20.0" onAction="#CambioIdioma" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
             </content>

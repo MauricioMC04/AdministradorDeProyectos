@@ -47,7 +47,6 @@ public class ConsultasController implements Initializable {
     Idiomas idioma = MenuController.idioma;
     @FXML
     private MenuBar MbMenu;
-    private MenuItem MPersonas;
     @FXML
     private MenuItem MbCerrarS;
     @FXML
@@ -106,7 +105,7 @@ public class ConsultasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if (MenuController.Tipo == 3) {
-            MPersonas.setDisable(true);
+            MbPersonas.setDisable(true);
             //MProyectos.setDisable(true);
             //MPEdittar.setDisable(true);
             //MPtareas.setDisable(true);
@@ -489,7 +488,6 @@ public class ConsultasController implements Initializable {
     }
     
     public void cambiarIdioma(){ 
-        MPersonas.setText(idioma.getProperty("Personas"));
         MbCerrarS.setText(idioma.getProperty("CerrarSesion"));
         MbMisProyectos.setText(idioma.getProperty("MisProyectos"));      
         lblProyecto.setText(idioma.getProperty("Proyecto"));

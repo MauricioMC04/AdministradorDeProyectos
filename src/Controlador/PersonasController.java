@@ -101,7 +101,6 @@ public class PersonasController implements Initializable {
     private RadioButton rbtnEmpleadoEditar;
     @FXML
     private MenuBar MbMenu;
-    private MenuItem MPersonas;
     @FXML
     private MenuItem MbCerrarS;
     @FXML
@@ -566,7 +565,6 @@ public class PersonasController implements Initializable {
         rbtnAdministradorEditar.setText(idioma.getProperty("Administrador"));
         rbtnSupervisorEditar.setText(idioma.getProperty("Supervisor"));
         rbtnEmpleadoEditar.setText(idioma.getProperty("Empleado"));
-        MPersonas.setText(idioma.getProperty("Personas"));
         MbCerrarS.setText(idioma.getProperty("CerrarSesion"));
         MbMisProyectos.setText(idioma.getProperty("MisProyectos"));
         lblBuscarEliminar.setText(idioma.getProperty("Buscar"));

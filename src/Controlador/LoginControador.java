@@ -149,15 +149,14 @@ public class LoginControador implements Initializable {
     private Label lblMSReg3;
     @FXML
     private Button Idioma;
-    
-    
-    
+    @FXML
+    private ComboBox<String> cmbIdiomas;
 
     public void initialize(URL url, ResourceBundle rb) {
         cambiarIdioma(ML.idiomas);
         CbxPreguntaSeguridadRegistrarse.setItems(options);
         CbxPreguntaSeguridadRegistrarse.setTooltip(new Tooltip("Seleccione la pregunta de seguridad"));
-        
+        CargarIdiomas();
     }
     
     
@@ -418,5 +417,30 @@ public class LoginControador implements Initializable {
         Stage stage = (Stage) scene.getWindow();
         stage.close();
         
+    }
+
+    /*
+    Nombre de metodo: CargarIdiomas
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Carga sobre el comboBox los idiomas disponibles 
+    */
+    public void CargarIdiomas(){
+        cmbIdiomas.getItems().clear();
+        cmbIdiomas.setItems(ML.CargarIdiomas());
+    }
+
+    /*
+    Nombre de metodo: CambioIdioma
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Cambia la variable static segun el idioma seleccionado
+    */
+    @FXML
+    private void CambioIdioma(ActionEvent event) {
+        String idioma = cmbIdiomas.getSelectionModel().getSelectedItem();
+        if(idioma != null && !idioma.equals("")){
+            MenuController.idioma = new Idiomas(idioma);
+        }
     }
 }

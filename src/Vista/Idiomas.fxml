@@ -142,6 +142,16 @@
                   </AnchorPane>
                </content>
             </Tab>
+            <Tab text="Eliminar Idioma">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ComboBox fx:id="cmbIdiomas" layoutX="156.0" layoutY="141.0" prefWidth="150.0" />
+                        <Button fx:id="btnEliminar" layoutX="450.0" layoutY="141.0" mnemonicParsing="false" onAction="#EliminarIdioma" text="Eliminar" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
          </tabs>
       </TabPane>
    </children>

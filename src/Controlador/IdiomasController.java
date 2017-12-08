@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelo.DatosIdioma;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -15,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -26,6 +28,8 @@ import javafx.stage.Stage;
  */
 public class IdiomasController implements Initializable {
 
+    DatosIdioma datosIdioma = new DatosIdioma();
+    
     @FXML
     private Tab nuevoIdioma;
     @FXML
@@ -154,20 +158,23 @@ public class IdiomasController implements Initializable {
     private TextField FechaFinal;
     @FXML
     private TextField SalirDelSistema;
+    @FXML
+    private ComboBox<String> cmbIdiomas;
+    @FXML
+    private Button btnEliminar;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        CargarIdiomas();
     }    
 
     @FXML
     private void OKL(ActionEvent event) throws IOException {
         String userDir = System.getProperty("user.dir");
-        System.out.println(userDir);
-      String ruta = userDir+"\\src\\Idiomas\\"+Nombreidioma.getText()+".properties";
+        String ruta = userDir+"\\src\\Idiomas\\"+Nombreidioma.getText()+".properties";
         File archivo = new File(ruta);
         BufferedWriter bw;
         if (archivo.exists()) {
@@ -292,4 +299,31 @@ public class IdiomasController implements Initializable {
         Stage stage = (Stage) Guardar.getScene().getWindow();
         stage.close();    
     }   
+
+    /*
+    Nombre de metodo: EliminarIdioma
+    Parametros: ActionEvent event
+    Retorno: Ninguno
+    Descripcion: Llama al metodo que elimina el idioma seleccionado 
+    */
+    @FXML
+    private void EliminarIdioma(ActionEvent event) {
+        String idioma = cmbIdiomas.getSelectionModel().getSelectedItem();
+        if(idioma != null && !idioma.equals("")){
+            datosIdioma.EliminarIdioma(idioma);
+            CargarIdiomas();
+        }
+    }
+    
+    /*
+    Nombre de metodo: CargarIdiomas
+    Parametros: Ninguno
+    Retorno: Ninguno
+    Descripcion: Carga sobre el comboBox los idiomas disponibles 
+    */
+    public void CargarIdiomas(){
+        cmbIdiomas.getItems().clear();
+        cmbIdiomas.setItems(datosIdioma.CargarIdiomas());
+    }
+
 }
