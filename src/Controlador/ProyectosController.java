@@ -231,7 +231,7 @@ public class ProyectosController implements Initializable {
         TableColumn tblCApellido = new TableColumn(idioma.getProperty("Apellido"));
         tblCApellido.setCellValueFactory(new PropertyValueFactory<Usuario, String>("Apellido"));
         tblCApellido.setMinWidth(171.25);
-
+//puto mauricio hizo un commit
         table.getColumns().addAll(tblCCedula, tblCNombre, tblCApellido);
     }
 
