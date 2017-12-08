@@ -33,6 +33,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import static javax.management.Query.gt;
 import static javax.management.Query.lt;
+import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
@@ -449,9 +450,14 @@ public class LoginControador implements Initializable {
     */
     @FXML
     private void CambioIdioma(ActionEvent event) {
-        String idioma = cmbIdiomas.getSelectionModel().getSelectedItem();
-        if(idioma != null && !idioma.equals("")){
-            MenuController.idioma = new Idiomas(idioma);
+        try{
+            String idiomaSelecionado = cmbIdiomas.getSelectionModel().getSelectedItem();
+            if(idiomaSelecionado != null && !idiomaSelecionado.equals("")){
+                MenuController.idioma  = new Idiomas(idiomaSelecionado);
+                cambiarIdioma();
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se selecciono el idioma" + e + e.toString());
         }
     }
 }

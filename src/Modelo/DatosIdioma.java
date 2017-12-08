@@ -44,11 +44,11 @@ public class DatosIdioma {
         String ruta = userDir + "\\src\\Idiomas\\" + idioma + ".properties";
         File fichero = new File(ruta);
         if(fichero.exists()){
-            if(new Idiomas(idioma) == MenuController.idioma){
-                MenuController.idioma = new Idiomas("Espanol");    
-            }
+            //if(new Idiomas(idioma) == MenuController.idioma){
+              //  MenuController.idioma = new Idiomas("Espanol");    
+            //}
             if (!fichero.delete()){
-               JOptionPane.showMessageDialog(null, "Error al eliminar el idioma");
+                JOptionPane.showMessageDialog(null, "Error al eliminar el idioma");
             }
         }
     }
