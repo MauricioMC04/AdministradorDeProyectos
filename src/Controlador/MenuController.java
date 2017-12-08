@@ -32,17 +32,14 @@ public class MenuController implements Initializable {
     @FXML
     private void Login(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Login.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/Vista.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Login");
             stage.setScene(new Scene(root1));
-            
             stage.show();
-
         } catch (Exception e) {
             System.out.println("no");
-
         }
         Stage stage = (Stage) BtnLogin.getScene().getWindow();
         stage.close();
@@ -117,7 +114,6 @@ public class MenuController implements Initializable {
 
         } catch (Exception e) {
             System.out.println("no");
-
         }
     }
     

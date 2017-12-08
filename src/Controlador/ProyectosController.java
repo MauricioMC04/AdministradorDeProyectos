@@ -141,7 +141,6 @@ public class ProyectosController implements Initializable {
         CargarDepartamentos();
         cbxIteraciones.setItems(options);
         OcultarNo();
-        
     }
 
 
