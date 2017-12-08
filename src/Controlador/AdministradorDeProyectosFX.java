@@ -24,7 +24,7 @@ public class AdministradorDeProyectosFX extends Application {
 
     public void mostrarVentanaPrincipal() {
         try {
-            FXMLLoader loader = new FXMLLoader(AdministradorDeProyectosFX.class.getResource("/Vista/Idiomas.fxml"));
+            FXMLLoader loader = new FXMLLoader(AdministradorDeProyectosFX.class.getResource("/Vista/Login.fxml"));
             rootPane = loader.load();
             Scene scene = new Scene(rootPane);
             stagePrincipal.setTitle("Login");

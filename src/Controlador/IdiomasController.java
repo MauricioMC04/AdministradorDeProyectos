@@ -63,14 +63,6 @@ public class IdiomasController implements Initializable {
     @FXML
     private TextField Actualizar;
     @FXML
-    private TextField Implementada2;
-    @FXML
-    private TextField Implementada4;
-    @FXML
-    private TextField Implementada5;
-    @FXML
-    private TextField Implementada6;
-    @FXML
     private Button Save;
     @FXML
     private TextField Buscar;
