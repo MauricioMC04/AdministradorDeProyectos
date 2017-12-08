@@ -308,8 +308,9 @@ public class IdiomasController implements Initializable {
         bw.write("PreguntaSeguridad="+lblPreguntaSeguridad.getText());
         bw.newLine();
         bw.write("Respuesta="+Respuesta.getText());
+        bw.newLine();
+        bw.write("Buscar="+Buscar.getText());
         bw.close();    
-
         }  
         MenuController menu = new MenuController();
         menu.Login();
