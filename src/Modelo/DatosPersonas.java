@@ -186,8 +186,22 @@ public class DatosPersonas {
     Descripcion: Retorna la llamada a Personas con el sql necesario
     */
     public ObservableList<Usuario> CargarBusquedaEliminar (Connection conexion, String busqueda){
-        String sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE idUsuario Like '" + busqueda + "%' OR "
+        String sql = "";
+        switch(busqueda){
+            case "Administrador":
+                sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE Rol = 1";
+            break;
+            case "Supervisor":
+                sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE Rol = 2";
+            break;
+            case "Empleado":
+                sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE Rol = 3";
+            break;
+            default:
+                sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE idUsuario Like '" + busqueda + "%' OR "
                 + "Nombre Like '" + busqueda + "%' OR Apellido Like '" + busqueda + "%' OR Rol Like '" + busqueda + "%'";
+            break;
+        }
         return Personas(conexion, sql);
     }
     
@@ -198,9 +212,26 @@ public class DatosPersonas {
     Descripcion: Retorna la llamada a Personas con el sql necesario
     */
     public ObservableList<Usuario> CargarBusquedaEditar (Connection conexion, String busqueda){
-        String sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE Contrasena != 'Por Definir' AND ("
+        String sql = "";
+        switch(busqueda){
+            case "Administrador":
+                sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE Contrasena != 'Por Definir' AND ("
+                + "Rol = 1)";
+            break;
+            case "Supervisor":
+                sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE Contrasena != 'Por Definir' AND ("
+                + "Rol = 2)";
+            break;
+            case "Empleado":
+                sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE Contrasena != 'Por Definir' AND ("
+                + "Rol = 3)";
+            break;
+            default:
+                sql = "SELECT idUsuario, Nombre, Apellido, Rol FROM Usuario WHERE Contrasena != 'Por Definir' AND ("
                 + "idUsuario Like '" + busqueda + "%' OR Nombre Like '" + busqueda + "%' OR Apellido Like '" + 
                 busqueda + "%' OR Rol Like '" + busqueda + "%')";
+            break;
+        }
         return Personas(conexion, sql);
     }
 }

@@ -56,12 +56,6 @@ public class ConsultasController implements Initializable {
     @FXML
     private TableView<ProyectoConsulta> tblProyectos;
     @FXML
-    private RadioButton rbtnSupervisor;
-    @FXML
-    private RadioButton rbtnDepartamento;
-    @FXML
-    private RadioButton rbtnEstado;
-    @FXML
     private TextField txtBusqueda;
     @FXML
     private Label lblProyecto;
@@ -73,10 +67,6 @@ public class ConsultasController implements Initializable {
     private Label lblNombreDepartamento;
     @FXML
     private TableView<Usuario_has_Tareas> tblTarea;
-    @FXML
-    private ToggleGroup rbtngFiltros;
-    @FXML
-    private RadioButton rbtnProyecto;
     @FXML
     private ComboBox<String> cmbEstados;
     @FXML
@@ -95,6 +85,8 @@ public class ConsultasController implements Initializable {
     private Menu MbPersonal;
     @FXML
     private Menu MbSistema;
+    @FXML
+    private Label lblBuscar;
 
     /*
     Nombre de metodo: initialize
@@ -210,27 +202,27 @@ public class ConsultasController implements Initializable {
         }
     }
 
-    /*
-    Nombre de metodo: MostrarTareas
-    Parametros: ActionEvent event
-    Retorno: Ninguno
-    Descripcion: Carga los proyectos en la tabla dependiendo de la busqueda seleccionada
-    */
-    private void Buscar(ActionEvent event) {
-        if (!txtBusqueda.getText().equals("")) {
-            ocultar();
-            if (rbtnDepartamento.isSelected()) {
-                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnDepartamento.getText(), txtBusqueda.getText(), conexion);
-            } else if (rbtnEstado.isSelected()) {
-                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnEstado.getText(), txtBusqueda.getText(), conexion);
-            } else if (rbtnProyecto.isSelected()) {
-                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnProyecto.getText(), txtBusqueda.getText(), conexion);
-            } else if (rbtnSupervisor.isSelected()) {
-                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnSupervisor.getText(), txtBusqueda.getText(), conexion);
-            }
-            Vaciar();
-        }
-    }
+//    /*
+//    Nombre de metodo: MostrarTareas
+//    Parametros: ActionEvent event
+//    Retorno: Ninguno
+//    Descripcion: Carga los proyectos en la tabla dependiendo de la busqueda seleccionada
+//    */
+//    private void Buscar(ActionEvent event) {
+//        if (!txtBusqueda.getText().equals("")) {
+//            ocultar();
+//            if (rbtnDepartamento.isSelected()) {
+//                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnDepartamento.getText(), txtBusqueda.getText(), conexion);
+//            } else if (rbtnEstado.isSelected()) {
+//                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnEstado.getText(), txtBusqueda.getText(), conexion);
+//            } else if (rbtnProyecto.isSelected()) {
+//                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnProyecto.getText(), txtBusqueda.getText(), conexion);
+//            } else if (rbtnSupervisor.isSelected()) {
+//                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnSupervisor.getText(), txtBusqueda.getText(), conexion);
+//            }
+//            Vaciar();
+//        }
+//    }
 
     /*
     Nombre de metodo: Editar
@@ -278,10 +270,10 @@ public class ConsultasController implements Initializable {
     Descripcion: Muestra o oculta los filtros dependiendo del parametro
     */
     private void Filtros(boolean bandera) {
-        rbtnDepartamento.setVisible(bandera);
-        rbtnEstado.setVisible(bandera);
-        rbtnProyecto.setVisible(bandera);
-        rbtnSupervisor.setVisible(bandera);
+//        rbtnDepartamento.setVisible(bandera);
+//        rbtnEstado.setVisible(bandera);
+//        rbtnProyecto.setVisible(bandera);
+//        rbtnSupervisor.setVisible(bandera);
         txtBusqueda.setVisible(bandera);
     }
 
@@ -409,9 +401,9 @@ public class ConsultasController implements Initializable {
     Retorno: Ninguno
     Descripcion: Carga en la tabla los proyectos dependiendo de la busqueda seleccionada
     */
-    private void cargarProyectosBusqueda(TableView<ProyectoConsulta> table, int cedula, int rol, String filtro, String dato, Connection conexion) {
+    private void cargarProyectosBusqueda(TableView<ProyectoConsulta> table, int cedula, int rol, String dato, Connection conexion) {
         table.getColumns().clear();
-        table.setItems(datosConsultas.CargarProyectosBusqueda(cedula, rol, filtro, dato, conexion));
+        table.setItems(datosConsultas.CargarProyectosBusqueda(cedula, rol, dato, conexion));
         cargarColumnas(table);
     }
 
@@ -447,18 +439,18 @@ public class ConsultasController implements Initializable {
     */
     private void Vaciar() {
         txtBusqueda.setText("");
-        if (rbtnDepartamento.isSelected()) {
-            rbtnDepartamento.setSelected(false);
-        }
-        if (rbtnEstado.isSelected()) {
-            rbtnEstado.setSelected(false);
-        }
-        if (rbtnProyecto.isSelected()) {
-            rbtnProyecto.setSelected(false);
-        }
-        if (rbtnSupervisor.isSelected()) {
-            rbtnSupervisor.setSelected(false);
-        }
+//        if (rbtnDepartamento.isSelected()) {
+//            rbtnDepartamento.setSelected(false);
+//        }
+//        if (rbtnEstado.isSelected()) {
+//            rbtnEstado.setSelected(false);
+//        }
+//        if (rbtnProyecto.isSelected()) {
+//            rbtnProyecto.setSelected(false);
+//        }
+//        if (rbtnSupervisor.isSelected()) {
+//            rbtnSupervisor.setSelected(false);
+//        }
     }
 
     /*
@@ -471,15 +463,7 @@ public class ConsultasController implements Initializable {
     private void Buscarproyecto(KeyEvent event) {
         if (!txtBusqueda.getText().equals("")) {
             ocultar();
-            if (rbtnDepartamento.isSelected()) {
-                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnDepartamento.getText(), txtBusqueda.getText(), conexion);
-            } else if (rbtnEstado.isSelected()) {
-                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnEstado.getText(), txtBusqueda.getText(), conexion);
-            } else if (rbtnProyecto.isSelected()) {
-                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnProyecto.getText(), txtBusqueda.getText(), conexion);
-            } else if (rbtnSupervisor.isSelected()) {
-                cargarProyectosBusqueda(tblProyectos, cedula, rol, rbtnSupervisor.getText(), txtBusqueda.getText(), conexion);
-            }
+            cargarProyectosBusqueda(tblProyectos, cedula, rol,txtBusqueda.getText(), conexion);
         }else{
             tblProyectos.getColumns().clear();
             ocultar();
@@ -501,5 +485,6 @@ public class ConsultasController implements Initializable {
         MbEditarProyecto.setText(idioma.getProperty("EditarProyecto"));
         MbPersonal.setText(idioma.getProperty("Personal"));
         MbSistema.setText(idioma.getProperty("Sistema"));
+        lblBuscar.setText(idioma.getProperty("Buscar"));
     }
 }

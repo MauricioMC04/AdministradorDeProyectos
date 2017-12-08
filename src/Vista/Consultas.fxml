@@ -39,14 +39,8 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <TableView fx:id="tblProyectos" layoutX="14.0" layoutY="281.0" onMouseClicked="#MostrarTareas" prefHeight="418.0" prefWidth="689.0" />
-                  <RadioButton fx:id="rbtnSupervisor" layoutX="84.0" layoutY="138.0" mnemonicParsing="false" text="Supervisor">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="rbtngFiltros" />
-                     </toggleGroup></RadioButton>
-                  <RadioButton fx:id="rbtnDepartamento" layoutX="74.0" layoutY="88.0" mnemonicParsing="false" text="Departamento" toggleGroup="$rbtngFiltros" />
-                  <RadioButton fx:id="rbtnEstado" layoutX="81.0" layoutY="187.0" mnemonicParsing="false" text="Estado" toggleGroup="$rbtngFiltros" />
-                  <TextField fx:id="txtBusqueda" layoutX="255.0" layoutY="96.0" onKeyReleased="#Buscarproyecto" prefHeight="25.0" prefWidth="218.0" />
-                  <RadioButton fx:id="rbtnProyecto" layoutX="73.0" layoutY="42.0" mnemonicParsing="false" text="Proyecto" toggleGroup="$rbtngFiltros" />
+                  <TextField fx:id="txtBusqueda" layoutX="326.0" layoutY="97.0" onKeyReleased="#Buscarproyecto" prefHeight="25.0" prefWidth="218.0" />
+                  <Label fx:id="lblBuscar" layoutX="216.0" layoutY="101.0" text="Buscar" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="712.0" prefWidth="1000.0">

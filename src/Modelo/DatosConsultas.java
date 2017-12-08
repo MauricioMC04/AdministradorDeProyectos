@@ -20,7 +20,7 @@ public class DatosConsultas {
     */
     public ObservableList<ProyectoConsulta> CargarProyectos(int cedula, int rol, Connection conexion){
         if(rol == 1 || rol == 2){
-            return CargarProyectosAdmiSup(cedula, rol,"Ninguno", "Ninguno", conexion);
+            return CargarProyectosAdmiSup(cedula, rol, "Ninguno", conexion);
         }else {
             return CargarProyectosEmpleado(cedula, conexion);
         }
@@ -32,26 +32,16 @@ public class DatosConsultas {
     Retorno: String
     Descripcion: Retorna el sql para cargar los proyectos dependiendo del rol 
     */
-    private String GenerarSqlProyectos(int cedula, int rol, String filtro, String dato){
+    private String GenerarSqlProyectos(int cedula, int rol, String dato){
          switch (rol) {
             case 1:
-                switch (filtro) {
-                    case "Proyecto":
-                        return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
-                            + "Proyecto WHERE Nombre LIKE '" + dato + "%'";
-                    case "Departamento":
-                        return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
-                            + "Proyecto WHERE Departamento LIKE '" + dato + "%'";
-                    case "Supervisor":
-                        return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
-                            + "Proyecto WHERE Supervisor LIKE '" + dato + "%'";
-                    case "Estado":
-                        return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
-                            + "Proyecto WHERE Estado LIKE '" + dato + "%'";
-                    default:
-                        return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
-                            + "Proyecto";
+                if(dato.equals("Ninguno")){
+                    return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM " +
+                    "Proyecto WHERE Administrador = " + cedula;
                 }
+                return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM "
+                    + "Proyecto WHERE Nombre LIKE '" + dato + "%' OR Departamento LIKE '" + dato + "%' OR Supervisor "
+                    + "LIKE '" + dato + "%' OR Estado LIKE '" + dato + "%' OR Administrador LIKE '" + dato + "%'";                    
             case 2:
                 return "SELECT Nombre, Departamento, FechaInicio, FechaFinal, Administrador, Supervisor, Estado FROM " +
                     "Proyecto WHERE Supervisor = " + cedula + " And Estado != 'Finalizado'";
@@ -68,9 +58,9 @@ public class DatosConsultas {
     Retorno: ObservableList<ProyectoConsulta>
     Descripcion: Retorna el ObservableList con los proyectos que puede ver el actor  
     */
-    private ObservableList<ProyectoConsulta> CargarProyectosAdmiSup(int cedula, int rol, String filtro, String dato,Connection conexion){
+    private ObservableList<ProyectoConsulta> CargarProyectosAdmiSup(int cedula, int rol, String dato,Connection conexion){
         ObservableList <ProyectoConsulta> modelo = FXCollections.observableArrayList();
-        String sql = GenerarSqlProyectos(cedula, rol, filtro, dato);
+        String sql = GenerarSqlProyectos(cedula, rol, dato);
         String[] datos = new String[7];
         try {
             Statement st = conexion.createStatement();
@@ -86,7 +76,7 @@ public class DatosConsultas {
                 modelo.add(new ProyectoConsulta(datos[0],datos[1],datos[2],datos[3],datos[4],datos[5],datos[6]));
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error CargarProyectosAdmiSup");
+            JOptionPane.showMessageDialog(null, "Error CargarProyectosAdmiSup ");
         }
         return modelo;
     }
@@ -99,7 +89,7 @@ public class DatosConsultas {
     */
     private ObservableList<ProyectoConsulta> CargarProyectosEmpleado(int cedula, Connection conexion){ 
         ObservableList <ProyectoConsulta> modelo = FXCollections.observableArrayList();
-        String sql = GenerarSqlProyectos(cedula, 3, "", "");
+        String sql = GenerarSqlProyectos(cedula, 3,"");
         String[] datos = new String[2];
         try {
             Statement st = conexion.createStatement();
@@ -186,8 +176,8 @@ public class DatosConsultas {
     Retorno: ObservableList<ProyectoConsulta>
     Descripcion:  Retorna la llamada al metodo que carga lo proyectos que el actor puede ver
     */
-    public ObservableList<ProyectoConsulta> CargarProyectosBusqueda(int cedula, int rol, String filtro, String dato, Connection conexion){
-        return CargarProyectosAdmiSup(cedula, rol, filtro, dato, conexion);
+    public ObservableList<ProyectoConsulta> CargarProyectosBusqueda(int cedula, int rol, String dato, Connection conexion){
+        return CargarProyectosAdmiSup(cedula, rol, dato, conexion);
     }
     
     /*
