@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -110,7 +111,6 @@ public class IdiomasController implements Initializable {
     private TextField TAsig;
     @FXML
     private TextField Personas;
-    @FXML
     private TextField Proyectos;
     @FXML
     private TextField EditarProyecto;
@@ -154,6 +154,24 @@ public class IdiomasController implements Initializable {
     private ComboBox<String> cmbIdiomas;
     @FXML
     private Button btnEliminar;
+    @FXML
+    private Label Idioma;
+    @FXML
+    private TextField lblIdioma;
+    @FXML
+    private TextField lblRegistrarse;
+    @FXML
+    private Label Idioma1;
+    @FXML
+    private Label Idioma11;
+    @FXML
+    private TextField lblIdioma11;
+    @FXML
+    private TextField NombreUsuario;
+    @FXML
+    private TextField lblPreguntaSeguridad;
+    @FXML
+    private TextField Respuesta;
 
     /**
      * Initializes the controller class.
@@ -241,7 +259,7 @@ public class IdiomasController implements Initializable {
         bw.newLine();
         bw.write("Personas="+Personas.getText());
         bw.newLine();
-        bw.write("Proyectos="+Proyectos.getText());
+        bw.write("Proyectos="+Proyecto.getText());
         bw.newLine();
         bw.write("EditarProyecto="+EditarProyecto.getText());
         bw.newLine();
@@ -284,7 +302,14 @@ public class IdiomasController implements Initializable {
         bw.write("Eliminar="+Eliminar.getText());
         bw.newLine();
         bw.write("SalirDelSistema="+SalirDelSistema.getText());
-        bw.close();
+        bw.newLine();
+        bw.write("NombreUsuario="+NombreUsuario.getText());
+        bw.newLine();
+        bw.write("PreguntaSeguridad="+lblPreguntaSeguridad.getText());
+        bw.newLine();
+        bw.write("Respuesta="+Respuesta.getText());
+        bw.close();    
+
         }  
         MenuController menu = new MenuController();
         menu.Login();

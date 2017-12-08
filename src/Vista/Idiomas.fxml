@@ -6,43 +6,43 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="649.0" prefWidth="1708.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.IdiomasController">
+<AnchorPane id="AnchorPane" prefHeight="910.0" prefWidth="1708.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.IdiomasController">
    <children>
       <TabPane prefHeight="649.0" prefWidth="1708.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab fx:id="nuevoIdioma" text="Nuevo Idioma">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="620.0" prefWidth="1703.0">
+                  <AnchorPane prefHeight="610.0" prefWidth="1721.0">
                      <children>
                         <TextField fx:id="Nombreidioma" layoutX="14.0" layoutY="14.0" promptText="Nombre Idioma" />
-                        <TextField fx:id="ingreso" layoutX="184.0" layoutY="71.0" />
-                        <TextField fx:id="contra" layoutX="184.0" layoutY="108.0" />
-                        <TextField fx:id="NoImplementada" layoutX="184.0" layoutY="146.0" />
-                        <TextField fx:id="Nombre" layoutX="184.0" layoutY="187.0" />
+                        <TextField fx:id="ingreso" layoutX="184.0" layoutY="70.0" />
+                        <TextField fx:id="contra" layoutX="184.0" layoutY="102.0" />
+                        <TextField fx:id="NoImplementada" layoutX="184.0" layoutY="139.0" />
+                        <TextField fx:id="Nombre" layoutX="184.0" layoutY="182.0" />
                         <TextField fx:id="Implementada" layoutX="184.0" layoutY="226.0" />
                         <TextField fx:id="TareasDisponibles" layoutX="184.0" layoutY="502.0" />
                         <TextField fx:id="Estados" layoutX="184.0" layoutY="540.0" />
                         <TextField fx:id="Enproceso" layoutX="184.0" layoutY="578.0" />
-                        <TextField fx:id="SupervisadorPor" layoutX="184.0" layoutY="268.0" />
+                        <TextField fx:id="SupervisadorPor" layoutX="186.0" layoutY="268.0" />
                         <TextField fx:id="FechaEntrega" layoutX="184.0" layoutY="308.0" />
                         <TextField fx:id="EmpleadosDisponibles" layoutX="184.0" layoutY="349.0" />
                         <TextField fx:id="Guardar" layoutX="184.0" layoutY="386.0" />
                         <TextField fx:id="Iteraciones" layoutX="184.0" layoutY="424.0" />
                         <TextField fx:id="Actualizar" layoutX="184.0" layoutY="463.0" />
                         <Label layoutX="12.0" layoutY="76.0" text="Ingreso" />
-                        <Label layoutX="12.0" layoutY="113.0" text="Contraseña" />
-                        <Label layoutX="13.0" layoutY="151.0" prefHeight="21.0" prefWidth="123.0" text="No Implementada" />
-                        <Label layoutX="10.0" layoutY="186.0" text="Nombre" />
-                        <Label layoutX="9.0" layoutY="231.0" text="Implementada" />
-                        <Label layoutX="9.0" layoutY="273.0" text="Supervisado" />
-                        <Label layoutX="10.0" layoutY="313.0" text="Fecha Entrega" />
-                        <Label layoutX="2.0" layoutY="354.0" text="Empleados Disponibles" />
-                        <Label layoutX="24.0" layoutY="386.0" text="Guardar" />
-                        <Label layoutX="24.0" layoutY="424.0" text="Iteraciones" />
-                        <Label layoutX="24.0" layoutY="463.0" text="Actualizar" />
-                        <Label layoutX="24.0" layoutY="502.0" text="Tareas Disponibles" />
-                        <Label layoutX="24.0" layoutY="540.0" text="Estado" />
-                        <Label layoutX="24.0" layoutY="578.0" text="En proceso" />
+                        <Label layoutX="9.0" layoutY="109.0" text="Contraseña" />
+                        <Label layoutX="11.0" layoutY="144.0" prefHeight="21.0" prefWidth="123.0" text="No Implementada" />
+                        <Label layoutX="13.0" layoutY="184.0" text="Nombre" />
+                        <Label layoutX="15.0" layoutY="234.0" text="Implementada" />
+                        <Label layoutX="14.0" layoutY="272.0" text="Supervisado" />
+                        <Label layoutX="10.0" layoutY="316.0" text="Fecha Entrega" />
+                        <Label layoutX="10.0" layoutY="355.0" text="Empleados Disponibles" />
+                        <Label layoutX="9.0" layoutY="393.0" text="Guardar" />
+                        <Label layoutX="5.0" layoutY="430.0" text="Iteraciones" />
+                        <Label layoutX="9.0" layoutY="467.0" text="Actualizar" />
+                        <Label layoutX="9.0" layoutY="505.0" text="Tareas Disponibles" />
+                        <Label layoutX="10.0" layoutY="548.0" text="Estado" />
+                        <Label layoutX="8.0" layoutY="582.0" text="En proceso" />
                         <Button fx:id="Save" layoutX="278.0" layoutY="14.0" mnemonicParsing="false" onAction="#OKL" text="Ok" />
                         <Label layoutX="415.0" layoutY="75.0" text="Buscar" />
                         <TextField fx:id="Buscar" layoutX="470.0" layoutY="70.0" />
@@ -75,7 +75,6 @@
                         <TextField fx:id="Sis" layoutX="859.0" layoutY="451.0" />
                         <TextField fx:id="TAsig" layoutX="859.0" layoutY="490.0" />
                         <TextField fx:id="Personas" layoutX="859.0" layoutY="528.0" />
-                        <TextField fx:id="Proyectos" layoutX="859.0" layoutY="566.0" />
                         <Label layoutX="374.0" layoutY="389.0" text="Falta información" />
                         <Label layoutX="367.0" layoutY="427.0" text="Nombre Proyecto" />
                         <Label layoutX="724.0" layoutY="76.0" text="Departamento" />
@@ -91,7 +90,6 @@
                         <Label layoutX="749.0" layoutY="455.0" text="Sistema" />
                         <Label layoutX="724.0" layoutY="494.0" text="Tareas Asignadas" />
                         <Label layoutX="744.0" layoutY="532.0" text="Personas" />
-                        <Label layoutX="748.0" layoutY="570.0" text="Proyectos" />
                         <Label layoutX="1060.0" layoutY="75.0" text="Editar Proyecto" />
                         <TextField fx:id="EditarProyecto" layoutX="1178.0" layoutY="71.0" />
                         <Label layoutX="1065.0" layoutY="108.0" text="Cerrar Sesion" />
@@ -130,13 +128,23 @@
                         <TextField fx:id="FechaFinal" layoutX="1515.0" layoutY="182.0" />
                         <Label layoutX="1390.0" layoutY="223.0" text="Salir del Sistema" />
                         <TextField fx:id="SalirDelSistema" layoutX="1515.0" layoutY="219.0" />
+                        <Label fx:id="Idioma" layoutX="402.0" layoutY="466.0" text="Idioma" />
+                        <TextField fx:id="lblIdioma" layoutX="485.0" layoutY="461.0" />
+                        <TextField fx:id="lblRegistrarse" layoutX="487.0" layoutY="497.0" />
+                        <Label fx:id="Idioma1" layoutX="404.0" layoutY="502.0" text="Registrarse" />
+                        <Label layoutX="1388.0" layoutY="260.0" text="Nombre de usuario" />
+                        <TextField fx:id="NombreUsuario" layoutX="1515.0" layoutY="266.0" />
+                        <Label layoutX="1400.0" layoutY="296.0" text="Pregunta Seguridad" />
+                        <TextField fx:id="lblPreguntaSeguridad" layoutX="1515.0" layoutY="312.0" />
+                        <TextField fx:id="Respuesta" layoutX="1515.0" layoutY="371.0" />
+                        <Label layoutX="1422.0" layoutY="379.0" text="Respuesta" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
             <Tab text="Eliminar Idioma">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="610.0" prefWidth="1708.0">
                      <children>
                         <ComboBox fx:id="cmbIdiomas" layoutX="156.0" layoutY="141.0" prefWidth="150.0" />
                         <Button fx:id="btnEliminar" layoutX="450.0" layoutY="141.0" mnemonicParsing="false" onAction="#EliminarIdioma" text="Eliminar" />

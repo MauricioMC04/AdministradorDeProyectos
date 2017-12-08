@@ -76,9 +76,11 @@ public class InsertarController implements Initializable {
     @FXML
     private Tab tabDepartamentos;
 
+    
+      Idiomas idioma = MenuController.idioma;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        cambiarIdioma();
         lblTErrorInformacion.setVisible(false);
         lblTErrorLetras.setVisible(false);
         lblTSErrorDescripcion.setVisible(false);
@@ -138,9 +140,7 @@ public class InsertarController implements Initializable {
     stage.close();
     }
     
-     public void cambiarIdioma(String nombreIdioma){
-        
-        Idiomas idioma=new Idiomas(nombreIdioma);
+     public void cambiarIdioma(){
         
        lblTNombreTareas.setText(idioma.getProperty("NombreTarea"));
        lblTErrorLetras.setText(idioma.getProperty("SolLetras"));

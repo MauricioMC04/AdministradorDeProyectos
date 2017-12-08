@@ -132,9 +132,11 @@ public class ProyectosController implements Initializable {
     /**
      * Initializes the controller class.
      */
+   Idiomas idioma = MenuController.idioma;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        CargarUsuarios();
+        cambiarIdioma();
         CargarSupDisponibles();
         CargarTareas();
         cargarTareas(tblEmpleadosDisponibles);
@@ -352,9 +354,7 @@ public class ProyectosController implements Initializable {
  
    }
    
-    public void cambiarIdioma(String nombreIdioma){
-        
-        Idiomas idioma=new Idiomas(nombreIdioma);
+    public void cambiarIdioma(){
         
        lblNombreProyecto.setText(idioma.getProperty("NomProyecto"));
        lblCreadoPor.setText(idioma.getProperty("SupervisadorPor"));

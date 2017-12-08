@@ -151,20 +151,31 @@ public class LoginControador implements Initializable {
     private Button Idioma;
     @FXML
     private ComboBox<String> cmbIdiomas;
-
+  Idiomas idioma = MenuController.idioma;
     public void initialize(URL url, ResourceBundle rb) {
-        cambiarIdioma(ML.idiomas);
+        cambiarIdioma();
         CbxPreguntaSeguridadRegistrarse.setItems(options);
         CbxPreguntaSeguridadRegistrarse.setTooltip(new Tooltip("Seleccione la pregunta de seguridad"));
         CargarIdiomas();
     }
     
     
-    public void cambiarIdioma(String nombreIdioma){
-        Idiomas idioma=new Idiomas(nombreIdioma);
-        LoginControador login = new LoginControador();
-        
-    BtnIngresar.setText(idioma.getProperty("hola"));  
+    public void cambiarIdioma(){
+    BtnIngresar.setText(idioma.getProperty("Ingreso")); 
+    Idioma.setText(idioma.getProperty("Idioma")); 
+    lblOContraseña.setText(idioma.getProperty("Idioma")); 
+    TxtNombreUsuario.setPromptText(idioma.getProperty("NombreUsuario"));
+   PfContraseñalogin.setPromptText(idioma.getProperty("Contra"));
+   lblNumCedula.setText(idioma.getProperty("Cedula"));
+   btnValidarCedula.setText(idioma.getProperty("Acep"));
+   lblNumCedula.setText(idioma.getProperty("Cedula"));
+   lblRNusuario.setText(idioma.getProperty("NombreUsuario"));
+   lblRCont.setText(idioma.getProperty("Contra"));
+   lblRContras.setText(idioma.getProperty("Contra"));
+   lblSPregunta.setText(idioma.getProperty("PreguntaSeguridad"));
+   lblRespuesta.setText(idioma.getProperty("Respuesta"));
+   
+   
     }
     
 

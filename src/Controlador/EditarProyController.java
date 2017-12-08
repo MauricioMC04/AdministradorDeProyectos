@@ -129,6 +129,7 @@ public class EditarProyController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cambiarIdioma();

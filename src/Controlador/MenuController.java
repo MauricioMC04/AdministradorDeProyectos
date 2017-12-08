@@ -28,7 +28,7 @@ public class MenuController implements Initializable {
     }
     public static int Cedula=0;
     public static int Tipo =0;
-    public static Idiomas idioma = new Idiomas("Prueba");
+    public static Idiomas idioma = new Idiomas("Español");
     @FXML
     private void Login(ActionEvent event) {
         try {
