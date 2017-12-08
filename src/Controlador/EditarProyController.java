@@ -24,6 +24,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -125,6 +126,12 @@ public class EditarProyController implements Initializable {
     private Label lblIteracionesTarea;
     @FXML
     private Rectangle FigRectanguloTarea;
+    @FXML
+    private Tab EditarProyectoTab;
+    @FXML
+    private Tab EditarTareaTab;
+    @FXML
+    private Tab EditarDepartamentoTab;
 
     /**
      * Initializes the controller class.
@@ -146,29 +153,29 @@ public class EditarProyController implements Initializable {
     private Connection conexion = conect.conexion();
     
     public void cargarColumnasProyecto(TableView<Proyecto> table) {
-        TableColumn tblPNombre = new TableColumn("Nombre");
+        TableColumn tblPNombre = new TableColumn(idioma.getProperty("Nombre"));
         tblPNombre.setCellValueFactory(new PropertyValueFactory<Proyecto, String>("Nombre"));
         tblPNombre.setMinWidth(171.25);
         
-        TableColumn tblPFechaInicio = new TableColumn("FechaInicio");
+        TableColumn tblPFechaInicio = new TableColumn(idioma.getProperty("FechaInicio"));
         tblPFechaInicio.setCellValueFactory(new PropertyValueFactory<Proyecto, String>("FechaInicio"));
         tblPFechaInicio.setMinWidth(171.25);
         
-        TableColumn tblPDepartamento = new TableColumn("Departamento");
+        TableColumn tblPDepartamento = new TableColumn(idioma.getProperty("Departamento"));
         tblPDepartamento.setCellValueFactory(new PropertyValueFactory<Proyecto, String>("Departamento"));
         tblPDepartamento.setMinWidth(171.25);
         
       
         
-        TableColumn tblPFechaFinal = new TableColumn("FechaFinal");
+        TableColumn tblPFechaFinal = new TableColumn(idioma.getProperty("FechaFinal"));
         tblPFechaFinal.setCellValueFactory(new PropertyValueFactory<Proyecto, String>("FechaFinal"));
         tblPFechaFinal.setMinWidth(171.25);
         
-        TableColumn tblPSupervisor = new TableColumn("Supervisor");
+        TableColumn tblPSupervisor = new TableColumn(idioma.getProperty("Supervisor"));
         tblPSupervisor.setCellValueFactory(new PropertyValueFactory<Proyecto, Integer>("Supervisor"));
         tblPSupervisor.setMinWidth(171.25);
         
-        TableColumn tblPAdministrador = new TableColumn("Administrador");
+        TableColumn tblPAdministrador = new TableColumn(idioma.getProperty("Administrador"));
         tblPAdministrador.setCellValueFactory(new PropertyValueFactory<Proyecto, Integer>("Administrador"));
         tblPAdministrador.setMinWidth(171.25);
         
@@ -502,16 +509,17 @@ public class EditarProyController implements Initializable {
     Descripcion: Carga las columas necesarias para ver todo lo relacionado con una tarea en un proyecto
     */
     private void cargarColumnasTareasProyecto(TableView<Usuario_has_Tareas> table) {
-        TableColumn tblCTarea = new TableColumn("Tarea");
+        TableColumn tblCTarea = new TableColumn(idioma.getProperty("Tarea"));
         tblCTarea.setCellValueFactory(new PropertyValueFactory<Usuario_has_Tareas, String>("Tarea"));
         tblCTarea.setMinWidth(160);
-        TableColumn tblCEmpleado = new TableColumn("Empleado");
+        
+        TableColumn tblCEmpleado = new TableColumn(idioma.getProperty("Empleado"));
         tblCEmpleado.setCellValueFactory(new PropertyValueFactory<Usuario_has_Tareas, String>("Empleado"));
         tblCEmpleado.setMinWidth(160);
-        TableColumn tblCEstado = new TableColumn("Estado");
+        TableColumn tblCEstado = new TableColumn(idioma.getProperty("Estado"));
         tblCEstado.setCellValueFactory(new PropertyValueFactory<Usuario_has_Tareas, String>("Estado"));
         tblCEstado.setMinWidth(113);
-        TableColumn tblCIteraciones = new TableColumn("Iteraciones");
+        TableColumn tblCIteraciones = new TableColumn(idioma.getProperty("Iteraciones"));
         tblCIteraciones.setCellValueFactory(new PropertyValueFactory<Usuario_has_Tareas, String>("Iteraciones"));
         tblCIteraciones.setMinWidth(80);
         table.getColumns().addAll(tblCTarea, tblCEmpleado, tblCEstado, tblCIteraciones);
@@ -553,5 +561,7 @@ public class EditarProyController implements Initializable {
         lblNombreDepartamento.setText(idioma.getProperty("Nombre"));
         btnEditarDepartamento.setText(idioma.getProperty("Editar"));
         btnEliminarDepartamento.setText(idioma.getProperty("Eliminar"));
+        EditarDepartamentoTab.setText((idioma.getProperty("EditarProyecto")));
+        EditarTareaTab.setText(idioma.getProperty(""));
     }
 }

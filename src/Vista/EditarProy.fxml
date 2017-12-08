@@ -14,7 +14,7 @@
    <children>
       <TabPane prefHeight="756.0" prefWidth="1444.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab text="Editar Proyecto">
+            <Tab fx:id="EditarProyectoTab" text="Editar Proyecto">
                <content>
                   <Pane fx:id="pnlEditarProyecto" prefHeight="727.0" prefWidth="1385.0">
                      <children>
@@ -60,7 +60,7 @@
                   </Pane>
                </content>
             </Tab>
-            <Tab text="Editar Tarea">
+            <Tab fx:id="EditarTareaTab" text="Editar Tarea">
                <content>
                   <Pane fx:id="pnlEditarTarea" prefHeight="200.0" prefWidth="200.0">
                      <children>
@@ -76,7 +76,7 @@
                      </children></Pane>
                </content>
             </Tab>
-            <Tab text="Editar Departamento">
+            <Tab fx:id="EditarDepartamentoTab" text="Editar Departamento">
                <content>
                   <Pane fx:id="pnlEditarDepartamento" prefHeight="200.0" prefWidth="200.0">
                      <children>
