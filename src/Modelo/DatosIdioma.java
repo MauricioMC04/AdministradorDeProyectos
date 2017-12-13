@@ -25,7 +25,7 @@ public class DatosIdioma {
             File[] ficheros = f.listFiles();
             for (int i = 0; i < ficheros.length; i++){
                 String nombre = ficheros[i].getName();
-                if(!nombre.equals("Idiomas.java") && !nombre.equals("Espanol") && !nombre.equals("English")){
+                if(!nombre.equals("Idiomas.java") && !nombre.equals("Español") && !nombre.equals("English")){
                     idiomas.add(nombre.substring(0, nombre.length() - 11));
                 }
             }
@@ -45,7 +45,7 @@ public class DatosIdioma {
         File fichero = new File(ruta);
         if(fichero.exists()){
             //if(new Idiomas(idioma) == MenuController.idioma){
-              //  MenuController.idioma = new Idiomas("Espanol");    
+              //  MenuController.idioma = new Idiomas("Español");    
             //}
             if (!fichero.delete()){
                 JOptionPane.showMessageDialog(null, "Error al eliminar el idioma");

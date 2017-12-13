@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="1005.0" prefWidth="2033.0" styleClass="fondo" stylesheets="@Estilo.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controlador.TareasController">
+   <children>
+      <TabPane layoutY="31.0" prefHeight="974.0" prefWidth="2033.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab id="tabTareasAsignadas" fx:id="tabTareasAsignadas" text="Agregar Tareas">
+               <content>
+                  <AnchorPane id="tbpInsertarTareas" minHeight="0.0" minWidth="0.0" prefHeight="507.0" prefWidth="519.0">
+                     <children>
+                        <Button id="btnTAceptar" fx:id="btnTAceptar" layoutX="649.0" layoutY="455.0" mnemonicParsing="false" onAction="#Aceptar" text="Aceptar" />
+                        <Label id="lblTNombreTareas" fx:id="lblTNombreTareas" layoutX="97.0" layoutY="63.0" text="Nombre:" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <TextField id="txtTNombreTareas" fx:id="txtTNombreTarea" layoutX="285.0" layoutY="79.0" prefHeight="38.0" prefWidth="187.0" />
+                        <Label id="lblTErrorLetras" fx:id="lblTErrorLetras" layoutX="302.0" layoutY="125.0" text="Digite solamente letras" textFill="#eb1414" />
+                        <Label id="lblTErrorInformacion" fx:id="lblTErrorInformacion" layoutX="621.0" layoutY="498.0" text="Falta información" textFill="#eb1414" />
+                        <TextArea fx:id="txtATDescipcion" layoutX="128.0" layoutY="226.0" prefHeight="200.0" prefWidth="564.0" />
+                        <Label id="lblTSErrorNombre" fx:id="lblTSErrorNombre" layoutX="478.0" layoutY="86.0" prefHeight="21.0" prefWidth="0.0" text="*" textFill="#eb1414" />
+                        <Label id="lblTSErrorDescripcion" fx:id="lblTSErrorDescripcion" layoutX="339.0" layoutY="215.0" text="*" textFill="#eb1414" />
+                        <Label id="lblTDescripcion" fx:id="lblTDescripcion" layoutX="97.0" layoutY="156.0" text="Descripción" textFill="#fffbfb">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="EditarTareaTab" text="Editar o Eliminar Tareas">
+               <content>
+                  <Pane fx:id="pnlEditarTarea" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="lblBuscarTarea" layoutX="238.0" layoutY="49.0" prefHeight="17.0" prefWidth="63.0" text="Buscar: " />
+                        <TextField fx:id="txtBusquedaTarea" layoutX="365.0" layoutY="45.0" onKeyReleased="#BuscarTarea" prefHeight="25.0" prefWidth="240.0" />
+                        <TableView fx:id="tblTareas" layoutX="36.0" layoutY="125.0" onMouseClicked="#MostrarTarea" prefHeight="575.0" prefWidth="735.0" />
+                        <Label fx:id="lblNombreTarea" layoutX="888.0" layoutY="136.0" prefHeight="17.0" prefWidth="99.0" text="Nombre Tarea:" />
+                        <Label fx:id="lblDescripcion" layoutX="888.0" layoutY="243.0" prefHeight="17.0" prefWidth="78.0" text="Descripcion:" />
+                        <Button fx:id="btnEditarTarea" layoutX="904.0" layoutY="453.0" mnemonicParsing="false" onAction="#EditarTarea" text="Editar" />
+                        <Button fx:id="btnEliminarTarea" layoutX="1211.0" layoutY="453.0" mnemonicParsing="false" onAction="#EliminarTarea" text="Eliminar" />
+                        <TextArea fx:id="txtDescripcionTarea" layoutX="987.0" layoutY="243.0" prefHeight="128.0" prefWidth="320.0" />
+                        <TextField fx:id="txtNombreTarea" layoutX="987.0" layoutY="132.0" prefHeight="25.0" prefWidth="319.0" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+      <MenuBar fx:id="MbMenu" prefHeight="32.0" prefWidth="2028.0">
+         <menus>
+            <Menu fx:id="BarMenuNavegar" mnemonicParsing="false" text="Navegar">
+               <items>
+                  <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
+                  <MenuItem mnemonicParsing="false" onAction="#Proyectos" text="Proyectos" />
+                  <MenuItem mnemonicParsing="false" onAction="#Tareas" text="Tareas y Departamentos" />
+                  <MenuItem mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
+               </items>
+            </Menu>
+            <Menu fx:id="BarMenuSistema" mnemonicParsing="false" text="Sistema">
+               <items>
+                  <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

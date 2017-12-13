@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="1005.0" prefWidth="2043.0" styleClass="fondo" stylesheets="@Estilo.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controlador.DepartamentosController">
+   <children>
+      <TabPane layoutY="31.0" prefHeight="974.0" prefWidth="2033.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab fx:id="tabDepartamentos" text="Agregar Departamentos">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="938.0" prefWidth="2033.0">
+                     <children>
+                        <Label fx:id="lblNombreDep" layoutX="100.0" layoutY="106.0" text="Nombre Departamento" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtTNombreDep" layoutX="375.0" layoutY="108.0" />
+                        <Button fx:id="Aceptar" layoutX="533.0" layoutY="281.0" mnemonicParsing="false" onAction="#Agregar" text="Aceptar" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="EditarDepartamentoTab" text="Editar o Eliminar Departamento">
+               <content>
+                  <Pane fx:id="pnlEditarDepartamento" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tblDepartamentos" layoutX="40.0" layoutY="44.0" onMouseClicked="#MostrarDepartamento" prefHeight="651.0" prefWidth="601.0" />
+                        <Label fx:id="lblBuscarDepartamento" layoutX="795.0" layoutY="56.0" prefHeight="17.0" prefWidth="63.0" text="Buscar: " />
+                        <TextField fx:id="txtBusquedaDepartamento" layoutX="919.0" layoutY="52.0" onKeyReleased="#BuscarDepartamento" prefHeight="25.0" prefWidth="240.0" />
+                        <Label fx:id="lblNombreDepartamento" layoutX="795.0" layoutY="209.0" prefHeight="17.0" prefWidth="61.0" text="Nombre:" />
+                        <TextField fx:id="txtNombreDepartamento" layoutX="919.0" layoutY="205.0" prefHeight="25.0" prefWidth="239.0" />
+                        <Button fx:id="btnEditarDepartamento" layoutX="800.0" layoutY="407.0" mnemonicParsing="false" onAction="#EditarDepartamento" text="Editar" />
+                        <Button fx:id="btnEliminarDepartamento" layoutX="1159.0" layoutY="407.0" mnemonicParsing="false" onAction="#EliminarDepartamento" text="Eliminar" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+      <MenuBar fx:id="MbMenu" prefHeight="32.0" prefWidth="2028.0">
+         <menus>
+            <Menu fx:id="BarMenuNavegar" mnemonicParsing="false" text="Navegar">
+               <items>
+                  <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
+                  <MenuItem mnemonicParsing="false" onAction="#Proyectos" text="Proyectos" />
+                  <MenuItem mnemonicParsing="false" onAction="#Tareas" text="Tareas y Departamentos" />
+                  <MenuItem mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
+               </items>
+            </Menu>
+            <Menu fx:id="BarMenuSistema" mnemonicParsing="false" text="Sistema">
+               <items>
+                  <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
