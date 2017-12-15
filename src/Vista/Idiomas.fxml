@@ -62,82 +62,82 @@
                         <TextField fx:id="SolamenteLetras" layoutX="485.0" layoutY="347.0" />
                         <TextField fx:id="FaltaInfo" layoutX="485.0" layoutY="385.0" />
                         <TextField fx:id="NomProyecto" layoutX="485.0" layoutY="423.0" />
-                        <TextField fx:id="Dep" layoutX="859.0" layoutY="71.0" />
-                        <TextField fx:id="TareasProy" layoutX="859.0" layoutY="108.0" />
-                        <TextField fx:id="FechaI" layoutX="859.0" layoutY="146.0" />
-                        <TextField fx:id="FechaE" layoutX="859.0" layoutY="182.0" />
-                        <TextField fx:id="Tareas" layoutX="859.0" layoutY="219.0" />
-                        <TextField fx:id="EmpSelec" layoutX="859.0" layoutY="256.0" />
-                        <TextField fx:id="SelecEmp" layoutX="859.0" layoutY="296.0" />
-                        <TextField fx:id="AgreTarea" layoutX="859.0" layoutY="337.0" />
-                        <TextField fx:id="AgregProy" layoutX="859.0" layoutY="374.0" />
-                        <TextField fx:id="Nav" layoutX="859.0" layoutY="412.0" />
-                        <TextField fx:id="Sis" layoutX="859.0" layoutY="451.0" />
-                        <TextField fx:id="TAsig" layoutX="859.0" layoutY="490.0" />
-                        <TextField fx:id="Personas" layoutX="859.0" layoutY="528.0" />
+                        <TextField fx:id="Dep" layoutX="787.0" layoutY="71.0" />
+                        <TextField fx:id="TareasProy" layoutX="786.0" layoutY="111.0" />
+                        <TextField fx:id="FechaI" layoutX="786.0" layoutY="149.0" />
+                        <TextField fx:id="FechaE" layoutX="786.0" layoutY="185.0" />
+                        <TextField fx:id="Tareas" layoutX="786.0" layoutY="222.0" />
+                        <TextField fx:id="EmpSelec" layoutX="786.0" layoutY="259.0" />
+                        <TextField fx:id="SelecEmp" layoutX="786.0" layoutY="299.0" />
+                        <TextField fx:id="AgreTarea" layoutX="786.0" layoutY="340.0" />
+                        <TextField fx:id="AgregProy" layoutX="786.0" layoutY="377.0" />
+                        <TextField fx:id="Nav" layoutX="786.0" layoutY="415.0" />
+                        <TextField fx:id="Sis" layoutX="786.0" layoutY="454.0" />
+                        <TextField fx:id="TAsig" layoutX="786.0" layoutY="493.0" />
+                        <TextField fx:id="Personas" layoutX="786.0" layoutY="531.0" />
                         <Label layoutX="374.0" layoutY="389.0" text="Falta información" />
                         <Label layoutX="367.0" layoutY="427.0" text="Nombre Proyecto" />
-                        <Label layoutX="724.0" layoutY="76.0" text="Departamento" />
-                        <Label layoutX="725.0" layoutY="113.0" text="Tareas Proyecto" />
-                        <Label layoutX="736.0" layoutY="153.0" text="Fecha Inicio" />
-                        <Label layoutX="730.0" layoutY="186.0" text="Fecha Entrega" />
-                        <Label layoutX="753.0" layoutY="223.0" text="Tareas" />
-                        <Label layoutX="708.0" layoutY="260.0" text="Empleado Seleccionado" />
-                        <Label layoutX="713.0" layoutY="302.0" text="Seleccionar Empleado" />
-                        <Label layoutX="730.0" layoutY="341.0" text="Agregar Tarea" />
-                        <Label layoutX="721.0" layoutY="378.0" text="Agregar Proyecto" />
-                        <Label layoutX="749.0" layoutY="416.0" text="Navegar" />
-                        <Label layoutX="749.0" layoutY="455.0" text="Sistema" />
-                        <Label layoutX="724.0" layoutY="494.0" text="Tareas Asignadas" />
-                        <Label layoutX="744.0" layoutY="532.0" text="Personas" />
-                        <Label layoutX="1060.0" layoutY="75.0" text="Editar Proyecto" />
-                        <TextField fx:id="EditarProyecto" layoutX="1178.0" layoutY="71.0" />
-                        <Label layoutX="1065.0" layoutY="108.0" text="Cerrar Sesion" />
-                        <TextField fx:id="CerrarSesion" layoutX="1178.0" layoutY="104.0" />
-                        <Label layoutX="1078.0" layoutY="150.0" text="Personal" />
-                        <TextField fx:id="Personal" layoutX="1178.0" layoutY="149.0" />
-                        <Label layoutX="1064.0" layoutY="186.0" text="Mis Proyectos" />
-                        <TextField fx:id="MisProyectos" layoutX="1178.0" layoutY="182.0" />
-                        <Label layoutX="1054.0" layoutY="223.0" text="Agregar Personas" />
-                        <TextField fx:id="AgregarPersonas" layoutX="1178.0" layoutY="219.0" />
-                        <Label layoutX="1055.0" layoutY="260.0" text="Eliminar Personas" />
-                        <TextField fx:id="EliminarPersonas" layoutX="1178.0" layoutY="256.0" />
-                        <Label layoutX="1060.0" layoutY="300.0" text="Editar Personas" />
-                        <TextField fx:id="EditarPersonas" layoutX="1178.0" layoutY="296.0" />
-                        <Label layoutX="1079.0" layoutY="341.0" text="Apellido" />
-                        <TextField fx:id="Apellido" layoutX="1178.0" layoutY="337.0" />
-                        <Label layoutX="1082.0" layoutY="378.0" text="Cedula" />
-                        <TextField fx:id="Cedula" layoutX="1178.0" layoutY="374.0" />
-                        <Label layoutX="1064.0" layoutY="416.0" text="Administrador" />
-                        <Label layoutX="1074.0" layoutY="455.0" text="Supervisor" />
-                        <Label layoutX="1074.0" layoutY="494.0" text="Empleado" />
-                        <TextField fx:id="Administrador" layoutX="1178.0" layoutY="412.0" />
-                        <TextField fx:id="Supervisor" layoutX="1178.0" layoutY="451.0" />
-                        <TextField fx:id="Empleado" layoutX="1178.0" layoutY="490.0" />
-                        <Label layoutX="1081.0" layoutY="532.0" text="Agregar" />
-                        <TextField fx:id="Agregar" layoutX="1178.0" layoutY="528.0" />
-                        <Label layoutX="1092.0" layoutY="570.0" text="Rol" />
-                        <TextField fx:id="Rol" layoutX="1178.0" layoutY="566.0" />
-                        <Label layoutX="1376.0" layoutY="75.0" text="Seleccione la persona" />
-                        <TextField fx:id="SeleccioneLaPersona" layoutX="1515.0" layoutY="72.0" />
-                        <Label layoutX="1410.0" layoutY="108.0" text="Proyecto" />
-                        <TextField fx:id="Proyecto" layoutX="1515.0" layoutY="104.0" />
-                        <Label layoutX="1402.0" layoutY="153.0" text="Fecha Inicio" />
-                        <TextField fx:id="FechaInicio" layoutX="1515.0" layoutY="149.0" />
-                        <Label layoutX="1403.0" layoutY="186.0" text="Fecha  Final" />
-                        <TextField fx:id="FechaFinal" layoutX="1515.0" layoutY="182.0" />
-                        <Label layoutX="1390.0" layoutY="223.0" text="Salir del Sistema" />
-                        <TextField fx:id="SalirDelSistema" layoutX="1515.0" layoutY="219.0" />
+                        <Label layoutX="652.0" layoutY="76.0" text="Departamento" />
+                        <Label layoutX="652.0" layoutY="116.0" text="Tareas Proyecto" />
+                        <Label layoutX="663.0" layoutY="156.0" text="Fecha Inicio" />
+                        <Label layoutX="657.0" layoutY="189.0" text="Fecha Entrega" />
+                        <Label layoutX="680.0" layoutY="226.0" text="Tareas" />
+                        <Label layoutX="635.0" layoutY="263.0" text="Empleado Seleccionado" />
+                        <Label layoutX="640.0" layoutY="305.0" text="Seleccionar Empleado" />
+                        <Label layoutX="657.0" layoutY="344.0" text="Agregar Tarea" />
+                        <Label layoutX="648.0" layoutY="381.0" text="Agregar Proyecto" />
+                        <Label layoutX="676.0" layoutY="419.0" text="Navegar" />
+                        <Label layoutX="676.0" layoutY="458.0" text="Sistema" />
+                        <Label layoutX="651.0" layoutY="497.0" text="Tareas Asignadas" />
+                        <Label layoutX="671.0" layoutY="535.0" text="Personas" />
+                        <Label layoutX="950.0" layoutY="75.0" text="Editar Proyecto" />
+                        <TextField fx:id="EditarProyecto" layoutX="1068.0" layoutY="71.0" />
+                        <Label layoutX="955.0" layoutY="108.0" text="Cerrar Sesion" />
+                        <TextField fx:id="CerrarSesion" layoutX="1068.0" layoutY="104.0" />
+                        <Label layoutX="968.0" layoutY="150.0" text="Personal" />
+                        <TextField fx:id="Personal" layoutX="1068.0" layoutY="149.0" />
+                        <Label layoutX="954.0" layoutY="186.0" text="Mis Proyectos" />
+                        <TextField fx:id="MisProyectos" layoutX="1068.0" layoutY="182.0" />
+                        <Label layoutX="944.0" layoutY="223.0" text="Agregar Personas" />
+                        <TextField fx:id="AgregarPersonas" layoutX="1068.0" layoutY="219.0" />
+                        <Label layoutX="945.0" layoutY="260.0" text="Eliminar Personas" />
+                        <TextField fx:id="EliminarPersonas" layoutX="1068.0" layoutY="256.0" />
+                        <Label layoutX="950.0" layoutY="300.0" text="Editar Personas" />
+                        <TextField fx:id="EditarPersonas" layoutX="1068.0" layoutY="296.0" />
+                        <Label layoutX="969.0" layoutY="341.0" text="Apellido" />
+                        <TextField fx:id="Apellido" layoutX="1068.0" layoutY="337.0" />
+                        <Label layoutX="972.0" layoutY="378.0" text="Cedula" />
+                        <TextField fx:id="Cedula" layoutX="1068.0" layoutY="374.0" />
+                        <Label layoutX="954.0" layoutY="416.0" text="Administrador" />
+                        <Label layoutX="964.0" layoutY="455.0" text="Supervisor" />
+                        <Label layoutX="964.0" layoutY="494.0" text="Empleado" />
+                        <TextField fx:id="Administrador" layoutX="1068.0" layoutY="412.0" />
+                        <TextField fx:id="Supervisor" layoutX="1068.0" layoutY="451.0" />
+                        <TextField fx:id="Empleado" layoutX="1068.0" layoutY="490.0" />
+                        <Label layoutX="971.0" layoutY="532.0" text="Agregar" />
+                        <TextField fx:id="Agregar" layoutX="1068.0" layoutY="528.0" />
+                        <Label layoutX="982.0" layoutY="570.0" text="Rol" />
+                        <TextField fx:id="Rol" layoutX="1068.0" layoutY="566.0" />
+                        <Label layoutX="1217.0" layoutY="76.0" text="Seleccione la persona" />
+                        <TextField fx:id="SeleccioneLaPersona" layoutX="1356.0" layoutY="73.0" />
+                        <Label layoutX="1251.0" layoutY="109.0" text="Proyecto" />
+                        <TextField fx:id="Proyecto" layoutX="1356.0" layoutY="105.0" />
+                        <Label layoutX="1225.0" layoutY="165.0" text="Fecha Inicio" />
+                        <TextField fx:id="FechaInicio" layoutX="1338.0" layoutY="161.0" />
+                        <Label layoutX="1234.0" layoutY="220.0" text="Fecha  Final" />
+                        <TextField fx:id="FechaFinal" layoutX="1346.0" layoutY="216.0" />
+                        <Label layoutX="1221.0" layoutY="257.0" text="Salir del Sistema" />
+                        <TextField fx:id="SalirDelSistema" layoutX="1346.0" layoutY="253.0" />
                         <Label fx:id="Idioma" layoutX="402.0" layoutY="466.0" text="Idioma" />
                         <TextField fx:id="lblIdioma" layoutX="485.0" layoutY="461.0" />
                         <TextField fx:id="lblRegistrarse" layoutX="487.0" layoutY="497.0" />
                         <Label fx:id="Idioma1" layoutX="404.0" layoutY="502.0" text="Registrarse" />
-                        <Label layoutX="1388.0" layoutY="260.0" text="Nombre de usuario" />
-                        <TextField fx:id="NombreUsuario" layoutX="1515.0" layoutY="266.0" />
-                        <Label layoutX="1400.0" layoutY="296.0" text="Pregunta Seguridad" />
-                        <TextField fx:id="lblPreguntaSeguridad" layoutX="1515.0" layoutY="312.0" />
-                        <TextField fx:id="Respuesta" layoutX="1515.0" layoutY="371.0" />
-                        <Label layoutX="1422.0" layoutY="379.0" text="Respuesta" />
+                        <Label layoutX="1219.0" layoutY="294.0" text="Nombre de usuario" />
+                        <TextField fx:id="NombreUsuario" layoutX="1346.0" layoutY="300.0" />
+                        <Label layoutX="1218.0" layoutY="350.0" text="Pregunta Seguridad" />
+                        <TextField fx:id="lblPreguntaSeguridad" layoutX="1346.0" layoutY="346.0" />
+                        <TextField fx:id="Respuesta" layoutX="1346.0" layoutY="405.0" />
+                        <Label layoutX="1253.0" layoutY="413.0" text="Respuesta" />
                      </children>
                   </AnchorPane>
                </content>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="1360.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controlador.ProyectoController">
+   <children>
+      <MenuBar fx:id="MbMenu" prefHeight="25.0" prefWidth="1357.0">
+         <menus>
+            <Menu fx:id="BarMenuNavegarP" mnemonicParsing="false" text="Navegar">
+               <items>
+                  <MenuItem fx:id="MPersonas" mnemonicParsing="false" onAction="#Personas" text="Personas" />
+                  <MenuItem mnemonicParsing="false" onAction="#Proyectos" text="Proyectos" />
+                  <MenuItem mnemonicParsing="false" onAction="#Tareas" text="Tareas y Departamentos" />
+                  <MenuItem mnemonicParsing="false" onAction="#EditProyectos" text="Editar Proyecto" />
+               </items>
+            </Menu>
+            <Menu fx:id="BarMenuSistemaP" mnemonicParsing="false" text="Sistema">
+               <items>
+                  <MenuItem fx:id="MbCerrarS" mnemonicParsing="false" onAction="#CerrarS" text="Cerrar Sesión" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <TabPane layoutX="1.0" layoutY="23.0" prefHeight="723.0" prefWidth="1359.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tab_AgregarPro" text="Agregrar Proyecto">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="1359.0">
+                     <children>
+                        <TitledPane fx:id="tlPanelProyecto" animated="false" prefHeight="689.0" prefWidth="1366.0">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="663.0" prefWidth="1232.0">
+                                 <children>
+                                    <AnchorPane layoutX="-60.0" layoutY="259.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
+                                       <children>
+                                          <Label fx:id="lblEmpleadosDisponibles" layoutX="116.0" layoutY="96.0" text="Empleados disponibles:" />
+                                          <Label fx:id="lblEmpleadoSeleccionado" layoutX="107.0" layoutY="365.0" text="Empleado seleccionado:" />
+                                          <Label fx:id="lblErrorSeleccionarEmpleado" layoutX="446.0" layoutY="366.0" text="Seleccionar Empleado" textFill="#e42121" />
+                                          <Label fx:id="lblTareas" layoutX="143.0" layoutY="43.0" text="Tareas:" />
+                                          <ComboBox fx:id="cbxTareas" layoutX="225.0" layoutY="39.0" prefWidth="150.0" />
+                                          <TableView fx:id="tblEmpleadosDisponibles" layoutX="228.0" layoutY="126.0" onMouseClicked="#TrasladarE" prefHeight="193.0" prefWidth="506.0" />
+                                          <TextField fx:id="txtEmpleadoSeleccionado" disable="true" layoutX="265.0" layoutY="363.0" />
+                                          <Button fx:id="btnAgregarTarea" layoutX="658.0" layoutY="360.0" mnemonicParsing="false" onAction="#AgregarTarea" text="Agregar Tarea" />
+                                          <Label fx:id="lblNoTarea" layoutX="116.0" layoutY="43.0" text="*" textFill="#f20303" />
+                                          <Label fx:id="lblIteraciones" layoutX="486.0" layoutY="41.0" text="Iteraciones:" />
+                                          <ComboBox fx:id="cbxIteraciones" layoutX="581.0" layoutY="38.0" prefWidth="150.0" />
+                                          <Label fx:id="lblNoIteraciones" layoutX="458.0" layoutY="38.0" text="*" textFill="#f80606" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane fx:id="ASD" minHeight="0.0" minWidth="0.0" prefHeight="226.0" prefWidth="1367.0">
+                                       <children>
+                                          <Label fx:id="lblNombreProyecto" layoutX="80.0" layoutY="29.0" text="Nombre Proyecto:" />
+                                          <Label fx:id="lblCreadoPor" layoutX="114.0" layoutY="83.0" text="Supervisado por:" />
+                                          <Label fx:id="lblDepartamento" layoutX="451.0" layoutY="29.0" text="Departamento:" />
+                                          <Label fx:id="lblFechaInicio" layoutX="899.0" layoutY="24.0" text="Fecha inicio:" />
+                                          <Label fx:id="lblFechaEntrega" layoutX="886.0" layoutY="77.0" text="Fecha entrega:" />
+                                          <ComboBox fx:id="txtDepartamento" layoutX="607.0" layoutY="24.0" prefWidth="150.0" />
+                                          <DatePicker fx:id="txtDatePickerInicio" layoutX="1045.0" layoutY="20.0" prefHeight="25.0" prefWidth="150.0" />
+                                          <DatePicker fx:id="txtDatePickerFinal" layoutX="1044.0" layoutY="72.0" prefHeight="22.0" prefWidth="151.0">
+                                             <effect>
+                                                <Blend />
+                                             </effect>
+                                          </DatePicker>
+                                          <TextField fx:id="txtNombreProyecto" layoutX="223.0" layoutY="24.0" />
+                                          <ComboBox fx:id="cbxCreadoPor" layoutX="223.0" layoutY="78.0" prefWidth="150.0" />
+                                          <Label fx:id="lblTareasProyecto" layoutX="441.0" layoutY="84.0" text="Tareas Proyecto:" />
+                                          <ComboBox fx:id="cbxTareasProyecto" layoutX="617.0" layoutY="81.0" prefWidth="150.0" />
+                                          <Button fx:id="btnGuardarProyecto" layoutX="906.0" layoutY="136.0" mnemonicParsing="false" onAction="#Guardar" stylesheets="@Estilo.css" text="Guardar">
+                                             <styleClass>
+                                                <String fx:value="color" />
+                                                <String fx:value="forma" />
+                                             </styleClass>
+                                          </Button>
+                                          <Label fx:id="lblNoTareasProyecto" layoutX="433.0" layoutY="85.0" text="*" textFill="#f20606" />
+                                          <Label fx:id="lblNoCreado" layoutX="108.0" layoutY="83.0" text="*" textFill="#f50505" />
+                                          <Label fx:id="lblNoDepartamento" layoutX="442.0" layoutY="28.0" text="*" textFill="#f20303" />
+                                          <Label fx:id="lblNoFechaI" layoutX="877.0" layoutY="26.0" text="*" textFill="#f50303" />
+                                          <Label fx:id="lblNoFechaE" layoutX="873.0" layoutY="77.0" text="*" textFill="#f80505" />
+                                          <Label fx:id="lblNoNombre" layoutX="71.0" layoutY="29.0" prefHeight="17.0" prefWidth="10.0" text="*" textFill="#f20404" />
+                                          <Label fx:id="lblGuardar" layoutX="877.0" layoutY="136.0" text="*" textFill="#f80707" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tab_EditarPro" text="EditarProyecto">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane fx:id="pnlEditarProyecto" prefHeight="727.0" prefWidth="1385.0">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="lblNombreP" layoutX="66.0" layoutY="79.0" text="Nombre:" />
+                                    <Label fx:id="lblSupervisorP" layoutX="65.0" layoutY="153.0" text="Supervisado por" />
+                                 </children>
+                              </Pane>
+                              <DatePicker fx:id="DatePickerFechaE" layoutX="240.0" layoutY="214.0" prefHeight="25.0" prefWidth="151.0" />
+                              <TextField fx:id="txtSupervisor" layoutX="240.0" layoutY="145.0" />
+                              <Label fx:id="lblTareasP" layoutX="785.0" layoutY="71.0" text="Tareas Disponibles" />
+                              <TextField fx:id="txtNombreP" layoutX="241.0" layoutY="74.0" />
+                              <Button fx:id="btnActualizar" layoutX="557.0" layoutY="261.0" mnemonicParsing="false" onAction="#EditarProyectoEnBase" text="Actualizar" />
+                              <TableView fx:id="tblProyectos" layoutX="79.0" layoutY="323.0" onMouseClicked="#Trasladar" prefHeight="349.0" prefWidth="567.0">
+                                 <columns>
+                                    <TableColumn prefWidth="75.0" text="C1" />
+                                    <TableColumn prefWidth="75.0" text="C2" />
+                                 </columns>
+                              </TableView>
+                              <Separator layoutX="719.0" layoutY="-8.0" orientation="VERTICAL" prefHeight="740.0" prefWidth="9.0" />
+                              <TableView fx:id="tblTareasProyectos" layoutX="793.0" layoutY="320.0" onMouseClicked="#TrasladarTP" prefHeight="354.0" prefWidth="515.0" />
+                              <Label fx:id="lblFechaE" layoutX="66.0" layoutY="218.0" text="FechaEntrega" />
+                              <Rectangle fx:id="FigRectanguloTarea" arcHeight="5.0" arcWidth="5.0" fill="#0d0d0d14" height="184.0" layoutX="1136.0" layoutY="64.0" stroke="#00000044" strokeType="INSIDE" width="173.0" />
+                              <RadioButton fx:id="rbtnNoImplementada" layoutX="1171.0" layoutY="203.0" mnemonicParsing="false" text="No implementada">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="Estados" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnImplementada" layoutX="1171.0" layoutY="166.0" mnemonicParsing="false" text="Implementada" toggleGroup="$Estados" />
+                              <RadioButton fx:id="rbtnEnProceso" layoutX="1171.0" layoutY="127.0" mnemonicParsing="false" selected="true" text="En proceso" toggleGroup="$Estados" />
+                              <Label fx:id="lblEstadosTareasP" layoutX="1191.0" layoutY="75.0" text="Estados">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="cbmTareasProyectos" layoutX="920.0" layoutY="66.0" prefWidth="150.0" />
+                              <Label fx:id="lblEmpleadosDisponibles1" layoutX="783.0" layoutY="134.0" text="Empleados Disponibles" />
+                              <ComboBox fx:id="cmbEmpleadosDisponibles" layoutX="920.0" layoutY="128.0" prefWidth="150.0" />
+                              <Label fx:id="lblIteracionesTarea" layoutX="782.0" layoutY="195.0" text="Iteraciones" />
+                              <ComboBox fx:id="cmbIteracionesTP" layoutX="920.0" layoutY="191.0" prefWidth="150.0" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
